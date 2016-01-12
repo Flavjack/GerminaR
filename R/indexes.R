@@ -10,3 +10,19 @@ GRS <- function(values){
   sum
 }
 
+
+#' Germination Seed percentage
+#' @description This function Calculate the Germination percentage
+#' @param seeds Total seed sown
+#' @param values Germination values
+#' @author Flavio Lozano
+#' @return Percentage of seed germinated
+#' @export
+
+GSP <- function(seeds, values){
+  sum <- sum(values,na.rm = TRUE)
+  per <- (sum/seeds)*100
+  per
+}
+
+
