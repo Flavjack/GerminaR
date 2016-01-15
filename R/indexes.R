@@ -60,7 +60,7 @@ MGT <- function(values){
 #' @return Coefficient of Velocity of Germination
 #' @export
 
-cvg <- function(values){
+CVG <- function(values){
   ger <- sum(values,na.rm = TRUE)
   days <- 0:length(values)
   mgt <- sum(days*values, na.rm = T)/ger
