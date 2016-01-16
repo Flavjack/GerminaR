@@ -4,10 +4,10 @@
 \alias{MGR}
 \title{Mean Germination Rate}
 \usage{
-MGR(values)
+MGR(eval_days)
 }
 \arguments{
-\item{values}{Germination values}
+\item{eval_days}{Germination eval_days}
 }
 \value{
 Mean Germination Rate

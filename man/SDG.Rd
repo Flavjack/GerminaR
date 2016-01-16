@@ -4,10 +4,10 @@
 \alias{SDG}
 \title{Standard deviation of the Germination Time}
 \usage{
-SDG(values)
+SDG(eval_days)
 }
 \arguments{
-\item{values}{Germination values}
+\item{eval_days}{Germination eval_days}
 }
 \value{
 Standard deviation of the Germination Time

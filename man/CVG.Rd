@@ -4,10 +4,10 @@
 \alias{CVG}
 \title{Coefficient of Velocity of Germination}
 \usage{
-CVG(values)
+CVG(eval_days)
 }
 \arguments{
-\item{values}{Germination values}
+\item{eval_days}{Germination eval_days}
 }
 \value{
 Coefficient of Velocity of Germination
@@ -16,6 +16,6 @@ Coefficient of Velocity of Germination
 This function Calculate the Coefficient of Velocity of Germination
 }
 \author{
-Flavio Lozano
+Flavio Lozanoa
 }
 

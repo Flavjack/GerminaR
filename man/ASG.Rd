@@ -2,20 +2,20 @@
 % Please edit documentation in R/indexes.R
 \name{ASG}
 \alias{ASG}
-\title{ArcSin of Germination Values}
+\title{ArcSin of Germination eval_days}
 \usage{
-ASG(seeds, values)
+ASG(seeds, eval_days)
 }
 \arguments{
 \item{seeds}{Total seed sown}
 
-\item{values}{Germination values}
+\item{eval_days}{Germination eval_days}
 }
 \value{
-ArcSin of Germination Values
+ArcSin of Germination eval_days
 }
 \description{
-This function Calculate the ArcSin of Germination Values for normalization
+This function Calculate the ArcSin of Germination eval_days for normalization
 }
 \author{
 Flavio Lozano

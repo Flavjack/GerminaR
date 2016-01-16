@@ -4,10 +4,10 @@
 \alias{VGT}
 \title{Variance of Germination Time}
 \usage{
-VGT(values)
+VGT(eval_days)
 }
 \arguments{
-\item{values}{Germination values}
+\item{eval_days}{Germination eval_days}
 }
 \value{
 Variance of Germination Time

@@ -4,12 +4,12 @@
 \alias{GRP}
 \title{Germination Seed percentage}
 \usage{
-GRP(seeds, values)
+GRP(seeds, eval_days)
 }
 \arguments{
 \item{seeds}{Total seed sown}
 
-\item{values}{Germination values}
+\item{eval_days}{Germination evaluation days}
 }
 \value{
 Percentage of seed germinated
