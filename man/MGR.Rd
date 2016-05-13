@@ -7,15 +7,12 @@
 MGR(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Mean Germination Rate
 }
 \description{
 This function Calculate the Mean Germination Rate
-}
-\author{
-Flavio Lozano
 }
 

@@ -7,15 +7,12 @@
 VGT(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Variance of Germination Time
 }
 \description{
 This function Calculate the Variance of Germination Time
-}
-\author{
-Flavio Lozano
 }
 

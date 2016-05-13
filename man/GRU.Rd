@@ -7,15 +7,12 @@
 GRU(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Germination Uncertainty (U)
 }
 \description{
 This function Calculate the Germination Uncertainty
-}
-\author{
-Flavio Lozano
 }
 

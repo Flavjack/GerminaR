@@ -7,15 +7,12 @@
 GSI(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Germination Synchronization Index (Z)
 }
 \description{
 This function Calculate the Germination Synchronization Index
-}
-\author{
-Flavio Lozano
 }
 

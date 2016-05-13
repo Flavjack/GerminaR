@@ -7,15 +7,12 @@
 CoVG(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Coefficient of Variation of the Mean Germination Time
 }
 \description{
 This function Calculate the Coefficient of Variation of the Mean Germination Time
-}
-\author{
-Flavio Lozano
 }
 

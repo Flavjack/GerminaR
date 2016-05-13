@@ -2,20 +2,19 @@
 % Please edit documentation in R/indexes.R
 \name{GRS}
 \alias{GRS}
-\title{Germination Seed Number}
+\title{Germinated Seed Number}
 \usage{
 GRS(eval_days)
 }
 \arguments{
 \item{eval_days}{Germination evaluation days}
+
+\item{seeds}{Total seed sown}
 }
 \value{
-Number of seed germinated
+Number of seed germianated in the experimen for EU
 }
 \description{
-This function Calculate the Number of Germinated Seeds
-}
-\author{
-Flavio Lozano
+This function Calculate the Germination percentage
 }
 

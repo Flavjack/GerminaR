@@ -7,15 +7,12 @@
 CVG(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Coefficient of Velocity of Germination
 }
 \description{
 This function Calculate the Coefficient of Velocity of Germination
-}
-\author{
-Flavio Lozanoa
 }
 

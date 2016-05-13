@@ -7,15 +7,12 @@
 MGT(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Mean Germination Time
 }
 \description{
 This function Calculate the Mean Germination Time
-}
-\author{
-Flavio Lozano
 }
 

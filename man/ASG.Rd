@@ -9,15 +9,12 @@ ASG(seeds, eval_days)
 \arguments{
 \item{seeds}{Total seed sown}
 
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
-ArcSin of Germination eval_days
+ArcSin of Germination percentage
 }
 \description{
 This function Calculate the ArcSin of Germination eval_days for normalization
-}
-\author{
-Flavio Lozano
 }
 

@@ -17,7 +17,4 @@ Percentage of seed germinated
 \description{
 This function Calculate the Germination percentage
 }
-\author{
-Flavio Lozano
-}
 

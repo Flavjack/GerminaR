@@ -7,15 +7,12 @@
 SDG(eval_days)
 }
 \arguments{
-\item{eval_days}{Germination eval_days}
+\item{eval_days}{Germination evalaluation days}
 }
 \value{
 Standard deviation of the Germination Time
 }
 \description{
 This function Calculate the Standard deviation of the Germination Time
-}
-\author{
-Flavio Lozano
 }
 
