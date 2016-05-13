@@ -6,8 +6,9 @@ library(dplyr)
 
 url <- "https://docs.google.com/spreadsheets/d/1G9555qEa1TJ5NDJV4zGAffY-YZTJTE0keDpiANnJpIo/edit#gid=0"
 
-fb<- gsheet2tbl(url) %>% select(RPT:SDN, D01:D25)
+fb<- gsheet2tbl(url) %>% select(RPT:SDN, D00:D25)
 str(fb)
+
 
 #' Germinated Seed Number
 #' @description This function Calculate the Germination percentage
@@ -28,7 +29,7 @@ GRS <- function(eval_days){
 #' @export
 
 GRP <- function(seeds, eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
+  ger <-  GRS(eval_days)
   per <- (ger/seeds)*100
   per
 }
@@ -42,8 +43,7 @@ GRP <- function(seeds, eval_days){
 #' @export
 
 ASG <- function(seeds, eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
-  per <-  (ger/seeds)
+  per <-  GRP(seeds, eval_days)/100
   rst <-  asin(sqrt(per))
   rst
 }
@@ -56,8 +56,8 @@ ASG <- function(seeds, eval_days){
 #' @export
 
 MGT <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
-  days <- 1:ncol(eval_days)
+  ger <-  GRS(eval_days)
+  days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   rst <- apply(cbind(temp),1, sum, na.rm = T)/ger
   rst
@@ -71,8 +71,8 @@ MGT <- function(eval_days){
 #' @export
 
 CVG <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
-  days <- 1:ncol(eval_days)
+  ger <-  GRS(eval_days)
+  days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   mgt <- apply(cbind(temp),1, sum, na.rm = TRUE)/ger
   rst <- (1/mgt)*100
@@ -87,8 +87,8 @@ CVG <- function(eval_days){
 #' @export
 
 MGR <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
-  days <- 1:ncol(eval_days)
+  ger <-  GRS(eval_days)
+  days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   rst <- ger/apply(cbind(temp),1, sum, na.rm = TRUE)
   rst
@@ -102,7 +102,7 @@ MGR <- function(eval_days){
 #' @export
 
 GRU <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
+  ger <-  GRS(eval_days)
   prod <- eval_days/ger * log2(eval_days/ger)
   rst <- apply(prod, 1, sum, na.rm = TRUE) * -1
   rst
@@ -115,7 +115,7 @@ GRU <- function(eval_days){
 #' @export
 
 GSI <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
+  ger <-  GRS(eval_days)
   temp <- eval_days*(eval_days - 1)/2
   smp <- apply(temp ,1, sum, na.rm = TRUE)
   rst <- smp / (ger*(ger-1)/2)
@@ -130,9 +130,9 @@ GSI <- function(eval_days){
 #' @export
 
 VGT <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
+  ger <-  GRS(eval_days)
   mgt <- MGT(eval_days)
-  days <- 1:ncol(eval_days)
+  days <- 0:(ncol(eval_days)-1)
   daym <- rep.row(days,nrow(eval_days))
   temp <- eval_days * (daym-mgt)^2
   rsp <- apply(temp, 1, sum, na.rm = TRUE)
@@ -148,13 +148,8 @@ VGT <- function(eval_days){
 #' @export
 
 SDG <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
-  mgt <- MGT(eval_days)
-  days <- 1:ncol(eval_days)
-  daym <- rep.row(days,nrow(eval_days))
-  temp <- eval_days * (daym-mgt)^2
-  rsp <- apply(temp, 1, sum, na.rm = TRUE)
-  rst <- sqrt(rsp/(ger-1))
+  vgt <- VGT(eval_days)
+  rst <- sqrt(vgt)
   rst
 }
 
@@ -166,15 +161,9 @@ SDG <- function(eval_days){
 #' @export
 
 CoVG <- function(eval_days){
-  ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
+  sdg <- SDG(eval_days)
   mgt <- MGT(eval_days)
-  days <- 1:ncol(eval_days)
-  daym <- rep.row(days,nrow(eval_days))
-  temp <- eval_days * (daym-mgt)^2
-  rsp <- apply(temp, 1, sum, na.rm = TRUE)
-  sdg <- sqrt(rsp/(ger-1))
-  rst <-  (sdg/mgt)*100
+  rsp <- (sdg/mgt)*100
+  rsp
 }
-
-
 
