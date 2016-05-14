@@ -1,13 +1,3 @@
-# library(gsheet)
-# library(agricolae)
-# library(ggplot2)
-# library(tidyr)
-# library(dplyr)
-
-# url <- "https://docs.google.com/spreadsheets/d/1G9555qEa1TJ5NDJV4zGAffY-YZTJTE0keDpiANnJpIo/edit#gid=0"
-# fb<- gsheet2tbl(url) %>% select(RPT:SDN, D00:D25)
-# str(fb)
-
 
 #' Germinated Seed Number
 #' @description This function Calculate the Germination percentage
