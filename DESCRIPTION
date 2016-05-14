@@ -1,13 +1,19 @@
 Package: GerminaR
+Type: Package
 Title: Package for analysis and graphics of germination variables
-Version: 0.0.0.9000
+Version: 1.0
 Authors@R: person("Flavio", "Lozano", email = "Flavjack@gmail.com", role = c("aut", "cre"))
 Description: GerminaR is a package for evaluate, analise and graph the
     germination variables for ecophysiological studies
 Imports:
-    agricolae, ggplot2, tidyr, dplyr, gsheet
+    agricolae, 
+    ggplot2, 
+    tidyr, 
+    dplyr, 
+    gsheet
 Depends:
     R (>= 3.2.3)
-License: GNU + file LICENSE
+License: MIT + file LICENSE
+Copyright: LEV-UFRPE (2016)
 LazyData: true
 RoxygenNote: 5.0.1

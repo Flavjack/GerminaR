@@ -1,13 +1,12 @@
-library(gsheet)
-library(agricolae)
-library(ggplot2)
-library(tidyr)
-library(dplyr)
+# library(gsheet)
+# library(agricolae)
+# library(ggplot2)
+# library(tidyr)
+# library(dplyr)
 
-url <- "https://docs.google.com/spreadsheets/d/1G9555qEa1TJ5NDJV4zGAffY-YZTJTE0keDpiANnJpIo/edit#gid=0"
-
-fb<- gsheet2tbl(url) %>% select(RPT:SDN, D00:D25)
-str(fb)
+# url <- "https://docs.google.com/spreadsheets/d/1G9555qEa1TJ5NDJV4zGAffY-YZTJTE0keDpiANnJpIo/edit#gid=0"
+# fb<- gsheet2tbl(url) %>% select(RPT:SDN, D00:D25)
+# str(fb)
 
 
 #' Germinated Seed Number
@@ -16,7 +15,7 @@ str(fb)
 #' @param eval_days Germination evaluation days
 #' @return Number of seed germianated in the experimen for EU
 #' @export
-GRS <- function(eval_days){
+ger_GRS <- function(eval_days){
   ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
   ger
 }
@@ -28,8 +27,8 @@ GRS <- function(eval_days){
 #' @return Percentage of seed germinated
 #' @export
 
-GRP <- function(seeds, eval_days){
-  ger <-  GRS(eval_days)
+ger_GRP <- function(seeds, eval_days){
+  ger <-  ger_GRS(eval_days)
   per <- (ger/seeds)*100
   per
 }
@@ -42,8 +41,8 @@ GRP <- function(seeds, eval_days){
 #' @return ArcSin of Germination percentage
 #' @export
 
-ASG <- function(seeds, eval_days){
-  per <-  GRP(seeds, eval_days)/100
+ger_ASG <- function(seeds, eval_days){
+  per <-  ger_GRP(seeds, eval_days)/100
   rst <-  asin(sqrt(per))
   rst
 }
@@ -55,8 +54,8 @@ ASG <- function(seeds, eval_days){
 #' @return Mean Germination Time
 #' @export
 
-MGT <- function(eval_days){
-  ger <-  GRS(eval_days)
+ger_MGT <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
   days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   rst <- apply(cbind(temp),1, sum, na.rm = T)/ger
@@ -70,8 +69,8 @@ MGT <- function(eval_days){
 #' @return Coefficient of Velocity of Germination
 #' @export
 
-CVG <- function(eval_days){
-  ger <-  GRS(eval_days)
+ger_CVL <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
   days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   mgt <- apply(cbind(temp),1, sum, na.rm = TRUE)/ger
@@ -86,8 +85,8 @@ CVG <- function(eval_days){
 #' @return Mean Germination Rate
 #' @export
 
-MGR <- function(eval_days){
-  ger <-  GRS(eval_days)
+ger_MGR <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
   days <- 0:(ncol(eval_days)-1)
   temp <- t(t(eval_days) * days)
   rst <- ger/apply(cbind(temp),1, sum, na.rm = TRUE)
@@ -101,8 +100,8 @@ MGR <- function(eval_days){
 #' @return Germination Uncertainty (U)
 #' @export
 
-GRU <- function(eval_days){
-  ger <-  GRS(eval_days)
+ger_GRU <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
   prod <- eval_days/ger * log2(eval_days/ger)
   rst <- apply(prod, 1, sum, na.rm = TRUE) * -1
   rst
@@ -114,8 +113,8 @@ GRU <- function(eval_days){
 #' @return Germination Synchronization Index (Z)
 #' @export
 
-GSI <- function(eval_days){
-  ger <-  GRS(eval_days)
+ger_GSI <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
   temp <- eval_days*(eval_days - 1)/2
   smp <- apply(temp ,1, sum, na.rm = TRUE)
   rst <- smp / (ger*(ger-1)/2)
@@ -129,9 +128,9 @@ GSI <- function(eval_days){
 #' @return Variance of Germination Time
 #' @export
 
-VGT <- function(eval_days){
-  ger <-  GRS(eval_days)
-  mgt <- MGT(eval_days)
+ger_VGT <- function(eval_days){
+  ger <-  ger_GRS(eval_days)
+  mgt <- ger_MGT(eval_days)
   days <- 0:(ncol(eval_days)-1)
   daym <- rep.row(days,nrow(eval_days))
   temp <- eval_days * (daym-mgt)^2
@@ -147,8 +146,8 @@ VGT <- function(eval_days){
 #' @return Standard deviation of the Germination Time
 #' @export
 
-SDG <- function(eval_days){
-  vgt <- VGT(eval_days)
+ger_SDG <- function(eval_days){
+  vgt <- ger_VGT(eval_days)
   rst <- sqrt(vgt)
   rst
 }
@@ -160,9 +159,9 @@ SDG <- function(eval_days){
 #' @return Coefficient of Variation of the Mean Germination Time
 #' @export
 
-CoVG <- function(eval_days){
-  sdg <- SDG(eval_days)
-  mgt <- MGT(eval_days)
+ger_CVG <- function(eval_days){
+  sdg <- ger_SDG(eval_days)
+  mgt <- ger_MGT(eval_days)
   rsp <- (sdg/mgt)*100
   rsp
 }
