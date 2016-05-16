@@ -1,20 +1,19 @@
 
 #' Germinated Seed Number
-#' @description This function Calculate the Germination percentage
-#' @param seeds Total seed sown
+#' @description This function calculate the number of seed germinated. 
 #' @param eval_days Germination evaluation days
-#' @return Number of seed germianated in the experimen for EU
+#' @return Number of seed germianated 
 #' @export
 ger_GRS <- function(eval_days){
   ger <-  apply(cbind(eval_days), 1, sum, na.rm = TRUE)
   ger
 }
 
-#' Germination Seed percentage
-#' @description This function Calculate the Germination percentage
+#' Germination Seed Percentage
+#' @description This function calculate the germination percentage related at total seed sown.
 #' @param seeds Total seed sown
 #' @param eval_days Germination evaluation days
-#' @return Percentage of seed germinated
+#' @return Percentage of seed germinated.
 #' @export
 
 ger_GRP <- function(seeds, eval_days){
@@ -24,11 +23,11 @@ ger_GRP <- function(seeds, eval_days){
 }
 
 
-#' ArcSin of Germination eval_days
-#' @description This function Calculate the ArcSin of Germination eval_days for normalization
+#' ArcSin of Germination Percentage
+#' @description This function calculate the arcsin of germination percentage for normalization
 #' @param seeds Total seed sown
 #' @param eval_days Germination evalaluation days
-#' @return ArcSin of Germination percentage
+#' @return ArcSin of Germination
 #' @export
 
 ger_ASG <- function(seeds, eval_days){
@@ -39,7 +38,7 @@ ger_ASG <- function(seeds, eval_days){
 
 
 #' Mean Germination Time
-#' @description This function Calculate the Mean Germination Time
+#' @description This function calculate the mean germination time of germination according at the time lapse of the evaluations
 #' @param eval_days Germination evalaluation days
 #' @return Mean Germination Time
 #' @export
@@ -54,7 +53,7 @@ ger_MGT <- function(eval_days){
 
 
 #' Coefficient of Velocity of Germination
-#' @description This function Calculate the Coefficient of Velocity of Germination
+#' @description This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations
 #' @param eval_days Germination evalaluation days
 #' @return Coefficient of Velocity of Germination
 #' @export
@@ -70,7 +69,7 @@ ger_CVL <- function(eval_days){
 
 
 #' Mean Germination Rate
-#' @description This function Calculate the Mean Germination Rate
+#' @description This function calculate the mean germination rate of the germination
 #' @param eval_days Germination evalaluation days
 #' @return Mean Germination Rate
 #' @export
@@ -85,9 +84,9 @@ ger_MGR <- function(eval_days){
 
 
 #' Germination Uncertainty
-#' @description This function Calculate the Germination Uncertainty
+#' @description This function calculate the germination uncertainty of the germination process.
 #' @param eval_days Germination evalaluation days
-#' @return Germination Uncertainty (U)
+#' @return Germination Uncertainty
 #' @export
 
 ger_GRU <- function(eval_days){
@@ -98,9 +97,9 @@ ger_GRU <- function(eval_days){
 }
 
 #' Germination Synchronization Index
-#' @description This function Calculate the Germination Synchronization Index
+#' @description This function calculate the germination synchronization of the germination process
 #' @param eval_days Germination evalaluation days
-#' @return Germination Synchronization Index (Z)
+#' @return Germination Synchrony
 #' @export
 
 ger_GSI <- function(eval_days){
@@ -112,10 +111,10 @@ ger_GSI <- function(eval_days){
 }
 
 
-#' Variance of Germination Time
-#' @description This function Calculate the Variance of Germination Time
+#' Variance of the Mean Germination Time
+#' @description This function calculate the variance of the mean germination time.
 #' @param eval_days Germination evalaluation days
-#' @return Variance of Germination Time
+#' @return Variance of Germination
 #' @export
 
 ger_VGT <- function(eval_days){
@@ -130,10 +129,10 @@ ger_VGT <- function(eval_days){
 }
 
 
-#' Standard deviation of the Germination Time
-#' @description This function Calculate the Standard deviation of the Germination Time
+#' Standard deviation of the Mean Germination Time
+#' @description This function calculate the standard desviation of the mean germination time
 #' @param eval_days Germination evalaluation days
-#' @return Standard deviation of the Germination Time
+#' @return Standard desviation of germination
 #' @export
 
 ger_SDG <- function(eval_days){
@@ -143,10 +142,10 @@ ger_SDG <- function(eval_days){
 }
 
 
-#' Coefficient of Variation of the Mean Germination Time
-#' @description This function Calculate the Coefficient of Variation of the Mean Germination Time
+#' Coefficient of Variance of the Mean Germination Time
+#' @description This function calculate the coefficient of variation of the mean germination time
 #' @param eval_days Germination evalaluation days
-#' @return Coefficient of Variation of the Mean Germination Time
+#' @return Coefficient of Variance of germination
 #' @export
 
 ger_CVG <- function(eval_days){

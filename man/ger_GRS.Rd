@@ -8,13 +8,11 @@ ger_GRS(eval_days)
 }
 \arguments{
 \item{eval_days}{Germination evaluation days}
-
-\item{seeds}{Total seed sown}
 }
 \value{
-Number of seed germianated in the experimen for EU
+Number of seed germianated
 }
 \description{
-This function Calculate the Germination percentage
+This function calculate the number of seed germinated.
 }
 

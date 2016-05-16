@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexes.R
 \name{ger_VGT}
 \alias{ger_VGT}
-\title{Variance of Germination Time}
+\title{Variance of the Mean Germination Time}
 \usage{
 ger_VGT(eval_days)
 }
@@ -10,9 +10,9 @@ ger_VGT(eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-Variance of Germination Time
+Variance of Germination
 }
 \description{
-This function Calculate the Variance of Germination Time
+This function calculate the variance of the mean germination time.
 }
 

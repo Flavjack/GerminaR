@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexes.R
 \name{ger_SDG}
 \alias{ger_SDG}
-\title{Standard deviation of the Germination Time}
+\title{Standard deviation of the Mean Germination Time}
 \usage{
 ger_SDG(eval_days)
 }
@@ -10,9 +10,9 @@ ger_SDG(eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-Standard deviation of the Germination Time
+Standard desviation of germination
 }
 \description{
-This function Calculate the Standard deviation of the Germination Time
+This function calculate the standard desviation of the mean germination time
 }
 

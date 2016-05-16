@@ -4,17 +4,17 @@
 \alias{rep.row}
 \title{Repeated Rows in a data matrix}
 \usage{
-\method{rep}{row}(x, n)
+\method{rep}{row}(Rseq, Nrow)
 }
 \arguments{
-\item{x}{Row sequance for the data matrix}
+\item{Rseq}{Row sequance for the data matrix}
 
-\item{n}{Number of rows for the data matrix}
+\item{Nrow}{Number of rows for the data matrix}
 }
 \value{
-Data MAtrix with day of the germination
+Data Matrix with day of the germination
 }
 \description{
-This function made a data table with the values of germination variables
+This function made a data table with the evaluation days of germination
 }
 

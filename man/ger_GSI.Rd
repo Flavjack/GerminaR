@@ -10,9 +10,9 @@ ger_GSI(eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-Germination Synchronization Index (Z)
+Germination Synchrony
 }
 \description{
-This function Calculate the Germination Synchronization Index
+This function calculate the germination synchronization of the germination process
 }
 

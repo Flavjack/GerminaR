@@ -13,6 +13,6 @@ ger_CVL(eval_days)
 Coefficient of Velocity of Germination
 }
 \description{
-This function Calculate the Coefficient of Velocity of Germination
+This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations
 }
 
