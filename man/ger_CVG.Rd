@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexes.R
 \name{ger_CVG}
 \alias{ger_CVG}
-\title{Coefficient of Variation of the Mean Germination Time}
+\title{Coefficient of Variance of the Mean Germination Time}
 \usage{
 ger_CVG(eval_days)
 }
@@ -10,9 +10,9 @@ ger_CVG(eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-Coefficient of Variation of the Mean Germination Time
+Coefficient of Variance of germination
 }
 \description{
-This function Calculate the Coefficient of Variation of the Mean Germination Time
+This function calculate the coefficient of variation of the mean germination time
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexes.R
 \name{ger_ASG}
 \alias{ger_ASG}
-\title{ArcSin of Germination eval_days}
+\title{ArcSin of Germination Percentage}
 \usage{
 ger_ASG(seeds, eval_days)
 }
@@ -12,9 +12,9 @@ ger_ASG(seeds, eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-ArcSin of Germination percentage
+ArcSin of Germination
 }
 \description{
-This function Calculate the ArcSin of Germination eval_days for normalization
+This function calculate the arcsin of germination percentage for normalization
 }
 

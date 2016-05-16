@@ -13,6 +13,6 @@ ger_MGR(eval_days)
 Mean Germination Rate
 }
 \description{
-This function Calculate the Mean Germination Rate
+This function calculate the mean germination rate of the germination
 }
 

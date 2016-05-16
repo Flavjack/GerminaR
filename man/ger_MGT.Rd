@@ -13,6 +13,6 @@ ger_MGT(eval_days)
 Mean Germination Time
 }
 \description{
-This function Calculate the Mean Germination Time
+This function calculate the mean germination time of germination according at the time lapse of the evaluations
 }
 

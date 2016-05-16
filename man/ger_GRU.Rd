@@ -10,9 +10,9 @@ ger_GRU(eval_days)
 \item{eval_days}{Germination evalaluation days}
 }
 \value{
-Germination Uncertainty (U)
+Germination Uncertainty
 }
 \description{
-This function Calculate the Germination Uncertainty
+This function calculate the germination uncertainty of the germination process.
 }
 

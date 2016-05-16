@@ -2,17 +2,17 @@
 % Please edit documentation in R/processing.R
 \name{ger_summary}
 \alias{ger_summary}
-\title{Summary of germination variables}
+\title{Summary of Germination Variables}
 \usage{
 ger_summary(data)
 }
 \arguments{
-\item{data}{Data with the germination avaliation}
+\item{data}{Data with the germination avaliation process}
 }
 \value{
 Data frame with the values of germination variables
 }
 \description{
-This function made a data table with the values of germination variables
+This function made a data table with the result of germination variables for each experimental unit.
 }
 

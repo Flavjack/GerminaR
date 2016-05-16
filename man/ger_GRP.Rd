@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexes.R
 \name{ger_GRP}
 \alias{ger_GRP}
-\title{Germination Seed percentage}
+\title{Germination Seed Percentage}
 \usage{
 ger_GRP(seeds, eval_days)
 }
@@ -12,9 +12,9 @@ ger_GRP(seeds, eval_days)
 \item{eval_days}{Germination evaluation days}
 }
 \value{
-Percentage of seed germinated
+Percentage of seed germinated.
 }
 \description{
-This function Calculate the Germination percentage
+This function calculate the germination percentage related at total seed sown.
 }
 

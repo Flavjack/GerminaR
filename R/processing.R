@@ -1,14 +1,14 @@
 
-#' Summary of germination variables
-#' @description This function made a data table with the values of germination variables
-#' @param data Data with the germination avaliation
+#' Summary of Germination Variables
+#' @description This function made a data table with the result of germination variables for each experimental unit.
+#' @param data Data with the germination avaliation process
 #' @return Data frame with the values of germination variables
 #' @export
 ger_summary <- function(data){
   eval_days <- select(data, starts_with("D"))
   SDN <- data$SDN
   sm <- data %>% select(-starts_with("D")) %>% 
-    mutate(
+    dplyr::mutate(
       GRS = ger_GRS(eval_days), 
       GRP = ger_GRP(SDN,eval_days),
       ASG = ger_ASG(SDN,eval_days),
@@ -22,3 +22,5 @@ ger_summary <- function(data){
       CVG = ger_CVG(eval_days)
     ) 
 }
+
+
