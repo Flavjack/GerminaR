@@ -9,10 +9,10 @@ Imports:
     agricolae, 
     ggplot2, 
     tidyr, 
-    gsheet,
-    openxlsx
+    gsheet
 Depends:
     dplyr,
+    shiny,
     R (>= 3.2.3)
 License: MIT + file LICENSE
 Copyright: LEV-UFRPE (2016)

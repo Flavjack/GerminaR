@@ -1,0 +1,10 @@
+- GerminaR
+  |- inst
+    |- GerminaR
+      |- ui.R
+      |- server.R
+|- R
+  |- runGerminaR.R
+  |- ...
+|- DESCRIPTION
+|- ...
