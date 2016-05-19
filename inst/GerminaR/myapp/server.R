@@ -148,6 +148,16 @@ shinyServer(function(input, output) {
   
 # Mean Plot --------------------------------------------------------------------
   
+  output$lbmy <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
+  
+  output$lbmx <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
+  
+  
+  
   dt <- reactive({
     inFile <- SNK()
     if (is.null(inFile)) return(NULL)
@@ -163,8 +173,8 @@ shinyServer(function(input, output) {
     ggplot(df, aes(y =  means , x =  trt , fill = trt))+
       geom_bar(stat = "identity")+
       geom_errorbar(aes(ymin= means - ste , ymax= means + ste), size=.3,width=.2)+
-      ylab( " " )+
-      xlab(" ")+
+      ylab( input$lbmy )+
+      xlab(input$lbmx)+
       theme_bw()
     
   })
@@ -186,6 +196,21 @@ shinyServer(function(input, output) {
     selectInput('ey', 'Eje Y', c(Choose='', names(inFile)))
   })
   
+  
+  output$lbx <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
+
+  output$lby <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
+  
+  output$lbg <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
+  
+  
+  
   output$eg <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
@@ -197,19 +222,24 @@ shinyServer(function(input, output) {
     df <- varCal()
     if (is.null(df)) return(NULL)
     ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
-      geom_boxplot(outlier.colour = "red", outlier.shape = 1)+
-      ylab( " " )+
-      xlab(" ")+
+      geom_boxplot(outlier.colour = "red", outlier.size = 2)+
+      ylab( input$lby )+
+      xlab( input$lbx )+
+      scale_fill_discrete( input$lbg )+
       theme_bw()
+      
+      
+      
   })
   
   output$Dotplot = renderPlot({
     df <- varCal()
     if (is.null(df)) return(NULL)
-    ggplot(df, aes_string( input$ex , input$ey, color = input$eg ))+
-      geom_point()+
-      ylab( " " )+
-      xlab(" ")+
+    ggplot(df, aes_string( input$ex , input$ey, color = input$eg))+
+      geom_point(size = 2)+
+      ylab( input$lby )+
+      xlab( input$lbx )+
+      scale_color_discrete( name = input$lbg ) +
       theme_bw()
       
   })

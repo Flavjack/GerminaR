@@ -1,6 +1,9 @@
 
 shinyUI(navbarPage("GerminaR",
                    
+# Introduction ------------------------------------------------------------
+                   
+                   
                    tabPanel("Introduction",
                             sidebarLayout(
                               sidebarPanel(
@@ -49,7 +52,9 @@ shinyUI(navbarPage("GerminaR",
                             )
                    ),
                    
-                   
+
+# Indices Description  ----------------------------------------------------------------
+
                    tabPanel("Indices Description",
                             sidebarLayout(
                               sidebarPanel(
@@ -150,7 +155,9 @@ shinyUI(navbarPage("GerminaR",
                             )
                    ),
                    
-                   
+
+# Import Data  ----------------------------------------------------------------
+
                    tabPanel("Data Import",
                             sidebarLayout(
                               sidebarPanel(
@@ -181,7 +188,10 @@ shinyUI(navbarPage("GerminaR",
                               )
                             )
                    ),
-                   
+
+
+# Germination Analisys  ----------------------------------------------------------------
+
                    tabPanel("Germination Analysis",
                             sidebarLayout(
                               sidebarPanel(
@@ -200,37 +210,51 @@ shinyUI(navbarPage("GerminaR",
                             )
                    ),
                    
+
+# Statistical Analisys  ----------------------------------------------------------------
+
+
                    tabPanel("ANOVA & Mean Comparison",
                             sidebarLayout(
                               sidebarPanel(
                                 
                                
                                 uiOutput('out1'),
-                                uiOutput('out2')
-                                           
+                                uiOutput('out2'),
+                                br(),
+                                br(),
+                                
+                                h4("Mean Comparison Labels Title"),
+                                br(),
+                                
+                                textInput("lbmx", "label x", value = " "),
+                                textInput("lbmy", "label y", value = " "),
+                                br(),
+                                br(),
+                                br()
                                
                               
                               ),
                               
                               mainPanel(
                                 
-                                h2('ANOVA Table'),
+                                h4('ANOVA Table'),
                                 verbatimTextOutput('aovSummary'),
                                 
                                 br(),
-                                h2("Mean Comparison Test"),
+                                h4("Mean Comparison Test"),
                                 
-                                h3("Tukey"),
+                                h5("Tukey"),
                                 verbatimTextOutput('HSD'),
                                 br(),
                                 
                                 
-                                h3('Student Newman Keuls'),
+                                h5('Student Newman Keuls'),
                                 verbatimTextOutput('SNK'),
                                 br(),
                                 
                                 
-                                h3('Duncan'),
+                                h5('Duncan'),
                                 verbatimTextOutput('DNC'),
                                 br(),
                                 
@@ -242,22 +266,37 @@ shinyUI(navbarPage("GerminaR",
                               )
                             )
                    ),
-                   
+
+
+# Plot Graphics  ----------------------------------------------------------------
+
                    tabPanel("Graphics",
                             sidebarLayout(
                               sidebarPanel(
                                 
                                 uiOutput('ex'),
+                                uiOutput('ey'),
                                 uiOutput('eg'),
-                                uiOutput('ey')
+                                
+                                textInput("lbx", "label x", value = " "),
+                                textInput("lby", "label y", value = " "),
+                                textInput("lbg", "legend", value = " ")
                                 
                                 
+            
                               ),
                               
                               mainPanel(
                                 
+                                h4("Boxplot"),
+                                br(),
                                 plotOutput("Boxplot"),
-                                plotOutput("Dotplot")
+                                br(),
+                                h4("Dotplot"),
+                                br(),
+                                plotOutput("Dotplot"),
+                                br(),
+                                br()
                                 
                                
                               )
@@ -266,6 +305,10 @@ shinyUI(navbarPage("GerminaR",
                    
 )
 )
+
+
+
+
 
 
                             
