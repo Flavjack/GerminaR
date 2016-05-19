@@ -1,4 +1,4 @@
-
+shinyServer(function(input, output) {
   
 # Import Data -------------------------------------------------------------
 
@@ -12,7 +12,7 @@
   
   output$contents <- renderTable({
     
-  myData()
+    myData()
     
   })
   
@@ -243,6 +243,4 @@
       
   })
   
-    
 })
-
