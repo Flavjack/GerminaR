@@ -24,13 +24,5 @@ ger_summary <- function(data){
 }
 
 
-#' Shiny App for germination variables
-#' @description This function run a shiny app of GerminaR.
-runGerminaR <- function() {
-  appDir <- system.file("GerminaR", package = "GerminaR")
-  if (appDir == "") {
-    stop("Could not find example directory. Try re-installing `GerminaR`.", call. = FALSE)
-  }
-  
-  shiny::runApp(appDir, display.mode = "normal")
-}
+
+

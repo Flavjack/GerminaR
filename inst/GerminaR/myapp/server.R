@@ -87,7 +87,28 @@ shinyServer(function(input, output) {
 
 # Mean Comparation Test ---------------------------------------------------
 
-  mc <- reactive({
+  HSD <- reactive({
+    inFile <- av()
+    if (is.null(inFile)) return(NULL)
+    cp <- HSD.test( y = inFile, trt = input$ivar)
+    
+    sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
+    sm <- full_join(sm, cp$groups)
+    sm <- select(sm,trt, means, std, r, ste, M)
+    
+    list(cp$statistics, sm)
+  })
+  
+  
+  output$HSD = renderPrint({
+    
+    HSD()
+    
+  })
+  
+  
+  
+  SNK <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
     cp <- SNK.test( y = inFile, trt = input$ivar)
@@ -100,17 +121,35 @@ shinyServer(function(input, output) {
   })
   
   
-  output$mcp = renderPrint({
+  output$SNK = renderPrint({
     
-    mc()
+    SNK()
     
   })
     
+  DNC <- reactive({
+    inFile <- av()
+    if (is.null(inFile)) return(NULL)
+    cp <- duncan.test( y = inFile, trt = input$ivar)
     
-# Plot --------------------------------------------------------------------
+    sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
+    sm <- full_join(sm, cp$groups)
+    sm <- select(sm,trt, means, std, r, ste, M)
+    
+    list(cp$statistics, sm)
+  })
+  
+  
+  output$DNC = renderPrint({
+    
+    DNC()
+    
+  })
+  
+# Mean Plot --------------------------------------------------------------------
   
   dt <- reactive({
-    inFile <- mc()
+    inFile <- SNK()
     if (is.null(inFile)) return(NULL)
     df <- as.data.frame(inFile[[2]])
   
@@ -130,45 +169,51 @@ shinyServer(function(input, output) {
     
   })
   
-  
-  output$x <- renderUI({
+
+
+# Multi Plot --------------------------------------------------------------
+
+
+  output$ex <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('x', 'Eje X', c(Choose='', names(inFile)))
+    selectInput('ex', 'Eje X', c(Choose='', names(inFile)))
   })
   
-  output$y <- renderUI({
+  output$ey <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('y', 'Eje Y', c(Choose='', names(inFile)))
+    selectInput('ey', 'Eje Y', c(Choose='', names(inFile)))
   })
   
-  output$g <- renderUI({
+  output$eg <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('group', 'Grouped by', c(Choose='', names(inFile)))
+    selectInput('eg', 'Grouped', c(Choose='', names(inFile)))
   })
   
   
   output$Boxplot = renderPlot({
-    
     df <- varCal()
     if (is.null(df)) return(NULL)
-    ggplot(df, aes_string( input$x , input$y ))+
+    ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
       geom_boxplot(outlier.colour = "red", outlier.shape = 1)+
       ylab( " " )+
       xlab(" ")+
       theme_bw()
-    
+  })
+  
+  output$Dotplot = renderPlot({
+    df <- varCal()
+    if (is.null(df)) return(NULL)
+    ggplot(df, aes_string( input$ex , input$ey, color = input$eg ))+
+      geom_point()+
+      ylab( " " )+
+      xlab(" ")+
+      theme_bw()
+      
   })
   
     
 })
 
-# df <- varCal()
-# if (is.null(df)) return(NULL)
-# ggplot(df, aes( input$x , input$y, fill = input$g ))+
-#   geom_boxplot(outlier.colour = "red", outlier.shape = 1)+
-#   ylab( " " )+
-#   xlab(" ")+
-#   theme_bw()

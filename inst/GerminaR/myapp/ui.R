@@ -214,13 +214,26 @@ shinyUI(navbarPage("GerminaR",
                               
                               mainPanel(
                                 
-                                h3('ANOVA Table'),
+                                h2('ANOVA Table'),
                                 verbatimTextOutput('aovSummary'),
                                 
-                                h3('Student Newman Keuls Test'),
-                                verbatimTextOutput('mcp'),
-                                
                                 br(),
+                                h2("Mean Comparison Test"),
+                                
+                                h3("Tukey"),
+                                verbatimTextOutput('HSD'),
+                                br(),
+                                
+                                
+                                h3('Student Newman Keuls'),
+                                verbatimTextOutput('SNK'),
+                                br(),
+                                
+                                
+                                h3('Duncan'),
+                                verbatimTextOutput('DNC'),
+                                br(),
+                                
                                 
                                 plotOutput("Barplot")
                                 
@@ -230,21 +243,23 @@ shinyUI(navbarPage("GerminaR",
                             )
                    ),
                    
-                   tabPanel("Box Plot",
+                   tabPanel("Graphics",
                             sidebarLayout(
                               sidebarPanel(
                                 
-                                uiOutput('x'),
-                                uiOutput('y'),
-                                uiOutput('g')
+                                uiOutput('ex'),
+                                uiOutput('eg'),
+                                uiOutput('ey')
+                                
                                 
                               ),
                               
                               mainPanel(
                                 
-                                plotOutput("Boxplot")
+                                plotOutput("Boxplot"),
+                                plotOutput("Dotplot")
                                 
-                                
+                               
                               )
                             )
                    )
