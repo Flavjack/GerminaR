@@ -1,10 +1,4 @@
-library(shiny)
-library(GerminaR)
-library(agricolae)
-library(ggplot2)
 
-
-shinyServer(function(input, output) {
   
 # Import Data -------------------------------------------------------------
 
@@ -155,7 +149,11 @@ shinyServer(function(input, output) {
   output$lbmx <- renderUI({
     actionButton("action", label = input$sample_text)
   })
+
   
+  output$lbml <- renderUI({
+    actionButton("action", label = input$sample_text)
+  })
   
   
   dt <- reactive({
@@ -175,6 +173,7 @@ shinyServer(function(input, output) {
       geom_errorbar(aes(ymin= means - ste , ymax= means + ste), size=.3,width=.2)+
       ylab( input$lbmy )+
       xlab(input$lbmx)+
+      scale_fill_hue(name= input$lbml )+
       theme_bw()
     
   })

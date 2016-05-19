@@ -9,3 +9,21 @@ rep.row<-function(Rseq,Nrow){
 }
 
 
+#' Select Evaluation Days
+#' @description Give matrix with the evaluation days
+#' @param data Data with germination values
+#' @return Evalution colums
+#' @export
+evalDays <- function(data){
+    select(data, starts_with("D"))
+}
+
+
+#' Select Factors of germination matrix
+#' @description Give matrix with the factor
+#' @param data Data with germination values
+#' @return Factor colums
+#' @export
+evalFact <- function(data){
+  select(data, -starts_with("D"))
+}

@@ -14,8 +14,7 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 p("For use the interactive app "),
                                 code("library(GerminaR)"),
-                                code("library(shiny)"),
-                                code("runapp('GerminaR')"),
+                                code("runGermiaR()"),
                                 br(),
                                 br(),
                                 img(src = "germinT.png", height = 120, width = 120),
@@ -28,72 +27,27 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 strong("Authors"),
                                 br(),
-                                div("Lozano-Isla, Flavio & Pompelli, Marcelo F.", style = "color:green")
+                                div("Lozano-Isla, Flavio ", style = "color:green"),
+                                div("Pompelli, Marcelo F.", style = "color:green")
+                                
+                            
                                 
                               ),
                               
                               mainPanel(
                                 
-                                br(),
-                                p("GerminaR app allows make the calculation for the germination variables ", 
-                                  em("incredibly easy"), 
-                                  " in interactive web applications build with R."),
-                                p("GerminaR applications are automatically live in the same way that.", 
-                                  strong("spreadsheets"),
-                                  " are live. Outputs change instantly as users modify inputs, without requiring a reload of the browser."),
-                                br(),
+                                
+                                p("GerminaR app allows make the calculation for the germination variables ", em("incredibly easy"), 
+                                  " in a interactive applications build with R and Shiny. GerminaR application is live!. Outputs change instantly as users modify inputs, without requiring a reload the app."),
+                                
                                 h4("Features"),
                                 
                                 p("Allow calculate the princiapal Germination Variables."),
                                 p("Statistical Analysis for Germination Variables."),
-                                p("Easy way to plot the results.")
+                                p("Easy way to plot the results."),
+                                br(),
                                 
-                              )
-                            )
-                   ),
-                   
-
-# Indices Description  ----------------------------------------------------------------
-
-                   tabPanel("Indices Description",
-                            sidebarLayout(
-                              sidebarPanel(
-                                
-                                h4("References"),
-                                br(),
-                                p("CARVALHO, M.; SANTANA, D. Emergencia de plantulas de", em("Anacardium humile"), 
-                                  "A. St.Hil.(Anacardiaceae) avaliada por meio de amostras pequenas. Revista Brasileira de, 2005."),
-                                br(),
-                                p("CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 
-                                  Forest Science, v. 8, n. 4, p. 386-396, 1962."),
-                                br(),
-                                p("FERREIRA MARQUES, F. R. et al. GerminaQuant : a new tool for germination measurements. 
-                                  Journal of Seed Science, p. 1-8, 2015."),
-                                br(),
-                                p("GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.]."),
-                                br(),
-                                p("JOOSEN, R. V. L. et al. germinator: a software package for high-throughput scoring and curve fitting of Arabidopsis seed germination. 
-                                  The Plant Journal, v. 62, n. 1, p. 148-159, 22. abr. 2010."),
-                                br(),
-                                p("LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983."),
-                                br(),
-                                p("MARCOS-FILHO, J. New approaches to seed vigor testing. Scientia Agricola, v. 55, n. spe, p. 27-33, 1998."),
-                                br(),
-                                p("PENFIELD, S.; KING, J. Towards a systems biology approach to understanding seed dormancy and germination. 
-                                  Proceedings. Biological sciences / The Royal Society, v. 276, n. 1673, p. 3561-9, 22 out. 2009."),
-                                br(),
-                                p("RANAL, M. A. et al. Calculating germination measurements and organizing spreadsheets. 
-                                  Revista Brasileira de Botanica, v. 32, n. 4, p. 849-855, 2009. "),
-                                br(),
-                                p("RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process?
-                                  Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006."),
-                                br()
-                               
-                              ),
-                              
-                              mainPanel(
-                                
-                                h3("Evaluation of seed germination process"),
+                                h4("Evaluation of seed germination process"),
                                 
                                 p("The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions (MARCOS-FILHO, 1998).
                                   In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination (PENFIELD; KING, 2009).
@@ -149,12 +103,43 @@ shinyUI(navbarPage("GerminaR",
                                 img(src = "SMRT.png", height = 300, width = 600),
                                 
                                 br(),
-                                br(),
+                                h4("References"),
+                                
+                                p("CARVALHO, M.; SANTANA, D. Emergencia de plantulas de", em("Anacardium humile"), 
+                                  "A. St.Hil.(Anacardiaceae) avaliada por meio de amostras pequenas. Revista Brasileira de, 2005."),
+                                
+                                p("CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 
+                                  Forest Science, v. 8, n. 4, p. 386-396, 1962."),
+                                
+                                p("FERREIRA MARQUES, F. R. et al. GerminaQuant : a new tool for germination measurements. 
+                                  Journal of Seed Science, p. 1-8, 2015."),
+                                
+                                p("GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.]."),
+                               
+                                p("JOOSEN, R. V. L. et al. germinator: a software package for high-throughput scoring and curve fitting of Arabidopsis seed germination. 
+                                  The Plant Journal, v. 62, n. 1, p. 148-159, 22. abr. 2010."),
+                                
+                                p("LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983."),
+                                
+                                p("MARCOS-FILHO, J. New approaches to seed vigor testing. Scientia Agricola, v. 55, n. spe, p. 27-33, 1998."),
+                                
+                                p("PENFIELD, S.; KING, J. Towards a systems biology approach to understanding seed dormancy and germination. 
+                                  Proceedings. Biological sciences / The Royal Society, v. 276, n. 1673, p. 3561-9, 22 out. 2009."),
+                                
+                                p("RANAL, M. A. et al. Calculating germination measurements and organizing spreadsheets. 
+                                  Revista Brasileira de Botanica, v. 32, n. 4, p. 849-855, 2009. "),
+                                
+                                p("RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process?
+                                  Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006."),
                                 br()
+                                
+                          
+                                
                               )
                             )
                    ),
                    
+
 
 # Import Data  ----------------------------------------------------------------
 
@@ -214,7 +199,7 @@ shinyUI(navbarPage("GerminaR",
 # Statistical Analisys  ----------------------------------------------------------------
 
 
-                   tabPanel("ANOVA & Mean Comparison",
+                   tabPanel("Statistical Analisys",
                             sidebarLayout(
                               sidebarPanel(
                                 
@@ -224,11 +209,11 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 br(),
                                 
-                                h4("Mean Comparison Labels Title"),
-                                br(),
+                                h4("Graphic labels"),
                                 
                                 textInput("lbmx", "label x", value = " "),
                                 textInput("lbmy", "label y", value = " "),
+                                textInput("lbml", "legend", value = " "),
                                 br(),
                                 br(),
                                 br()
@@ -259,7 +244,12 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 
                                 
-                                plotOutput("Barplot")
+                                plotOutput("Barplot"),
+                                br(),
+                                br(),
+                                br(),
+                                br(),
+                                br()
                                 
                                 
                               
@@ -273,6 +263,8 @@ shinyUI(navbarPage("GerminaR",
                    tabPanel("Graphics",
                             sidebarLayout(
                               sidebarPanel(
+                                
+                                h4("Graphics labels"),
                                 
                                 uiOutput('ex'),
                                 uiOutput('ey'),
@@ -295,6 +287,9 @@ shinyUI(navbarPage("GerminaR",
                                 h4("Dotplot"),
                                 br(),
                                 plotOutput("Dotplot"),
+                                br(),
+                                br(),
+                                br(),
                                 br(),
                                 br()
                                 
