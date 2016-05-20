@@ -4,10 +4,10 @@
 \alias{ger_GRS}
 \title{Germinated Seed Number}
 \usage{
-ger_GRS(eval_days)
+ger_GRS(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evaluation days}
+\item{evalDays}{Germination evaluation days}
 }
 \value{
 Number of seed germianated

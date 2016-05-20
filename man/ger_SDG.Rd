@@ -4,10 +4,10 @@
 \alias{ger_SDG}
 \title{Standard deviation of the Mean Germination Time}
 \usage{
-ger_SDG(eval_days)
+ger_SDG(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Standard desviation of germination

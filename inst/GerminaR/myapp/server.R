@@ -1,3 +1,4 @@
+
 shinyServer(function(input, output) {
   
 # Import Data -------------------------------------------------------------
@@ -22,7 +23,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    ger_summary(inFile )
+    ger_summary(inFile, evalName = "D"  )
   })
   
   

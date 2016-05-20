@@ -4,10 +4,10 @@
 \alias{ger_CVG}
 \title{Coefficient of Variance of the Mean Germination Time}
 \usage{
-ger_CVG(eval_days)
+ger_CVG(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Coefficient of Variance of germination

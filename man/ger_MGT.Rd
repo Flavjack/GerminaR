@@ -4,10 +4,10 @@
 \alias{ger_MGT}
 \title{Mean Germination Time}
 \usage{
-ger_MGT(eval_days)
+ger_MGT(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Mean Germination Time
