@@ -4,10 +4,10 @@
 \alias{ger_GRU}
 \title{Germination Uncertainty}
 \usage{
-ger_GRU(eval_days)
+ger_GRU(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Germination Uncertainty

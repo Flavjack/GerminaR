@@ -12,18 +12,20 @@ rep.row<-function(Rseq,Nrow){
 #' Select Evaluation Days
 #' @description Give matrix with the evaluation days
 #' @param data Data with germination values
+#' @param evalName Prefix of the evalaution variable
 #' @return Evalution colums
 #' @export
-evalDays <- function(data){
-    select(data, starts_with("D"))
+evalDays <- function(data , evalName){
+    dplyr::select(data, starts_with(evalName))
 }
 
 
 #' Select Factors of germination matrix
 #' @description Give matrix with the factor
 #' @param data Data with germination values
+#' @param evalName Prefix of the evalaution variable
 #' @return Factor colums
 #' @export
-evalFact <- function(data){
-  select(data, -starts_with("D"))
+evalFactor <- function(data, evalName){
+  dplyr::select(data, -starts_with(evalName))
 }

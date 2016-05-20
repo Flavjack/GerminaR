@@ -4,10 +4,14 @@
 \alias{ger_summary}
 \title{Summary of Germination Variables}
 \usage{
-ger_summary(data)
+ger_summary(data, SeedN, evalName)
 }
 \arguments{
 \item{data}{Data with the germination avaliation process}
+
+\item{SeedN}{Name of the colonn with the seed numbers}
+
+\item{evalName}{Prefix of the evalaution variable}
 }
 \value{
 Data frame with the values of germination variables

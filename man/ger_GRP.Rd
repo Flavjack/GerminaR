@@ -4,12 +4,12 @@
 \alias{ger_GRP}
 \title{Germination Seed Percentage}
 \usage{
-ger_GRP(seeds, eval_days)
+ger_GRP(SeedN, evalDays)
 }
 \arguments{
-\item{seeds}{Total seed sown}
+\item{SeedN}{Name of the colon with the seed numbers}
 
-\item{eval_days}{Germination evaluation days}
+\item{evalDays}{Germination evaluation days}
 }
 \value{
 Percentage of seed germinated.

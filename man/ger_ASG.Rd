@@ -4,12 +4,12 @@
 \alias{ger_ASG}
 \title{ArcSin of Germination Percentage}
 \usage{
-ger_ASG(seeds, eval_days)
+ger_ASG(SeedN, evalDays)
 }
 \arguments{
-\item{seeds}{Total seed sown}
+\item{SeedN}{Name of the colon with the seed numbers}
 
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 ArcSin of Germination

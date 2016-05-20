@@ -4,10 +4,10 @@
 \alias{ger_GSI}
 \title{Germination Synchronization Index}
 \usage{
-ger_GSI(eval_days)
+ger_GSI(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Germination Synchrony

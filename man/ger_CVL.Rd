@@ -4,10 +4,10 @@
 \alias{ger_CVL}
 \title{Coefficient of Velocity of Germination}
 \usage{
-ger_CVL(eval_days)
+ger_CVL(evalDays)
 }
 \arguments{
-\item{eval_days}{Germination evalaluation days}
+\item{evalDays}{Germination evalaluation days}
 }
 \value{
 Coefficient of Velocity of Germination
