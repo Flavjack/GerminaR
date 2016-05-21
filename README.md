@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/v3o938fhw0unvbs7?svg=true)](https://ci.appveyor.com/project/omarbenites/germinar)
+
+
 # GerminaR
 Packages for graphics and indexes for seed germination and ecophysiological evaluation.
 

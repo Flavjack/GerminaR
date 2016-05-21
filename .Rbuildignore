@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 inst/GerminaR
+^appveyor\.yml$
