@@ -4,7 +4,7 @@
 \alias{ger_day}
 \title{Cumulative sum of germination by period of time for line graphic}
 \usage{
-ger_day(data)
+ger_day(data, evalName)
 }
 \arguments{
 \item{data}{Data with the germination avaliation process}

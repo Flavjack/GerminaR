@@ -4,10 +4,14 @@
 \alias{ger_cumsum}
 \title{Cumulative sum of germination matrix}
 \usage{
-ger_cumsum(data)
+ger_cumsum(data, evalName, SeedN)
 }
 \arguments{
 \item{data}{Data with the germination avaliation process}
+
+\item{evalName}{Prefix of the evalaution variable}
+
+\item{SeedN}{Name of the colonn with the seed numbers}
 }
 \value{
 Data frame with the cumulative sum

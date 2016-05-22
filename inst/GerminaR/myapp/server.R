@@ -181,19 +181,73 @@ shinyServer(function(input, output) {
   
 
 
-# Multi Plot --------------------------------------------------------------
+# Germination InTime ------------------------------------------------------
 
+  
 
-  output$ex <- renderUI({
-    inFile <- varCal()
+  output$smvar <- renderUI({
+    inFile <- myData()
     if (is.null(inFile)) return(NULL)
-    selectInput('ex', 'Eje X', c(Choose='', names(inFile)))
+    selectInput('smvar', 'Summarize Variable', c(Choose='', names(inFile)))
   })
   
+
+ 
+ gnt <- reactive({
+    inFile <- myData()
+    if (is.null(inFile)) return(NULL)
+    formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
+    smr  <- summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
+    smt <- ger_day(smr, evalName = "D")
+ })  
+ 
+ 
+ output$gertime <- renderTable({
+  
+   gnt()
+   
+ })
+  
+ 
+ 
+ output$GerInTime = renderPlot({
+    df <- gnt()
+    if (is.null(df)) return(NULL)
+    
+    ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+      geom_line() +
+      geom_point(shape=19, size=2)+
+      theme_bw()+
+      ylab("Germination (%)") +
+      xlab("Time")
+  
+  })  
+ 
+ 
+ 
+ 
+ 
+ 
+
+# MultiPlot ---------------------------------------------------------------
+
+
+ output$ex <- renderUI({
+   inFile <- varCal()
+   if (is.null(inFile)) return(NULL)
+   selectInput('ex', 'Eje X', c(Choose='', names(inFile)))
+ })
+ 
   output$ey <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
     selectInput('ey', 'Eje Y', c(Choose='', names(inFile)))
+  })
+  
+  output$eg <- renderUI({
+    inFile <- varCal()
+    if (is.null(inFile)) return(NULL)
+    selectInput('eg', 'Grouped', c(Choose='', names(inFile)))
   })
   
   
@@ -209,13 +263,6 @@ shinyServer(function(input, output) {
     actionButton("action", label = input$sample_text)
   })
   
-  
-  
-  output$eg <- renderUI({
-    inFile <- varCal()
-    if (is.null(inFile)) return(NULL)
-    selectInput('eg', 'Grouped', c(Choose='', names(inFile)))
-  })
   
   
   output$Boxplot = renderPlot({

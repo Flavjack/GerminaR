@@ -7,7 +7,7 @@
 #' @return Data frame with the values of germination variables
 #' @export
 ger_summary <- function(data, SeedN, evalName){
-  SeedN <- data$SDN
+  SeedN <- data$SDN # Revisar el valor por defecto
   evalDays <- evalDays(data, evalName)
   
   sm <- evalFactor(data, evalName) %>% 
@@ -30,15 +30,23 @@ ger_summary <- function(data, SeedN, evalName){
 #' Cumulative sum of germination matrix
 #' @description This function made a data table with the cumulative sum of values of germination.
 #' @param data Data with the germination avaliation process
+#' @param evalName Prefix of the evalaution variable
+#' @param SeedN Name of the colonn with the seed numbers
 #' @return Data frame with the cumulative sum
 #' @export
-ger_cumsum <- function(data){
+ger_cumsum <- function(data, evalName, SeedN){
   
-  fc <- evalFactor(data)
-  evalDays <- evalDays(data)
-  tmp <- apply(cbind(evalDays), 1, cumsum)
-  rst <- t(tmp)
-  cbind(fc, rst)
+  evalFactor <- evalFactor(data, evalName)
+  evalDays <- evalDays(data, evalName)
+
+  SeedN <- data$SDN # Revisar el valor por defecto
+  
+  tmp <- apply(cbind(evalDays), 1, cumsum )
+  tmp2 <- tmp * (100/SeedN)
+  
+  rst <- t(tmp2)
+  
+  cbind(evalFactor, rst)
   
 }
 
@@ -48,9 +56,15 @@ ger_cumsum <- function(data){
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
 #' @export
-ger_day <- function(data){
-  evalFactor<- evalFact(data)
- df <- reshape::melt(data, names(evalFactor))
- df
+ger_day <- function(data, evalName){
+  cger <- ger_cumsum(data, evalName)
+  evalFactor<- evalFactor(cger, evalName)
+  df <- reshape::melt(cger, names(evalFactor), na.rm = T)
+
 }
+
+
+
+
+
 

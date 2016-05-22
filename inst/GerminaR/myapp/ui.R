@@ -200,7 +200,7 @@ shinyUI(navbarPage("GerminaR",
 # Statistical Analisys  ----------------------------------------------------------------
 
 
-                   tabPanel("Statistical Analisys",
+                   tabPanel("Statistical Analysis",
                             sidebarLayout(
                               sidebarPanel(
                                 
@@ -257,6 +257,36 @@ shinyUI(navbarPage("GerminaR",
                               )
                             )
                    ),
+
+
+
+# Germination In Time  ----------------------------------------------------------------
+
+tabPanel("Germination InTime",
+         sidebarLayout(
+           sidebarPanel(
+             
+             uiOutput('smvar')  
+             
+             
+             
+           ),
+           
+           mainPanel(
+             
+            plotOutput("GerInTime"),
+            br(),
+            br(),
+            br(),
+            br(),
+            br(),
+            tableOutput("gertime")
+             
+             
+           )
+         )
+),
+
 
 
 # Plot Graphics  ----------------------------------------------------------------
