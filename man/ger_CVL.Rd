@@ -4,15 +4,19 @@
 \alias{ger_CVL}
 \title{Coefficient of Velocity of Germination}
 \usage{
-ger_CVL(evalDays)
+ger_CVL(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Coefficient of Velocity of Germination
+It returns an vector with the Coefficient of Velocity of Germination
 }
 \description{
-This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations
+This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations.
 }
 

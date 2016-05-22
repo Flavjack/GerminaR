@@ -4,13 +4,17 @@
 \alias{ger_SDG}
 \title{Standard deviation of the Mean Germination Time}
 \usage{
-ger_SDG(evalDays)
+ger_SDG(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Standard desviation of germination
+It returns an vector with the values of Standard desviation of germination
 }
 \description{
 This function calculate the standard desviation of the mean germination time

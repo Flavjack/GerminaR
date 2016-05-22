@@ -4,13 +4,17 @@
 \alias{ger_VGT}
 \title{Variance of the Mean Germination Time}
 \usage{
-ger_VGT(evalDays)
+ger_VGT(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Variance of Germination
+It returns an vector with the values of Variance of Germination
 }
 \description{
 This function calculate the variance of the mean germination time.

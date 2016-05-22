@@ -4,17 +4,19 @@
 \alias{ger_ASG}
 \title{ArcSin of Germination Percentage}
 \usage{
-ger_ASG(SeedN, evalDays)
+ger_ASG(SeedN, evalName, data)
 }
 \arguments{
-\item{SeedN}{Name of the colon with the seed numbers}
+\item{SeedN}{Name of the colum with the number of seeds sown.}
 
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-ArcSin of Germination
+It returns an vector with the ArcSin of Germination values
 }
 \description{
-This function calculate the arcsin of germination percentage for normalization
+This function calculate the arcsin of germination percentage for normalization.
 }
 

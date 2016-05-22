@@ -16,7 +16,7 @@ rep.row<-function(Rseq,Nrow){
 #' @return Evalution colums
 #' @importFrom dplyr select
 #' @export
-evalDays <- function(data , evalName){
+evalDays <- function(evalName, data){
     dplyr::select(data, starts_with(evalName))
 }
 
@@ -28,7 +28,7 @@ evalDays <- function(data , evalName){
 #' @return Factor colums
 #' @importFrom dplyr select
 #' @export
-evalFactor <- function(data, evalName){
+evalFactor <- function(evalName, data){
   dplyr::select(data, -starts_with(evalName))
 }
 

@@ -4,17 +4,19 @@
 \alias{ger_summary}
 \title{Summary of Germination Variables}
 \usage{
-ger_summary(data, SeedN, evalName)
+ger_summary(SeedN, evalName, freq = 1, data)
 }
 \arguments{
-\item{data}{Data with the germination avaliation process}
-
 \item{SeedN}{Name of the colonn with the seed numbers}
 
 \item{evalName}{Prefix of the evalaution variable}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Data frame with the values of germination variables
+Data frame with the summary values of germination variables.
 }
 \description{
 This function made a data table with the result of germination variables for each experimental unit.

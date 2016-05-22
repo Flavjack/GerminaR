@@ -4,17 +4,30 @@
 \alias{ger_GRP}
 \title{Germination Seed Percentage}
 \usage{
-ger_GRP(SeedN, evalDays)
+ger_GRP(SeedN, evalName, data)
 }
 \arguments{
-\item{SeedN}{Name of the colon with the seed numbers}
+\item{SeedN}{Name of the colum with the number of seeds sown.}
 
-\item{evalDays}{Germination evaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Percentage of seed germinated.
+It returns an vector with the percentage of seed germinated.
 }
 \description{
-This function calculate the germination percentage related at total seed sown.
+This function calculate the germination percentage related at total seed sown for experimental unit.
+}
+\details{
+According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of 
+seeds in which the seed germination process comes to an end, in experimental conditions by 
+the seminal intrauterine growth resulting protrusion (or emergence) of a living embryo.
+}
+\examples{
+grp <- ger_GRP(SeedN = "SDN", evalName = "D", data = GerminaR)
+}
+\references{
+LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }
 

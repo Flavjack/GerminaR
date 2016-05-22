@@ -4,12 +4,12 @@
 \alias{evalDays}
 \title{Select Evaluation Days}
 \usage{
-evalDays(data, evalName)
+evalDays(evalName, data)
 }
 \arguments{
-\item{data}{Data with germination values}
-
 \item{evalName}{Prefix of the evalaution variable}
+
+\item{data}{Data with germination values}
 }
 \value{
 Evalution colums

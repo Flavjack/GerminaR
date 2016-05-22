@@ -4,10 +4,12 @@
 \alias{ger_GRS}
 \title{Germinated Seed Number}
 \usage{
-ger_GRS(evalDays)
+ger_GRS(evalName, data)
 }
 \arguments{
-\item{evalDays}{Germination evaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
 Number of seed germianated

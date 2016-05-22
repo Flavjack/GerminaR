@@ -28,7 +28,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    ger_summary(inFile, evalName = "D"  )
+    ger_summary(SeedN = "SDN", freq = 1 , evalName = "D", data = inFile  )
   })
   
   
@@ -202,8 +202,8 @@ shinyServer(function(input, output) {
     inFile <- myData()
     if (is.null(inFile)) return(NULL)
     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
-    smr  <- summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
-    smt <- ger_intime(smr, evalName = "D")
+    smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
+    smt <- ger_intime("SDN", "D", smr)
  })  
  
  

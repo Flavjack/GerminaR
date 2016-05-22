@@ -4,9 +4,13 @@
 \alias{ger_intime}
 \title{Cumulative sum of germination by period of time for line graphic}
 \usage{
-ger_intime(data, evalName)
+ger_intime(SeedN, evalName, data)
 }
 \arguments{
+\item{SeedN}{Name of the colonn with the seed numbers}
+
+\item{evalName}{Prefix of the evalaution variable}
+
 \item{data}{Data with the germination avaliation process}
 }
 \value{
@@ -14,5 +18,8 @@ Data frame with the germination by period
 }
 \description{
 This function made a data table with the cumulative sum of values of germination by days.
+}
+\details{
+Need a summary by factor before use it with function SummaryBy.
 }
 

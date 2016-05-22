@@ -4,15 +4,26 @@
 \alias{ger_MGR}
 \title{Mean Germination Rate}
 \usage{
-ger_MGR(evalDays)
+ger_MGR(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Mean Germination Rate
+It returns an vector with the values of Mean Germination Rate
 }
 \description{
-This function calculate the mean germination rate of the germination
+This function calculate the mean germination rate of the germination.
+}
+\details{
+The average speed of germination is defined as the reciprocal of the average time germination (RANAL; SANTANA, 2006).
+}
+\references{
+RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
+Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.
 }
 

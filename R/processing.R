@@ -1,70 +1,72 @@
 
 #' Summary of Germination Variables
+#' 
 #' @description This function made a data table with the result of germination variables for each experimental unit.
-#' @param data Data with the germination avaliation process
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
-#' @return Data frame with the values of germination variables
+#' @param freq Frecuency of evualtion of the experimental units (days or hour)
+#' @param data The name of the data frame containing the data.
+#' @return Data frame with the summary values of germination variables.
 #' @importFrom dplyr mutate '%>%'
 #' @export
-ger_summary <- function(data, SeedN, evalName){
-  SeedN <- data$SDN # Revisar el valor por defecto
-  evalDays <- evalDays(data, evalName)
-  
-  sm <- GerminaR::evalFactor(data, evalName) %>% 
+
+ger_summary <- function(SeedN, evalName, freq = 1, data){
+  sm <- GerminaR::evalFactor(evalName, data) %>% 
     dplyr::mutate(
-      GRS = ger_GRS(evalDays), 
-      GRP = ger_GRP(SeedN,evalDays),
-      ASG = ger_ASG(SeedN,evalDays),
-      MGT = ger_MGT(evalDays),
-      GRU = ger_GRU(evalDays),
-      GSI = ger_GSI(evalDays),
-      CVL = ger_CVL(evalDays),
-      MGR = ger_MGR(evalDays),
-      VGT = ger_VGT(evalDays),
-      SDG = ger_SDG(evalDays),
-      CVG = ger_CVG(evalDays)
+      GRS = ger_GRS(evalName, data), 
+      GRP = ger_GRP(SeedN, evalName, data),
+      ASG = ger_ASG(SeedN, evalName, data),
+      MGT = ger_MGT(evalName, freq = 1, data),
+      MGR = ger_MGR(evalName, freq = 1, data),
+      CVL = ger_CVL(evalName, freq = 1, data),
+      GRU = ger_GRU(evalName, data),
+      GSI = ger_GSI(evalName, data),
+      VGT = ger_VGT(evalName, freq = 1, data),
+      SDG = ger_SDG(evalName, freq = 1, data),
+      CVG = ger_CVG(evalName, freq = 1, data)
     )
 }
 
 
+
 #' Cumulative sum of germination matrix
+#' 
 #' @description This function made a data table with the cumulative sum of values of germination.
-#' @param data Data with the germination avaliation process
-#' @param evalName Prefix of the evalaution variable
 #' @param SeedN Name of the colonn with the seed numbers
+#' @param evalName Prefix of the evalaution variable
+#' @param data Data with the germination avaliation process
 #' @return Data frame with the cumulative sum
 #' @export
-ger_cumsum <- function(data, evalName, SeedN){
+ger_cumsum <- function(SeedN, evalName, data){
   
-  evalFactor <- GerminaR::evalFactor(data, evalName)
-  evalDays <- GerminaR::evalDays(data, evalName)
-  
-  SeedN <- data$SDN # Revisar el valor por defecto
-  
-  tmp <- apply(cbind(evalDays), 1, cumsum )
-  tmp2 <- tmp * (100/SeedN)
-  
-  rst <- t(tmp2)
-  
+  sdn <- data[, SeedN]
+  evalFactor <- GerminaR::evalFactor(evalName, data)
+  evalDays <- GerminaR::evalDays(evalName, data)
+  cal <- apply(cbind(evalDays), 1, cumsum )
+  tmp <- cal * (100/sdn)
+  rst <- t(tmp)
   cbind(evalFactor, rst)
 
 }
 
 
 #' Cumulative sum of germination by period of time for line graphic
+#' 
 #' @description This function made a data table with the cumulative sum of values of germination by days.
+#' @details Need a summary by factor before use it with function SummaryBy. 
+#' @param SeedN Name of the colonn with the seed numbers
+#' @param evalName Prefix of the evalaution variable
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
 #' @importFrom reshape melt
 #' @export
 
-ger_intime <- function(data, evalName){
+ger_intime <- function(SeedN, evalName, data){
 
-  cger <- ger_cumsum(data, evalName)
-  evalFactor<- evalFactor(cger, evalName)
-  df <- reshape::melt(cger, names(evalFactor), na.rm = T)
-  df
+  cgr <- ger_cumsum(SeedN, evalName, data)
+  evf <- evalFactor(evalName, cgr)
+  rsl <- reshape::melt(cgr, names(evf), na.rm = T)
+  rsl
 
 }
 

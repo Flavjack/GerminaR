@@ -4,15 +4,28 @@
 \alias{ger_GRU}
 \title{Germination Uncertainty}
 \usage{
-ger_GRU(evalDays)
+ger_GRU(evalName, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Germination Uncertainty
+It returns an vector with the values of Germination Uncertainty.
 }
 \description{
-This function calculate the germination uncertainty of the germination process.
+This function calculate the germination uncertainty in the germination process.
+}
+\details{
+The uncertainty index (u) is an adaptation of Shannon index measures the degree of uncertainty in predicting the informational 
+entropy or uncertainty associated with the distribution of the relative frequency of germination (GOUVEA LABOURIAU 1983; LABOURIAU; VALADARES, 1983). 
+Low values of u indicate frequencies with short peaks, i.e. the more concentrated the germination in time. 
+Just a germinated seed changes the value of u. This means that u measures the degree of germination scattering.
+}
+\references{
+GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.].
+
+LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }
 

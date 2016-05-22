@@ -4,13 +4,17 @@
 \alias{ger_CVG}
 \title{Coefficient of Variance of the Mean Germination Time}
 \usage{
-ger_CVG(evalDays)
+ger_CVG(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Coefficient of Variance of germination
+It returns an vector with the values of Coefficient of Variance of germination
 }
 \description{
 This function calculate the coefficient of variation of the mean germination time

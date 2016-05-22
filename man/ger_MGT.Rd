@@ -4,15 +4,31 @@
 \alias{ger_MGT}
 \title{Mean Germination Time}
 \usage{
-ger_MGT(evalDays)
+ger_MGT(evalName, freq = 1, data)
 }
 \arguments{
-\item{evalDays}{Germination evalaluation days}
+\item{evalName}{Prefix of the names of the periods of evaluation.}
+
+\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
+
+\item{data}{The name of the data frame containing the data.}
 }
 \value{
-Mean Germination Time
+It returns an vector with the values of Mean Germination Time.
 }
 \description{
-This function calculate the mean germination time of germination according at the time lapse of the evaluations
+This function calculate the mean germination time of germination according at the time lapse of the evaluations.
+}
+\details{
+It was proposed by Haberlandt in 1875. It is calculated as the weighted average germination time. 
+The number of germinated seeds at the intervals established for the collection of data is used as weight. 
+It is expressed in terms of the same units of time used in the germination count (CZABATOR, 1962).
+}
+\examples{
+mgt <- ger_MGT(evalName = "D", freq = 1, data = GerminaR)
+}
+\references{
+CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 
+Forest Science, v. 8, n. 4, p. 386-396, 1962.
 }
 

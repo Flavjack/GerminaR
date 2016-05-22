@@ -4,12 +4,12 @@
 \alias{evalFactor}
 \title{Select Factors of germination matrix}
 \usage{
-evalFactor(data, evalName)
+evalFactor(evalName, data)
 }
 \arguments{
-\item{data}{Data with germination values}
-
 \item{evalName}{Prefix of the evalaution variable}
+
+\item{data}{Data with germination values}
 }
 \value{
 Factor colums
