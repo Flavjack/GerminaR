@@ -37,8 +37,8 @@ ger_summary <- function(data, SeedN, evalName){
 #' @export
 ger_cumsum <- function(data, evalName, SeedN){
   
-  evalFactor <- evalFactor(data, evalName)
-  evalDays <- evalDays(data, evalName)
+  evalFactor <- GerminaR::evalFactor(data, evalName)
+  evalDays <- GerminaR::evalDays(data, evalName)
   
   SeedN <- data$SDN # Revisar el valor por defecto
   
@@ -48,7 +48,7 @@ ger_cumsum <- function(data, evalName, SeedN){
   rst <- t(tmp2)
   
   cbind(evalFactor, rst)
-  
+
 }
 
 
@@ -60,6 +60,7 @@ ger_cumsum <- function(data, evalName, SeedN){
 #' @export
 
 ger_intime <- function(data, evalName){
+
   cger <- ger_cumsum(data, evalName)
   evalFactor<- evalFactor(cger, evalName)
   df <- reshape::melt(cger, names(evalFactor), na.rm = T)
