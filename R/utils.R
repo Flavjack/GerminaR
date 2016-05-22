@@ -14,6 +14,7 @@ rep.row<-function(Rseq,Nrow){
 #' @param data Data with germination values
 #' @param evalName Prefix of the evalaution variable
 #' @return Evalution colums
+#' @importFrom dplyr select
 #' @export
 evalDays <- function(data , evalName){
     dplyr::select(data, starts_with(evalName))
@@ -25,7 +26,9 @@ evalDays <- function(data , evalName){
 #' @param data Data with germination values
 #' @param evalName Prefix of the evalaution variable
 #' @return Factor colums
+#' @importFrom dplyr select
 #' @export
 evalFactor <- function(data, evalName){
   dplyr::select(data, -starts_with(evalName))
 }
+

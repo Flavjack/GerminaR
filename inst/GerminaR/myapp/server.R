@@ -1,3 +1,8 @@
+library(shiny)
+library(dplyr)
+library(agricolae)
+library(ggplot2)
+library(GerminaR)
 
 shinyServer(function(input, output) {
   
@@ -85,7 +90,7 @@ shinyServer(function(input, output) {
   HSD <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
-    cp <- HSD.test( y = inFile, trt = input$ivar)
+    cp <- agricolae::HSD.test( y = inFile, trt = input$ivar)
     
     sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
     sm <- full_join(sm, cp$groups)
@@ -169,7 +174,7 @@ shinyServer(function(input, output) {
     
     df <- dt()
     if (is.null(df)) return(NULL)
-    ggplot(df, aes(y =  means , x =  trt , fill = trt))+
+    ggplot2::ggplot(df, aes(y =  means , x =  trt , fill = trt))+
       geom_bar(stat = "identity")+
       geom_errorbar(aes(ymin= means - ste , ymax= means + ste), size=.3,width=.2)+
       ylab( input$lbmy )+
@@ -198,7 +203,7 @@ shinyServer(function(input, output) {
     if (is.null(inFile)) return(NULL)
     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
     smr  <- summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
-    smt <- ger_day(smr, evalName = "D")
+    smt <- ger_intime(smr, evalName = "D")
  })  
  
  
@@ -219,7 +224,8 @@ shinyServer(function(input, output) {
       geom_point(shape=19, size=2)+
       theme_bw()+
       ylab("Germination (%)") +
-      xlab("Time")
+      xlab("Time")+
+      theme_bw()
   
   })  
  
@@ -268,8 +274,8 @@ shinyServer(function(input, output) {
   output$Boxplot = renderPlot({
     df <- varCal()
     if (is.null(df)) return(NULL)
-    ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
-      geom_boxplot(outlier.colour = "red", outlier.size = 2)+
+    ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
+      ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 2)+
       ylab( input$lby )+
       xlab( input$lbx )+
       scale_fill_discrete( input$lbg )+
@@ -282,7 +288,7 @@ shinyServer(function(input, output) {
   output$Dotplot = renderPlot({
     df <- varCal()
     if (is.null(df)) return(NULL)
-    ggplot(df, aes_string( input$ex , input$ey, color = input$eg))+
+    ggplot2::ggplot(df, aes_string( input$ex , input$ey, color = input$eg))+
       geom_point(size = 2)+
       ylab( input$lby )+
       xlab( input$lbx )+

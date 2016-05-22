@@ -1,3 +1,5 @@
+library(shiny)
+
 
 shinyUI(navbarPage("GerminaR",
                    
@@ -14,7 +16,7 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 p("For use the interactive app "),
                                 code("library(GerminaR)"),
-                                code("runGermiaR()"),
+                                code("runGerminaR()"),
                                 br(),
                                 br(),
                                 img(src = "germinT.png", height = 120, width = 120),
@@ -279,9 +281,8 @@ tabPanel("Germination InTime",
             br(),
             br(),
             br(),
-            br(),
-            tableOutput("gertime")
-             
+            br()
+            
              
            )
          )
