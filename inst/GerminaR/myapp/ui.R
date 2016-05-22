@@ -30,7 +30,7 @@ shinyUI(navbarPage("GerminaR",
                                 strong("Authors"),
                                 br(),
                                 div("Lozano-Isla, Flavio ", style = "color:green"),
-                                div("Benites, Omar ", style = "color:green"),
+                                div("Benites-Alfaro, Omar ", style = "color:green"),
                                 div("Pompelli, Marcelo F.", style = "color:green")
                                 
                             

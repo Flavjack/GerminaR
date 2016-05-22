@@ -3,6 +3,7 @@ library(dplyr)
 library(agricolae)
 library(ggplot2)
 library(GerminaR)
+library(doBy)
 
 shinyServer(function(input, output) {
   
@@ -69,18 +70,21 @@ shinyServer(function(input, output) {
 
   av <- reactive({
     inFile <- varCal()
-    if (is.null(inFile)) return(NULL)
+    if (is.null(inFile)){return(NULL)
+    } else if(input$ivar ==''|| input$dvar == ''){
+      return(NULL)
+    } else {
     formula <- as.formula(paste(input$dvar, paste(input$ivar, collapse=" + "), sep=" ~ "))
     aov(formula, data=inFile)
-    
+    }
   })
-  
   
   output$aovSummary = renderPrint({
     inFile <- av()
-    if (is.null(inFile)) return(NULL)
+    if (is.null(inFile)){ cat("Please select your variables") }
+    else {
     summary(inFile)
-    
+    }
   })
   
 
@@ -200,10 +204,13 @@ shinyServer(function(input, output) {
  
  gnt <- reactive({
     inFile <- myData()
-    if (is.null(inFile)) return(NULL)
+    if (is.null(inFile)) { return(NULL) }
+    else if (input$smvar ==''){ return(NULL) }
+    else {
     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
-    smr  <- summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
+    smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
     smt <- ger_intime(smr, evalName = "D")
+    }
  })  
  
  
@@ -218,7 +225,8 @@ shinyServer(function(input, output) {
  output$GerInTime = renderPlot({
     df <- gnt()
     if (is.null(df)) return(NULL)
-    
+    else if (input$variable =='' ||  input$value =='' || input$smvar){ return(NULL) }
+    else{
     ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
       geom_line() +
       geom_point(shape=19, size=2)+
@@ -226,7 +234,7 @@ shinyServer(function(input, output) {
       ylab("Germination (%)") +
       xlab("Time")+
       theme_bw()
-  
+    }
   })  
  
  
@@ -274,27 +282,29 @@ shinyServer(function(input, output) {
   output$Boxplot = renderPlot({
     df <- varCal()
     if (is.null(df)) return(NULL)
+    else if (input$ex=='' || input$ey=='' || input$eg ==''){ return(NULL)}
+    else{
     ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
       ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 2)+
       ylab( input$lby )+
       xlab( input$lbx )+
       scale_fill_discrete( input$lbg )+
       theme_bw()
-      
-      
-      
+    }
   })
   
   output$Dotplot = renderPlot({
     df <- varCal()
     if (is.null(df)) return(NULL)
+    else if (input$ex=='' || input$ey=='' || input$eg ==''){ return(NULL)}
+    else{
     ggplot2::ggplot(df, aes_string( input$ex , input$ey, color = input$eg))+
       geom_point(size = 2)+
       ylab( input$lby )+
       xlab( input$lbx )+
       scale_color_discrete( name = input$lbg ) +
       theme_bw()
-      
+    }
   })
   
 })
