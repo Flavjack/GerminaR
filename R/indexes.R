@@ -37,6 +37,7 @@ ger_GRS <- function(evalName, data){
 ger_GRP <- function(SeedN, evalName, data){
   
   sdn <- data[, SeedN]
+  sdn <- as.numeric(sdn)
   grs <- ger_GRS(evalName, data)
   tmp <- grs/sdn * 100
   tmp

@@ -6,22 +6,16 @@ Date: 201-03-27
 Authors@R: person("Flavio", "Lozano", email = "Flavjack@gmail.com", role = c("aut", "cre"))
 Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.
 Imports:
-    gsheet,
-    openxlsx,
     reshape,
+    doBy,
+    ggplot2,
+    agricolae
 Depends:
     shiny,
     dplyr,
-    gsheet,
-    reshape,
-    ggplot2, 
-    doBy,
     R (>= 3.2.3)
 Suggest: gsheet,
-         openxlsx,
-         ggplot2,
-         agricolae,
-         doBy
+         openxlsx
 License: MIT + file LICENSE
 Copyright: LEV-UFRPE (2016)
 LazyData: true

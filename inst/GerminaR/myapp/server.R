@@ -1,9 +1,13 @@
 library(shiny)
-library(dplyr)
-library(agricolae)
 library(ggplot2)
-library(GerminaR)
+library(agricolae)
+
+library(dplyr)
+library(reshape)
 library(doBy)
+
+library(GerminaR)
+
 
 shinyServer(function(input, output) {
   
@@ -29,7 +33,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    ger_summary(SeedN = "SDN", freq = 1 , evalName = "D", data = inFile  )
+    ger_summary(SeedN = "SDN", freq = 1 , evalName = "T", data = inFile  )
   })
   
   
@@ -202,7 +206,7 @@ shinyServer(function(input, output) {
   
 
  
- gnt <- reactive({
+ gntp <- reactive({
     inFile <- myData()
     if (is.null(inFile)) { return(NULL) }
     else if (input$smvar ==''){ return(NULL) }
@@ -210,24 +214,22 @@ shinyServer(function(input, output) {
     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
     smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
 
-    smt <- ger_intime("SDN", "D", smr)
+    smt <- ger_intime("SDN", "T", "percentage", smr)
 
     }
 
  })  
  
 
+ output$gertimep <- renderTable({
   
- output$gertime <- renderTable({
-  
-   gnt()
+   gntp()
    
  })
   
  
- 
- output$GerInTime = renderPlot({
-    df <- gnt()
+ output$GerInTimep = renderPlot({
+    df <- gntp()
     if (is.null(df)) return(NULL)
     else if (input$smvar =='' ){ return(NULL) }
     else{
@@ -241,7 +243,46 @@ shinyServer(function(input, output) {
     }
   })  
  
+
  
+ gntr <- reactive({
+   inFile <- myData()
+   if (is.null(inFile)) { return(NULL) }
+   else if (input$smvar ==''){ return(NULL) }
+   else {
+     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
+     smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
+     
+     smt <- ger_intime("SDN", "T", "relative", smr)
+     
+   }
+   
+ })  
+ 
+ 
+ output$gertimer <- renderTable({
+   
+   gntr()
+   
+ })
+ 
+
+ output$GerInTimer = renderPlot({
+   df <- gntr()
+   if (is.null(df)) return(NULL)
+   else if (input$smvar =='' ){ return(NULL) }
+   else{
+     ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+       geom_line() +
+       geom_point(shape=19, size=2)+
+       theme_bw()+
+       ylab("Relative Germination") +
+       xlab("Time")+
+       theme_bw()
+   }
+ })  
+ 
+  
  
 # MultiPlot ---------------------------------------------------------------
 
