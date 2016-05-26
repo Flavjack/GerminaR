@@ -258,7 +258,31 @@ shinyServer(function(input, output) {
    }
    
  })  
+
  
+ output$gertimer <- renderTable({
+   
+   gntr()
+   
+ })
+ 
+
+ output$GerInTimer = renderPlot({
+   df <- gntr()
+   if (is.null(df)) return(NULL)
+   else if (input$smvar =='' ){ return(NULL) }
+   else{
+     ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+       geom_line() +
+       geom_point(shape=19, size=2)+
+       theme_bw()+
+       ylab("Relative Germination") +
+       xlab("Time")+
+       theme_bw()
+   }
+ })  
+
+  
  
  output$gertimer <- renderTable({
    

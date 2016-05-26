@@ -47,7 +47,6 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
   method <- match.arg(method)
   
   sdn <- data[, SeedN]
-  sdn <- as.numeric(sdn)
   grs <- ger_GRS(evalName, data)
   evf <- GerminaR::evalFactor(evalName, data)
   evd <- GerminaR::evalDays(evalName, data)
