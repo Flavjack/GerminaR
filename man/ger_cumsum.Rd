@@ -4,12 +4,14 @@
 \alias{ger_cumsum}
 \title{Cumulative sum of germination matrix}
 \usage{
-ger_cumsum(SeedN, evalName, data)
+ger_cumsum(SeedN, evalName, method = c("percentage", "relative"), data)
 }
 \arguments{
 \item{SeedN}{Name of the colonn with the seed numbers}
 
 \item{evalName}{Prefix of the evalaution variable}
+
+\item{method}{Type of cummulative germination}
 
 \item{data}{Data with the germination avaliation process}
 }

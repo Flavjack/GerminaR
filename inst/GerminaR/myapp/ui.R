@@ -275,14 +275,17 @@ tabPanel("Germination InTime",
            ),
            
            mainPanel(
-             
-            plotOutput("GerInTime"),
+            
+            h4("Germination in Time"),
+            
+            plotOutput("GerInTimep"),
             br(),
-            br(),
-            br(),
+
+            h4("Relative Germination in Time"),
+            
+            plotOutput("GerInTimer"),
             br(),
             br()
-            #tableOutput("gertime")
             
             
              
