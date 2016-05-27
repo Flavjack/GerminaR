@@ -112,7 +112,7 @@ ger_MGT <- function(evalName, freq = 1, data){
 ger_MGR <- function(evalName, freq = 1, data){
   
   mgt <- ger_MGT(evalName, freq, data)
-  rst <- 1/mgt*100
+  rst <- 1/mgt
   rst
   
 }
@@ -135,7 +135,7 @@ ger_CVL <- function(evalName, freq = 1, data){
   day <- 0:(ncol(evd)-1)
   tmp <- t(t(evd) * day * freq)
   cal <- apply(cbind(tmp),1, sum, na.rm = T)
-  rst <- grs/cal
+  rst <- grs/cal*100
   rst
   
 }
