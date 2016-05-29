@@ -1,11 +1,3 @@
-library(shiny)
-library(ggplot2)
-library(agricolae)
-
-library(dplyr)
-library(reshape)
-library(doBy)
-
 library(GerminaR)
 
 
@@ -21,6 +13,11 @@ shinyServer(function(input, output) {
   })
   
   
+  
+  
+  
+  
+  
   output$contents <- renderTable({
     
     myData()
@@ -33,7 +30,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    ger_summary(SeedN = "SDN", freq = 1 , evalName = "T", data = inFile  )
+    GerminaR::ger_summary(SeedN = "SDN", freq = 1 , evalName = "T", data = inFile  )
   })
   
   
@@ -78,8 +75,10 @@ shinyServer(function(input, output) {
     } else if(input$ivar ==''|| input$dvar == ''){
       return(NULL)
     } else {
+      
     formula <- as.formula(paste(input$dvar, paste(input$ivar, collapse=" + "), sep=" ~ "))
     aov(formula, data=inFile)
+    
     }
   })
   
@@ -87,7 +86,9 @@ shinyServer(function(input, output) {
     inFile <- av()
     if (is.null(inFile)){ cat("Please select your variables") }
     else {
+      
     summary(inFile)
+      
     }
   })
   
@@ -98,13 +99,15 @@ shinyServer(function(input, output) {
   HSD <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
+    
     cp <- agricolae::HSD.test( y = inFile, trt = input$ivar)
     
-    sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- full_join(sm, cp$groups)
-    sm <- select(sm,trt, means, std, r, ste, M)
+    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
+    sm <- dplyr::full_join(sm, cp$groups)
+    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
     
     list(cp$statistics, sm)
+    
   })
   
   
@@ -119,13 +122,15 @@ shinyServer(function(input, output) {
   SNK <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
-    cp <- SNK.test( y = inFile, trt = input$ivar)
     
-    sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- full_join(sm, cp$groups)
-    sm <- select(sm,trt, means, std, r, ste, M)
+    cp <- agricolae::SNK.test( y = inFile, trt = input$ivar)
+    
+    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
+    sm <- dplyr::full_join(sm, cp$groups)
+    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
     
     list(cp$statistics, sm)
+    
   })
   
   
@@ -138,13 +143,15 @@ shinyServer(function(input, output) {
   DNC <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
-    cp <- duncan.test( y = inFile, trt = input$ivar)
     
-    sm <- mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- full_join(sm, cp$groups)
-    sm <- select(sm,trt, means, std, r, ste, M)
+    cp <- agricolae::duncan.test( y = inFile, trt = input$ivar)
+    
+    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
+    sm <- dplyr::full_join(sm, cp$groups)
+    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
     
     list(cp$statistics, sm)
+    
   })
   
   
@@ -182,6 +189,7 @@ shinyServer(function(input, output) {
     
     df <- dt()
     if (is.null(df)) return(NULL)
+    
     ggplot2::ggplot(df, aes(y =  means , x =  trt , fill = trt))+
       geom_bar(stat = "identity")+
       geom_errorbar(aes(ymin= means - ste , ymax= means + ste), size=.3,width=.2)+
@@ -211,10 +219,8 @@ shinyServer(function(input, output) {
     if (is.null(inFile)) { return(NULL) }
     else if (input$smvar ==''){ return(NULL) }
     else {
-    formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
-    smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
 
-    smt <- ger_intime("SDN", "T", "percentage", smr)
+    smt <- GerminaR::ger_intime( input$smvar, "SDN", "T", "percentage", inFile)
 
     }
 
@@ -233,13 +239,15 @@ shinyServer(function(input, output) {
     if (is.null(df)) return(NULL)
     else if (input$smvar =='' ){ return(NULL) }
     else{
-    ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+      
+    ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
       geom_line() +
       geom_point(shape=19, size=2)+
       theme_bw()+
       ylab("Germination (%)") +
       xlab("Time")+
       theme_bw()
+      
     }
   })  
  
@@ -250,10 +258,8 @@ shinyServer(function(input, output) {
    if (is.null(inFile)) { return(NULL) }
    else if (input$smvar ==''){ return(NULL) }
    else {
-     formula <- as.formula(paste( ".", paste( input$smvar , collapse=" + "), sep=" ~ "))
-     smr  <- doBy::summaryBy( formula, data = inFile, na.rm = T, keep.names = T)
      
-     smt <- ger_intime("SDN", "T", "relative", smr)
+     smt <- GerminaR::ger_intime( input$smvar, "SDN", "T", "relative", inFile)
      
    }
    
@@ -272,13 +278,15 @@ shinyServer(function(input, output) {
    if (is.null(df)) return(NULL)
    else if (input$smvar =='' ){ return(NULL) }
    else{
-     ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+     
+     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
        geom_line() +
        geom_point(shape=19, size=2)+
        theme_bw()+
        ylab("Relative Germination") +
        xlab("Time")+
        theme_bw()
+     
    }
  })  
 
@@ -296,13 +304,15 @@ shinyServer(function(input, output) {
    if (is.null(df)) return(NULL)
    else if (input$smvar =='' ){ return(NULL) }
    else{
-     ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+     
+     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
        geom_line() +
        geom_point(shape=19, size=2)+
        theme_bw()+
        ylab("Relative Germination") +
        xlab("Time")+
        theme_bw()
+     
    }
  })  
  
@@ -314,13 +324,13 @@ shinyServer(function(input, output) {
  output$ex <- renderUI({
    inFile <- varCal()
    if (is.null(inFile)) return(NULL)
-   selectInput('ex', 'Eje X', c(Choose='', names(inFile)))
+   selectInput('ex', 'Axis X', c(Choose='', names(inFile)))
  })
  
   output$ey <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('ey', 'Eje Y', c(Choose='', names(inFile)))
+    selectInput('ey', 'Axis Y', c(Choose='', names(inFile)))
   })
   
   output$eg <- renderUI({

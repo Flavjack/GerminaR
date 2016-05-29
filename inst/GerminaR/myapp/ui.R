@@ -16,6 +16,7 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 p("For use the interactive app "),
                                 code("library(GerminaR)"),
+                                br(),
                                 code("runGerminaR()"),
                                 br(),
                                 br(),
@@ -103,6 +104,7 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 
                                 span("Limits of measurements of the  germination variables; n: total number of seeds germinated.", style = "color:red"),
+                                br(),
                                 img(src = "SMRT.png", height = 300, width = 600),
                                 
                                 br(),
@@ -185,8 +187,62 @@ shinyUI(navbarPage("GerminaR",
                               sidebarPanel(
                               
                               img(src = "germinT.png", height = 80, width = 80),   
-                              downloadButton('downloadData', 'Download')  
-                                
+                              downloadButton('downloadData', 'Download'),
+                              br(),
+                              br(),
+                              img(src = "variables.png", height = 265, width = 384),
+                              br(),
+                              br(),
+                              strong("Abbreviations"),
+                              br(),
+                              br(),
+                              "GRS",
+                              br(),
+                              span("Germinated seeds", style = "color:blue"),
+                              br(),
+                              "GRP",
+                              br(),
+                              span("Germination percentage", style = "color:blue"),
+                              br(),
+                              "ASG",
+                              br(),
+                              span("Arcsin of germination", style = "color:blue"),
+                              br(),
+                              "MGT",
+                              br(),
+                              span("Mean germination time", style = "color:blue"),
+                              br(),
+                              "MGR",
+                              br(),
+                              span("Mean germination rate", style = "color:blue"),
+                              br(),
+                              "CVL",
+                              br(),
+                              span("Velocity coefficient of germination", style = "color:blue"),
+                              br(),
+                              "GRU",
+                              br(),
+                              span("Germination uncertainty index", style = "color:blue"),
+                              br(),
+                              "GSI",
+                              br(),
+                              span("Germination synchrony index", style = "color:blue"),
+                              br(),
+                              "VGT",
+                              br(),
+                              span("Variance of mean germination time", style = "color:blue"),
+                              br(),
+                              "SDG",
+                              br(),
+                              span("Standard desviation of mean germination time", style = "color:blue"),
+                              br(),
+                              "CVG",
+                              br(),
+                              span("Coefficient of variance of mean germination time", style = "color:blue"),
+                              br()
+                              
+                        
+                          
                               ),
                               
                               
@@ -214,9 +270,9 @@ shinyUI(navbarPage("GerminaR",
                                 
                                 h4("Graphic labels"),
                                 
-                                textInput("lbmx", "label x", value = " "),
-                                textInput("lbmy", "label y", value = " "),
-                                textInput("lbml", "legend", value = " "),
+                                textInput("lbmx", "Axis x", value = " "),
+                                textInput("lbmy", "Axis y", value = " "),
+                                textInput("lbml", "Legend", value = " "),
                                 br(),
                                 br(),
                                 br()
@@ -301,15 +357,21 @@ tabPanel("Germination InTime",
                             sidebarLayout(
                               sidebarPanel(
                                 
-                                h4("Graphics labels"),
+                                h4("Graphics variables"),
                                 
                                 uiOutput('ex'),
-                                uiOutput('ey'),
                                 uiOutput('eg'),
+                                uiOutput('ey'),
                                 
-                                textInput("lbx", "label x", value = " "),
-                                textInput("lby", "label y", value = " "),
-                                textInput("lbg", "legend", value = " ")
+                                
+                                br(),
+                                br(),
+                                
+                                h4("Graphics labels"),
+                                
+                                textInput("lbx", "Axis x", value = " "),
+                                textInput("lby", "Axis y", value = " "),
+                                textInput("lbg", "Legend", value = " ")
                                 
                                 
             

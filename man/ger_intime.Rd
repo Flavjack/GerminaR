@@ -4,9 +4,12 @@
 \alias{ger_intime}
 \title{Cumulative sum of germination by period of time for line graphic}
 \usage{
-ger_intime(SeedN, evalName, method = c("percentage", "relative"), data)
+ger_intime(Factor, SeedN, evalName, method = c("percentage", "relative"),
+  data)
 }
 \arguments{
+\item{Factor}{Factor wich will be graph in time}
+
 \item{SeedN}{Name of the colonn with the seed numbers}
 
 \item{evalName}{Prefix of the evalaution variable}

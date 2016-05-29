@@ -47,7 +47,7 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
   method <- match.arg(method)
   
   sdn <- data[, SeedN]
-  grs <- ger_GRS(evalName, data)
+  grs <- GerminaR::ger_GRS(evalName, data)
   evf <- GerminaR::evalFactor(evalName, data)
   evd <- GerminaR::evalDays(evalName, data)
   cal <- apply(cbind(evd), 1, cumsum )
@@ -76,7 +76,8 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' Cumulative sum of germination by period of time for line graphic
 #' 
 #' @description This function made a data table with the cumulative sum of values of germination by days.
-#' @details Need a summary by factor before use it with function SummaryBy. 
+#' @details Need a summary by factor before use it with function SummaryBy.
+#' @param Factor Factor wich will be graph in time
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
 #' @param method Type of cummulative germination 
@@ -85,25 +86,28 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @importFrom reshape melt
 #' @export
 
-ger_intime <- function(SeedN, evalName, method = c("percentage", "relative"), data){
+ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){
   
   method <- match.arg(method)
   
-
+  formula <- as.formula(paste( ".", paste( Factor , collapse=" + "), sep=" ~ "))
+  smr  <- doBy::summaryBy( formula, data, na.rm = T, keep.names = T)
+  
+  
   if (method == "percentage") {
     
-    cgr <- ger_cumsum(SeedN, evalName,  method = "percentage", data)
-    evf <- evalFactor(evalName, cgr)
-    rsl <- reshape::melt(cgr, names(evf), na.rm = T)
+    cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "percentage", smr)
+    evf <- GerminaR::evalFactor(evalName, cgr)
+    rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
     rsl
     
   }
   
   else if (method == "relative") {
     
-    cgr <- ger_cumsum(SeedN, evalName,  method = "relative", data)
-    evf <- evalFactor(evalName, cgr)
-    rsl <- reshape::melt(cgr, names(evf), na.rm = T)
+    cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "relative", smr)
+    evf <- GerminaR::evalFactor(evalName, cgr)
+    rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
     rsl
     
     
