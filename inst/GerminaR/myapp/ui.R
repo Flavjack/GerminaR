@@ -167,7 +167,17 @@ shinyUI(navbarPage("GerminaR",
                                              c(None='',
                                                'Double Quote'='"',
                                                'Single Quote'="'"),
-                                             '"')
+                                             '"'),
+                                
+                                br(),
+                                
+                                textInput("SeedN", label = strong("Colom with seeds number"), value = "SDN"),
+                                
+                                textInput("evalName", label = strong("Prefix of evaluation days"), value = "T"),
+                                
+                                numericInput("freq", label = strong("Frequency of evaluation"), value = 1)
+                                
+                                
                                 
                               ),
                               

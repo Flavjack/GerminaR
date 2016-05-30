@@ -13,9 +13,11 @@ shinyServer(function(input, output) {
   })
   
   
+  output$SeedN <- renderPrint({ input$text })
   
+  output$evalName <- renderPrint({ input$text })
   
-  
+  output$freq <- renderPrint({ input$num })
   
   
   output$contents <- renderTable({
@@ -30,7 +32,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    GerminaR::ger_summary(SeedN = "SDN", freq = 1 , evalName = "T", data = inFile  )
+    GerminaR::ger_summary(SeedN = input$SeedN , freq = input$freq , input$evalName , data = inFile  )
   })
   
   
@@ -220,7 +222,7 @@ shinyServer(function(input, output) {
     else if (input$smvar ==''){ return(NULL) }
     else {
 
-    smt <- GerminaR::ger_intime( input$smvar, "SDN", "T", "percentage", inFile)
+    smt <- GerminaR::ger_intime( input$smvar, input$SeedN , input$evalName, "percentage", inFile)
 
     }
 
@@ -259,7 +261,7 @@ shinyServer(function(input, output) {
    else if (input$smvar ==''){ return(NULL) }
    else {
      
-     smt <- GerminaR::ger_intime( input$smvar, "SDN", "T", "relative", inFile)
+     smt <- GerminaR::ger_intime( input$smvar, input$SeedN, input$evalName, "relative", inFile)
      
    }
    
