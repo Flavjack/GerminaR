@@ -18,14 +18,14 @@ ger_summary <- function(SeedN, evalName, freq = 1, data){
       GRS = ger_GRS(evalName, data), 
       GRP = ger_GRP(SeedN, evalName, data),
       ASG = ger_ASG(SeedN, evalName, data),
-      MGT = ger_MGT(evalName, freq = 1, data),
-      MGR = ger_MGR(evalName, freq = 1, data),
-      CVL = ger_CVL(evalName, freq = 1, data),
+      MGT = ger_MGT(evalName, freq , data),
+      MGR = ger_MGR(evalName, freq , data),
+      CVL = ger_CVL(evalName, freq , data),
       GRU = ger_GRU(evalName, data),
       GSI = ger_GSI(evalName, data),
-      VGT = ger_VGT(evalName, freq = 1, data),
-      SDG = ger_SDG(evalName, freq = 1, data),
-      CVG = ger_CVG(evalName, freq = 1, data)
+      VGT = ger_VGT(evalName, freq , data),
+      SDG = ger_SDG(evalName, freq , data),
+      CVG = ger_CVG(evalName, freq , data)
     )
 }
 
@@ -83,7 +83,7 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @param method Type of cummulative germination 
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
-#' @importFrom reshape melt
+#' @importFrom reshape2 melt
 #' @export
 
 ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){

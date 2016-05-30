@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    GerminaR::ger_summary(SeedN = input$SeedN , freq = input$freq , input$evalName , data = inFile  )
+    GerminaR::ger_summary(SeedN = input$SeedN , freq = input$freq , evalName = input$evalName , data = inFile  )
   })
   
   
@@ -98,70 +98,38 @@ shinyServer(function(input, output) {
 
 # Mean Comparation Test ---------------------------------------------------
 
-  HSD <- reactive({
+
+  MNC <- reactive({
     inFile <- av()
     if (is.null(inFile)) return(NULL)
     
-    cp <- agricolae::HSD.test( y = inFile, trt = input$ivar)
+    hsd <- agricolae::HSD.test( y = inFile, trt = input$ivar)
+    snk <- agricolae::SNK.test( y = inFile, trt = input$ivar)
+    dnc <- agricolae::duncan.test( y = inFile, trt = input$ivar)
     
-    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- dplyr::full_join(sm, cp$groups)
-    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
+    sm <- dplyr::mutate(snk$means, trt = row.names(snk$means), means = snk$means[ , 1] , ste = std/sqrt(r))
     
-    list(cp$statistics, sm)
+    sm <- dplyr::select(sm, trt, means, std, r, ste)
     
-  })
-  
-  
-  output$HSD = renderPrint({
-    
-    HSD()
-    
-  })
-  
-  
-  
-  SNK <- reactive({
-    inFile <- av()
-    if (is.null(inFile)) return(NULL)
-    
-    cp <- agricolae::SNK.test( y = inFile, trt = input$ivar)
-    
-    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- dplyr::full_join(sm, cp$groups)
-    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
-    
-    list(cp$statistics, sm)
+    list(
+      Statistics = snk$statistics, 
+      Summary = sm,  
+      Tukey = hsd$groups , 
+      SNK = snk$groups, 
+      Duncan = dnc$groups
+      )
     
   })
   
   
-  output$SNK = renderPrint({
+  output$MNC = renderPrint({
     
-    SNK()
-    
-  })
-    
-  DNC <- reactive({
-    inFile <- av()
-    if (is.null(inFile)) return(NULL)
-    
-    cp <- agricolae::duncan.test( y = inFile, trt = input$ivar)
-    
-    sm <- dplyr::mutate(cp$means, trt = row.names(cp$means), ste = std/sqrt(r))
-    sm <- dplyr::full_join(sm, cp$groups)
-    sm <- dplyr::select(sm,trt, means, std, r, ste, M)
-    
-    list(cp$statistics, sm)
+    MNC()
     
   })
   
   
-  output$DNC = renderPrint({
-    
-    DNC()
-    
-  })
+  
   
 # Mean Plot --------------------------------------------------------------------
   
@@ -180,7 +148,7 @@ shinyServer(function(input, output) {
   
   
   dt <- reactive({
-    inFile <- SNK()
+    inFile <- MNC()
     if (is.null(inFile)) return(NULL)
     df <- as.data.frame(inFile[[2]])
   

@@ -298,20 +298,8 @@ shinyUI(navbarPage("GerminaR",
                                 br(),
                                 h4("Mean Comparison Test"),
                                 
-                                h5("Tukey"),
-                                verbatimTextOutput('HSD'),
+                                verbatimTextOutput('MNC'),
                                 br(),
-                                
-                                
-                                h5('Student Newman Keuls'),
-                                verbatimTextOutput('SNK'),
-                                br(),
-                                
-                                
-                                h5('Duncan'),
-                                verbatimTextOutput('DNC'),
-                                br(),
-                                
                                 
                                 plotOutput("Barplot"),
                                 br(),
