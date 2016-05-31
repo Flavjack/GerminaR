@@ -98,7 +98,7 @@ ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relati
     
     cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "percentage", smr)
     evf <- GerminaR::evalFactor(evalName, cgr)
-    rsl <- reshape2::s(cgr, names(evf), na.rm = T)
+    rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
     rsl
     
   }
