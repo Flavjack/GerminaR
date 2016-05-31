@@ -296,19 +296,14 @@ shinyUI(navbarPage("GerminaR",
                                 verbatimTextOutput('aovSummary'),
                                 
                                 br(),
+                                plotOutput("Barplot"),
+                                br(),
+                              
                                 h4("Mean Comparison Test"),
                                 
                                 verbatimTextOutput('MNC'),
-                                br(),
-                                
-                                plotOutput("Barplot"),
-                                br(),
-                                br(),
-                                br(),
-                                br(),
                                 br()
-                                
-                                
+                               
                               
                               )
                             )
