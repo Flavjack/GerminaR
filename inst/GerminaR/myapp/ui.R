@@ -1,4 +1,5 @@
-library(shiny)
+
+
 
 
 shinyUI(navbarPage("GerminaR",
