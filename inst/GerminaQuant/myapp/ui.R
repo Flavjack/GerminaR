@@ -31,6 +31,19 @@ shinyUI(navbarPage("GerminaQuant",
                                   a("LEV homepage", 
                                     href = "https://www.ufpe.br/lev/")),
                                 br(),
+                                
+                                p(
+                                a("User Manual", 
+                                    href = "https://docs.google.com/document/d/177Yp3xkDwcSxyFkUq7mnyiydlt0BzVD8GL2nEyhZKck/edit?usp=sharing")
+                                ),
+                                
+                                p(
+                                a("Data Sample", 
+                                    href = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing")
+                                ),
+                                
+                                br(),
+                                
                                 strong("Authors"),
                                 br(),
                                 div("Lozano-Isla, Flavio ", style = "color:green"),
@@ -202,7 +215,7 @@ shinyUI(navbarPage("GerminaQuant",
                             sidebarLayout(
                               sidebarPanel(
                               
-                              img(src = "germinaquant.png", height = 80, width = 80),   
+                              img(src = "germinaquant.png", height = 60, width = 60),   
                               downloadButton('downloadData', 'Download'),
                               br(),
                               br(),

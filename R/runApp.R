@@ -1,10 +1,11 @@
-#'  @description When the function is invoked, GerminaR display a shiny app application showing 
-#'  web tabs about import, check, analyze and export germination data. 
+#'  @description GermiQuant App allows make the calculation for the germination variables incredibly easy in a interactive applications build in base a GerminaR R package and Shiny.
+#'  GermiQuant App is live!. Outputs change instantly as users modify inputs, without requiring a reload the app.
+#'  The principal features of the application allow calculate the principal germination variables, statistical analysis and easy way to plot the results.
 #' @family GerminaR
 #' @importFrom shiny runApp
 #' @export
 runGerminaQuant <- function() {
-  appDir <- system.file("GerminaR", "myapp", package = "GerminaR")
+  appDir <- system.file("GerminaQuant", "myapp", package = "GerminaR")
   if (appDir == "") {
     stop("Could not find example directory. Try re-installing `GerminaR`.", call. = FALSE)
   }
