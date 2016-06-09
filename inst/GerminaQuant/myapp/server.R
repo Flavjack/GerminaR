@@ -1,5 +1,6 @@
-
-
+library(shiny)
+library(ggplot2)
+library(GerminaR)
 
 
 shinyServer(function(input, output) {
@@ -46,7 +47,7 @@ shinyServer(function(input, output) {
 
   output$downloadData <- downloadHandler(
     filename = function() {
-      paste("GerminaR-", Sys.Date(), '.csv', sep='')
+      paste("GerminaQuant-", Sys.Date(), '.csv', sep='')
     },
     content = function(file) {
       inFile <- varCal()
@@ -116,7 +117,7 @@ shinyServer(function(input, output) {
       Statistics = snk$statistics, 
       Summary = sm,  
       Tukey = hsd$groups , 
-      SNK = snk$groups, 
+      Student_Newman_Keuls = snk$groups, 
       Duncan = dnc$groups
       )
     

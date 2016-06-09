@@ -1,8 +1,9 @@
+library(shiny)
+library(ggplot2)
+library(GerminaR)
 
 
-
-
-shinyUI(navbarPage("GerminaR",
+shinyUI(navbarPage("GerminaQuant",
                    
 # Introduction ------------------------------------------------------------
                    
@@ -11,19 +12,20 @@ shinyUI(navbarPage("GerminaR",
                             sidebarLayout(
                               sidebarPanel(
                                 
-                                p("GerminaR is package available on CRAN, so you can install it in the usual way from your R console:"),
+                                p("GerminaQuant is web application based in R and Shiny."),
+                                p("You can use the app in your desktop installing the package", em("GerminaR"), "in the usual way from your R console:"),
                                 code('install.packages(GerminaR)'),
                                 br(),
                                 br(),
-                                p("For use the interactive app "),
+                                p("For use the interactive app:"),
                                 code("library(GerminaR)"),
                                 br(),
-                                code("runGerminaR()"),
+                                code("runGerminaQuant()"),
                                 br(),
                                 br(),
-                                img(src = "germinT.png", height = 120, width = 120),
+                                img(src = "germinaquant.png", height = 125, width = 125),
                                 br(),
-                                "GerminaR is a product of ", 
+                                "GerminaQuant is a product of ", 
                                 span("Ecophysiology Laboratory (UFPE)", style = "color:blue"),
                                 p("Visit the ",
                                   a("LEV homepage", 
@@ -42,14 +44,15 @@ shinyUI(navbarPage("GerminaR",
                               mainPanel(
                                 
                                 
-                                p("GerminaR app allows make the calculation for the germination variables ", em("incredibly easy"), 
-                                  " in a interactive applications build with R and Shiny. GerminaR application is live!. Outputs change instantly as users modify inputs, without requiring a reload the app."),
+                                p("GerminaQuant application allows make the calculation for the germination variables ", em("incredibly easy"), 
+                                  " in an interactive applications build with R and Shiny. GerminaQuant app is live!. Outputs change instantly as users modify inputs, without requiring a reload the app."),
                                 
                                 h4("Features"),
                                 
                                 p("Allow calculate the princiapal Germination Variables."),
                                 p("Statistical Analysis for Germination Variables."),
                                 p("Easy way to plot the results."),
+
                                 br(),
                                 
                                 h4("Evaluation of seed germination process"),
@@ -100,15 +103,17 @@ shinyUI(navbarPage("GerminaR",
                                   Z = 1 when germination of all the seeds occurs at the same time and Z = 0 when at least two seeds can germinate one each time. Z produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
                                   Thus, the value of Z assessments is the grade of overlap between seed germination."),
                                 
-                                img(src = "GRZ.png", height = 60, width = 300),
+                                img(src = "GRZ.png", height = 55, width = 240),
                                 br(),
                                 br(),
                                 
-                                span("Limits of measurements of the  germination variables; n: total number of seeds germinated.", style = "color:red"),
+                                span("Limits of measurements of the  germination variables; n: total number of seeds germinated.", style = "color:blue"),
                                 br(),
-                                img(src = "SMRT.png", height = 300, width = 600),
+                                img(src = "SMRT.png", height = 200, width = 400),
                                 
                                 br(),
+                                br(),
+                                
                                 h4("References"),
                                 
                                 p("CARVALHO, M.; SANTANA, D. Emergencia de plantulas de", em("Anacardium humile"), 
@@ -157,6 +162,15 @@ shinyUI(navbarPage("GerminaR",
                                           accept=c('text/csv', 
                                                    'text/comma-separated-values,text/plain', 
                                                    '.csv')),
+                                
+                                
+                                textInput("SeedN", label = strong("Colom with seeds number"), value = "NSeeds"),
+                                
+                                textInput("evalName", label = strong("Prefix of evaluation days"), value = "Ti"),
+                                
+                                numericInput("freq", label = strong("Frequency of evaluation"), value = 1),
+                                
+                                
                                 tags$hr(),
                                 checkboxInput('header', 'Header', TRUE),
                                 radioButtons('sep', 'Separator',
@@ -168,16 +182,7 @@ shinyUI(navbarPage("GerminaR",
                                              c(None='',
                                                'Double Quote'='"',
                                                'Single Quote'="'"),
-                                             '"'),
-                                
-                                br(),
-                                
-                                textInput("SeedN", label = strong("Colom with seeds number"), value = "SDN"),
-                                
-                                textInput("evalName", label = strong("Prefix of evaluation days"), value = "T"),
-                                
-                                numericInput("freq", label = strong("Frequency of evaluation"), value = 1)
-                                
+                                             '"')
                                 
                                 
                               ),
@@ -197,11 +202,8 @@ shinyUI(navbarPage("GerminaR",
                             sidebarLayout(
                               sidebarPanel(
                               
-                              img(src = "germinT.png", height = 80, width = 80),   
+                              img(src = "germinaquant.png", height = 80, width = 80),   
                               downloadButton('downloadData', 'Download'),
-                              br(),
-                              br(),
-                              img(src = "variables.png", height = 265, width = 384),
                               br(),
                               br(),
                               strong("Abbreviations"),
