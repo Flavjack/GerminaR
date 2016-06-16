@@ -4,13 +4,12 @@
 #' @description This function made a data table with the result of germination variables for each experimental unit.
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return Data frame with the summary values of germination variables.
 #' @importFrom dplyr mutate
 #' @export
 
-ger_summary <- function(SeedN, evalName, freq = 1, data){
+ger_summary <- function(SeedN, evalName, data){
   
   evf <- GerminaR::evalFactor(evalName, data)
   
@@ -18,14 +17,14 @@ ger_summary <- function(SeedN, evalName, freq = 1, data){
       GRS = ger_GRS(evalName, data), 
       GRP = ger_GRP(SeedN, evalName, data),
       ASG = ger_ASG(SeedN, evalName, data),
-      MGT = ger_MGT(evalName, freq , data),
-      MGR = ger_MGR(evalName, freq , data),
-      CVL = ger_CVL(evalName, freq , data),
+      MGT = ger_MGT(evalName, data),
+      MGR = ger_MGR(evalName, data),
+      CVL = ger_CVL(evalName, data),
       GRU = ger_GRU(evalName, data),
       GSI = ger_GSI(evalName, data),
-      VGT = ger_VGT(evalName, freq , data),
-      SDG = ger_SDG(evalName, freq , data),
-      CVG = ger_CVG(evalName, freq , data)
+      VGT = ger_VGT(evalName, data),
+      SDG = ger_SDG(evalName, data),
+      CVG = ger_CVG(evalName, data)
     )
 }
 
@@ -93,12 +92,15 @@ ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relati
   formula <- as.formula(paste( ".", paste( Factor , collapse=" + "), sep=" ~ "))
   smr  <- doBy::summaryBy( formula, data, na.rm = T, keep.names = T)
   
-  
+
   if (method == "percentage") {
     
     cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "percentage", smr)
     evf <- GerminaR::evalFactor(evalName, cgr)
     rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
+    
+    rsl$variable <- as.factor(gsub("\\D", "", rsl$variable))
+    
     rsl
     
   }
@@ -108,6 +110,9 @@ ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relati
     cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "relative", smr)
     evf <- GerminaR::evalFactor(evalName, cgr)
     rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
+    
+    rsl$variable <- as.factor(gsub("\\D", "", rsl$variable))
+    
     rsl
     
     

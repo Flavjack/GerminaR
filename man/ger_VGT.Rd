@@ -4,12 +4,10 @@
 \alias{ger_VGT}
 \title{Variance of the Mean Germination Time}
 \usage{
-ger_VGT(evalName, freq = 1, data)
+ger_VGT(evalName, data)
 }
 \arguments{
 \item{evalName}{Prefix of the names of the periods of evaluation.}
-
-\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
 
 \item{data}{The name of the data frame containing the data.}
 }

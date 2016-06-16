@@ -4,14 +4,12 @@
 \alias{ger_summary}
 \title{Summary of Germination Variables}
 \usage{
-ger_summary(SeedN, evalName, freq = 1, data)
+ger_summary(SeedN, evalName, data)
 }
 \arguments{
 \item{SeedN}{Name of the colonn with the seed numbers}
 
 \item{evalName}{Prefix of the evalaution variable}
-
-\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
 
 \item{data}{The name of the data frame containing the data.}
 }

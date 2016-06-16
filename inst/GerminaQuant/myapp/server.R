@@ -19,22 +19,20 @@ shinyServer(function(input, output) {
   
   output$evalName <- renderPrint({ input$text })
   
-  output$freq <- renderPrint({ input$num })
-  
-  
   output$contents <- renderTable({
     
     myData()
     
   })
   
-# Index Caculation --------------------------------------------------------
+  
+  # Index Caculation --------------------------------------------------------
   
   
   varCal <- reactive({
     inFile <- myData()
     if (is.null(inFile )) return(NULL)
-    GerminaR::ger_summary(SeedN = input$SeedN , freq = input$freq , evalName = input$evalName , data = inFile  )
+    GerminaR::ger_summary(SeedN = input$SeedN , evalName = input$evalName , data = inFile  )
   })
   
   
@@ -56,23 +54,30 @@ shinyServer(function(input, output) {
   )
   
 
-# Choose Variables ---------------------------------------------------
+  # Choose Variables ---------------------------------------------------
   
   output$out1 <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('ivar', 'Independent Variable', c(Choose='', names(inFile)))
-    })
+    
+    evf <- evalFactor(evalName = input$evalName , data = myData()) # Factor Names
+    
+    selectInput('ivar', 'Independent Variable', c(Choose='', names(evf)))
+  })
+  
   
   output$out2 <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('dvar', 'Dependent Variable', c(Choose='', names(inFile)))
+    
+    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "CVL", "GRU", "GSI", "VGT", "SDG", "CVG")
+    
+    selectInput('dvar', 'Dependent Variable', c(Choose='', grn))
   })
   
   
-# Analisis of Variance ---------------------------------------------------
-
+  # Analisis of Variance ---------------------------------------------------
+  
   av <- reactive({
     inFile <- varCal()
     if (is.null(inFile)){return(NULL)
@@ -80,18 +85,20 @@ shinyServer(function(input, output) {
       return(NULL)
     } else {
       
-    formula <- as.formula(paste(input$dvar, paste(input$ivar, collapse=" + "), sep=" ~ "))
-    aov(formula, data=inFile)
-    
+      formula <- as.formula(paste(input$dvar, paste(input$ivar, collapse=" + "), sep=" ~ "))
+      modelo <- aov(formula, data = inFile)
+      modelo
+      
     }
   })
+  
   
   output$aovSummary = renderPrint({
     inFile <- av()
     if (is.null(inFile)){ cat("Please select your variables") }
     else {
       
-    summary(inFile)
+      summary(inFile)
       
     }
   })
@@ -177,11 +184,13 @@ shinyServer(function(input, output) {
 # Germination InTime ------------------------------------------------------
 
   
-
   output$smvar <- renderUI({
     inFile <- myData()
     if (is.null(inFile)) return(NULL)
-    selectInput('smvar', 'Summarize Variable', c(Choose='', names(inFile)))
+    
+    evf <- evalFactor(evalName = input$evalName , data = inFile)
+    
+    selectInput('smvar', 'Summarize Variable', c(Choose='', names(evf)))
   })
   
 
@@ -206,6 +215,12 @@ shinyServer(function(input, output) {
  })
   
  
+ 
+ output$lgnt <- renderUI({
+   actionButton("action", label = input$sample_text)
+ })
+ 
+ 
  output$GerInTimep = renderPlot({
     df <- gntp()
     if (is.null(df)) return(NULL)
@@ -217,7 +232,7 @@ shinyServer(function(input, output) {
       geom_point(shape=19, size=2)+
       theme_bw()+
       ylab("Germination (%)") +
-      xlab("Time")+
+      xlab(input$lgnt)+
       theme_bw()
       
     }
@@ -256,7 +271,7 @@ shinyServer(function(input, output) {
        geom_point(shape=19, size=2)+
        theme_bw()+
        ylab("Relative Germination") +
-       xlab("Time")+
+       xlab(input$lgnt)+
        theme_bw()
      
    }
@@ -282,7 +297,7 @@ shinyServer(function(input, output) {
        geom_point(shape=19, size=2)+
        theme_bw()+
        ylab("Relative Germination") +
-       xlab("Time")+
+       xlab(input$lgnt)+
        theme_bw()
      
    }
@@ -296,19 +311,28 @@ shinyServer(function(input, output) {
  output$ex <- renderUI({
    inFile <- varCal()
    if (is.null(inFile)) return(NULL)
-   selectInput('ex', 'Axis X', c(Choose='', names(inFile)))
+   
+   evf <- evalFactor(evalName = input$evalName , data = myData())
+   
+   selectInput('ex', 'Axis X', c(Choose='', names(evf)))
  })
  
   output$ey <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('ey', 'Axis Y', c(Choose='', names(inFile)))
+    
+    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "CVL", "GRU", "GSI", "VGT", "SDG", "CVG")
+    
+    selectInput('ey', 'Axis Y', c(Choose='', grn))
   })
   
   output$eg <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
-    selectInput('eg', 'Grouped', c(Choose='', names(inFile)))
+    
+    evf <- evalFactor(evalName = input$evalName , data = myData())
+    
+    selectInput('eg', 'Grouped', c(Choose='', names(evf)))
   })
   
   

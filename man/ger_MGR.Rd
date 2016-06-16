@@ -4,12 +4,10 @@
 \alias{ger_MGR}
 \title{Mean Germination Rate}
 \usage{
-ger_MGR(evalName, freq = 1, data)
+ger_MGR(evalName, data)
 }
 \arguments{
 \item{evalName}{Prefix of the names of the periods of evaluation.}
-
-\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
 
 \item{data}{The name of the data frame containing the data.}
 }

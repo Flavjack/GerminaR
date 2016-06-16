@@ -75,21 +75,20 @@ ger_ASG <- function(SeedN, evalName, data){
 #' CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 
 #' Forest Science, v. 8, n. 4, p. 386-396, 1962.
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Mean Germination Time.
 #' @examples 
-#' mgt <- ger_MGT(evalName = "D", freq = 1, data = GerminaR)
+#' mgt <- ger_MGT(evalName = "D", data = GerminaR)
 #' @export
 
-ger_MGT <- function(evalName, freq = 1, data){
+ger_MGT <- function(evalName, data){
   
   ger <-  ger_GRS(evalName, data)
   evd <- evalDays(evalName, data)
-  day <- 0:(ncol(evd)-1)
-  tmp <- t(t(evd) * day * freq)
+  evcn <- colnames(evd)
+  day <- as.numeric(gsub("\\D", "", evcn))
+  tmp <- t(t(evd) * day)
   rst <- apply(cbind(tmp),1, sum, na.rm = T)
-  
   rst/ger
   
 }
@@ -104,36 +103,34 @@ ger_MGT <- function(evalName, freq = 1, data){
 #' RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
 #' Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Mean Germination Rate
 #' @export
 
-ger_MGR <- function(evalName, freq = 1, data){
+ger_MGR <- function(evalName, data){
   
-  mgt <- ger_MGT(evalName, freq, data)
+  mgt <- ger_MGT(evalName, data)
   rst <- 1/mgt
   rst
   
 }
 
 
-
 #' Coefficient of Velocity of Germination
 #' 
 #' @description This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations.
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return  It returns an vector with the Coefficient of Velocity of Germination
 #' @export
 
-ger_CVL <- function(evalName, freq = 1, data){
+ger_CVL <- function(evalName, data){
   
   grs <- ger_GRS(evalName, data)
   evd <- evalDays(evalName, data)
-  day <- 0:(ncol(evd)-1)
-  tmp <- t(t(evd) * day * freq)
+  evcn <- colnames(evd)
+  day <- as.numeric(gsub("\\D", "", evcn))
+  tmp <- t(t(evd) * day)
   cal <- apply(cbind(tmp),1, sum, na.rm = T)
   rst <- grs/cal*100
   rst
@@ -203,20 +200,17 @@ ger_GSI <- function(evalName, data){
 #' 
 #' @description This function calculate the variance of the mean germination time.
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Variance of Germination
 #' @export
 
-ger_VGT <- function(evalName, freq = 1, data){
+ger_VGT <- function(evalName, data){
   
   grs <- ger_GRS(evalName, data)
-  mgt <- ger_MGT(evalName, freq, data)
+  mgt <- ger_MGT(evalName, data)
   evd <- evalDays(evalName, data)
   day <- 0:(ncol(evd)-1)
-  
   dym <- rep.row(day,nrow(evd)) # Matrix for product of matrix
-  
   tmp <- evd * (dym-mgt)^2
   cal <- apply(tmp, 1, sum, na.rm = TRUE)
   rst <- cal/(grs-1)
@@ -229,14 +223,13 @@ ger_VGT <- function(evalName, freq = 1, data){
 #' 
 #' @description This function calculate the standard desviation of the mean germination time
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Standard desviation of germination
 #' @export
 
-ger_SDG <- function(evalName, freq = 1, data){
+ger_SDG <- function(evalName, data){
   
-  vgt <- ger_VGT(evalName, freq = 1, data)
+  vgt <- ger_VGT(evalName, data)
   rst <- sqrt(vgt)
   rst
   
@@ -247,15 +240,14 @@ ger_SDG <- function(evalName, freq = 1, data){
 #' 
 #' @description This function calculate the coefficient of variation of the mean germination time
 #' @param evalName Prefix of the names of the periods of evaluation.
-#' @param freq Frecuency of evualtion of the experimental units (days or hour)
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Coefficient of Variance of germination
 #' @export
 
-ger_CVG <- function(evalName, freq = 1, data){
+ger_CVG <- function(evalName, data){
   
-  sdg <- ger_SDG(evalName, freq = 1, data)
-  mgt <- ger_MGT(evalName, freq = 1, data)
+  sdg <- ger_SDG(evalName,  data)
+  mgt <- ger_MGT(evalName,  data)
   rsp <- (sdg/mgt)*100
   rsp
   

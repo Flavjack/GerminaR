@@ -4,12 +4,10 @@
 \alias{ger_MGT}
 \title{Mean Germination Time}
 \usage{
-ger_MGT(evalName, freq = 1, data)
+ger_MGT(evalName, data)
 }
 \arguments{
 \item{evalName}{Prefix of the names of the periods of evaluation.}
-
-\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
 
 \item{data}{The name of the data frame containing the data.}
 }
@@ -25,7 +23,7 @@ The number of germinated seeds at the intervals established for the collection o
 It is expressed in terms of the same units of time used in the germination count (CZABATOR, 1962).
 }
 \examples{
-mgt <- ger_MGT(evalName = "D", freq = 1, data = GerminaR)
+mgt <- ger_MGT(evalName = "D", data = GerminaR)
 }
 \references{
 CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 

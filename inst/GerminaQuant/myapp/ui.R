@@ -177,13 +177,11 @@ shinyUI(navbarPage("GerminaQuant",
                                                    '.csv')),
                                 
                                 
-                                textInput("SeedN", label = strong("Colom with seeds number"), value = "NSeeds"),
+                                textInput("SeedN", label = strong("Column with seeds number"), value = "NSeeds"),
                                 
-                                textInput("evalName", label = strong("Prefix of evaluation days"), value = "Ti"),
+                                textInput("evalName", label = strong("Prefix of evaluation days"), value = "Ev"),
                                 
-                                numericInput("freq", label = strong("Frequency of evaluation"), value = 1),
-                                
-                                
+                              
                                 tags$hr(),
                                 checkboxInput('header', 'Header', TRUE),
                                 radioButtons('sep', 'Separator',
@@ -333,9 +331,13 @@ tabPanel("Germination InTime",
          sidebarLayout(
            sidebarPanel(
              
-             uiOutput('smvar')  
+             uiOutput('smvar'),  
+             br(),
              
+             h4("Graphics labels"),
+             br(),
              
+             textInput("lgnt", "Unit time", value = "Time")
              
            ),
            

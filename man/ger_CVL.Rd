@@ -4,12 +4,10 @@
 \alias{ger_CVL}
 \title{Coefficient of Velocity of Germination}
 \usage{
-ger_CVL(evalName, freq = 1, data)
+ger_CVL(evalName, data)
 }
 \arguments{
 \item{evalName}{Prefix of the names of the periods of evaluation.}
-
-\item{freq}{Frecuency of evualtion of the experimental units (days or hour)}
 
 \item{data}{The name of the data frame containing the data.}
 }
