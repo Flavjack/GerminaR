@@ -3,20 +3,31 @@ Type: Package
 Title: Package for analysis and graphics of germination variables
 Version: 1.0
 Date: 201-03-27
-Authors@R: person("Flavio", "Lozano", email = "Flavjack@gmail.com", role = c("aut", "cre"))
+Authors@R: c( 
+          person("Flavio", "Lozano", email = "Flavjack@gmail.com", role = c("aut", "cre")),
+          person("Omar", "Benites", , "obacc07@gmail.com", "aut"),
+          person("Bruno", "Pompelli", , "bpompelli@correo.com", "ths")
+          )
 Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.
 Imports:
     dplyr,
     doBy,
     reshape2,
-    agricolae
-Depends:
     shiny,
-    ggplot2,
+    assertthat
+Depends:
     R (>= 3.2.3)
 Suggest: gsheet,
-         openxlsx
+         openxlsx,
+         ggplot2,
+         agricolae
+         knitr,
+         rmarkdown
+VignetteBuilder: knitr         
 License: MIT + file LICENSE
 Copyright: LEV-UFRPE (2016)
 LazyData: true
 RoxygenNote: 5.0.1
+Suggests: testthat,
+    knitr,
+    rmarkdown

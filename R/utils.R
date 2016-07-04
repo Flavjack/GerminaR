@@ -19,6 +19,7 @@ rep.row<-function(Rseq,Nrow){
 #' @return Matrix with the select colum
 #' @author Hadley Wickham
 #' @details https://github.com/hadley/dplyr/blob/50309db8f04cbcc87e4568a4bfa1f0c718e824c9/R/select-utils.R
+#' @importFrom assertthat is.string
 #' @export
 starts_with <- function(vars, match, ignore.case = TRUE) {
   stopifnot(is.string(match), !is.na(match), nchar(match) > 0)
@@ -65,10 +66,4 @@ evalFactor <- function(evalName, data){
   evf
   
 }
-
-
-
-
-
-
 
