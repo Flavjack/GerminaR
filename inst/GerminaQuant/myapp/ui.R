@@ -12,7 +12,7 @@ shinyUI(navbarPage("GerminaQuant",
                             sidebarLayout(
                               sidebarPanel(width = 3,
                                 
-                                p("GerminaQuant is web application based in R and Shiny."),
+                                p("GerminaQuant is web application based in R."),
                                 p("You can use the app in your desktop installing the package", em("GerminaR"), "in the usual way from your R console:"),
                                 code('install.packages(GerminaR)'),
                                 br(),
@@ -26,12 +26,11 @@ shinyUI(navbarPage("GerminaQuant",
                                 img(src = "germinaquant.png", height = 125, width = 125),
                                 br(),
                                 br(),
-                                "GerminaQuant is a product of ", 
-                                span("Ecophysiology Laboratory (UFPE)", style = "color:blue"),
-                                br(),
-                                p("Visit the ",
-                                  a("LEV homepage", 
-                                    href = "https://www.ufpe.br/lev/")),
+                                span(
+                                  p("GerminaQuant is a product of ",
+                                    a("Plant Physiology Laboratory (UFPE)", 
+                                      href = "https://www.ufpe.br/lev/")), style = "color:black"),
+                                
                                 br(),
                                 
                                 p(
@@ -60,7 +59,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 
                                 
                               shiny::HTML("<p align='justify'>GerminaQuant application allows make the calculation for the germination variables <i>incredibly easy</i> 
-                                            in an interactive applications build with R and Shiny. GerminaQuant app is live!. Outputs change instantly as users modify inputs, without requiring a reload the app.</p>"),
+                                            in an interactive applications build with R and Shiny package. GerminaQuant app is live!. Outputs change instantly as users modify inputs, without requiring a reload the app.</p>"),
 
                                 shiny::HTML("<h4><b>Features</b></h4>"),
                                 
@@ -86,26 +85,26 @@ shinyUI(navbarPage("GerminaQuant",
                                           In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination (PENFIELD; KING, 2009).
                                           An important tool to indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data (JOOSEN et al., 2010). 
                                           Time, speed, homogeneity and synchrony are aspects that can be measured, and inform the dynamics of the germination process. 
-                                          These characteristics are interesting not only physiologists and seed technologists, but also to environmentalists, since it is possible to predict the degree of success of the species, 
+                                          These characteristics are interesting not only for physiologists and seed technologists, but also to environmentalists, since it is possible to predict the degree of success of the species, 
                                           based on the seed crop ability to redistribute germination over time, allowing the recruitment the part of the environment formed seedlings (RANAL; SANTANA, 2006).   </p>"),
                               
 #                                 p("The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions (MARCOS-FILHO, 1998).
 #                                   In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination (PENFIELD; KING, 2009).
 #                                   An important tool to indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data (JOOSEN et al., 2010). 
 #                                   Time, speed, homogeneity and synchrony are aspects that can be measured, and inform the dynamics of the germination process. 
-#                                   These characteristics are interesting not only physiologists and seed technologists, but also to environmentalists, since it is possible to predict the degree of success of the species, 
+#                                   These characteristics are interesting not only physiologists and seed technologists, but also to ecologists, since it is possible to predict the degree of success of the species, 
 #                                   based on the seed crop ability to redistribute germination over time, allowing the recruitment the part of the environment formed seedlings (RANAL; SANTANA, 2006)."),
 #                                 
                               shiny::HTML("<h4><b>Germination (g)</b></h4>"),
                               
                               
                               #  h4("Germination (g)"),
-                              shiny::HTML("<p align='justify'> According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of seeds in which the seed germination process comes to an end, 
+                              shiny::HTML("<p align='justify'> According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of seeds in which the seed germination process comes to the end, 
                                           in experimental conditions by the seminal intrauterine growth resulting protrusion (or emergence) of a living embryo. In general, it is presented as percentage, 
                                           accompanied by some degree of dispersion, but it is possible to use proportions to one or more samples may be subjected to statistical tests (CARVALHO; SANTANA, 2005)</p>"),
 
 #   
-#                                 p("According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of seeds in which the seed germination process comes to an end, 
+#                                 p("According GOUVEA LABOURIAU (1983), the germinability of a sample is the percentage of seeds in which the seed germination process comes to ther end, 
 #                                   in experimental conditions by the seminal intrauterine growth resulting protrusion (or emergence) of a living embryo. In general, it is presented as percentage, 
 #                                   accompanied by some degree of dispersion, but it is possible to use proportions to one or more samples may be subjected to statistical tests (CARVALHO; SANTANA, 2005)"),
 #                                 
@@ -329,15 +328,15 @@ shiny::HTML("<p>
                               br(),
                               span("Mean germination rate", style = "color:blue"),
                               br(),
-                              "CVL",
+                              "GSP",
                               br(),
-                              span("Velocity coefficient of germination", style = "color:blue"),
+                              span("Germination Speed", style = "color:blue"),
                               br(),
-                              "GRU",
+                              "UNC",
                               br(),
                               span("Germination uncertainty index", style = "color:blue"),
                               br(),
-                              "GSI",
+                              "SYN",
                               br(),
                               span("Germination synchrony index", style = "color:blue"),
                               br(),
@@ -387,7 +386,52 @@ shiny::HTML("<p>
                                 textInput("lbmy", "Axis y", value = " "),
                                 textInput("lbml", "Legend", value = " "),
                                 br(),
+                                br(),strong("Abbreviations"),
                                 br(),
+                                br(),
+                                "GRS",
+                                br(),
+                                span("Germinated seeds", style = "color:blue"),
+                                br(),
+                                "GRP",
+                                br(),
+                                span("Germination percentage", style = "color:blue"),
+                                br(),
+                                "ASG",
+                                br(),
+                                span("Arcsin of germination", style = "color:blue"),
+                                br(),
+                                "MGT",
+                                br(),
+                                span("Mean germination time", style = "color:blue"),
+                                br(),
+                                "MGR",
+                                br(),
+                                span("Mean germination rate", style = "color:blue"),
+                                br(),
+                                "GSP",
+                                br(),
+                                span("Germination Speed", style = "color:blue"),
+                                br(),
+                                "UNC",
+                                br(),
+                                span("Germination uncertainty index", style = "color:blue"),
+                                br(),
+                                "SYN",
+                                br(),
+                                span("Germination synchrony index", style = "color:blue"),
+                                br(),
+                                "VGT",
+                                br(),
+                                span("Variance of mean germination time", style = "color:blue"),
+                                br(),
+                                "SDG",
+                                br(),
+                                span("Standard desviation of mean germination time", style = "color:blue"),
+                                br(),
+                                "CVG",
+                                br(),
+                                span("Coefficient of variance of mean germination time", style = "color:blue"),
                                 br()
                                
                               

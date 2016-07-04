@@ -30,8 +30,6 @@ ger_GRS <- function(evalName, data){
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the percentage of seed germinated.
-#' @examples 
-#' grp <- ger_GRP(SeedN = "SDN", evalName = "D", data = GerminaR)
 #' @export
 
 ger_GRP <- function(SeedN, evalName, data){
@@ -77,8 +75,6 @@ ger_ASG <- function(SeedN, evalName, data){
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Mean Germination Time.
-#' @examples 
-#' mgt <- ger_MGT(evalName = "D", data = GerminaR)
 #' @export
 
 ger_MGT <- function(evalName, data){
@@ -116,15 +112,15 @@ ger_MGR <- function(evalName, data){
 }
 
 
-#' Coefficient of Velocity of Germination
+#' Germination Speed
 #' 
-#' @description This function calculate the coefficient of velocity of germination according at the time lapse of the evaluations.
+#' @description This function calculate the Germination Speed according at the time lapse of the evaluations.
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
-#' @return  It returns an vector with the Coefficient of Velocity of Germination
+#' @return  It returns an vector with the Germination Speed
 #' @export
 
-ger_CVL <- function(evalName, data){
+ger_GSP <- function(evalName, data){
   
   grs <- ger_GRS(evalName, data)
   evd <- evalDays(evalName, data)
@@ -156,7 +152,7 @@ ger_CVL <- function(evalName, data){
 #' @return  It returns an vector with the values of Germination Uncertainty.
 #' @export
 
-ger_GRU <- function(evalName, data){
+ger_UNC <- function(evalName, data){
   
   grs <- ger_GRS(evalName, data)
   evd <- evalDays(evalName, data)
@@ -184,7 +180,7 @@ ger_GRU <- function(evalName, data){
 #' @return  It returns an vector with the values of Germination Synchrony
 #' @export
 
-ger_GSI <- function(evalName, data){
+ger_SYN <- function(evalName, data){
   
   grs <- ger_GRS(evalName, data)
   evd <- evalDays(evalName, data)

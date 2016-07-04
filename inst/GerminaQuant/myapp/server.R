@@ -70,7 +70,7 @@ shinyServer(function(input, output) {
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
     
-    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "CVL", "GRU", "GSI", "VGT", "SDG", "CVG")
+    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "GSP", "UNC", "SYN", "VGT", "SDG", "CVG")
     
     selectInput('dvar', 'Dependent Variable', c(Choose='', grn))
   })

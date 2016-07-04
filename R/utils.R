@@ -43,7 +43,7 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 #' @export
 evalDays <- function(evalName, data){
   
-    evd <- dplyr::select(data, starts_with(evalName))
+    evd <- dplyr::select(data, starts_with(colnames(data), evalName))
     evd
 
 }
@@ -52,14 +52,14 @@ evalDays <- function(evalName, data){
 #' Select Factors of germination matrix
 #' 
 #' @description Give matrix with the factor
-#' @param data Data with germination values
 #' @param evalName Prefix of the evalaution variable
+#' @param data Data with germination values
 #' @return Factor colums
 #' @importFrom dplyr select
 #' @export
 evalFactor <- function(evalName, data){
   
-  evf <- dplyr::select(data, -starts_with(evalName))
+  evf <- dplyr::select(data, -starts_with(colnames(data), evalName))
   
   evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.factor)
   

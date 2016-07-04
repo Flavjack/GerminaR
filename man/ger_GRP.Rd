@@ -24,9 +24,6 @@ According GOUVEA LABOURIAU (1983), the germinability of a sample of is the perce
 seeds in which the seed germination process comes to an end, in experimental conditions by 
 the seminal intrauterine growth resulting protrusion (or emergence) of a living embryo.
 }
-\examples{
-grp <- ger_GRP(SeedN = "SDN", evalName = "D", data = GerminaR)
-}
 \references{
 LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }

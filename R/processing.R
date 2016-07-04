@@ -19,9 +19,9 @@ ger_summary <- function(SeedN, evalName, data){
       ASG = ger_ASG(SeedN, evalName, data),
       MGT = ger_MGT(evalName, data),
       MGR = ger_MGR(evalName, data),
-      CVL = ger_CVL(evalName, data),
-      GRU = ger_GRU(evalName, data),
-      GSI = ger_GSI(evalName, data),
+      GSP = ger_GSP(evalName, data),
+      UNC = ger_UNC(evalName, data),
+      SYN = ger_SYN(evalName, data),
       VGT = ger_VGT(evalName, data),
       SDG = ger_SDG(evalName, data),
       CVG = ger_CVG(evalName, data)
