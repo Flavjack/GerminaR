@@ -355,27 +355,15 @@ shinyServer(function(input, output) {
     if (is.null(df)) return(NULL)
     else if (input$ex=='' || input$ey=='' || input$eg ==''){ return(NULL)}
     else{
-    ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg ))+
-      ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 2)+
+    ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg))+
+      ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 3)+
       ylab( input$lby )+
       xlab( input$lbx )+
       scale_fill_discrete( input$lbg )+
-      theme_bw()
+      theme_bw()+
+      geom_point(position = position_jitterdodge())
     }
   })
   
-  output$Dotplot = renderPlot({
-    df <- varCal()
-    if (is.null(df)) return(NULL)
-    else if (input$ex=='' || input$ey=='' || input$eg ==''){ return(NULL)}
-    else{
-    ggplot2::ggplot(df, aes_string( input$ex , input$ey, color = input$eg))+
-      geom_point(size = 2)+
-      ylab( input$lby )+
-      xlab( input$lbx )+
-      scale_color_discrete( name = input$lbg ) +
-      theme_bw()
-    }
-  })
-  
+
 })

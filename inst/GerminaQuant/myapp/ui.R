@@ -29,18 +29,18 @@ shinyUI(navbarPage("GerminaQuant",
                                 span(
                                   p("GerminaQuant is a product of ",
                                     a("Plant Physiology Laboratory (UFPE)", 
-                                      href = "https://www.ufpe.br/lev/")), style = "color:black"),
+                                      href = "https://www.ufpe.br/lev/", target="_blank")), style = "color:black"),
                                 
                                 br(),
                                 
                                 p(
                                 a("User Manual", 
-                                    href = "https://docs.google.com/document/d/177Yp3xkDwcSxyFkUq7mnyiydlt0BzVD8GL2nEyhZKck/edit?usp=sharing")
+                                    href = "https://docs.google.com/document/d/177Yp3xkDwcSxyFkUq7mnyiydlt0BzVD8GL2nEyhZKck/edit?usp=sharing", target="_blank")
                                 ),
                                 
                                 p(
                                 a("Data Sample", 
-                                    href = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing")
+                                    href = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing", target="_blank")
                                 ),
                                 
                                 br(),
@@ -59,7 +59,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 
                                 
                               shiny::HTML("<p align='justify'>GerminaQuant application allows make the calculation for the germination variables <i>incredibly easy</i> 
-                                            in an interactive applications build with R and Shiny package. GerminaQuant app is live!. Outputs change instantly as users modify inputs, without requiring a reload the app.</p>"),
+                                            in an interactive applications build with R and Shiny package. GerminaQuant app is reactive!. Outputs change instantly as users modify inputs, without requiring a reload the app.</p>"),
 
                                 shiny::HTML("<h4><b>Features</b></h4>"),
                                 
@@ -497,7 +497,7 @@ tabPanel("Germination InTime", icon = icon("equalizer", lib = "glyphicon"),
 
 # Plot Graphics  ----------------------------------------------------------------
 
-                   tabPanel("Graphics", icon = icon("area-chart", "fa-1x"),
+                   tabPanel("Box Plot", icon = icon("area-chart", "fa-1x"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
                                 
@@ -509,8 +509,7 @@ tabPanel("Germination InTime", icon = icon("equalizer", lib = "glyphicon"),
                                 
                                 
                                 br(),
-                                br(),
-                                
+                              
                                 h4("Graphics labels"),
                                 
                                 textInput("lbx", "Axis x", value = " "),
@@ -523,13 +522,9 @@ tabPanel("Germination InTime", icon = icon("equalizer", lib = "glyphicon"),
                               
                               mainPanel(
                                 
-                                h4("Boxplot"),
                                 br(),
                                 plotOutput("Boxplot"),
                                 br(),
-                                h4("Dotplot"),
-                                br(),
-                                plotOutput("Dotplot"),
                                 br(),
                                 br(),
                                 br(),
