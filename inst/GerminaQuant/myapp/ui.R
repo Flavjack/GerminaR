@@ -35,7 +35,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 
                                 p(
                                 a("User Manual", 
-                                    href = "https://docs.google.com/document/d/177Yp3xkDwcSxyFkUq7mnyiydlt0BzVD8GL2nEyhZKck/edit?usp=sharing", target="_blank")
+                                    href = "https://bookdown.org/flavjack/germinaquant/", target="_blank")
                                 ),
                                 
                                 p(
