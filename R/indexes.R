@@ -1,11 +1,12 @@
 
 #' Germinated Seed Number
 #' 
+#' @export
 #' @description This function calculate the number of seed germinated. 
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return Number of seed germianated 
-#' @export
+
 
 ger_GRS <- function(evalName, data){
   
