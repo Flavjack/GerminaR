@@ -67,3 +67,30 @@ evalFactor <- function(evalName, data){
   
 }
 
+
+#' Mean Comparison Table Summary
+#' 
+#' @description Function using resulting output from mean comparison test from agricolae package optimized for graphs. 
+#' @param meanComp Object list with the result from mean comparison test
+#' @return Table with complete data for graphics
+#' @export
+
+dtsm <- function(meanComp){
+  
+  fct <- as.character(mc$parameters$name.t)
+  fct <- as.expression(strsplit(fct, split = ":"))
+  
+  dtmn <- mc$means
+  dtgr <- mc$groups
+  dtgr$trt <- gsub("\\s", "",as.character(dtgr$trt))
+  
+  dta <- dtmn %>% 
+    mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn)))
+  
+  sm <- full_join(dta[2:7], dtgr, by = "trt") %>% 
+    select(trt, means, r, Min, Max, std, ste, M) %>% 
+    separate("trt", sep = ":", into = eval(fct)) %>% 
+    rename(mean = means, min = Min, max = Max, sg = M)
+  
+}
+
