@@ -17,4 +17,11 @@ It returns an vector with the values of Standard desviation of germination
 \description{
 This function calculate the standard desviation of the mean germination time
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+sdg <- ger_SDG(evalName = "Ev", data = dt)
+sdg
+}
 

@@ -17,4 +17,11 @@ It returns an vector with the Germination Speed
 \description{
 This function calculate the Germination Speed according at the time lapse of the evaluations.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+gsp <- ger_GSP(evalName = "Ev", data = dt)
+gsp
+}
 

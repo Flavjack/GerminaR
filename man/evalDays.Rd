@@ -17,4 +17,11 @@ Evalution colums
 \description{
 Give matrix with the evaluation days
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+dm <- evalDays(evalName = "Ev", data = dt)
+dm
+}
 

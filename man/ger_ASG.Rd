@@ -19,4 +19,11 @@ It returns an vector with the ArcSin of Germination values
 \description{
 This function calculate the arcsin of germination percentage for normalization.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+asg <- ger_ASG(SeedN = "NSeeds",evalName = "Ev", data = dt)
+asg
+}
 

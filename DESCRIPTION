@@ -11,6 +11,7 @@ Authors@R: c(
 Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.
 Imports:
     dplyr,
+    tidyr,
     doBy,
     reshape2,
     shiny,
@@ -29,5 +30,5 @@ Copyright: LEV-UFRPE (2016)
 LazyData: true
 RoxygenNote: 5.0.1
 Suggests: testthat,
-    knitr,
-    rmarkdown
+          knitr,
+          rmarkdown

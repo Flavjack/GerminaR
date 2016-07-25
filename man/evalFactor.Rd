@@ -17,4 +17,11 @@ Factor colums
 \description{
 Give matrix with the factor
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+dm <- evalFactor(evalName = "Ev", data = dt)
+dm
+}
 

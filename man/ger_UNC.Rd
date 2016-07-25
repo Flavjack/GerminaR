@@ -23,9 +23,15 @@ entropy or uncertainty associated with the distribution of the relative frequenc
 Low values of u indicate frequencies with short peaks, i.e. the more concentrated the germination in time. 
 Just a germinated seed changes the value of u. This means that u measures the degree of germination scattering.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+unc <- ger_UNC(evalName = "Ev", data = dt)
+unc
+}
 \references{
 GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.].
-
 LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }
 

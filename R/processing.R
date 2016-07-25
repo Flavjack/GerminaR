@@ -1,4 +1,3 @@
-
 #' Summary of Germination Variables
 #' 
 #' @description This function made a data table with the result of germination variables for each experimental unit.
@@ -8,6 +7,12 @@
 #' @return Data frame with the summary values of germination variables.
 #' @importFrom dplyr mutate
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+#' smr
 
 ger_summary <- function(SeedN, evalName, data){
   
@@ -29,8 +34,6 @@ ger_summary <- function(SeedN, evalName, data){
 }
 
 
-
-
 #' Cumulative sum of germination matrix
 #' 
 #' @description This function made a data table with the cumulative sum of values of germination.
@@ -40,8 +43,14 @@ ger_summary <- function(SeedN, evalName, data){
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the cumulative sum
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
+#' gcs
+
 ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), data){
-  
   
   method <- match.arg(method)
   
@@ -70,8 +79,6 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 }
 
 
-
-
 #' Cumulative sum of germination by period of time for line graphic
 #' 
 #' @description This function made a data table with the cumulative sum of values of germination by days.
@@ -84,6 +91,21 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @return Data frame with the germination by period
 #' @importFrom reshape2 melt
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' library(ggplot2)
+#' 
+#' dt <- GerminaR
+#' gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
+#' 
+#' ggplot(gnt, aes(variable , value, colour = Genotype, group = Genotype)) +
+#'   geom_line() +
+#'   geom_point(size=1)+
+#'   theme_bw()+
+#'   ylab("Germination (%)")+
+#'   xlab("days")
+
 
 ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){
   
@@ -115,14 +137,6 @@ ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relati
     
     rsl
     
-    
   }  
   
-  
 }
-
-
-
-
-
-

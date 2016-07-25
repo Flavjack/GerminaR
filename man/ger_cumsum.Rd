@@ -21,4 +21,11 @@ Data frame with the cumulative sum
 \description{
 This function made a data table with the cumulative sum of values of germination.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
+gcs
+}
 

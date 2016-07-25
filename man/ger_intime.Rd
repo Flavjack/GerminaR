@@ -27,4 +27,19 @@ This function made a data table with the cumulative sum of values of germination
 \details{
 Need a summary by factor before use it with function SummaryBy.
 }
+\examples{
+
+library(GerminaR)
+library(ggplot2)
+
+dt <- GerminaR
+gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
+
+ggplot(gnt, aes(variable , value, colour = Genotype, group = Genotype)) +
+  geom_line() +
+  geom_point(size=1)+
+  theme_bw()+
+  ylab("Germination (\%)")+
+  xlab("days")
+}
 

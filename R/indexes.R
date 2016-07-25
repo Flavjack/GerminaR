@@ -44,6 +44,7 @@ ger_GRS <- function(evalName, data){
 #' grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
 #' grp
 
+
 ger_GRP <- function(SeedN, evalName, data){
   
   sdn <- data[, SeedN]
@@ -63,6 +64,14 @@ ger_GRP <- function(SeedN, evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the ArcSin of Germination values
 #' @export
+#' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' asg <- ger_ASG(SeedN = "NSeeds",evalName = "Ev", data = dt)
+#' asg
+
 
 ger_ASG <- function(SeedN, evalName, data){
   
@@ -88,6 +97,12 @@ ger_ASG <- function(SeedN, evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Mean Germination Time.
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' mgt <- ger_MGT(evalName = "Ev", data = dt)
+#' mgt
 
 ger_MGT <- function(evalName, data){
   
@@ -114,6 +129,12 @@ ger_MGT <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Mean Germination Rate
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' mgr <- ger_MGR(evalName = "Ev", data = dt)
+#' mgr
 
 ger_MGR <- function(evalName, data){
   
@@ -131,6 +152,12 @@ ger_MGR <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return  It returns an vector with the Germination Speed
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' gsp <- ger_GSP(evalName = "Ev", data = dt)
+#' gsp
 
 ger_GSP <- function(evalName, data){
   
@@ -157,12 +184,17 @@ ger_GSP <- function(evalName, data){
 #' Just a germinated seed changes the value of u. This means that u measures the degree of germination scattering.
 #' @references 
 #' GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.].
-#' 
 #' LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return  It returns an vector with the values of Germination Uncertainty.
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' unc <- ger_UNC(evalName = "Ev", data = dt)
+#' unc
 
 ger_UNC <- function(evalName, data){
   
@@ -191,6 +223,12 @@ ger_UNC <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return  It returns an vector with the values of Germination Synchrony
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' syn <- ger_SYN(evalName = "Ev", data = dt)
+#' syn
 
 ger_SYN <- function(evalName, data){
   
@@ -211,6 +249,12 @@ ger_SYN <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Variance of Germination
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' vgt <- ger_VGT(evalName = "Ev", data = dt)
+#' vgt
 
 ger_VGT <- function(evalName, data){
   
@@ -234,6 +278,12 @@ ger_VGT <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Standard desviation of germination
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' sdg <- ger_SDG(evalName = "Ev", data = dt)
+#' sdg
 
 ger_SDG <- function(evalName, data){
   
@@ -251,6 +301,12 @@ ger_SDG <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Coefficient of Variance of germination
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' cvg <- ger_CVG(evalName = "Ev", data = dt)
+#' cvg
 
 ger_CVG <- function(evalName, data){
   

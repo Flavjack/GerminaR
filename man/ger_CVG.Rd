@@ -17,4 +17,11 @@ It returns an vector with the values of Coefficient of Variance of germination
 \description{
 This function calculate the coefficient of variation of the mean germination time
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+cvg <- ger_CVG(evalName = "Ev", data = dt)
+cvg
+}
 

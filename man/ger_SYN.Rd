@@ -24,6 +24,13 @@ Z = 1 when germination of all the seeds occurs at the same time and Z = 0 when a
 Z produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
 Thus, the value of Z assessments is the grade of overlap between seed germination.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+syn <- ger_SYN(evalName = "Ev", data = dt)
+syn
+}
 \references{
 RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
 Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.

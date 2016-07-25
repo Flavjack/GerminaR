@@ -19,4 +19,11 @@ Data frame with the summary values of germination variables.
 \description{
 This function made a data table with the result of germination variables for each experimental unit.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+smr
+}
 

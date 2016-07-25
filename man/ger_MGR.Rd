@@ -20,6 +20,13 @@ This function calculate the mean germination rate of the germination.
 \details{
 The average speed of germination is defined as the reciprocal of the average time germination (RANAL; SANTANA, 2006).
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+mgr <- ger_MGR(evalName = "Ev", data = dt)
+mgr
+}
 \references{
 RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
 Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.
