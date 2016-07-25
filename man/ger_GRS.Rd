@@ -17,4 +17,11 @@ Number of seed germianated
 \description{
 This function calculate the number of seed germinated.
 }
+\examples{
+
+library(GerminaR)
+dt <- GerminaR
+grs <- ger_GRS(evalName = "Ev", data = dt)
+grs
+}
 

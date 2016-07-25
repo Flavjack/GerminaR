@@ -5,8 +5,13 @@
 #' @description This function calculate the number of seed germinated. 
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
-#' @return Number of seed germianated 
-
+#' @return Number of seed germianated
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' grs <- ger_GRS(evalName = "Ev", data = dt)
+#' grs
 
 ger_GRS <- function(evalName, data){
   
@@ -32,6 +37,12 @@ ger_GRS <- function(evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the percentage of seed germinated.
 #' @export
+#' @examples 
+#' 
+#' library(GerminaR)
+#' dt <- GerminaR
+#' grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+#' grp
 
 ger_GRP <- function(SeedN, evalName, data){
   
