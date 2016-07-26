@@ -121,11 +121,14 @@ dtsm <- function(meanComp){
   dtgr$trt <- gsub("\\s", "",as.character(dtgr$trt))
   
   dta <- dtmn %>% 
-   dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn)))
-  
+    dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn))) 
+               
   sm <- dplyr::full_join(dta[2:7], dtgr, by = "trt") %>% 
-    dplyr::select(trt, means, r, Min, Max, std, ste, M) %>% 
+    dplyr::mutate(ymx = means + ste, ymn = means - ste) %>% 
+    dplyr::select(trt, means, Min, Max, r, std, ste, ymx, ymn, M) %>% 
     tidyr::separate("trt", sep = ":", into = eval(fct)) %>% 
     dplyr::rename(mean = means, min = Min, max = Max, sg = M)
   
 }
+
+
