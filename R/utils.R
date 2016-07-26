@@ -75,7 +75,7 @@ evalFactor <- function(evalName, data){
   
   evf <- dplyr::select(data, -starts_with(colnames(data), evalName))
   
-  evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.factor)
+  evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.character)
   
   evf
   
