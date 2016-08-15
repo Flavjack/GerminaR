@@ -124,11 +124,97 @@ dtsm <- function(meanComp){
     dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn))) 
                
   sm <- dplyr::full_join(dta[2:7], dtgr, by = "trt") %>% 
-    dplyr::mutate(ymx = means + ste, ymn = means - ste) %>% 
-    dplyr::select(trt, means, Min, Max, r, std, ste, ymx, ymn, M) %>% 
+    dplyr::select(trt, means, Min, Max, r, std, ste, M) %>% 
     tidyr::separate("trt", sep = ":", into = eval(fct)) %>% 
     dplyr::rename(mean = means, min = Min, max = Max, sg = M)
   
 }
+
+
+
+#' Plot line or bar graphic
+#' 
+#' @description Function use the dtsm funtion for plot the results 
+#' @param data Output dtsm fuction
+#' @param type Type of graphic. "bar" or "line" 
+#' @param x Axis x variable
+#' @param y Axis t variable
+#' @param z variable for color and shape
+#' @param ylab Title for the axis y 
+#' @param xlab Title for the axis x
+#' @param lgl Title for the legend
+#' @param lgd Possition of the legend. Default c(0.93,0.77). If "none" will not have legend
+#' @param lmt Limit of the axis y for the graphic. ie c(0,100)
+#' @param brk Brake in the axis y for the graphic. ie 0:100*20
+#' @param sig Significance of the result (letters)
+#' @return Line o bar plot
+#' @export
+
+plot <- function(data, type= c("bar", "line"), x, y, z, lmt, brk, lgd = c(0.93,0.77), ylab = "", xlab = "", lgl = "", sig = sg){
+  
+  type <- match.arg(type)
+  
+  x <- deparse(substitute(x))
+  y <- deparse(substitute(y))
+  z <- deparse(substitute(z))
+  sig <- deparse(substitute(sig))  
+  
+  if(type == "bar"){
+    
+    bp <- ggplot(data, aes_string(x , y, fill= z))+
+      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
+      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
+      geom_text(aes_string(label= sig, y = data$mean + data$ste), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
+      scale_y_continuous( ylab , limits = lmt, breaks= brk) +
+      scale_x_discrete( xlab)+
+      scale_fill_hue(lgl)+
+      theme_bw()+
+      theme(
+        axis.title.x = element_text(face="bold", size=10),
+        axis.title.y = element_text(face="bold", size=11, angle=90),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        legend.position = lgd, 
+        legend.title = element_text(face="bold", size=10), 
+        legend.text = element_text(size=10),
+        legend.key.size = unit(1.2, "lines"),
+        legend.key = element_blank()
+      )
+    
+  }
+  
+  else if(type == "line"){
+    
+    lp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
+      geom_line()+
+      geom_point(size=2)+ 
+      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
+      geom_text(aes_string(label= sig, y = data$mean), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
+      scale_color_discrete(lgl)+
+      scale_shape_discrete(lgl)+
+      scale_y_continuous(ylab, limits = lmt, breaks= brk)+
+      scale_x_discrete(xlab)+
+      theme_bw()+
+      theme(
+        axis.title.x = element_text(face="bold", size=10),
+        axis.title.y = element_text(face="bold", size=11, angle=90),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        legend.position = lgd, 
+        legend.title = element_text(face="bold", size=10), 
+        legend.text = element_text(size=10),
+        legend.key.size = unit(1.2, "lines"),
+        legend.key = element_blank()
+      )
+    
+  }
+  
+}
+
+
+
+
+
+
 
 
