@@ -98,7 +98,7 @@ shinyServer(function(input, output) {
     if (is.null(inFile)){ cat("Please select your variables") }
     else {
       
-      summary(inFile)
+    summary(inFile)
       
     }
   })
@@ -175,7 +175,17 @@ shinyServer(function(input, output) {
       ylab( input$lbmy )+
       xlab(input$lbmx)+
       scale_fill_hue(name= input$lbml )+
-      theme_bw()
+      theme_bw()+
+      theme(
+        axis.title.x = element_text(face="bold", size=15),
+        axis.title.y = element_text(face="bold", size=15, angle=90),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        legend.title = element_text(face="bold", size=12), 
+        legend.text = element_text(size=11),
+        legend.key.size = unit(1.2, "lines"),
+        legend.key = element_blank()
+      )
     
   })
   
@@ -227,13 +237,23 @@ shinyServer(function(input, output) {
     else if (input$smvar =='' ){ return(NULL) }
     else{
       
-    ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+    ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar, shape= input$smvar)) +
       geom_line() +
-      geom_point(shape=19, size=2)+
+      geom_point(size=2)+
       theme_bw()+
       ylab("Germination (%)") +
       xlab(input$lgnt)+
-      theme_bw()
+      theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
       
     }
   })  
@@ -266,43 +286,27 @@ shinyServer(function(input, output) {
    else if (input$smvar =='' ){ return(NULL) }
    else{
      
-     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
+     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar, shape= input$smvar)) +
        geom_line() +
-       geom_point(shape=19, size=2)+
+       geom_point(size=2)+
        theme_bw()+
        ylab("Relative Germination") +
        xlab(input$lgnt)+
-       theme_bw()
+       theme_bw()+
+       theme(
+         axis.title.x = element_text(face="bold", size=15),
+         axis.title.y = element_text(face="bold", size=15, angle=90),
+         panel.grid.major = element_blank(), 
+         panel.grid.minor = element_blank(),
+         legend.title = element_text(face="bold", size=12), 
+         legend.text = element_text(size=11),
+         legend.key.size = unit(1.2, "lines"),
+         legend.key = element_blank()
+       )
      
    }
  })  
 
-  
- 
- output$gertimer <- renderTable({
-   
-   gntr()
-   
- })
- 
-
- output$GerInTimer = renderPlot({
-   df <- gntr()
-   if (is.null(df)) return(NULL)
-   else if (input$smvar =='' ){ return(NULL) }
-   else{
-     
-     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar)) +
-       geom_line() +
-       geom_point(shape=19, size=2)+
-       theme_bw()+
-       ylab("Relative Germination") +
-       xlab(input$lgnt)+
-       theme_bw()
-     
-   }
- })  
- 
   
  
 # MultiPlot ---------------------------------------------------------------
@@ -357,11 +361,21 @@ shinyServer(function(input, output) {
     else{
     ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg))+
       ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 3)+
+      ggplot2::geom_point(position = position_jitterdodge())+
       ylab( input$lby )+
       xlab( input$lbx )+
       scale_fill_discrete( input$lbg )+
       theme_bw()+
-      geom_point(position = position_jitterdodge())
+      theme(
+        axis.title.x = element_text(face="bold", size=15),
+        axis.title.y = element_text(face="bold", size=15, angle=90),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        legend.title = element_text(face="bold", size=12), 
+        legend.text = element_text(size=11),
+        legend.key.size = unit(1.2, "lines"),
+        legend.key = element_blank()
+      )
     }
   })
   

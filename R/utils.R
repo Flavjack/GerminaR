@@ -189,7 +189,7 @@ plot <- function(data, type= c("bar", "line"), x, y, z, lmt, brk, lgd = c(0.93,0
       geom_line()+
       geom_point(size=2)+ 
       geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
-      geom_text(aes_string(label= sig, y = data$mean), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
+      geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
       scale_color_discrete(lgl)+
       scale_shape_discrete(lgl)+
       scale_y_continuous(ylab, limits = lmt, breaks= brk)+

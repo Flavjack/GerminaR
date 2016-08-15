@@ -2,8 +2,8 @@ name: germinaquant
 account: flavjack
 server: shinyapps.io
 appId: 107628
-bundleId: 476139
+bundleId: 523944
 url: https://flavjack.shinyapps.io/germinaquant/
-when: 1465446595.19814
+when: 1470328352.15047
 asMultiple: FALSE
 asStatic: FALSE
