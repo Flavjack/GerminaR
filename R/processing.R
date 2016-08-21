@@ -39,7 +39,7 @@ ger_summary <- function(SeedN, evalName, data){
 #' @description This function made a data table with the cumulative sum of values of germination.
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
-#' @param method Type of cummulative germination 
+#' @param method Type of cummulative germination. "percentage" or "relative" 
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the cumulative sum
 #' @export
@@ -50,9 +50,7 @@ ger_summary <- function(SeedN, evalName, data){
 #' gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 #' gcs
 
-ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), data){
-  
-  method <- match.arg(method)
+ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
   
   sdn <- data[, SeedN]
   grs <- GerminaR::ger_GRS(evalName, data)
@@ -86,7 +84,7 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @param Factor Factor wich will be graph in time
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
-#' @param method Type of cummulative germination 
+#' @param method Type of cummulative germination. "percentage" or "relative" 
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
 #' @importFrom reshape2 melt
@@ -107,10 +105,9 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #'   xlab("days")
 
 
-ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){
+ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
   
-  method <- match.arg(method)
-  
+
   formula <- as.formula(paste( ".", paste( Factor , collapse=" + "), sep=" ~ "))
   smr  <- doBy::summaryBy( formula, data, na.rm = T, keep.names = T)
   
