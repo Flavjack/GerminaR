@@ -90,20 +90,15 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 #' @importFrom reshape2 melt
 #' @export
 #' @examples 
-#' \dontrun{ 
+#' 
 #' library(GerminaR)
 #' library(ggplot2)
 #' 
 #' dt <- GerminaR
 #' gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 #' 
-#' ggplot(gnt, aes(variable , value, colour = Genotype, group = Genotype)) +
-#'   geom_line() +
-#'   geom_point(size=1)+
-#'   theme_bw()+
-#'   ylab("Germination (%)")+
-#'   xlab("days")
-#}
+#' gnt
+#' 
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
   
