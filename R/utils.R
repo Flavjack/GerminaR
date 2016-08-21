@@ -1,3 +1,8 @@
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+
 #' Repeated Rows in a data matrix
 #' 
 #' @description This function made a data table with the evaluation days of germination
@@ -6,7 +11,7 @@
 #' @return Data Matrix with day of the germination
 #' @export
 
-rep.row<-function(Rseq,Nrow){
+rep_row<-function(Rseq,Nrow){
   matrix(rep(Rseq,each=Nrow),nrow=Nrow)
 }
 
@@ -42,11 +47,12 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 #' @importFrom dplyr select
 #' @export
 #' @examples 
-#' 
+#' \dontrun{ 
 #' library(GerminaR)
 #' dt <- GerminaR
 #' dm <- evalDays(evalName = "Ev", data = dt)
 #' dm
+#' }
 
 evalDays <- function(evalName, data){
   
@@ -65,11 +71,12 @@ evalDays <- function(evalName, data){
 #' @importFrom dplyr select
 #' @export
 #' @examples 
-#' 
+#' \dontrun{ 
 #' library(GerminaR)
 #' dt <- GerminaR
 #' dm <- evalFactor(evalName = "Ev", data = dt)
 #' dm
+#' }
 
 evalFactor <- function(evalName, data){
   
@@ -88,36 +95,45 @@ evalFactor <- function(evalName, data){
 #' @param meanComp Object list with the result from mean comparison test
 #' @return Table with complete data for graphics
 #' @export
-#' @examples 
-#' 
-#' library(GerminaR)
-#' library(agricolae)
-#' library(ggplot2)
-#' 
-#' dt <- GerminaR
-#' sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
-#' 
-#' av <- aov(MGT ~ Genotype*Salt, sm)
-#' summary(av)
-#' mc <- SNK.test(av, c("Genotype", "Salt"))
-#' 
-#' gr <- dtsm(mc)
-#' 
-#' ggplot(gr, aes(Genotype , mean, fill= factor(Salt, levels = c(0, 50, 75, 100, 150))))+
-#'   geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-#'   geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
-#'   geom_text(aes(label= sg), colour="black" , vjust=-.5,  hjust= -.5 , angle = 90, size=4 , position=position_dodge(.9))+
-#'   scale_y_continuous("Mean Germination Time", limits = c(0, 15), breaks= 0:15*3) +
-#'   scale_fill_hue("Salt (mM)")+
-#'   theme_bw()
-
+# @examples
+# \dontrun{
+# library(GerminaR)
+# library(agricolae)
+# library(ggplot2)
+# 
+# dt <- GerminaR
+# sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+# 
+# av <- aov(MGT ~ Genotype*Salt, sm)
+# summary(av)
+# mc <- SNK.test(av, c("Genotype", "Salt"))
+# 
+# gr <- dtsm(mc)
+# 
+# ggplot(gr, aes(Genotype , mean,
+#   fill= factor(Salt, levels = c(0, 50, 75, 100, 150))))+
+#   geom_bar(position = position_dodge(),
+#   colour="black",stat="identity", size=.5)+
+#   geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
+#   geom_text(aes(label= sg), colour="black" , vjust=-.5,  hjust= -.5 , angle = 90, size=4 , position=position_dodge(.9))+
+#   scale_y_continuous("Mean Germination Time", limits = c(0, 15), breaks= 0:15*3) +
+#   scale_fill_hue("Salt (mM)")+
+#   theme_bw()
+# }
 dtsm <- function(meanComp){
   
-  fct <- as.character(mc$parameters$name.t)
+  #to avoid no bisible global variable function
+  std <- r <- trt <- means <- Min <- Max <- ste <- M <- NULL
+  
+  #fct <- as.character(mc$parameters$name.t)
+  fct <- as.character(meanComp$parameters$name.t)
   fct <- as.expression(strsplit(fct, split = ":"))
   
-  dtmn <- mc$means
-  dtgr <- mc$groups
+  #dtmn <- mc$means #flavio
+  dtmn <- meanComp$means #omar
+  #dtgr <- mc$groups #flavio
+  dtgr <- meanComp$groups #omar
+  
   dtgr$trt <- gsub("\\s", "",as.character(dtgr$trt))
   
   dta <- dtmn %>% 

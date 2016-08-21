@@ -18,10 +18,11 @@ Factor colums
 Give matrix with the factor
 }
 \examples{
-
+\dontrun{ 
 library(GerminaR)
 dt <- GerminaR
 dm <- evalFactor(evalName = "Ev", data = dt)
 dm
+}
 }
 

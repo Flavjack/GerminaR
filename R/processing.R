@@ -92,7 +92,7 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @importFrom reshape2 melt
 #' @export
 #' @examples 
-#' 
+#' \dontrun{ 
 #' library(GerminaR)
 #' library(ggplot2)
 #' 
@@ -105,7 +105,7 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #'   theme_bw()+
 #'   ylab("Germination (%)")+
 #'   xlab("days")
-
+#}
 
 ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){
   

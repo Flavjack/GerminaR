@@ -15,7 +15,8 @@ Imports:
     doBy,
     reshape2,
     shiny,
-    assertthat
+    assertthat,
+    magrittr
 Depends:
     R (>= 3.2.3)
 Suggest: gsheet,
@@ -23,7 +24,8 @@ Suggest: gsheet,
          ggplot2,
          agricolae
          knitr,
-         rmarkdown
+         rmarkdown,
+         testthat
 VignetteBuilder: knitr         
 License: MIT + file LICENSE
 Copyright: LEV-UFRPE (2016)
