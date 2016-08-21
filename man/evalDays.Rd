@@ -18,10 +18,11 @@ Evalution colums
 Give matrix with the evaluation days
 }
 \examples{
-
+\dontrun{ 
 library(GerminaR)
 dt <- GerminaR
 dm <- evalDays(evalName = "Ev", data = dt)
 dm
+}
 }
 

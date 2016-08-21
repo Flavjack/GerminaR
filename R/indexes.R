@@ -262,7 +262,7 @@ ger_VGT <- function(evalName, data){
   mgt <- ger_MGT(evalName, data)
   evd <- evalDays(evalName, data)
   day <- 0:(ncol(evd)-1)
-  dym <- rep.row(day,nrow(evd)) # Matrix for product of matrix
+  dym <- rep_row(day,nrow(evd)) # Matrix for product of matrix
   tmp <- evd * (dym-mgt)^2
   cal <- apply(tmp, 1, sum, na.rm = TRUE)
   rst <- cal/(grs-1)
