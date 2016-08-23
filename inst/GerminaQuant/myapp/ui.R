@@ -81,11 +81,11 @@ shinyUI(navbarPage("GerminaQuant",
                                 
                               #  h4("Evaluation of seed germination process"),
                                 
-                              shiny::HTML("<p align='justify'> The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions (MARCOS-FILHO, 1998).
-                                          In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination (PENFIELD; KING, 2009).
-                                          An important tool to indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data (JOOSEN et al., 2010). 
+                              shiny::HTML("<p align='justify'> The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions (MARCOS-FILHO, 1998). 
+                                          In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination (PENFIELD; KING, 2009). 
+                                          An important tool to indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data (JOOSEN et al., 2010).
                                           Time, speed, homogeneity and synchrony are aspects that can be measured, and inform the dynamics of the germination process. 
-                                          These characteristics are interesting not only for physiologists and seed technologists, but also to environmentalists, since it is possible to predict the degree of success of the species, 
+                                          These characteristics are interesting not only for physiologists and seed technologists, but also for ecologist, since it is possible to predict the degree of success of the species, 
                                           based on the seed crop ability to redistribute germination over time, allowing the recruitment the part of the environment formed seedlings (RANAL; SANTANA, 2006).   </p>"),
                               
 #                                 p("The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions (MARCOS-FILHO, 1998).
@@ -177,6 +177,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 span("Limits of measurements of the  germination variables; n: total number of seeds germinated.", style = "color:blue"),
                                 br(),                                
                                 br(),
+                                
                                 img(src = "SMRT.png", height = 200, width = 400),
                                 
                                 br(),
@@ -440,7 +441,7 @@ shiny::HTML("<p>
                               mainPanel(
                                 
                                 h4('ANOVA Table'),
-                                verbatimTextOutput('aovSummary'),
+                                verbatimTextOutput("aovSummary"),
                                 
                                 br(),
                                 plotOutput("Barplot"),

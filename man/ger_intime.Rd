@@ -13,7 +13,7 @@ ger_intime(Factor, SeedN, evalName, method = "percentage", data)
 
 \item{evalName}{Prefix of the evalaution variable}
 
-\item{method}{Type of cummulative germination}
+\item{method}{Type of cummulative germination. "percentage" or "relative"}
 
 \item{data}{Data with the germination avaliation process}
 }
@@ -35,5 +35,9 @@ dt <- GerminaR
 gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 
 gnt
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
 }
 

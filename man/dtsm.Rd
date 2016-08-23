@@ -17,25 +17,5 @@ Function using resulting output from mean comparison test from agricolae package
 }
 \examples{
 
-library(GerminaR)
-library(agricolae)
-library(ggplot2)
-
-dt <- GerminaR
-sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
-
-av <- aov(MGT ~ Genotype*Salt, sm)
-summary(av)
-mc <- SNK.test(av, c("Genotype", "Salt"))
-
-gr <- dtsm(mc)
-
-ggplot(gr, aes(Genotype , mean, fill= factor(Salt, levels = c(0, 50, 75, 100, 150))))+
-  geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-  geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
-  geom_text(aes(label= sg), colour="black" , vjust=-.5,  hjust= -.5 , angle = 90, size=4 , position=position_dodge(.9))+
-  scale_y_continuous("Mean Germination Time", limits = c(0, 15), breaks= 0:15*3) +
-  scale_fill_hue("Salt (mM)")+
-  theme_bw()
 }
 

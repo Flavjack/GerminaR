@@ -1,3 +1,8 @@
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+
 #' Repeated Rows in a data matrix
 #' 
 #' @description This function made a data table with the evaluation days of germination
@@ -6,7 +11,7 @@
 #' @return Data Matrix with day of the germination
 #' @export
 
-rep.row<-function(Rseq,Nrow){
+rep_row<-function(Rseq,Nrow){
   matrix(rep(Rseq,each=Nrow),nrow=Nrow)
 }
 
@@ -42,11 +47,12 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 #' @importFrom dplyr select
 #' @export
 #' @examples 
-#' 
+#' \dontrun{ 
 #' library(GerminaR)
 #' dt <- GerminaR
 #' dm <- evalDays(evalName = "Ev", data = dt)
 #' dm
+#' }
 
 evalDays <- function(evalName, data){
   
@@ -65,11 +71,12 @@ evalDays <- function(evalName, data){
 #' @importFrom dplyr select
 #' @export
 #' @examples 
-#' 
+#' \dontrun{ 
 #' library(GerminaR)
 #' dt <- GerminaR
 #' dm <- evalFactor(evalName = "Ev", data = dt)
 #' dm
+#' }
 
 evalFactor <- function(evalName, data){
   
@@ -90,34 +97,35 @@ evalFactor <- function(evalName, data){
 #' @export
 #' @examples 
 #' 
-#' library(GerminaR)
-#' library(agricolae)
-#' library(ggplot2)
-#' 
-#' dt <- GerminaR
-#' sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
-#' 
-#' av <- aov(MGT ~ Genotype*Salt, sm)
-#' summary(av)
-#' mc <- SNK.test(av, c("Genotype", "Salt"))
-#' 
-#' gr <- dtsm(mc)
-#' 
-#' ggplot(gr, aes(Genotype , mean, fill= factor(Salt, levels = c(0, 50, 75, 100, 150))))+
-#'   geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-#'   geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
-#'   geom_text(aes(label= sg), colour="black" , vjust=-.5,  hjust= -.5 , angle = 90, size=4 , position=position_dodge(.9))+
-#'   scale_y_continuous("Mean Germination Time", limits = c(0, 15), breaks= 0:15*3) +
-#'   scale_fill_hue("Salt (mM)")+
-#'   theme_bw()
-
+# \dontrun{
+# library(GerminaR)
+# library(agricolae)
+# library(ggplot2)
+# 
+# dt <- GerminaR
+# sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+# 
+# av <- aov(MGT ~ Genotype*Salt, sm)
+# summary(av)
+# mc <- SNK.test(av, c("Genotype", "Salt"))
+# 
+# gr <- dtsm(mc)
+# gr
+# 
 dtsm <- function(meanComp){
   
-  fct <- as.character(mc$parameters$name.t)
+  #to avoid no bisible global variable function
+  std <- r <- trt <- means <- Min <- Max <- ste <- M <- NULL
+  
+  #fct <- as.character(mc$parameters$name.t)
+  fct <- as.character(meanComp$parameters$name.t)
   fct <- as.expression(strsplit(fct, split = ":"))
   
-  dtmn <- mc$means
-  dtgr <- mc$groups
+  #dtmn <- mc$means #flavio
+  dtmn <- meanComp$means #omar
+  #dtgr <- mc$groups #flavio
+  dtgr <- meanComp$groups #omar
+  
   dtgr$trt <- gsub("\\s", "",as.character(dtgr$trt))
   
   dta <- dtmn %>% 
@@ -130,86 +138,6 @@ dtsm <- function(meanComp){
   
 }
 
-
-
-#' Plot line or bar graphic
-#' 
-#' @description Function use the dtsm funtion for plot the results 
-#' @param data Output dtsm fuction
-#' @param type Type of graphic. "bar" or "line" 
-#' @param x Axis x variable
-#' @param y Axis t variable
-#' @param z variable for color and shape
-#' @param ylab Title for the axis y 
-#' @param xlab Title for the axis x
-#' @param lgl Title for the legend
-#' @param lgd Possition of the legend. Default c(0.93,0.77). If "none" will not have legend
-#' @param lmt Limit of the axis y for the graphic. ie c(0,100)
-#' @param brk Brake in the axis y for the graphic. ie 0:100*20
-#' @param sig Significance of the result (letters)
-#' @return Line o bar plot
-#' @export
-
-plot <- function(data, type= c("bar", "line"), x, y, z, lmt, brk, lgd = c(0.93,0.77), ylab = "", xlab = "", lgl = "", sig = sg){
-  
-  type <- match.arg(type)
-  
-  x <- deparse(substitute(x))
-  y <- deparse(substitute(y))
-  z <- deparse(substitute(z))
-  sig <- deparse(substitute(sig))  
-  
-  if(type == "bar"){
-    
-    bp <- ggplot(data, aes_string(x , y, fill= z))+
-      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
-      geom_text(aes_string(label= sig, y = data$mean + data$ste), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
-      scale_y_continuous( ylab , limits = lmt, breaks= brk) +
-      scale_x_discrete( xlab)+
-      scale_fill_hue(lgl)+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=10),
-        axis.title.y = element_text(face="bold", size=11, angle=90),
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.position = lgd, 
-        legend.title = element_text(face="bold", size=10), 
-        legend.text = element_text(size=10),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
-    
-  }
-  
-  else if(type == "line"){
-    
-    lp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
-      geom_line()+
-      geom_point(size=2)+ 
-      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
-      geom_text(aes_string(label= sig, y = data$mean), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
-      scale_color_discrete(lgl)+
-      scale_shape_discrete(lgl)+
-      scale_y_continuous(ylab, limits = lmt, breaks= brk)+
-      scale_x_discrete(xlab)+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=10),
-        axis.title.y = element_text(face="bold", size=11, angle=90),
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.position = lgd, 
-        legend.title = element_text(face="bold", size=10), 
-        legend.text = element_text(size=10),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
-    
-  }
-  
-}
 
 
 
