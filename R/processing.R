@@ -50,9 +50,7 @@ ger_summary <- function(SeedN, evalName, data){
 #' gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 #' gcs
 
-ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), data){
-  
-  method <- match.arg(method)
+ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
   
   sdn <- data[, SeedN]
   grs <- GerminaR::ger_GRS(evalName, data)
@@ -89,7 +87,6 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' @param method Type of cummulative germination 
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
-#' @importFrom reshape2 melt
 #' @export
 #' @examples 
 #' 
@@ -99,44 +96,34 @@ ger_cumsum <- function(SeedN, evalName, method = c("percentage", "relative"), da
 #' dt <- GerminaR
 #' gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 #' 
-#' ggplot(gnt, aes(variable , value, colour = Genotype, group = Genotype)) +
-#'   geom_line() +
-#'   geom_point(size=1)+
-#'   theme_bw()+
-#'   ylab("Germination (%)")+
-#'   xlab("days")
+#' gnt
 
 
-ger_intime <- function(Factor, SeedN, evalName, method = c("percentage", "relative"), data){
+ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
   
-  method <- match.arg(method)
   
-  formula <- as.formula(paste( ".", paste( Factor , collapse=" + "), sep=" ~ "))
-  smr  <- doBy::summaryBy( formula, data, na.rm = T, keep.names = T)
-  
-
-  if (method == "percentage") {
-    
-    cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "percentage", smr)
-    evf <- GerminaR::evalFactor(evalName, cgr)
-    rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
-    
-    rsl$variable <- as.factor(gsub("\\D", "", rsl$variable))
-    
-    rsl
-    
-  }
-  
-  else if (method == "relative") {
-    
-    cgr <- GerminaR::ger_cumsum(SeedN, evalName,  method = "relative", smr)
-    evf <- GerminaR::evalFactor(evalName, cgr)
-    rsl <- reshape2::melt(cgr, names(evf), na.rm = T)
-    
-    rsl$variable <- as.factor(gsub("\\D", "", rsl$variable))
-    
-    rsl
-    
-  }  
+   grt <- ger_cumsum(SeedN, evalName, method, data)
+   
+   evd <- GerminaR::evalDays(evalName, grt)
+   
+   git <- tidyr::gather_(data = grt, 
+                         key = "evaluation",
+                         value = "germination",
+                         names(evd), na.rm = TRUE)
+   
+   
+   
+   rsl <- git %>% 
+     dplyr:: group_by_(Factor, "evaluation") %>% 
+     dplyr::summarise(mean = mean(germination), r = n(), std = sd(germination)) %>% 
+     dplyr::mutate(ste = std/sqrt(r)) %>% 
+     as.data.frame()
+   
+   rsl$evaluation <- as.numeric(gsub("\\D", "", rsl$evaluation))
+   
+   rsl
+   
+   
+   
   
 }

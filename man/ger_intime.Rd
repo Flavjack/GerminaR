@@ -4,8 +4,7 @@
 \alias{ger_intime}
 \title{Cumulative sum of germination by period of time for line graphic}
 \usage{
-ger_intime(Factor, SeedN, evalName, method = c("percentage", "relative"),
-  data)
+ger_intime(Factor, SeedN, evalName, method = "percentage", data)
 }
 \arguments{
 \item{Factor}{Factor wich will be graph in time}
@@ -35,11 +34,6 @@ library(ggplot2)
 dt <- GerminaR
 gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 
-ggplot(gnt, aes(variable , value, colour = Genotype, group = Genotype)) +
-  geom_line() +
-  geom_point(size=1)+
-  theme_bw()+
-  ylab("Germination (\%)")+
-  xlab("days")
+gnt
 }
 

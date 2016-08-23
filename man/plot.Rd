@@ -4,8 +4,8 @@
 \alias{plot}
 \title{Plot line or bar graphic}
 \usage{
-plot(data, type = c("bar", "line"), x, y, z, lmt, brk, sig, lgd = c(0.93,
-  0.77), ylab = "", xlab = "", lgl = "")
+plot(data, type = c("bar", "line"), x, y, z, lmt, brk, lgd = c(0.93, 0.77),
+  ylab = "", xlab = "", lgl = "", sig = sg)
 }
 \arguments{
 \item{data}{Output dtsm fuction}
@@ -22,8 +22,6 @@ plot(data, type = c("bar", "line"), x, y, z, lmt, brk, sig, lgd = c(0.93,
 
 \item{brk}{Brake in the axis y for the graphic. ie 0:100*20}
 
-\item{sig}{Significance of the result (letters)}
-
 \item{lgd}{Possition of the legend. Default c(0.93,0.77). If "none" will not have legend}
 
 \item{ylab}{Title for the axis y}
@@ -31,6 +29,8 @@ plot(data, type = c("bar", "line"), x, y, z, lmt, brk, sig, lgd = c(0.93,
 \item{xlab}{Title for the axis x}
 
 \item{lgl}{Title for the legend}
+
+\item{sig}{Significance of the result (letters)}
 }
 \value{
 Line o bar plot
