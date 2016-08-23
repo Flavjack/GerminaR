@@ -12,7 +12,7 @@ evalFactor(evalName, data)
 \item{data}{Data with germination values}
 }
 \value{
-Factor colums
+Factor columsl
 }
 \description{
 Give matrix with the factor

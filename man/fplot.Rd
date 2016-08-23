@@ -4,13 +4,8 @@
 \alias{fplot}
 \title{Plot line or bar graphic}
 \usage{
-<<<<<<< HEAD:man/plot.Rd
-plot(data, type = c("bar", "line"), x, y, z, lmt, brk, lgd = c(0.93, 0.77),
-  ylab = "", xlab = "", lgl = "", sig = sg)
-=======
 fplot(data, type = "line", x, y, z, lmt, brk, erb = FALSE, lgd = "right",
   ylab = "", xlab = "", lgl = "", sig = "")
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6:man/fplot.Rd
 }
 \arguments{
 \item{data}{Output dtsm fuction}
@@ -27,13 +22,9 @@ fplot(data, type = "line", x, y, z, lmt, brk, erb = FALSE, lgd = "right",
 
 \item{brk}{Brake in the axis y for the graphic. ie 0:100*20}
 
-<<<<<<< HEAD:man/plot.Rd
-\item{lgd}{Possition of the legend. Default c(0.93,0.77). If "none" will not have legend}
-=======
 \item{erb}{Show the error bar.}
 
 \item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6:man/fplot.Rd
 
 \item{ylab}{Title for the axis y}
 

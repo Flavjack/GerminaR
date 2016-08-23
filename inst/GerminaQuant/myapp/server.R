@@ -237,11 +237,7 @@ shinyServer(function(input, output) {
     else if (input$smvar =='' ){ return(NULL) }
     else{
       
-<<<<<<< HEAD
     ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvar, color = input$smvar, shape = input$smvar)) +
-=======
-    ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar, shape= input$smvar)) +
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
       geom_line() +
       geom_point(size=2)+
       theme_bw()+
@@ -290,19 +286,12 @@ shinyServer(function(input, output) {
    else if (input$smvar =='' ){ return(NULL) }
    else{
      
-<<<<<<< HEAD
-     ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvar, color = input$smvar, shape = input$smvar)) +
-=======
-     ggplot2::ggplot(df, aes_string(df$variable, df$value, group = input$smvar, color = input$smvar, shape= input$smvar)) +
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
+ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvar, color = input$smvar, shape = input$smvar)) +
        geom_line() +
        geom_point(size=2)+
        theme_bw()+
        ylab("Relative Germination") +
        xlab(input$lgnt)+
-<<<<<<< HEAD
-       theme_bw()
-=======
        theme_bw()+
        theme(
          axis.title.x = element_text(face="bold", size=15),
@@ -314,18 +303,10 @@ shinyServer(function(input, output) {
          legend.key.size = unit(1.2, "lines"),
          legend.key = element_blank()
        )
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
-     
    }
  })  
 
-<<<<<<< HEAD
- 
- 
-=======
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
-  
- 
+
 # MultiPlot ---------------------------------------------------------------
 
 

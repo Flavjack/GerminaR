@@ -44,7 +44,6 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 #' @param data Data with germination values
 #' @param evalName Prefix of the evalaution variable
 #' @return Evalution colums
-#' @importFrom dplyr select
 #' @export
 #' @examples 
 #' \dontrun{ 
@@ -67,8 +66,7 @@ evalDays <- function(evalName, data){
 #' @description Give matrix with the factor
 #' @param evalName Prefix of the evalaution variable
 #' @param data Data with germination values
-#' @return Factor colums
-#' @importFrom dplyr select
+#' @return Factor columsl
 #' @export
 #' @examples 
 #' \dontrun{ 

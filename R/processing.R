@@ -5,7 +5,6 @@
 #' @param evalName Prefix of the evalaution variable
 #' @param data The name of the data frame containing the data.
 #' @return Data frame with the summary values of germination variables.
-#' @importFrom dplyr mutate
 #' @export
 #' @examples 
 #' 
@@ -91,27 +90,14 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' library(ggplot2)
-#' 
 #' dt <- GerminaR
 #' gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
-#' 
 #' gnt
-<<<<<<< HEAD
 
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
   
-=======
-#' 
 
-ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
-  
-
-  formula <- as.formula(paste( ".", paste( Factor , collapse=" + "), sep=" ~ "))
-  smr  <- doBy::summaryBy( formula, data, na.rm = T, keep.names = T)
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
-  
    grt <- ger_cumsum(SeedN, evalName, method, data)
    
    evd <- GerminaR::evalDays(evalName, grt)
@@ -133,7 +119,5 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
    
    rsl
    
-   
-   
-  
+
 }

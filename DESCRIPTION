@@ -10,17 +10,13 @@ Authors@R: c(
           )
 Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.
 Imports:
-    assertthat,
-    dplyr,
-    tidyr,
     shiny,
-<<<<<<< HEAD
     ggplot2,
-    agricolae
-=======
+    agricolae,
     assertthat,
-    magrittr
->>>>>>> 1591bfa69b931a45298cb78b5bc0bfb336a3b6d6
+    magrittr,
+    dplyr,
+    tidyr
 Depends:
     R (>= 3.2.3)
 Suggest: gsheet,
