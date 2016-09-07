@@ -16,7 +16,7 @@ Imports:
     assertthat,
     magrittr,
     dplyr,
-    tidyr
+    tidyr,
 Depends:
     R (>= 3.2.3)
 Suggest: gsheet,

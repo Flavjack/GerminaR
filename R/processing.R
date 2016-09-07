@@ -5,6 +5,7 @@
 #' @param evalName Prefix of the evalaution variable
 #' @param data The name of the data frame containing the data.
 #' @return Data frame with the summary values of germination variables.
+#' @importFrom dplyr mutate
 #' @export
 #' @examples 
 #' 
@@ -86,18 +87,20 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 #' @param method Type of cummulative germination. "percentage" or "relative" 
 #' @param data Data with the germination avaliation process
 #' @return Data frame with the germination by period
+#' @importFrom stats sd
 #' @export
-#' @examples 
-#' 
-#' library(GerminaR)
-#' dt <- GerminaR
-#' gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
-#' gnt
+#  @examples
+# \dontrun{
+# library(GerminaR)
+# dt <- GerminaR
+# gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
+# gnt
 
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
-  
-
+    
+   n <- std <- r <- germination <- NULL  #To avoid NOTE: ger_intime: no visible binding for global variable
+   
    grt <- ger_cumsum(SeedN, evalName, method, data)
    
    evd <- GerminaR::evalDays(evalName, grt)

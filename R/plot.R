@@ -13,11 +13,15 @@
 #' @param lmt Limit of the axis y for the graphic. ie c(0,100)
 #' @param brk Brake in the axis y for the graphic. ie 0:100*20
 #' @param sig Significance of the result (letters)
-#' @param erb Show the error bar. 
+#' @param erb Show the error bar.
 #' @return Line o bar plot
+#' @importFrom dplyr mutate
+#' @importFrom ggplot2 aes aes_string element_blank element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit
 #' @export
 
 fplot <- function(data, type= "line", x, y, z, lmt, brk, erb = FALSE, lgd = "right", ylab = "", xlab = "", lgl = "", sig = ""){
+  
+ ste <- NULL #To avoid this NOTE: fplot: no visible binding for global variable 'ste'
   
   x <- deparse(substitute(x))
   y <- deparse(substitute(y))

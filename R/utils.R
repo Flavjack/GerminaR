@@ -92,9 +92,11 @@ evalFactor <- function(evalName, data){
 #' @description Function using resulting output from mean comparison test from agricolae package optimized for graphs. 
 #' @param meanComp Object list with the result from mean comparison test
 #' @return Table with complete data for graphics
+#' @importFrom dplyr mutate select rename group_by_ summarise full_join
+#' @importFrom tidyr separate
 #' @export
-#' @examples 
-#' 
+# @examples 
+# 
 # \dontrun{
 # library(GerminaR)
 # library(agricolae)
