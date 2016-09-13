@@ -5,7 +5,7 @@ Version: 1.0
 Date: 201-03-27
 Authors@R: c( 
           person("Flavio", "Lozano-Isla", email = "Flavjack@gmail.com", role = c("aut", "cre")),
-          person("Omar", "Benites", , "obacc07@gmail.com", "aut"),
+          person("Omar", "Benites-Alfaro", , "obacc07@gmail.com", "aut"),
           person("Marcelo F.", "Pompelli", , "mpompelli@gmail.com", "ths")
           )
 Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.

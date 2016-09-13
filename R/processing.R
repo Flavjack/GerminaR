@@ -95,7 +95,7 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 # dt <- GerminaR
 # gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 # gnt
-
+# 
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
     
