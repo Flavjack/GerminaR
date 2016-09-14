@@ -3,3 +3,4 @@
 ^README\.Rmd$
 inst/GerminaR
 ^appveyor\.yml$
+^\.travis\.yml$
