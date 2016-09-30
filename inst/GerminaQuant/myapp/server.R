@@ -2,7 +2,6 @@ library(shiny)
 library(ggplot2)
 library(GerminaR)
 
-
 shinyServer(function(input, output) {
   
 # Import Data -------------------------------------------------------------
@@ -45,7 +44,7 @@ shinyServer(function(input, output) {
 
   output$downloadData <- downloadHandler(
     filename = function() {
-      paste("GerminaQuant-", Sys.Date(), '.csv', sep='')
+      paste("GerminaQuant-indices-", Sys.Date(), '.csv', sep='')
     },
     content = function(file) {
       inFile <- varCal()
@@ -56,13 +55,14 @@ shinyServer(function(input, output) {
 
   # Choose Variables ---------------------------------------------------
   
+  
   output$out1 <- renderUI({
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
     
-    evf <- evalFactor(evalName = input$evalName , data = myData()) # Factor Names
+    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "GSP", "UNC", "SYN", "VGT", "SDG", "CVG")
     
-    selectInput('ivar', 'Independent Variable', c(Choose='', names(evf)))
+    selectInput('dvar', 'dependent Variable', c(Choose = '', grn))
   })
   
   
@@ -70,68 +70,123 @@ shinyServer(function(input, output) {
     inFile <- varCal()
     if (is.null(inFile)) return(NULL)
     
-    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "GSP", "UNC", "SYN", "VGT", "SDG", "CVG")
+    evf <- evalFactor(evalName = input$evalName , data = myData()) # Factor Names
     
-    selectInput('dvar', 'Dependent Variable', c(Choose='', grn))
+    selectInput('ivar1', 'first factor', c(Choose = '', names(evf)))
   })
   
+  output$out3 <- renderUI({
+    inFile <- varCal()
+    if (is.null(inFile)) return(NULL)
+    
+    evf <- evalFactor(evalName = input$evalName , data = myData()) # Factor Names
+    
+    selectInput('ivar2', 'second factor', c(Choose = '', names(evf)))
+  })
   
-  # Analisis of Variance ---------------------------------------------------
+  output$out4 <- renderUI({
+    inFile <- varCal()
+    if (is.null(inFile)) return(NULL)
+    
+    evf <- evalFactor(evalName = input$evalName , data = myData()) # Factor Names
+    
+    selectInput('ivar3', 'block', c(Choose= '', names(evf)))
+  })
+  
+
+
+  
+# Analisis of Variance ---------------------------------------------------
   
   av <- reactive({
+    
     inFile <- varCal()
-    if (is.null(inFile)){return(NULL)
-    } else if(input$ivar ==''|| input$dvar == ''){
-      return(NULL)
-    } else {
+    
+    if (is.null(inFile)){return(NULL)} 
+    
+    else if(input$ivar1 == '' && input$ivar2 == '' && input$ivar3 == '' && input$dvar == '')
       
-      formula <- as.formula(paste(input$dvar, paste(input$ivar, collapse=" + "), sep=" ~ "))
+    {return(NULL)} 
+    
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$ivar3 == '') && !(input$dvar == '')) 
+      
+    {
+      formula <- as.formula( paste(input$dvar, paste(input$ivar3, paste(input$ivar1, input$ivar2, sep = "*"), sep = " + ") , sep = " ~ ") )
       modelo <- aov(formula, data = inFile)
-      modelo
-      
     }
+    
+    
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
+      
+    {
+      formula <- as.formula( paste(input$dvar, paste(input$ivar1, input$ivar2, sep = "*") , sep = " ~ ") )
+      modelo <- aov(formula, data = inFile)
+    }
+    
+    else if( !(input$ivar1 == '') && !(input$ivar3 == '') && !(input$dvar == '')) 
+      
+    {
+      formula <- as.formula( paste(input$dvar, paste(input$ivar3, input$ivar1, sep = " + ") , sep = " ~ ") )
+      modelo <- aov(formula, data = inFile)
+    }
+    
+    
+    else if( !(input$ivar1 == '') && !(input$dvar == '')) 
+    
+    {
+      formula <- as.formula(paste(input$dvar, input$ivar1, sep = " ~ "))
+      modelo <- aov(formula, data = inFile)
+    }
+    
+    
   })
   
   
-  output$aovSummary = renderPrint({
+  
+  output$tbaov = renderPrint({
     inFile <- av()
-    if (is.null(inFile)){ cat("Please select your variables") }
+    if (is.null(inFile)){ cat("select your variables") }
     else {
       
     summary(inFile)
+
       
     }
   })
   
 
-
+  
 # Mean Comparation Test ---------------------------------------------------
 
 
   MNC <- reactive({
+    
     inFile <- av()
+    
     if (is.null(inFile)) return(NULL)
     
-    hsd <- agricolae::HSD.test( y = inFile, trt = input$ivar)
-    snk <- agricolae::SNK.test( y = inFile, trt = input$ivar)
-    dnc <- agricolae::duncan.test( y = inFile, trt = input$ivar)
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
+      
+    {
+      snk <- agricolae::SNK.test( y = inFile, trt = c(input$ivar1, input$ivar2 ))
+      mc <- dtsm(snk)
+      mc
+    }
     
-    sm <- dplyr::mutate(snk$means, trt = row.names(snk$means), means = snk$means[ , 1] , ste = std/sqrt(r))
     
-    sm <- dplyr::select(sm, trt, means, std, r, ste)
+    else if( !(input$ivar1 == '') && !(input$dvar == '')) 
+      
+    {
+      snk <- agricolae::SNK.test( y = inFile, trt = c(input$ivar1))
+      mc <- dtsm(snk)
+      mc
+    }
     
-    list(
-      Statistics = snk$statistics, 
-      Summary = sm,  
-      Tukey = hsd$groups , 
-      Student_Newman_Keuls = snk$groups, 
-      Duncan = dnc$groups
-      )
     
   })
   
   
-  output$MNC = renderPrint({
+  output$MNC = renderTable({
     
     MNC()
     
@@ -139,8 +194,20 @@ shinyServer(function(input, output) {
   
   
   
+  output$downloadmc <- downloadHandler(
+    filename = function() {
+      paste("GerminaQuant-meancomp-", Sys.Date(), '.csv', sep='')
+    },
+    content = function(file) {
+      inFile <- MNC()
+      write.csv(inFile, file)
+    }
+  )
   
-# Mean Plot --------------------------------------------------------------------
+  
+
+# MultiPlot ---------------------------------------------------------------
+
   
   output$lbmy <- renderUI({
     actionButton("action", label = input$sample_text)
@@ -149,48 +216,192 @@ shinyServer(function(input, output) {
   output$lbmx <- renderUI({
     actionButton("action", label = input$sample_text)
   })
-
+  
   
   output$lbml <- renderUI({
     actionButton("action", label = input$sample_text)
   })
   
+
   
-  dt <- reactive({
-    inFile <- MNC()
-    if (is.null(inFile)) return(NULL)
-    df <- as.data.frame(inFile[[2]])
-  
-    })
-  
-  
-  output$Barplot = renderPlot({
+  output$barplot = renderPlot({
     
-    df <- dt()
+    df <- MNC()
     if (is.null(df)) return(NULL)
     
-    ggplot2::ggplot(df, aes(y =  means , x =  trt , fill = trt))+
-      geom_bar(stat = "identity")+
-      geom_errorbar(aes(ymin= means - ste , ymax= means + ste), size=.3,width=.2)+
-      ylab( input$lbmy )+
-      xlab(input$lbmx)+
-      scale_fill_hue(name= input$lbml )+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=15),
-        axis.title.y = element_text(face="bold", size=15, angle=90),
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.title = element_text(face="bold", size=12), 
-        legend.text = element_text(size=11),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
+      
+    {
+      ggplot(df, aes_string(x = input$ivar1 , y = "mean", fill= input$ivar2))+
+        geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
+        geom_text(aes(label= sg, y = mean+ste), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
+        scale_y_continuous( input$lbmy ) +
+        scale_x_discrete( input$lbmx )+
+        scale_fill_hue(input$lbml)+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    else if( !(input$ivar1 == '') && !(input$dvar == '')) 
+      
+    {
+      
+      ggplot(df, aes_string(x = input$ivar1 , y = "mean", fill= input$ivar1))+
+        geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
+        geom_text(aes(label= sg, y = mean+ste), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
+        scale_y_continuous( input$lbmy ) +
+        scale_x_discrete( input$lbmx )+
+        scale_fill_hue(input$lbml)+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    
     
   })
   
-
-
+  
+  output$lineplot = renderPlot({
+    
+    df <- MNC()
+    if (is.null(df)) return(NULL)
+    
+    
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
+      
+    {
+      ggplot(df, aes_string(x = input$ivar1, y = "mean", group = input$ivar2, shape= input$ivar2, color= input$ivar2))+
+        geom_line()+
+        geom_point(size=2)+ 
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
+        geom_text(aes(label= sg, y = mean), colour="black", size=3, vjust=-.5, hjust = -.5, angle = 0)+
+        scale_color_discrete(input$lbml)+
+        scale_shape_discrete(input$lbml)+
+        scale_y_continuous(input$lbmy)+
+        scale_x_discrete(input$lbmx)+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    else if( !(input$ivar1 == '') && !(input$dvar == '')) 
+      
+    {
+      ggplot(df, aes_string(x = input$ivar1, y = "mean", group = input$ivar1, shape= input$ivar1, color= input$ivar1))+
+        geom_line()+
+        geom_point(size=2)+ 
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
+        geom_text(aes(label= sg, y = mean), colour="black", size=3, vjust=-.5, hjust = -.5, angle = 0)+
+        scale_color_discrete(input$lbml)+
+        scale_shape_discrete(input$lbml)+
+        scale_y_continuous(input$lbmy)+
+        scale_x_discrete(input$lbmx)+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    
+  })
+  
+  
+  output$boxplot = renderPlot({
+    
+    df <- varCal()
+    
+    if (is.null(df)) return(NULL)
+    
+    else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
+      
+    {
+      ggplot(df, aes_string( x = input$ivar1 , y = input$dvar, fill = input$ivar2))+
+        geom_boxplot(outlier.colour = "red", outlier.size = 3)+
+        geom_point(position = position_jitterdodge())+
+        ylab( input$lbmy )+
+        xlab( input$lbmx )+
+        scale_fill_discrete( input$lbml )+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    else if( !(input$ivar1 == '') && !(input$dvar == '')) 
+      
+    {
+      ggplot(df, aes_string( x = input$ivar1 , y = input$dvar, fill = input$ivar1))+
+        geom_boxplot(outlier.colour = "red", outlier.size = 3)+
+        geom_point(position = position_jitterdodge())+
+        ylab( input$lbmy )+
+        xlab( input$lbmx )+
+        scale_fill_discrete( input$lbml )+
+        theme_bw()+
+        theme(
+          axis.title.x = element_text(face="bold", size=15),
+          axis.title.y = element_text(face="bold", size=15, angle=90),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.title = element_text(face="bold", size=12), 
+          legend.text = element_text(size=11),
+          legend.key.size = unit(1.2, "lines"),
+          legend.key = element_blank()
+        )
+    }
+    
+    
+    
+  })
+  
+  
+  
 # Germination InTime ------------------------------------------------------
 
   
@@ -200,7 +411,7 @@ shinyServer(function(input, output) {
     
     evf <- evalFactor(evalName = input$evalName , data = inFile)
     
-    selectInput('smvar', 'Summarize Variable', c(Choose='', names(evf)))
+    selectInput('smvar', 'summarize variable', c(Choose='', names(evf)))
   })
   
 
@@ -307,75 +518,6 @@ ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvar, colo
  })  
 
 
-# MultiPlot ---------------------------------------------------------------
 
-
- output$ex <- renderUI({
-   inFile <- varCal()
-   if (is.null(inFile)) return(NULL)
-   
-   evf <- evalFactor(evalName = input$evalName , data = myData())
-   
-   selectInput('ex', 'Axis X', c(Choose='', names(evf)))
- })
  
-  output$ey <- renderUI({
-    inFile <- varCal()
-    if (is.null(inFile)) return(NULL)
-    
-    grn <- c("GRS", "GRP", "ASG", "MGT", "MGR", "CVL", "GRU", "GSI", "VGT", "SDG", "CVG")
-    
-    selectInput('ey', 'Axis Y', c(Choose='', grn))
-  })
-  
-  output$eg <- renderUI({
-    inFile <- varCal()
-    if (is.null(inFile)) return(NULL)
-    
-    evf <- evalFactor(evalName = input$evalName , data = myData())
-    
-    selectInput('eg', 'Grouped', c(Choose='', names(evf)))
-  })
-  
-  
-  output$lbx <- renderUI({
-    actionButton("action", label = input$sample_text)
-  })
-
-  output$lby <- renderUI({
-    actionButton("action", label = input$sample_text)
-  })
-  
-  output$lbg <- renderUI({
-    actionButton("action", label = input$sample_text)
-  })
-  
-  
-  
-  output$Boxplot = renderPlot({
-    df <- varCal()
-    if (is.null(df)) return(NULL)
-    else if (input$ex=='' || input$ey=='' || input$eg ==''){ return(NULL)}
-    else{
-    ggplot2::ggplot(df, aes_string( input$ex , input$ey, fill = input$eg))+
-      ggplot2::geom_boxplot(outlier.colour = "red", outlier.size = 3)+
-      ggplot2::geom_point(position = position_jitterdodge())+
-      ylab( input$lby )+
-      xlab( input$lbx )+
-      scale_fill_discrete( input$lbg )+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=15),
-        axis.title.y = element_text(face="bold", size=15, angle=90),
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        legend.title = element_text(face="bold", size=12), 
-        legend.text = element_text(size=11),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
-    }
-  })
-  
-
 })
