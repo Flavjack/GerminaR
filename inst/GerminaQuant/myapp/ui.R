@@ -30,6 +30,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 br(),
                                 br(),
                                 
+                                
                                 p(
                                   a("User Manual", 
                                     href = "https://bookdown.org/flavjack/germinaquant/", target="_blank")
@@ -67,8 +68,9 @@ shinyUI(navbarPage("GerminaQuant",
                                             <li>Easy way to plot the results.</li>
                                             </ol>
                                             </p>"),
-                              
+                                hr(),
                                 br(),
+                                
                                 
                                 shiny::HTML("<h4><b>Evaluation of seed germination process</b></h4>"),
                                 
@@ -244,7 +246,7 @@ shiny::HTML("<p>
 
 # Germination Analisys  ----------------------------------------------------------------
 
-                   tabPanel("Germination Analysis", icon = icon("text-background", lib = "glyphicon"),
+                   tabPanel("Germination Analysis", icon = icon("leaf", lib = "glyphicon"),
                             sidebarLayout(
                               sidebarPanel(width = 3,
                               
@@ -259,7 +261,7 @@ shiny::HTML("<p>
                               
                               mainPanel(
                                 
-                                tableOutput("summary")
+                                dataTableOutput("summary")
                                 
                               )
                             )
@@ -283,9 +285,7 @@ shiny::HTML("<p>
                             
                                 img(src = "germinaquant.png", height = 50, width = 50),   
                                 downloadButton('downloadmc', 'Download'),
-                                br(),
-                                br()    
-                                
+                                br()
                               ),
                               
                               mainPanel(
@@ -314,8 +314,7 @@ tabPanel("MultiPlot", icon = icon("area-chart", "fa-1x"),
                         
                         textInput("lbmx", "Axis x", value = " "),
                         textInput("lbmy", "Axis y", value = " "),
-                        textInput("lbml", "Legend", value = " "),
-                        br()
+                        textInput("lbml", "Legend", value = " ")
                         
                         
            ),
@@ -330,6 +329,7 @@ tabPanel("MultiPlot", icon = icon("area-chart", "fa-1x"),
              br(),
              
              plotOutput("boxplot"),
+             br(),
              br()
              
              
@@ -367,11 +367,69 @@ tabPanel("Germination InTime", icon = icon("equalizer", lib = "glyphicon"),
              
            )
          )
-)
+),
+
+navbarMenu("More", icon = icon("th-list", lib = "glyphicon"),
+
+tabPanel("Tools", icon = icon("wrench", lib = "glyphicon"),
+         
+        sidebarLayout(
+           sidebarPanel(width = 3, withMathJax(),
+                        
+
+               h4("calculos")         
+                        
+                        
+           ),
+           
+           mainPanel(
+             
+             
+             h4("osmotic potencial"),
+             
+             p("The osmotic pressure can be measured directly with an osmometer, 
+               or it can be calculated from the solute concentration in the cell
+               from the van't Hoff relation: \\(\\pi = -RTC\\) where \\(R\\) is the gas constant,
+               \\(T\\) is the absolute temperature (in degrees Kelvin) and \\(C\\) is the solute concentration in Osmoles 
+              \\(l^{-1}\\). At \\(25^{o}C\\), \\(RT\\) equals 2.5 litre-MPa per mole, and \\(\\pi\\) is in units of \\(Mpa\\)."),
+             
+             # Hence a concentration of 200 mOsmoles L-1 has an osmotic pressure of 0.5 MPa.
+             
+             br(),
+             
+             h4("water potencial"),
+             
+             p("The water pressure")
+             
+        
+           )
+           
+           
+         )
+         
+    
+         ),
 
 
+tabPanel("About", icon = icon("info-sign", lib = "glyphicon"),
+         
+         
+         p("GerminaQuant is based in GerminaR R package, a highly interactive data analysis platform for germination analysis,
+         tool develpment for the Plant Physiology Laboratory (UFPE). 
+         It is result of a continuous effort to improve data collection, quality, analysis and open access publication. 
+         The recent iteration simultaneously also represents efforts to unify best practices from experiences in germination data management.
+         One of the main new characteristics of the current software development platform established is the web-based interface 
+         which provides also a highly interactive environment. It could be used both online and offline and on desktop as well as tablets and laptops. 
+         The aime is support the broader research community working on all aspects with germination studies.")
+
+         
+         )
+
+  )
+
 )
 )
+
 
 
 

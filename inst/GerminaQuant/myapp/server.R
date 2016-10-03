@@ -35,7 +35,7 @@ shinyServer(function(input, output) {
   })
   
   
-  output$summary <- renderTable({
+  output$summary <- renderDataTable({
     
     varCal()
     
