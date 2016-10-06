@@ -2,8 +2,29 @@ library(shiny)
 library(ggplot2)
 library(GerminaR)
 
+
 shinyServer(function(input, output) {
   
+
+# Intro -------------------------------------------------------------------
+
+var <- data.frame(
+  
+  "variables" = c("germinated seed number", "germination", "germination asin", "mean germination time", "germination speed", "mean germination rate", "germination synchrony", "germination uncertany", "germination standard deviation", "germination variance", "coef. variance of germinaton"),
+  "abbreviation" = c("GRS", "GRP", "ASG", "MGT", "GSP", "MGR",  "SYN", "UNC",  "SDG","VGT", "CVG"),
+  "limits" = c("\\(0 \\le n \\le n_i\\)", "\\(0 \\le g \\le 100\\)", "\\(0 \\le arsin \\le 1\\)", "\\(0 \\le t \\le k\\)", "\\(0 < g_s \\le 100\\)", "\\(0 < v \\le 1\\)", "\\(0 \\le Z \\le 1\\)", "\\(0 \\le U \\le log_2 n_i\\)", "\\(0 < s_t^2  \\le \\infty\\)", "\\(0 < s_t  \\le \\infty\\)", "\\(0 < CV_t  \\le \\infty\\)"),
+  "units" = c("\\(count\\)", "\\(\\%\\)", "\\(grade\\)", "\\(time\\)", "\\(\\%\\)", "\\(time^{-1}\\)", "\\(-\\)", "\\(bit\\)", "\\(time^2\\)", "\\(time\\)", "\\(\\%\\)")
+)
+
+
+output$var <- renderTable({
+  
+  var
+  
+})
+
+
+
 # Import Data -------------------------------------------------------------
 
   myData <- reactive({
@@ -514,10 +535,93 @@ ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvar, colo
          legend.key.size = unit(1.2, "lines"),
          legend.key = element_blank()
        )
-   }
+     
+     }
  })  
 
 
+# osmotic tools -----------------------------------------------------------
 
+
+output$ops <- reactive({
+
+  if( input$pre > 0) return( "presure should be negative")
+  else{  
+     
+r1 <- (-0.00820574587 * (input$tem + 273) * input$dis)
+
+r2 <- input$pre/r1
+
+r3 <- r2 * 1000
+
+r4 <- (input$psm * r3 * input$vol*1000)/10^6
+
+round(r4,4)
+
+}
+
+}) 
+ 
+
+ output$opp <- reactive({
+   
+   if( input$prep > 0) return( "presure should be negative")
+   else{  
+   
+mpb <- input$prep * 10
+
+C <- (-1.18 * 10^(-2))
+
+C2 <- (-1.18 * 10^(-4))
+
+CT <- (2.67 * 10^(-4)) * input$temp
+
+C2T <- (8.39 * 10^(-7)) * input$temp
+
+b <- (C + CT) * (-1)
+
+a <- (C2 + C2T) * (-1)
+
+c <- mpb
+
+b2 <- b^2
+
+ac4 <- (4*a*c*(-1)) 
+
+delta <- b2 + ac4
+
+srdt <- abs(sqrt(delta))
+
+a2 <- (2 * a)
+  
+mb <- (-1 * b)
+
+rst <- (mb + srdt)/a2
+
+rpt <- rst * input$volp 
+   
+round(rpt,4)
+
+}
+   
+ }) 
+
+ 
+# GermBook ----------------------------------------------------------------
+ 
+ 
+ output$usmn <- renderUI({
+   gb <- tags$iframe(src = "https://bookdown.org/flavjack/germinaquant/", style="height:600px; width:100%; scrolling=yes")
+   print(gb)
+   gb
+ })
+ 
+ 
+ output$dtsm <- renderUI({
+   gb <- tags$iframe(src = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing", style="height:600px; width:100%; scrolling=yes")
+   print(gb)
+   gb
+ }) 
+ 
  
 })
