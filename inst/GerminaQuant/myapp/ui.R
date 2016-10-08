@@ -299,6 +299,7 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
                              br(),
                              
                              p(strong("salt (\\(g\\))")),
+
                              
                              textOutput("ops"),
                              
@@ -313,6 +314,7 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
                              numericInput("psm", label = p("molecular weight"), value = 58.4428, min = 0),
                              
                              numericInput("dis", label = p("salt dissociation constant"), value = 1.8, min = 0)
+
                              
                              
                              ), 
@@ -321,7 +323,9 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
                              
                              br(),
                              
+
                              p(strong("PEG 600 (\\(g\\))")),
+
                              
                              textOutput("opp"),
                              
@@ -332,6 +336,7 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
                              numericInput("prep", label = p("presion (\\(MPa\\))"), value = -0.8, max = 0),
                              
                              numericInput("temp", label = p("temperature (\\(^{o}C\\))"), value = 25.0)
+
                              
                              )
                     
@@ -358,7 +363,7 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
 
              p("For", em("PEG 6000"), "the osmotic potentials can be calculated as described by", a("Michel and Kaufmann (1973):", href = "http://www.plantphysiol.org/content/51/5/914.abstract", target="_blank"), "$$\\psi_s = -(1.18*10^{-2})C - (1.18*10^{-4})C^2 + (2.67*10^{-4})CT + (8.39*10^{-7})C^2T$$ 
              where: \\(C\\) is the concentration of", em("PEG 6000"), "in \\(g*L^{-1}\\) and \\(T\\) is the temperature in degrees \\(^{o}C\\).  The unit for \\(\\psi_s\\) is \\(bar (0.1 MPa)\\)."),
-           
+
              br()
              
 
@@ -421,6 +426,7 @@ tabPanel("about", icon = icon("info-sign", lib = "glyphicon"),
                 p(strong("Omar Benites Alfaro "), "(",a("obacc07@gmail.com"), "). Computing Research Department for Plant Breeding, International Potato Center, Lima, Peru"),
                 
                 p(strong("Marcelo Francisco Pompelli "), "(",a("marcelo.pompelli@ufpe.br"), "). Department of Biology, Federal University of Pernambuco, Recife, Brazil"),
+
 
          
          br(),

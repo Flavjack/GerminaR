@@ -592,36 +592,30 @@ delta <- b2 + ac4
 
 srdt <- abs(sqrt(delta))
 
-a2 <- (2 * a)
-  
-mb <- (-1 * b)
-
-rst <- (mb + srdt)/a2
-
-rpt <- rst * input$volp 
-   
-round(rpt,4)
-
 }
-   
- }) 
+
+}) 
+ 
 
  
 # GermBook ----------------------------------------------------------------
  
  
  output$usmn <- renderUI({
+
    gb <- tags$iframe(src = "https://bookdown.org/flavjack/germinaquant/", style="height:600px; width:100%; scrolling=yes")
+
    print(gb)
-   gb
+
  })
  
  
  output$dtsm <- renderUI({
+
    gb <- tags$iframe(src = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing", style="height:600px; width:100%; scrolling=yes")
+
    print(gb)
-   gb
+
  }) 
- 
  
 })
