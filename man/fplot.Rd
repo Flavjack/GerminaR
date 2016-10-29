@@ -4,8 +4,8 @@
 \alias{fplot}
 \title{Plot line or bar graphic}
 \usage{
-fplot(data, type = "line", x, y, z, lmt, brk, erb = FALSE, lgd = "right",
-  ylab = "", xlab = "", lgl = "", sig = "")
+fplot(data, type = "line", x, y, z, ylab = "", xlab = "", lgl = "",
+  lgd = "right", sig = "", erb = FALSE)
 }
 \arguments{
 \item{data}{Output dtsm fuction}
@@ -18,21 +18,17 @@ fplot(data, type = "line", x, y, z, lmt, brk, erb = FALSE, lgd = "right",
 
 \item{z}{Group variable}
 
-\item{lmt}{Limit of the axis y for the graphic. ie c(0,100)}
-
-\item{brk}{Brake in the axis y for the graphic. ie 0:100*20}
-
-\item{erb}{Show the error bar.}
-
-\item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
-
 \item{ylab}{Title for the axis y}
 
 \item{xlab}{Title for the axis x}
 
 \item{lgl}{Title for the legend}
 
+\item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+
 \item{sig}{Significance of the result (letters)}
+
+\item{erb}{Show the error bar.}
 }
 \value{
 Line o bar plot
