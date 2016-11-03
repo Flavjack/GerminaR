@@ -1,19 +1,48 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "GerminaR 1.0"
+author: "Flavio Lozano, Omar Benites, Bruno Pompelli"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+      rmarkdown::html_vignette:
+        toc: true
+        toc_depth: 4
+        keep_md: true
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{GerminaR 1.0}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Firt we have to load the `GerminaR 1.0` package. It provides the `GerminaR` dataset that we will use throghout all the examples. 
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+```{r}
+library(GerminaR)
+dim(GerminaR)
+head(GerminaR)
+```
+
+GerminaR aims to make available Germination seed indexes and graphic functions to analyze germination seed data:
+
+*`ger_ASG`
+*`ger_cumsum`
+*`ger_CVG`
+*`ger_GRP`
+*`ger_GRS`
+*`ger_GSP`
+
+
+
+
+## Germinated Seed Number
+
+`ger_ASG` allow to calculate the arcsin of germination percentage for normalization.
+
+#' dt <- GerminaR
+#' grs <- ger_GRS(evalName = "Ev", data = dt)
+#' grs
+
+
+
 
 ## Vignette Info
 
