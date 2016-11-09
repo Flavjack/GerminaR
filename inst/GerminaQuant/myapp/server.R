@@ -3,7 +3,7 @@ library(ggplot2)
 library(GerminaR)
 
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output){
   
 
 # Intro -------------------------------------------------------------------

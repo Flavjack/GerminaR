@@ -2,9 +2,9 @@ library(shiny)
 library(ggplot2)
 library(GerminaR)
 
-shinyUI(navbarPage("GerminaQuant",
+shinyUI(navbarPage("GerminaQuant", 
                    
-                   
+                     
                    
 # Introduction ------------------------------------------------------------
                    

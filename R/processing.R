@@ -16,6 +16,8 @@
 
 ger_summary <- function(SeedN, evalName, data){
   
+  data <- as.data.frame(data)
+  
   evf <- GerminaR::evalFactor(evalName, data)
   
   gsm <-  dplyr::mutate(evf,
@@ -100,6 +102,8 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
     
    n <- std <- r <- germination <- NULL  #To avoid NOTE: ger_intime: no visible binding for global variable
+   
+   data <- as.data.frame(data)
    
    grt <- ger_cumsum(SeedN, evalName, method, data)
    

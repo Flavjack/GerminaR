@@ -26,6 +26,21 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   z <- deparse(substitute(z))
   sig <- deparse(substitute(sig)) 
   
+  data[,x] <- factor(data[,x], levels = gtools::mixedsort(data[,x]))
+  
+  data[,z] <- factor(data[,z], levels = gtools::mixedsort(data[,z]))
+  
+  
+  yl <- gsub(pattern = " ",replacement = "~", ylab)
+  ylab <- eval(expression(parse(text = yl)))
+  
+  xl <- gsub(pattern = " ",replacement = "~", xlab)
+  xlab <- eval(expression(parse(text = xl)))
+
+  ll <- gsub(pattern = " ",replacement = "~", lgl)
+  lgl  <- eval(expression(parse(text = ll)))
+  
+  
   data <- data %>% mutate(ymax = mean+ste)
   
   if (type == "bar" & erb == TRUE){
@@ -34,18 +49,18 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
       geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
       geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
       geom_text(aes_string(label= sig, y = "ymax"), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
-      scale_y_continuous( ylab ) +
-      scale_x_discrete( xlab )+
-      scale_fill_hue(lgl)
+      scale_y_continuous(ylab) +
+      scale_x_discrete(xlab)+
+      scale_fill_discrete(lgl)
     
   } else if(type == "bar" & erb == FALSE){
     
     bp <- ggplot(data, aes_string(x , y, fill= z))+
       geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
       geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
-      scale_y_continuous( ylab ) +
-      scale_x_discrete( xlab)+
-      scale_fill_hue(lgl)
+      scale_y_continuous(ylab) +
+      scale_x_discrete(xlab)+
+      scale_fill_discrete(lgl)
     
   } else if (type == "line" & erb == TRUE){
     
@@ -76,7 +91,7 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   bp + theme_bw()+
     theme(
       axis.title.x = element_text(face="bold", size=10),
-      axis.title.y = element_text(face="bold", size=11, angle=90),
+      axis.title.y = element_text(face="bold", size=10, angle=90),
       panel.grid.major = element_blank(), 
       panel.grid.minor = element_blank(),
       legend.position = lgd, 

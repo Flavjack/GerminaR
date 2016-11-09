@@ -126,7 +126,7 @@ dtsm <- function(meanComp){
   #dtgr <- mc$groups #flavio
   dtgr <- meanComp$groups #omar
   
-  dtgr$trt <- gsub("\\s", "",as.character(dtgr$trt))
+  dtgr$trt <- gsub("\\s", "", as.character(dtgr$trt))
   
   dta <- dtmn %>% 
     dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn))) 
@@ -136,6 +136,7 @@ dtsm <- function(meanComp){
     tidyr::separate("trt", sep = ":", into = eval(fct)) %>% 
     dplyr::rename(mean = means, min = Min, max = Max, sg = M)
   
+
 }
 
 
