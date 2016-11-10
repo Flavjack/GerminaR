@@ -29,7 +29,6 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   sig <- deparse(substitute(sig)) 
   
   data[,x] <- factor(data[,x], levels = gtools::mixedsort(data[,x]))
-  
   data[,z] <- factor(data[,z], levels = gtools::mixedsort(data[,z]))
   
   

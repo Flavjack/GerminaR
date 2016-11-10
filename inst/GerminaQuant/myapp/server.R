@@ -248,11 +248,17 @@ output$var <- renderTable({
   output$barplot = renderPlot({
     
     df <- MNC()
+    
+   
     if (is.null(df)) return(NULL)
     
     else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
+      df[,input$ivar2] <- factor(df[,input$ivar2], levels = gtools::mixedsort(df[,input$ivar2]))
+      
       ggplot(df, aes_string(x = input$ivar1 , y = "mean", fill= input$ivar2))+
         geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
         geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
@@ -277,6 +283,8 @@ output$var <- renderTable({
     else if( !(input$ivar1 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
       
       ggplot(df, aes_string(x = input$ivar1 , y = "mean", fill= input$ivar1))+
         geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
@@ -307,12 +315,17 @@ output$var <- renderTable({
   output$lineplot = renderPlot({
     
     df <- MNC()
-    if (is.null(df)) return(NULL)
     
+     
+    if (is.null(df)) return(NULL)
     
     else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
+      df[,input$ivar2] <- factor(df[,input$ivar2], levels = gtools::mixedsort(df[,input$ivar2]))
+      
       ggplot(df, aes_string(x = input$ivar1, y = "mean", group = input$ivar2, shape= input$ivar2, color= input$ivar2))+
         geom_line()+
         geom_point(size=2)+ 
@@ -339,6 +352,9 @@ output$var <- renderTable({
     else if( !(input$ivar1 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
+      
       ggplot(df, aes_string(x = input$ivar1, y = "mean", group = input$ivar1, shape= input$ivar1, color= input$ivar1))+
         geom_line()+
         geom_point(size=2)+ 
@@ -370,11 +386,16 @@ output$var <- renderTable({
     
     df <- varCal()
     
+    
     if (is.null(df)) return(NULL)
     
     else if( !(input$ivar1 == '') && !(input$ivar2 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
+      df[,input$ivar2] <- factor(df[,input$ivar2], levels = gtools::mixedsort(df[,input$ivar2]))
+      
       ggplot(df, aes_string( x = input$ivar1 , y = input$dvar, fill = input$ivar2))+
         geom_boxplot(outlier.colour = "red", outlier.size = 3)+
         geom_point(position = position_jitterdodge())+
@@ -398,6 +419,10 @@ output$var <- renderTable({
     else if( !(input$ivar1 == '') && !(input$dvar == '')) 
       
     {
+      
+      df[,input$ivar1] <- factor(df[,input$ivar1], levels = gtools::mixedsort(df[,input$ivar1]))
+      
+      
       ggplot(df, aes_string( x = input$ivar1 , y = input$dvar, fill = input$ivar1))+
         geom_boxplot(outlier.colour = "red", outlier.size = 3)+
         geom_point(position = position_jitterdodge())+
@@ -428,6 +453,8 @@ output$var <- renderTable({
   
   output$smvar <- renderUI({
     inFile <- myData()
+    
+    
     if (is.null(inFile)) return(NULL)
     
     evf <- evalFactor(evalName = input$evalName , data = inFile)
@@ -464,7 +491,12 @@ output$var <- renderTable({
  
  
  output$GerInTimep = renderPlot({
+    
     df <- gntp()
+    
+    df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(df[,"evaluation"]))
+    df[,input$smvar] <- factor(df[,input$smvar], levels = gtools::mixedsort(df[,input$smvar]))
+    
     if (is.null(df)) return(NULL)
     else if (input$smvar =='' ){ return(NULL) }
     else{
@@ -494,6 +526,7 @@ output$var <- renderTable({
  
  gntr <- reactive({
    inFile <- myData()
+   
    if (is.null(inFile)) { return(NULL) }
    else if (input$smvar ==''){ return(NULL) }
    else {
@@ -514,6 +547,11 @@ output$var <- renderTable({
 
  output$GerInTimer = renderPlot({
    df <- gntr()
+   
+   df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(df[,"evaluation"]))
+   df[,input$smvar] <- factor(df[,input$smvar], levels = gtools::mixedsort(df[,input$smvar]))
+   
+   
    if (is.null(df)) return(NULL)
    else if (input$smvar =='' ){ return(NULL) }
    else{
@@ -556,7 +594,7 @@ r3 <- r2 * 1000
 
 r4 <- (input$psm * r3 * input$vol*1000)/10^6
 
-round(r4,4)
+round(r4, 5)
 
 }
 
@@ -591,6 +629,8 @@ ac4 <- (4*a*c*(-1))
 delta <- b2 + ac4
 
 srdt <- abs(sqrt(delta))
+
+round(srdt, 5)
 
 }
 
