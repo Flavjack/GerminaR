@@ -12,12 +12,14 @@
 #' @param lgd the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param sig Significance of the result (letters)
 #' @param erb Show the error bar.
+#' @param lmt limits of the y axis
+#' @param brk break of the y axis
 #' @return Line o bar plot
 #' @importFrom dplyr mutate
 #' @importFrom ggplot2 aes aes_string element_blank element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit
 #' @export
 
-fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lgd = "right", sig = "",erb = FALSE){
+fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lgd = "right", sig = "",erb = FALSE, lmt = NULL, brk = ggplot2::waiver()){
   
  ste <- NULL #To avoid this NOTE: fplot: no visible binding for global variable 'ste'
   
@@ -49,7 +51,7 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
       geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
       geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
       geom_text(aes_string(label= sig, y = "ymax"), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
-      scale_y_continuous(ylab) +
+      scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk) +
       scale_x_discrete(xlab)+
       scale_fill_discrete(lgl)
     
@@ -58,7 +60,7 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
     bp <- ggplot(data, aes_string(x , y, fill= z))+
       geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
       geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
-      scale_y_continuous(ylab) +
+      scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk) +
       scale_x_discrete(xlab)+
       scale_fill_discrete(lgl)
     
@@ -71,7 +73,7 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
       geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
       scale_color_discrete(lgl)+
       scale_shape_discrete(lgl)+
-      scale_y_continuous(ylab)+
+      scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk)+
       scale_x_discrete(xlab)
     
   } else if(type == "line" & erb == FALSE){
@@ -82,7 +84,7 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
       geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
       scale_color_discrete(lgl)+
       scale_shape_discrete(lgl)+
-      scale_y_continuous(ylab)+
+      scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk)+
       scale_x_discrete(xlab)
     
   }
