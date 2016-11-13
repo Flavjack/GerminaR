@@ -5,7 +5,8 @@
 \title{Plot line or bar graphic}
 \usage{
 fplot(data, type = "line", x, y, z, ylab = "", xlab = "", lgl = "",
-  lgd = "right", sig = "", erb = FALSE)
+  lgd = "right", sig = "", erb = FALSE, lmt = NULL,
+  brk = ggplot2::waiver())
 }
 \arguments{
 \item{data}{Output dtsm fuction}
@@ -29,6 +30,10 @@ fplot(data, type = "line", x, y, z, ylab = "", xlab = "", lgl = "",
 \item{sig}{Significance of the result (letters)}
 
 \item{erb}{Show the error bar.}
+
+\item{lmt}{limits of the y axis}
+
+\item{brk}{break of the y axis}
 }
 \value{
 Line o bar plot

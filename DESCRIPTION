@@ -17,6 +17,7 @@ Imports:
     magrittr,
     dplyr,
     tidyr,
+    gtools
 Depends:
     R (>= 3.2.3)
 Suggest: gsheet,

@@ -18,30 +18,36 @@ Firt we have to load the `GerminaR 1.0` package. It provides the `GerminaR` data
 ```{r}
 library(GerminaR)
 dim(GerminaR)
-head(GerminaR)
+str(GerminaR)
 ```
 
 GerminaR aims to make available Germination seed indexes and graphic functions to analyze germination seed data:
 
-*`ger_ASG`
-*`ger_cumsum`
-*`ger_CVG`
-*`ger_GRP`
-*`ger_GRS`
-*`ger_GSP`
-
-
+* `ger_ASG`
+* `ger_cumsum`
+* `ger_CVG`
+* `ger_GRP`
+* `ger_GRS`
+* `ger_GSP`
+* `ger_intime`
+* `ger_MGR`
+* `ger_MGT`
+* `ger_SDG`
+* `ger_summary`
+* `ger_SYN`
+* `ger_UNC`
+* `ger_VGT`
 
 
 ## Germinated Seed Number
 
-`ger_ASG` allow to calculate the arcsin of germination percentage for normalization.
+`ger_ASG()` allow to calculate the arcsin of germination percentage for normalization.
 
-#' dt <- GerminaR
-#' grs <- ger_GRS(evalName = "Ev", data = dt)
-#' grs
-
-
+```{r}
+dt <- GerminaR
+grs <- ger_GRS(evalName = "Ev", data = dt)
+head(grs)
+```
 
 
 ## Vignette Info
