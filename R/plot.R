@@ -16,7 +16,8 @@
 #' @param brk break of the y axis
 #' @return Line o bar plot
 #' @importFrom dplyr mutate
-#' @importFrom ggplot2 aes aes_string element_blank element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit
+#' @importFrom ggplot2 aes aes_string element_blank element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete
+#' @importFrom gtools mixedsort
 #' @export
 
 fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lgd = "right", sig = "",erb = FALSE, lmt = NULL, brk = ggplot2::waiver()){
