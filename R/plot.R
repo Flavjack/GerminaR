@@ -47,9 +47,9 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   if (type == "bar" & erb == TRUE){
     
     bp <- ggplot(data, aes_string(x , y, fill= z))+
-      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2, position=position_dodge(.9)) +
-      geom_text(aes_string(label= sig, y = "ymax"), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
+      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.4)+
+      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2, position=position_dodge(.9)) +
+      geom_text(aes_string(label= sig, y = "ymax"), colour="black", size= 2, vjust=-.5, angle = 0, position=position_dodge(.9))+
       scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk) +
       scale_x_discrete(xlab)+
       scale_fill_discrete(lgl)
@@ -57,8 +57,8 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   } else if(type == "bar" & erb == FALSE){
     
     bp <- ggplot(data, aes_string(x , y, fill= z))+
-      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.5)+
-      geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, angle = 0, position=position_dodge(.9))+
+      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.4)+
+      geom_text(aes_string(label= sig, y = y), colour="black", size= 2, vjust=-.5, angle = 0, position=position_dodge(.9))+
       scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk) +
       scale_x_discrete(xlab)+
       scale_fill_discrete(lgl)
@@ -66,10 +66,10 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   } else if (type == "line" & erb == TRUE){
     
     bp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
-      geom_line()+
-      geom_point(size=2)+ 
-      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.3, width=.2)+
-      geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
+      geom_line(size = 0.3)+
+      geom_point(size = 1.2)+ 
+      geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)+
+      geom_text(aes_string(label= sig, y = y), colour="black", size= 2, vjust=-.5, hjust = -.5,angle = 0)+
       scale_color_discrete(lgl)+
       scale_shape_discrete(lgl)+
       scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk)+
@@ -78,9 +78,9 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   } else if(type == "line" & erb == FALSE){
     
     bp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
-      geom_line()+
-      geom_point(size=2)+ 
-      geom_text(aes_string(label= sig, y = y), colour="black", size=3, vjust=-.5, hjust = -.5,angle = 0)+
+      geom_line(size = 0.3)+
+      geom_point(size = 1.2)+ 
+      geom_text(aes_string(label= sig, y = y), colour="black", size= 2, vjust=-.5, hjust = -.5,angle = 0)+
       scale_color_discrete(lgl)+
       scale_shape_discrete(lgl)+
       scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brk)+
@@ -91,15 +91,17 @@ fplot <- function(data, type= "line", x, y, z, ylab = "", xlab = "", lgl = "",lg
   
   bp + theme_bw()+
     theme(
-      axis.title.x = element_text(face="bold", size=10),
-      axis.title.y = element_text(face="bold", size=10, angle=90),
+      axis.title.x = element_text(size= 8), 
+      axis.title.y = element_text(size= 8, angle=90),
       panel.grid.major = element_blank(), 
       panel.grid.minor = element_blank(),
       legend.position = lgd, 
-      legend.title = element_text(face="bold", size=10), 
-      legend.text = element_text(size=10),
-      legend.key.size = unit(1.2, "lines"),
-      legend.key = element_blank()
+      legend.title = element_text(size= 8), 
+      legend.text = element_text(size= 8),
+      legend.key.size = unit(0.8, "lines"),
+      legend.key = element_blank(),
+      legend.background = element_rect(fill= "transparent"),
+      text = element_text(size = 8)
     )
   
   
