@@ -1,6 +1,6 @@
 Package: GerminaR
 Type: Package
-Title: Package for analysis and graphics of germination variables
+Title: Germination indexes for seed germination variables for echophisiological studies 
 Version: 1.0
 Date: 201-03-27
 Authors@R: c( 
@@ -8,7 +8,9 @@ Authors@R: c(
           person("Omar", "Benites-Alfaro", , "obacc07@gmail.com", "aut"),
           person("Marcelo F.", "Pompelli", , "mpompelli@gmail.com", "ths")
           )
-Description: GerminaR is a package for evaluate, analyse and graph the germination variables for ecophysiological studies.
+Description: GerminaR aims to make available germination seed indexes and graphic functions to analyze germination seed data
+             Different types of seed indexes, rates and visualization techniques are used to provide a more robust approach for gemrination
+             data analysis.
 Imports:
     shiny,
     ggplot2,

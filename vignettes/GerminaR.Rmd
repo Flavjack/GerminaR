@@ -15,6 +15,11 @@ vignette: >
 
 Firt we have to load the `GerminaR 1.0` package. It provides the `GerminaR` dataset that we will use throghout all the examples. 
 
+
+## Data: GerminaR
+
+The `GerminaR` dataset contains information from a experiremnt with 6 genotypes Jatropha curcas under 3 levels of salinity stress evaluated during 25 days.
+
 ```{r}
 library(GerminaR)
 dim(GerminaR)
@@ -24,70 +29,149 @@ str(GerminaR)
 GerminaR aims to make available Germination seed indexes and graphic functions to analyze germination seed data:
 
 * `ger_ASG`
-* `ger_cumsum`
 * `ger_CVG`
 * `ger_GRP`
 * `ger_GRS`
 * `ger_GSP`
-* `ger_intime`
 * `ger_MGR`
 * `ger_MGT`
 * `ger_SDG`
-* `ger_summary`
 * `ger_SYN`
 * `ger_UNC`
 * `ger_VGT`
-
+* `ger_cumsum`
+* `ger_summary`
+* `ger_intime`
 
 ## Germinated Seed Number
 
-`ger_ASG()` allow to calculate the arcsin of germination percentage for normalization.
+`ger_ASG()`  Calculates the arcsin of germination percentage for normalization.
 
 ```{r}
 dt <- GerminaR
 grs <- ger_GRS(evalName = "Ev", data = dt)
-head(grs)
+grs
 ```
 
 
-## Vignette Info
+## Coefficient of Variance of the Mean Germination Time
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+`ger_CVG()`  Coefficient of Variance of the Mean Germination Time
 
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r}
+dt <- GerminaR
+cvg <- ger_CVG(evalName = "Ev", data = dt)
+cvg
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## Germination Seed Percentage
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+`ger_GRP()` Calculate the germination percentage related at total seed sown for experimental unit.
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+dt <- GerminaR
+grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+grp
 ```
 
-Also a quote using `>`:
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+## Germinated Seed Number
+
+`ger_GRS()` allows you to calculate the number of seed germinated.
+
+
+```{r}
+dt <- GerminaR
+grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+grp
+```
+
+
+## Germination Speed
+
+`ger_GSP()` performs the calculation of germination speed according at the time lapse of the evaluations.
+
+```{r}
+dt <- GerminaR
+gsp <- ger_GSP(evalName = "Ev", data = dt)
+gsp
+```
+
+
+## Mean Germination Rate
+
+`ger_MGR()` measures the mean of germination rate
+
+```{r}
+dt <- GerminaR
+mgr <- ger_MGR(evalName = "Ev", data = dt)
+mgr
+```
+
+
+## Mean Germination Time
+
+`ger_MGT()` the mean germination time according at the time lapse of the evaluations
+
+```{r}
+dt <- GerminaR
+mgt <- ger_MGT(evalName = "Ev", data = dt)
+mgt
+```
+
+## Standard deviation of the Mean Germination Time
+
+`ger_SDG()` estimates the standard deviation of the mean germination time.
+
+```{r}
+dt <- GerminaR
+sdg <- ger_SDG(evalName = "Ev", data = dt)
+sdg
+```
+
+
+## Germination Synchronization Index
+
+`ger_SYN()` calculates germination synchronization of the germination process.
+
+```{r}
+dt <- GerminaR
+syn <- ger_SYN(evalName = "Ev", data = dt)
+syn
+```
+
+## Germination Uncertainty
+
+`ger_UNC()` measures the germination uncertainty into the germination process.
+
+
+```{r}
+dt <- GerminaR
+unc <- ger_UNC(evalName = "Ev", data = dt)
+unc
+```
+
+
+## Variance of the Mean Germination Time
+
+`ger_VGT()` compute the cvariance of the mean during germination time.
+
+```{r}
+dt <- GerminaR
+vgt <- ger_VGT(evalName = "Ev", data = dt)
+vgt
+```
+
+## Summary of Germination Variables
+
+`ger_summary()` summarizes germination variables for each experimental unit.  
+
+```{r}
+dt <- GerminaR
+smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+knitr::kable(head(smr, 10),align = "c")
+```
+
+
+
+
