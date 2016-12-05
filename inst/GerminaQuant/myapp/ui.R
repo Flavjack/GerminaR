@@ -377,8 +377,8 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
 
 tabPanel("user manual", icon = icon("book", lib = "glyphicon"),
          
-         
-         htmlOutput("usmn")  
+        
+         htmlOutput("gb")  
          
 ),
 
@@ -386,7 +386,7 @@ tabPanel("user manual", icon = icon("book", lib = "glyphicon"),
 tabPanel("data sample", icon = icon("duplicate", lib = "glyphicon"),
          
          
-         htmlOutput("dtsm")  
+         htmlOutput("fb")  
          
 ),
 
@@ -407,7 +407,7 @@ tabPanel("about", icon = icon("info-sign", lib = "glyphicon"),
          p(strong("project name:"), "GerminaR - An R Package for germination analysis process with interactive web app 'GerminaQuant'"),
          p(strong("stable release:"), a("GerminaR", href = "cran.r-project.org/package = germinar", target="_blank" )),
          p(strong("interactive application:"), a("GerminaQuant", href = "https://flavjack.shinyapps.io/germinaquant/", target="_blank" )),
-         p(strong("user manual:"), a("GerminaQuant", href = "https://bookdown.org/flavjack/germinaquant/", target="_blank" )),
+         p(strong("user manual:"), a("GerminaQuant", href = "https://flavjack.github.io/GermBook/", target="_blank" )),
          p(strong("webpage:"), a("LEV", href = "https://www.ufpe.br/lev/index.php", target="_blank" )),
          p(strong("issue tracker:"), a("github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
          p(strong("operating systems:"), "independient of the platform"),

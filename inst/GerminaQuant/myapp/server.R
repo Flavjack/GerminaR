@@ -634,28 +634,36 @@ round(srdt, 5)
 
 }
 
-}) 
+})
+ 
  
 
- 
-# GermBook ----------------------------------------------------------------
- 
- 
- output$usmn <- renderUI({
+# Germbook ----------------------------------------------------------------
 
-   gb <- tags$iframe(src = "https://bookdown.org/flavjack/germinaquant/", style="height:600px; width:100%; scrolling=yes")
-
-   print(gb)
+output$gb<-renderUI({
+  
+  getPage<-function() {
+    return(includeHTML("gb.html"))
+  }
+  
+  
+  getPage()
 
  })
  
  
- output$dtsm <- renderUI({
+ output$fb<-renderUI({
+   
+   getPage<-function() {
+     return(includeHTML("fb.html"))
+   }
+   
+   
+   getPage()
+   
+ })
+ 
+ 
 
-   gb <- tags$iframe(src = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing", style="height:600px; width:100%; scrolling=yes")
-
-   print(gb)
-
- }) 
  
 })

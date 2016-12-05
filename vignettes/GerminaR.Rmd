@@ -1,6 +1,6 @@
 ---
 title: "GerminaR 1.0"
-author: "Flavio Lozano, Omar Benites, Bruno Pompelli"
+author: "Flavio Lozano-Isla, Omar Benites, Marcelo Francisco Pompelli"
 date: "`r Sys.Date()`"
 output: 
       rmarkdown::html_vignette:
@@ -13,12 +13,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Firt we have to load the `GerminaR 1.0` package. It provides the `GerminaR` dataset that we will use throghout all the examples. 
+
+The package `GerminaR` was develop to calculate different germination indexes and graphic functions to analyze punctual and accumulative germination. For calculate the indices in necessary acumulative germination data, you can read the description of each index and the data collect and analysis in the uses manual ([GerminaQuant](https://flavjack.github.io/GermBook/))
+
+
+First we have to load the `GerminaR 1.0` package. It provides the `GerminaR` data set that we will use throughout all the examples. 
 
 
 ## Data: GerminaR
 
-The `GerminaR` dataset contains information from a experiremnt with 6 genotypes Jatropha curcas under 3 levels of salinity stress evaluated during 25 days.
+The `GerminaR` data set contains information from a experiment with 6 genotypes *Jatropha curcas* under 3 levels of salinity stress evaluated during 25 days.
 
 ```{r}
 library(GerminaR)
@@ -26,26 +30,53 @@ dim(GerminaR)
 str(GerminaR)
 ```
 
-GerminaR aims to make available Germination seed indexes and graphic functions to analyze germination seed data:
 
-* `ger_ASG`
-* `ger_CVG`
-* `ger_GRP`
+## List of the principal functions
+
+* `runGerminaQuant`
+* `ger_summary`
 * `ger_GRS`
-* `ger_GSP`
-* `ger_MGR`
+* `ger_GRP`
+* `ger_ASG`
 * `ger_MGT`
-* `ger_SDG`
+* `ger_MGR`
+* `ger_GSP`
 * `ger_SYN`
 * `ger_UNC`
+* `ger_SDG`
+* `ger_CVG`
 * `ger_VGT`
-* `ger_cumsum`
-* `ger_summary`
 * `ger_intime`
+* `fplot` 
+
+## Interactive application
+
+The function`runGerminaQuant()` activate the interactive application with friendly interface for perform the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
+
+```{r, eval=FALSE}
+runGerminaQuant()
+```
+
+
+## Summary of Germination Variables
+
+The function `ger_summary()` according to the accumulative germination data will calculate eleven germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis
+
+
+```{r}
+dt <- GerminaR
+smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+knitr::kable(head(smr, 10),align = "c")
+```
+
+
+You can analyze each variable independently
+
 
 ## Germinated Seed Number
 
-`ger_ASG()`  Calculates the arcsin of germination percentage for normalization.
+`ger_GRS()` allows you to calculate the number of seed germinated.
+
 
 ```{r}
 dt <- GerminaR
@@ -53,16 +84,6 @@ grs <- ger_GRS(evalName = "Ev", data = dt)
 grs
 ```
 
-
-## Coefficient of Variance of the Mean Germination Time
-
-`ger_CVG()`  Coefficient of Variance of the Mean Germination Time
-
-```{r}
-dt <- GerminaR
-cvg <- ger_CVG(evalName = "Ev", data = dt)
-cvg
-```
 
 ## Germination Seed Percentage
 
@@ -75,37 +96,14 @@ grp
 ```
 
 
-## Germinated Seed Number
+## ArcSino of the germination
 
-`ger_GRS()` allows you to calculate the number of seed germinated.
-
-
-```{r}
-dt <- GerminaR
-grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
-grp
-```
-
-
-## Germination Speed
-
-`ger_GSP()` performs the calculation of germination speed according at the time lapse of the evaluations.
+`ger_ASG()`  Calculates the arc sin of germination percentage for normalization.
 
 ```{r}
 dt <- GerminaR
-gsp <- ger_GSP(evalName = "Ev", data = dt)
-gsp
-```
-
-
-## Mean Germination Rate
-
-`ger_MGR()` measures the mean of germination rate
-
-```{r}
-dt <- GerminaR
-mgr <- ger_MGR(evalName = "Ev", data = dt)
-mgr
+gas <- ger_ASG(SeedN = "NSeeds", evalName = "Ev", data = dt)
+gas
 ```
 
 
@@ -119,14 +117,26 @@ mgt <- ger_MGT(evalName = "Ev", data = dt)
 mgt
 ```
 
-## Standard deviation of the Mean Germination Time
 
-`ger_SDG()` estimates the standard deviation of the mean germination time.
+## Mean Germination Rate
+
+`ger_MGR()` Measures the mean of germination rate
 
 ```{r}
 dt <- GerminaR
-sdg <- ger_SDG(evalName = "Ev", data = dt)
-sdg
+mgr <- ger_MGR(evalName = "Ev", data = dt)
+mgr
+```
+
+
+## Germination Speed
+
+`ger_GSP()` performs the calculation of germination speed according at the time lapse of the evaluations.
+
+```{r}
+dt <- GerminaR
+gsp <- ger_GSP(evalName = "Ev", data = dt)
+gsp
 ```
 
 
@@ -152,9 +162,31 @@ unc
 ```
 
 
+## Standard deviation of the Mean Germination Time
+
+`ger_SDG()` estimates the standard deviation of the mean germination time.
+
+```{r}
+dt <- GerminaR
+sdg <- ger_SDG(evalName = "Ev", data = dt)
+sdg
+```
+
+
+## Coefficient of Variance of the Mean Germination Time
+
+`ger_CVG()`  Coefficient of Variance of the Mean Germination Time
+
+```{r}
+dt <- GerminaR
+cvg <- ger_CVG(evalName = "Ev", data = dt)
+cvg
+```
+
+
 ## Variance of the Mean Germination Time
 
-`ger_VGT()` compute the cvariance of the mean during germination time.
+`ger_VGT()` compute the variance of the mean during germination time.
 
 ```{r}
 dt <- GerminaR
@@ -162,15 +194,40 @@ vgt <- ger_VGT(evalName = "Ev", data = dt)
 vgt
 ```
 
-## Summary of Germination Variables
+## Accumulative germination
 
-`ger_summary()` summarizes germination variables for each experimental unit.  
+`ger_intime()` Allow to calculate the accumulative germination
 
 ```{r}
 dt <- GerminaR
-smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
-knitr::kable(head(smr, 10),align = "c")
+grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR)
 ```
+
+
+## Plot fuction
+
+
+`fplot()` is generic plot function optimized for publication graphs
+
+```{r}
+dt <- GerminaR
+grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR)
+
+fplot(data = grt, type = "line", 
+      x = evaluation, 
+      y = mean,
+      z = Salt, 
+      ylab = "Germination ('%')", 
+      xlab = "days", lgl = "NaCl (mM)", 
+      lgd = "top", 
+      lmt = c(0,100), brk = 0:100*10)
+
+```
+
+
+
+
+
 
 
 
