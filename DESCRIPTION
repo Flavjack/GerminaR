@@ -8,8 +8,8 @@ Authors@R: c(
           person("Omar", "Benites-Alfaro", , "obacc07@gmail.com", "aut"),
           person("Marcelo F.", "Pompelli", , "mpompelli@gmail.com", "ths")
           )
-Description: GerminaR aims to make available germination seed indexes and graphic functions to analyze germination seed data
-             Different types of seed indexes, rates and visualization techniques are used to provide a more robust approach for gemrination
+Description: GerminaR aims to make available germination seed indexes and graphics functions to analyze germination. seed data
+             Different types of seed indexes, rates and visualization techniques are used to provide a robust approach for germination
              data analysis.
 Imports:
     shiny,
