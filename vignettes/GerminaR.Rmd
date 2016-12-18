@@ -14,15 +14,15 @@ vignette: >
 ---
 
 
-The package `GerminaR` was develop to calculate different germination indexes and graphic functions to analyze punctual and accumulative germination. For calculate the indices in necessary acumulative germination data, you can read the description of each index and the data collect and analysis in the uses manual ([GerminaQuant](https://flavjack.github.io/GermBook/))
+The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/GermBook/))
 
 
-First we have to load the `GerminaR 1.0` package. It provides the `GerminaR` data set that we will use throughout all the examples. 
+First we load the `GerminaR 1.0` package. It provides the `GerminaR` dataset set that we will work throughout all the examples. 
 
 
 ## Data: GerminaR
 
-The `GerminaR` data set contains information from a experiment with 6 genotypes *Jatropha curcas* under 3 levels of salinity stress evaluated during 25 days.
+The `GerminaR` dataset contains information from an experiment with 6 genotypes *Jatropha curcas* under 3 levels of salinity stress evaluated during 25 days.
 
 ```{r}
 library(GerminaR)
@@ -49,9 +49,9 @@ str(GerminaR)
 * `ger_intime`
 * `fplot` 
 
-## Interactive application
+## Interactive shiny application
 
-The function`runGerminaQuant()` activate the interactive application with friendly interface for perform the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
+The function`runGerminaQuant()` activates an interactive application with friendly interface for performing the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
 
 ```{r, eval=FALSE}
 runGerminaQuant()
@@ -60,7 +60,7 @@ runGerminaQuant()
 
 ## Summary of Germination Variables
 
-The function `ger_summary()` according to the accumulative germination data will calculate eleven germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis
+The function `ger_summary()`, according to the accumulative germination data, calculates eleven germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis
 
 
 ```{r}
@@ -70,7 +70,7 @@ knitr::kable(head(smr, 10),align = "c")
 ```
 
 
-You can analyze each variable independently
+On the other hand, you can analyze each variable independently using the following germination indexes.
 
 
 ## Germinated Seed Number
@@ -87,7 +87,7 @@ grs
 
 ## Germination Seed Percentage
 
-`ger_GRP()` Calculate the germination percentage related at total seed sown for experimental unit.
+`ger_GRP()` calculates the germination percentage related at total seed sown for experimental unit.
 
 ```{r}
 dt <- GerminaR
@@ -98,7 +98,7 @@ grp
 
 ## ArcSino of the germination
 
-`ger_ASG()`  Calculates the arc sin of germination percentage for normalization.
+`ger_ASG()`  calculates the arc sin of germination percentage for normalization.
 
 ```{r}
 dt <- GerminaR
@@ -109,7 +109,7 @@ gas
 
 ## Mean Germination Time
 
-`ger_MGT()` the mean germination time according at the time lapse of the evaluations
+`ger_MGT()` estimates the mean germination time according at the time lapse of the evaluations
 
 ```{r}
 dt <- GerminaR
@@ -120,7 +120,7 @@ mgt
 
 ## Mean Germination Rate
 
-`ger_MGR()` Measures the mean of germination rate
+`ger_MGR()` estimates the mean of germination rate
 
 ```{r}
 dt <- GerminaR
@@ -209,7 +209,7 @@ grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "
 
 `fplot()` is generic plot function optimized for publication graphs
 
-```{r}
+```{r,  warning=FALSE }
 dt <- GerminaR
 grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR)
 
@@ -223,11 +223,6 @@ fplot(data = grt, type = "line",
       lmt = c(0,100), brk = 0:100*10)
 
 ```
-
-
-
-
-
 
 
 
