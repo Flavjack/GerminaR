@@ -15,7 +15,7 @@ ger_SDG(evalName, data)
 It returns an vector with the values of Standard desviation of germination
 }
 \description{
-This function calculate the standard desviation of the mean germination time
+This function calculates the standard desviation of the mean germination time
 }
 \examples{
 

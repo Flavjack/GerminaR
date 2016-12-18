@@ -15,7 +15,7 @@ ger_GRS(evalName, data)
 Number of seed germianated
 }
 \description{
-This function calculate the number of seed germinated.
+This function calculates the number of seed germinated.
 }
 \examples{
 

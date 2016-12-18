@@ -15,7 +15,7 @@ ger_CVG(evalName, data)
 It returns an vector with the values of Coefficient of Variance of germination
 }
 \description{
-This function calculate the coefficient of variation of the mean germination time
+This function calculates the coefficient of variation of the mean germination time
 }
 \examples{
 

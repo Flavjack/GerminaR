@@ -15,14 +15,14 @@ ger_SYN(evalName, data)
 It returns an vector with the values of Germination Synchrony
 }
 \description{
-This function calculate the germination synchronization of the germination process.
+This function calculates the germination synchronization of the germination process.
 }
 \details{
-The Synchory Index (Z) has been proposed to assess the degree of overlap between flowering individuals in a population. 
+The Synchory Index \code{Z} has been proposed to assess the degree of overlap between flowering individuals in a population. 
 By adopting the idea expressed by PRIMACK, R.B. (1980) the synchrony of one seed with other included in the same replication. 
-Z = 1 when germination of all the seeds occurs at the same time and Z = 0 when at least two seeds can germinate one each time. 
-Z produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
-Thus, the value of Z assessments is the grade of overlap between seed germination.
+\code{Z} = 1 when germination of all the seeds occurs at the same time and \code{Z} = 0 when at least two seeds can germinate one each time. 
+\code{Z} produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
+Thus, the value of \code{Z} assessments is the grade of overlap between seed germination.
 }
 \examples{
 

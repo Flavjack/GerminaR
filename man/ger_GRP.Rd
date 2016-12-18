@@ -17,7 +17,7 @@ ger_GRP(SeedN, evalName, data)
 It returns an vector with the percentage of seed germinated.
 }
 \description{
-This function calculate the germination percentage related at total seed sown for experimental unit.
+This function calculates the germination percentage related at total seed sown for experimental unit.
 }
 \details{
 According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of 

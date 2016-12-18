@@ -15,7 +15,7 @@ ger_VGT(evalName, data)
 It returns an vector with the values of Variance of Germination
 }
 \description{
-This function calculate the variance of the mean germination time.
+This function calculates the variance of the mean germination time.
 }
 \examples{
 

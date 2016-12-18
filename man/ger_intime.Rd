@@ -21,7 +21,7 @@ ger_intime(Factor, SeedN, evalName, method = "percentage", data)
 Data frame with the germination by period
 }
 \description{
-This function made a data table with the cumulative sum of values of germination by days.
+This function makes a data table with the cumulative sum of values of germination by days.
 }
 \details{
 Need a summary by factor before use it with function SummaryBy.

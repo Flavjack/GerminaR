@@ -19,7 +19,7 @@ ger_cumsum(SeedN, evalName, method = "percentage", data)
 Data frame with the cumulative sum
 }
 \description{
-This function made a data table with the cumulative sum of values of germination.
+This function makes a data table with the cumulative sum of values of germination.
 }
 \examples{
 

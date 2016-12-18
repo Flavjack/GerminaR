@@ -15,7 +15,7 @@ ger_MGT(evalName, data)
 It returns an vector with the values of Mean Germination Time.
 }
 \description{
-This function calculate the mean germination time of germination according at the time lapse of the evaluations.
+This function calculates the mean germination time of germination according at the time lapse of the evaluations.
 }
 \details{
 It was proposed by Haberlandt in 1875. It is calculated as the weighted average germination time. 

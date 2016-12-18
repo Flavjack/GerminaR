@@ -12,8 +12,12 @@ test_that("check evalDays function", {
   expect_that( evalDays(evalName = NA, data = GerminaR),  throws_error())  
 })
 
+test_that("test data structure", {
 
 check_data.frame <- function(datos) {
   expect_is(datos, "data.frame")
-}
+  }
+})
+
+
 

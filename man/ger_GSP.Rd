@@ -15,7 +15,7 @@ ger_GSP(evalName, data)
 It returns an vector with the Germination Speed
 }
 \description{
-This function calculate the Germination Speed according at the time lapse of the evaluations.
+This function calculates the Germination Speed according at the time lapse of the evaluations.
 }
 \examples{
 

@@ -17,7 +17,7 @@ ger_ASG(SeedN, evalName, data)
 It returns an vector with the ArcSin of Germination values
 }
 \description{
-This function calculate the arcsin of germination percentage for normalization.
+This function calculates the arcsin of germination percentage for normalization.
 }
 \examples{
 

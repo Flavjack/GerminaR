@@ -2,7 +2,7 @@
 #' Germinated Seed Number
 #' 
 #' @export
-#' @description This function calculate the number of seed germinated. 
+#' @description This function calculates the number of seed germinated. 
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return Number of seed germianated
@@ -25,7 +25,7 @@ ger_GRS <- function(evalName, data){
 #' Germination Seed Percentage
 #' 
 #' @description 
-#' This function calculate the germination percentage related at total seed sown for experimental unit.
+#' This function calculates the germination percentage related at total seed sown for experimental unit.
 #' @details 
 #' According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of 
 #' seeds in which the seed germination process comes to an end, in experimental conditions by 
@@ -58,7 +58,7 @@ ger_GRP <- function(SeedN, evalName, data){
 
 #' ArcSin of Germination Percentage
 #' 
-#' @description This function calculate the arcsin of germination percentage for normalization.
+#' @description This function calculates the arcsin of germination percentage for normalization.
 #' @param SeedN Name of the colum with the number of seeds sown.
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
@@ -85,7 +85,7 @@ ger_ASG <- function(SeedN, evalName, data){
 
 #' Mean Germination Time
 #' 
-#' @description This function calculate the mean germination time of germination according at the time lapse of the evaluations.
+#' @description This function calculates the mean germination time of germination according at the time lapse of the evaluations.
 #' @details 
 #' It was proposed by Haberlandt in 1875. It is calculated as the weighted average germination time. 
 #' The number of germinated seeds at the intervals established for the collection of data is used as weight. 
@@ -119,7 +119,7 @@ ger_MGT <- function(evalName, data){
 
 #' Mean Germination Rate
 #' 
-#' @description This function calculate the mean germination rate of the germination.
+#' @description This function calculates the mean germination rate of the germination.
 #' @details 
 #' The average speed of germination is defined as the reciprocal of the average time germination (RANAL; SANTANA, 2006).
 #' @references 
@@ -147,7 +147,7 @@ ger_MGR <- function(evalName, data){
 
 #' Germination Speed
 #' 
-#' @description This function calculate the Germination Speed according at the time lapse of the evaluations.
+#' @description This function calculates the Germination Speed according at the time lapse of the evaluations.
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return  It returns an vector with the Germination Speed
@@ -176,12 +176,12 @@ ger_GSP <- function(evalName, data){
 
 #' Germination Uncertainty
 #' 
-#' @description This function calculate the germination uncertainty in the germination process.
+#' @description This function calculates the germination uncertainty in the germination process.
 #' @details 
-#' The uncertainty index (u) is an adaptation of Shannon index measures the degree of uncertainty in predicting the informational 
+#' The uncertainty index \code{u} is an adaptation of Shannon index measures the degree of uncertainty in predicting the informational 
 #' entropy or uncertainty associated with the distribution of the relative frequency of germination (GOUVEA LABOURIAU 1983; LABOURIAU; VALADARES, 1983). 
-#' Low values of u indicate frequencies with short peaks, i.e. the more concentrated the germination in time. 
-#' Just a germinated seed changes the value of u. This means that u measures the degree of germination scattering.
+#' Low values of \code{u} indicate frequencies with short peaks, i.e. the more concentrated the germination in time. 
+#' Just a germinated seed changes the value of \code{u}. This means that \code{u} measures the degree of germination scattering.
 #' @references 
 #' GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.].
 #' LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
@@ -209,13 +209,13 @@ ger_UNC <- function(evalName, data){
 
 #' Germination Synchronization Index
 #' 
-#' @description This function calculate the germination synchronization of the germination process.
+#' @description This function calculates the germination synchronization of the germination process.
 #' @details
-#' The Synchory Index (Z) has been proposed to assess the degree of overlap between flowering individuals in a population. 
+#' The Synchory Index \code{Z} has been proposed to assess the degree of overlap between flowering individuals in a population. 
 #' By adopting the idea expressed by PRIMACK, R.B. (1980) the synchrony of one seed with other included in the same replication. 
-#' Z = 1 when germination of all the seeds occurs at the same time and Z = 0 when at least two seeds can germinate one each time. 
-#' Z produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
-#' Thus, the value of Z assessments is the grade of overlap between seed germination.
+#' \code{Z} = 1 when germination of all the seeds occurs at the same time and \code{Z} = 0 when at least two seeds can germinate one each time. 
+#' \code{Z} produces a number if and only if there are two seeds finishing the seed germination process at the same time. 
+#' Thus, the value of \code{Z} assessments is the grade of overlap between seed germination.
 #' @references 
 #' RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
 #' Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.
@@ -244,7 +244,7 @@ ger_SYN <- function(evalName, data){
 
 #' Variance of the Mean Germination Time
 #' 
-#' @description This function calculate the variance of the mean germination time.
+#' @description This function calculates the variance of the mean germination time.
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Variance of Germination
@@ -273,7 +273,7 @@ ger_VGT <- function(evalName, data){
 
 #' Standard deviation of the Mean Germination Time
 #' 
-#' @description This function calculate the standard desviation of the mean germination time
+#' @description This function calculates the standard desviation of the mean germination time
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Standard desviation of germination
@@ -296,7 +296,7 @@ ger_SDG <- function(evalName, data){
 
 #' Coefficient of Variance of the Mean Germination Time
 #' 
-#' @description This function calculate the coefficient of variation of the mean germination time
+#' @description This function calculates the coefficient of variation of the mean germination time
 #' @param evalName Prefix of the names of the periods of evaluation.
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the values of Coefficient of Variance of germination

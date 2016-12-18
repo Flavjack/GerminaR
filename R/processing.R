@@ -1,6 +1,6 @@
 #' Summary of Germination Variables
 #' 
-#' @description This function made a data table with the result of germination variables for each experimental unit.
+#' @description This function makes a data table with the result of germination variables for each experimental unit.
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
 #' @param data The name of the data frame containing the data.
@@ -38,7 +38,7 @@ ger_summary <- function(SeedN, evalName, data){
 
 #' Cumulative sum of germination matrix
 #' 
-#' @description This function made a data table with the cumulative sum of values of germination.
+#' @description This function makes a data table with the cumulative sum of values of germination.
 #' @param SeedN Name of the colonn with the seed numbers
 #' @param evalName Prefix of the evalaution variable
 #' @param method Type of cummulative germination. "percentage" or "relative" 
@@ -81,7 +81,7 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 
 #' Cumulative sum of germination by period of time for line graphic
 #' 
-#' @description This function made a data table with the cumulative sum of values of germination by days.
+#' @description This function makes a data table with the cumulative sum of values of germination by days.
 #' @details Need a summary by factor before use it with function SummaryBy.
 #' @param Factor Factor wich will be graph in time
 #' @param SeedN Name of the colonn with the seed numbers

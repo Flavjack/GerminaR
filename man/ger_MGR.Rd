@@ -15,7 +15,7 @@ ger_MGR(evalName, data)
 It returns an vector with the values of Mean Germination Rate
 }
 \description{
-This function calculate the mean germination rate of the germination.
+This function calculates the mean germination rate of the germination.
 }
 \details{
 The average speed of germination is defined as the reciprocal of the average time germination (RANAL; SANTANA, 2006).
