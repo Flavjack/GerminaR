@@ -1,6 +1,6 @@
 Package: GerminaR
 Type: Package
-Title: Germination indexes for seed germination variables for echophisiological studies 
+Title: Germination Indexes for Seed Germination Variables for Echophisiological Studies
 Version: 1.0
 Date: 201-03-27
 Authors@R: c( 
@@ -8,9 +8,7 @@ Authors@R: c(
           person("Omar", "Benites-Alfaro", , "obacc07@gmail.com", "aut"),
           person("Marcelo F.", "Pompelli", , "mpompelli@gmail.com", "ths")
           )
-Description: GerminaR aims to make available germination seed indexes and graphics functions to analyze germination. seed data
-             Different types of seed indexes, rates and visualization techniques are used to provide a robust approach for germination
-             data analysis.
+Description: Different types of seed indexes, rates and visualization techniques are used to provide a robust approach for germination data analysis. The package aims to make available germination seed indexes and graphical functions to analyze germination seed data.
 Imports:
     shiny,
     ggplot2,
@@ -22,10 +20,11 @@ Imports:
     gtools
 Depends:
     R (>= 3.2.3)
-Suggest: gsheet,
-         knitr,
-         rmarkdown,
-         testthat
+Suggests: 
+    gsheet,
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr         
 License: MIT + file LICENSE
 Copyright: LEV-UFRPE (2016)
