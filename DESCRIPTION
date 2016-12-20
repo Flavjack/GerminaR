@@ -21,8 +21,8 @@ Imports:
 Depends:
     R (>= 3.2.3)
 Suggests: 
-    gsheet,
     knitr,
+    gsheet,
     rmarkdown,
     testthat
 VignetteBuilder: knitr         
