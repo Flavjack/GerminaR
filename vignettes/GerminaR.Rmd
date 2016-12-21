@@ -204,25 +204,25 @@ grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "
 ```
 
 
-## Plot fuction
+<!-- ## Plot function -->
 
 
-`fplot()` is generic plot function optimized for publication graphs
+<!-- `fplot()` is generic plot function optimized for publication graphs -->
 
-```{r,  warning=FALSE }
-dt <- GerminaR
-grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR)
+<!-- ```{r,  warning=FALSE } -->
+<!-- dt <- GerminaR -->
+<!-- grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR) -->
 
-fplot(data = grt, type = "line", 
-      x = evaluation, 
-      y = mean,
-      z = Salt, 
-      ylab = "Germination ('%')", 
-      xlab = "days", lgl = "NaCl (mM)", 
-      lgd = "top", 
-      lmt = c(0,100), brk = 0:100*10)
+<!-- fplot(data = grt, type = "line",  -->
+<!--       x = evaluation,  -->
+<!--       y = mean, -->
+<!--       z = Salt,  -->
+<!--       ylab = "Germination ('%')",  -->
+<!--       xlab = "days", lgl = "NaCl (mM)",  -->
+<!--       lgd = "top",  -->
+<!--       lmt = c(0,100), brk = 0:100*10) -->
 
-```
+<!-- ``` -->
 
 
 
