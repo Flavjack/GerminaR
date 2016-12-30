@@ -1,0 +1,21 @@
+# Germination field book
+
+For correct analysis and fast data processing is important to take into account that the data organization and the correct data collection of the germination process is essential. In this section, we going to explain how can you collect and organize your data.
+
+For data example and layout, you can access and download GerminaQuant [spreadsheet](https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537).
+
+
+## Data Organization
+
+
+The field book should have three essential parts. The treatment column (red), according to the experimental design (1); the seed number column (green) (2), and the observation moment column (blue) (3). In the green column you will indicate the number of seeds sown in each experimental unit and in the blue columns the germination values (Figure \@ref(fig:dtorg)). You can design your own field book with different names in the column.
+
+
+```{r dtorg, out.width='80%', fig.cap='Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) are for accounting the germination.',fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
+knitr::include_graphics('img/dtorg.png')
+```
+
+## Data Collection
+
+The evaluation of the germination process is obtained of the count of the germination in each experimental unit and It can be evaluated in time lapse of hours, days or months in continuous interval of the same length always beginning with the time zero (ei. Ti00), until the end of the germination process or according to the researcher criteria
+

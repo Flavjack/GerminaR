@@ -33,7 +33,7 @@ str(GerminaR)
 
 ## List of the principal functions
 
-* `runGerminaQuant`
+* `GerminaQuant`
 * `ger_summary`
 * `ger_GRS`
 * `ger_GRP`
@@ -51,10 +51,10 @@ str(GerminaR)
 
 ## Interactive shiny application
 
-The function`runGerminaQuant()` activates an interactive application with friendly interface for performing the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
+The function`GerminaQuant()` activates an interactive application with friendly interface for performing the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
 
 ```{r, eval=FALSE}
-runGerminaQuant()
+GerminaQuant()
 ```
 
 

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GerminaQuant for R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="A guide for analisis of germination variables and usage of GerminaQuant.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="GerminaQuant for R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="img/germinaquant.png" />
+  <meta property="og:description" content="A guide for analisis of germination variables and usage of GerminaQuant." />
+  <meta name="github-repo" content="Flavjack/GermBook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GerminaQuant for R" />
+  
+  <meta name="twitter:description" content="A guide for analisis of germination variables and usage of GerminaQuant." />
+  <meta name="twitter:image" content="img/germinaquant.png" />
+
+<meta name="author" content="Flavio Lozano Isla">
+<meta name="author" content="Omar Benites Alfaro">
+<meta name="author" content="Marcelo Francisco Pompelli">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="prev" href="evaluation-of-the-seed-germination-process.html">
+<link rel="next" href="germination-field-book.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"> GerminaQuant:User Manual </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="evaluation-of-the-seed-germination-process.html"><a href="evaluation-of-the-seed-germination-process.html"><i class="fa fa-check"></i><b>1</b> Evaluation of the seed germination process</a></li>
+<li class="chapter" data-level="2" data-path="germination-variables.html"><a href="germination-variables.html"><i class="fa fa-check"></i><b>2</b> Germination variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="germination-variables.html"><a href="germination-variables.html#germinability-g"><i class="fa fa-check"></i><b>2.1</b> Germinability (G)</a></li>
+<li class="chapter" data-level="2.2" data-path="germination-variables.html"><a href="germination-variables.html#mean-germination-time-t-and-standard-deviation-st"><i class="fa fa-check"></i><b>2.2</b> Mean Germination Time (t) and Standard Deviation (S<sub>t</sub>)</a></li>
+<li class="chapter" data-level="2.3" data-path="germination-variables.html"><a href="germination-variables.html#coefficient-of-variation-of-the-germination-time"><i class="fa fa-check"></i><b>2.3</b> Coefficient of Variation of the Germination Time</a></li>
+<li class="chapter" data-level="2.4" data-path="germination-variables.html"><a href="germination-variables.html#mean-germination-rate-v"><i class="fa fa-check"></i><b>2.4</b> Mean Germination Rate (v)</a></li>
+<li class="chapter" data-level="2.5" data-path="germination-variables.html"><a href="germination-variables.html#uncertainty-index-u"><i class="fa fa-check"></i><b>2.5</b> Uncertainty Index (U)</a></li>
+<li class="chapter" data-level="2.6" data-path="germination-variables.html"><a href="germination-variables.html#synchronyzation-index-z"><i class="fa fa-check"></i><b>2.6</b> Synchronyzation Index (Z)</a></li>
+<li class="chapter" data-level="2.7" data-path="germination-variables.html"><a href="germination-variables.html#limits-and-units-of-the-germination-variables-in-germinaquant"><i class="fa fa-check"></i><b>2.7</b> Limits and units of the germination variables in GerminaQuant</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="germination-field-book.html"><a href="germination-field-book.html"><i class="fa fa-check"></i><b>3</b> Germination field book</a><ul>
+<li class="chapter" data-level="3.1" data-path="germination-field-book.html"><a href="germination-field-book.html#data-organization"><i class="fa fa-check"></i><b>3.1</b> Data Organization</a></li>
+<li class="chapter" data-level="3.2" data-path="germination-field-book.html"><a href="germination-field-book.html#data-collection"><i class="fa fa-check"></i><b>3.2</b> Data Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="germination-analysis.html"><a href="germination-analysis.html"><i class="fa fa-check"></i><b>4</b> Germination analysis</a></li>
+<li class="chapter" data-level="5" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html"><i class="fa fa-check"></i><b>5</b> GerminaQuant data processing</a><ul>
+<li class="chapter" data-level="5.1" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#field-book"><i class="fa fa-check"></i><b>5.1</b> Field Book</a></li>
+<li class="chapter" data-level="5.2" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#import-data"><i class="fa fa-check"></i><b>5.2</b> Import Data</a></li>
+<li class="chapter" data-level="5.3" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#indices-calculation"><i class="fa fa-check"></i><b>5.3</b> Indices calculation</a></li>
+<li class="chapter" data-level="5.4" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#statistical-analysis"><i class="fa fa-check"></i><b>5.4</b> Statistical analysis</a></li>
+<li class="chapter" data-level="5.5" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#germination-in-time"><i class="fa fa-check"></i><b>5.5</b> Germination in Time</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://flavjack.shinyapps.io/germinaquant/" target="blank">GerminaQuant web app</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GerminaQuant for R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="germination-variables" class="section level1">
+<h1><span class="header-section-number">2</span> Germination variables</h1>
+<div id="germinability-g" class="section level2">
+<h2><span class="header-section-number">2.1</span> Germinability (G)</h2>
+<p>According to <span class="citation">L. G. Labouriau (<a href="references.html#ref-Labouriau1983a">1983</a><a href="references.html#ref-Labouriau1983a">a</a>)</span>, germinability is the percentage of seeds in which the germination process comes to the end in the experimental conditions by the intraseminal growth, resulting in the protrusion (or emergence) of a living embryo.</p>
+<p><span class="math display">\[ g=\left(\frac{\sum_{i=1}^kn_1}{N}\right)100 \\ (in\ percentage;\ expressed\ in\ the\ program\ as\ GRP)\]</span></p>
+<p><strong>Where:</strong> <span class="math inline">\(n_i\)</span>: number of germinated seed in the <span class="math inline">\(i^{th}\)</span> time; N: total number of seed in each experimental unit.</p>
+</div>
+<div id="mean-germination-time-t-and-standard-deviation-st" class="section level2">
+<h2><span class="header-section-number">2.2</span> Mean Germination Time (t) and Standard Deviation (S<sub>t</sub>)</h2>
+<p>The mean germination time was proposed by Haberlandt in 1875 <span class="citation">(L. G. Labouriau <a href="references.html#ref-Labouriau1983a">1983</a><a href="references.html#ref-Labouriau1983a">a</a>)</span> and used by <span class="citation">Czabator (<a href="references.html#ref-Czabator1962">1962</a>)</span> as mean length of incubation time (see <span class="citation">Ranal and Santana (<a href="references.html#ref-Ranal2006">2006</a>)</span> for other details). It is calculated as the weighted mean of the germination time (hour, day or other time unit). The number of germinated seeds at the intervals established for the data collection is used as weight <span class="citation">(Ranal and Santana <a href="references.html#ref-Ranal2006">2006</a>)</span>.</p>
+<p><span class="math display">\[ \overline{t}=\frac{\sum_{i=1}^kn_it_i}{\sum_{i=1}^kn_i} \\ (in\ hour,\ day\ or\ other\ time\ unit; \ expressed\ in\ the\ program\ as\ MGT)\]</span></p>
+<p><span class="math display">\[S_t=\sqrt{\left\{\frac{\left\{\sum_{_{i=1}}^kn_i\left(t_i-\overline{t}\right)^2\right\}}{\sum_{_{i=1}}^kn_i-1}\right\}} \\ (in\ the\ same\ time\ unit\ of\ the\ mean\ germination\ time;\ expressed\ in\ the\ program\ as\ SDG)\]</span></p>
+<p><strong>Where</strong> <span class="math inline">\(\bar{t}_i\)</span>: time from the start of the experiment to the <span class="math inline">\(i^{th}\)</span> observation (hour, day or other time unit); <span class="math inline">\(n_i\)</span>: number of germinated seeds in the <span class="math inline">\(i^{th}\)</span> time (not the accumulated number) and <span class="math inline">\(k\)</span>: the last time of observation.</p>
+</div>
+<div id="coefficient-of-variation-of-the-germination-time" class="section level2">
+<h2><span class="header-section-number">2.3</span> Coefficient of Variation of the Germination Time</h2>
+<p><span class="math display">\[CV_t=\frac{\left\{S_t\right\}}{\overline{t}}100 \\ \left(in\ the\ same\ tine\ unit\ of\ the\ mean\ ger\min ation\ time;\ \exp ressed\ in\ the\ program\ as\ SDG\right)\]</span> <strong>where</strong> <span class="math inline">\(S_t\)</span>: standard deviation of the germination time and <span class="math inline">\(\overline{t}\)</span>: mean germination time.</p>
+</div>
+<div id="mean-germination-rate-v" class="section level2">
+<h2><span class="header-section-number">2.4</span> Mean Germination Rate (v)</h2>
+<p>The mean germination rate is defined as the reciprocal of the mean germination time, since the mean germination rate increases and decreases with <span class="math inline">\(\frac{1}{\overline{t}}\)</span>, not with <span class="math inline">\(\overline{t}\)</span> <span class="citation">(L. G. Labouriau <a href="references.html#ref-Labouriau1983b">1983</a><a href="references.html#ref-Labouriau1983b">b</a>)</span>.</p>
+<p><span class="math display">\[ \overline{v}=\frac{1}{\overline{t}} \\ \left(in\ hours^{-1},\ day^{-1}\ or\ other\ reciprocal\ time\ unit,\ \exp ressed\ in\ the\ program\ as\ MGR\right) \]</span></p>
+</div>
+<div id="uncertainty-index-u" class="section level2">
+<h2><span class="header-section-number">2.5</span> Uncertainty Index (U)</h2>
+<p>This measurement is an adaptation of the Shannon index and measures the degree of uncertainty associated to the distribution of the relative frequency of germination <span class="citation">(Labouriau and Valadares <a href="references.html#ref-labouriau1976physiology">1976</a>)</span>. Low values indicate more synchronized germination <span class="citation">(Ranal and Santana <a href="references.html#ref-Ranal2006">2006</a>)</span>.</p>
+<p><span class="math display">\[U\ =\ -\sum_{i=1}^kf_i\log_2f_i\ \\ \left(in\ bit;\ \exp ressed\ in\ the\ program\ as\ UNC\right),\ being\ f_i=\frac{n_i}{\sum_{i=1}^kn_i}\]</span></p>
+<p><strong>Where</strong> <span class="math inline">\(f_i\)</span>: relative frequency of germination; <span class="math inline">\(n_i\)</span>: number of seed germinated in the <span class="math inline">\(i^{th}\)</span> time, and <span class="math inline">\(k\)</span>: the last day of germination.</p>
+</div>
+<div id="synchronyzation-index-z" class="section level2">
+<h2><span class="header-section-number">2.6</span> Synchronyzation Index (Z)</h2>
+<p>This index was proposed by <span class="citation">Primack (<a href="references.html#ref-primack1985patterns">1985</a>)</span> to assess the degree of overlapping of flowering among individuals in a population and <span class="citation">Ranal and Santana (<a href="references.html#ref-Ranal2006">2006</a>)</span> adopted it for seed germination. The synchrony of germination of one seed with another assumed <span class="math inline">\(Z=1\)</span> when the germination of all seeds occur at the same time and <span class="math inline">\(Z = 0\)</span> when at least two seeds can germinate, one at each time.</p>
+<p><span class="math display">\[Z=\frac{\sum_{ }^{ }C_{n_1,2}}{N} \\ \left(a\dim ensional\ measurement;\ expressed\ in\ the\ program\ as\ SYN\right); \\ being\ C_{n_1,2}=\frac{n_i\left(n_i-1\right)}{2}\ ;\ N=\frac{\sum_{ }^{ }n_i\left(\sum_{ }^{ }n_i-1\right)}{2}\]</span></p>
+<p><strong>Where</strong> <span class="math inline">\(C_{n_i,2}\)</span>: combination of germinated seeds in <span class="math inline">\(i^{th}\)</span> time, two together, and <span class="math inline">\(n_i\)</span>: number of germinated seed in the <span class="math inline">\(i^{th}\)</span>.</p>
+</div>
+<div id="limits-and-units-of-the-germination-variables-in-germinaquant" class="section level2">
+<h2><span class="header-section-number">2.7</span> Limits and units of the germination variables in GerminaQuant</h2>
+<table>
+<caption><span id="tab:varsum">Table 2.1: </span>Germination variables evaluated in GerminaQuant and limits according <span class="citation">Ranal and Santana (<a href="references.html#ref-Ranal2006">2006</a>)</span> ; where: <span class="math inline">\(n_i\)</span>, number of seed germinated in <span class="math inline">\(i^{nth}\)</span> time ; <span class="math inline">\(K\)</span>, the last day of the avaliation process for germination.</caption>
+<thead>
+<tr class="header">
+<th align="left">variables</th>
+<th align="left">abbreviation</th>
+<th align="left">limits</th>
+<th align="left">units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">germinated seed number</td>
+<td align="left">GSN</td>
+<td align="left"><span class="math inline">\(0 \le n \le n_i\)</span></td>
+<td align="left"><span class="math inline">\(count\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">germinability</td>
+<td align="left">GNP</td>
+<td align="left"><span class="math inline">\(0 \le g \le 100\)</span></td>
+<td align="left"><span class="math inline">\(\%\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">germination asin</td>
+<td align="left">ASG</td>
+<td align="left"><span class="math inline">\(0 \le arsin \le 1\)</span></td>
+<td align="left"><span class="math inline">\(grade\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">mean germination time</td>
+<td align="left">MGT</td>
+<td align="left"><span class="math inline">\(0 \le t \le k\)</span></td>
+<td align="left"><span class="math inline">\(time\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">germination speed</td>
+<td align="left">SPG</td>
+<td align="left"><span class="math inline">\(0 &lt; g_s \le 100\)</span></td>
+<td align="left"><span class="math inline">\(\%\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">mean germination rate</td>
+<td align="left">MGR</td>
+<td align="left"><span class="math inline">\(0 &lt; v \le 1\)</span></td>
+<td align="left"><span class="math inline">\(time^{-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Synchronyzation Index</td>
+<td align="left">SYN</td>
+<td align="left"><span class="math inline">\(0 \le Z \le 1\)</span></td>
+<td align="left"><span class="math inline">\(-\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Uncertainty Index</td>
+<td align="left">UNC</td>
+<td align="left"><span class="math inline">\(0 \le U \le log_2 n_i\)</span></td>
+<td align="left"><span class="math inline">\(bit\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">germination standard deviation</td>
+<td align="left">SDG</td>
+<td align="left"><span class="math inline">\(0 &lt; s_t^2 \le \infty\)</span></td>
+<td align="left"><span class="math inline">\(time^2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">germination variance</td>
+<td align="left">VGT</td>
+<td align="left"><span class="math inline">\(0 &lt; s_t \le \infty\)</span></td>
+<td align="left"><span class="math inline">\(time\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Coefficient of variation</td>
+<td align="left">CVG</td>
+<td align="left"><span class="math inline">\(0 &lt; CV_t \le \infty\)</span></td>
+<td align="left"><span class="math inline">\(\%\)</span></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="evaluation-of-the-seed-germination-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="germination-field-book.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Flavjack/GermBook/blob/master/02-Gindex.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

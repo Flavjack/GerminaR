@@ -27,7 +27,7 @@ shinyUI(navbarPage("GerminaQuant",
                                 p("For use the interactive app:"),
                                 code("library(GerminaR)"),
                                 br(),
-                                code("runGerminaQuant()"),
+                                code("GerminaQuant()"),
                                 br(),
                                 br()
                                 
@@ -377,9 +377,8 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
 
 tabPanel("user manual", icon = icon("book", lib = "glyphicon"),
          
-        
-         htmlOutput("gb")  
-         
+       htmlOutput("gb")
+
 ),
 
 

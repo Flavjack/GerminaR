@@ -4,8 +4,8 @@
 #' @family GerminaR
 #' @importFrom shiny runApp
 #' @export
-runGerminaQuant <- function() {
-  appDir <- system.file("GerminaQuant", "myapp", package = "GerminaR")
+GerminaQuant <- function() {
+  appDir <- system.file("GerminaQuant", package = "GerminaR")
   if (appDir == "") {
     stop("Could not find example directory. Try re-installing `GerminaR`.", call. = FALSE)
   }

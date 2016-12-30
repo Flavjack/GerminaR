@@ -641,15 +641,20 @@ round(srdt, 5)
 # Germbook ----------------------------------------------------------------
 
 output$gb<-renderUI({
-  
+
   getPage<-function() {
     return(includeHTML("gb.html"))
+  
+    
   }
-  
-  
+
+
   getPage()
 
  })
+ 
+ 
+ # FieldBook ---------------------------------------------------------------
  
  
  output$fb<-renderUI({
@@ -664,6 +669,5 @@ output$gb<-renderUI({
  })
  
  
-
  
 })

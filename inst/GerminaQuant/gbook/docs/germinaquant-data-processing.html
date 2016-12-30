@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GerminaQuant for R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="A guide for analisis of germination variables and usage of GerminaQuant.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="GerminaQuant for R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="img/germinaquant.png" />
+  <meta property="og:description" content="A guide for analisis of germination variables and usage of GerminaQuant." />
+  <meta name="github-repo" content="Flavjack/GermBook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GerminaQuant for R" />
+  
+  <meta name="twitter:description" content="A guide for analisis of germination variables and usage of GerminaQuant." />
+  <meta name="twitter:image" content="img/germinaquant.png" />
+
+<meta name="author" content="Flavio Lozano Isla">
+<meta name="author" content="Omar Benites Alfaro">
+<meta name="author" content="Marcelo Francisco Pompelli">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="prev" href="germination-analysis.html">
+<link rel="next" href="references.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"> GerminaQuant:User Manual </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="evaluation-of-the-seed-germination-process.html"><a href="evaluation-of-the-seed-germination-process.html"><i class="fa fa-check"></i><b>1</b> Evaluation of the seed germination process</a></li>
+<li class="chapter" data-level="2" data-path="germination-variables.html"><a href="germination-variables.html"><i class="fa fa-check"></i><b>2</b> Germination variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="germination-variables.html"><a href="germination-variables.html#germinability-g"><i class="fa fa-check"></i><b>2.1</b> Germinability (G)</a></li>
+<li class="chapter" data-level="2.2" data-path="germination-variables.html"><a href="germination-variables.html#mean-germination-time-t-and-standard-deviation-st"><i class="fa fa-check"></i><b>2.2</b> Mean Germination Time (t) and Standard Deviation (S<sub>t</sub>)</a></li>
+<li class="chapter" data-level="2.3" data-path="germination-variables.html"><a href="germination-variables.html#coefficient-of-variation-of-the-germination-time"><i class="fa fa-check"></i><b>2.3</b> Coefficient of Variation of the Germination Time</a></li>
+<li class="chapter" data-level="2.4" data-path="germination-variables.html"><a href="germination-variables.html#mean-germination-rate-v"><i class="fa fa-check"></i><b>2.4</b> Mean Germination Rate (v)</a></li>
+<li class="chapter" data-level="2.5" data-path="germination-variables.html"><a href="germination-variables.html#uncertainty-index-u"><i class="fa fa-check"></i><b>2.5</b> Uncertainty Index (U)</a></li>
+<li class="chapter" data-level="2.6" data-path="germination-variables.html"><a href="germination-variables.html#synchronyzation-index-z"><i class="fa fa-check"></i><b>2.6</b> Synchronyzation Index (Z)</a></li>
+<li class="chapter" data-level="2.7" data-path="germination-variables.html"><a href="germination-variables.html#limits-and-units-of-the-germination-variables-in-germinaquant"><i class="fa fa-check"></i><b>2.7</b> Limits and units of the germination variables in GerminaQuant</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="germination-field-book.html"><a href="germination-field-book.html"><i class="fa fa-check"></i><b>3</b> Germination field book</a><ul>
+<li class="chapter" data-level="3.1" data-path="germination-field-book.html"><a href="germination-field-book.html#data-organization"><i class="fa fa-check"></i><b>3.1</b> Data Organization</a></li>
+<li class="chapter" data-level="3.2" data-path="germination-field-book.html"><a href="germination-field-book.html#data-collection"><i class="fa fa-check"></i><b>3.2</b> Data Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="germination-analysis.html"><a href="germination-analysis.html"><i class="fa fa-check"></i><b>4</b> Germination analysis</a></li>
+<li class="chapter" data-level="5" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html"><i class="fa fa-check"></i><b>5</b> GerminaQuant data processing</a><ul>
+<li class="chapter" data-level="5.1" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#field-book"><i class="fa fa-check"></i><b>5.1</b> Field Book</a></li>
+<li class="chapter" data-level="5.2" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#import-data"><i class="fa fa-check"></i><b>5.2</b> Import Data</a></li>
+<li class="chapter" data-level="5.3" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#indices-calculation"><i class="fa fa-check"></i><b>5.3</b> Indices calculation</a></li>
+<li class="chapter" data-level="5.4" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#statistical-analysis"><i class="fa fa-check"></i><b>5.4</b> Statistical analysis</a></li>
+<li class="chapter" data-level="5.5" data-path="germinaquant-data-processing.html"><a href="germinaquant-data-processing.html#germination-in-time"><i class="fa fa-check"></i><b>5.5</b> Germination in Time</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://flavjack.shinyapps.io/germinaquant/" target="blank">GerminaQuant web app</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GerminaQuant for R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="germinaquant-data-processing" class="section level1">
+<h1><span class="header-section-number">5</span> GerminaQuant data processing</h1>
+<div id="field-book" class="section level2">
+<h2><span class="header-section-number">5.1</span> Field Book</h2>
+<p>For using the GerminaQuant is necessary that you have a data with germination values. You can use a following data <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537">sample</a>. Open the link and download the data in csv format.</p>
+<p>Files &gt;&gt; Download &gt;&gt; Comma Separated Values (.csv, current sheet) &gt;&gt; “GerminaQuant - Sample.csv”</p>
+<p>If you have a google account you can clone the document for you and edit it online and download for your own analysis.</p>
+</div>
+<div id="import-data" class="section level2">
+<h2><span class="header-section-number">5.2</span> Import Data</h2>
+<p>When you have your field book, you can go <a href="https://flavjack.shinyapps.io/germinaquant/">GerminaQuant</a> and go “Data Import” tab. Figure <a href="germinaquant-data-processing.html#fig:impdt">5.1</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:impdt"></span>
+<img src="img/impdt.png" alt="Data Import" width="100%" />
+<p class="caption">
+Figure 5.1: Data Import
+</p>
+</div>
+<p>Choose the file in “csv” format it will be analysed. In “Column with seeds number” you have to write the name of the column containing the information of the number of seed sown in each experimental unit, “Prefix of evaluation days” you have to put the prefix of the name called for the day for evaluate the germination time lapse.</p>
+<div class="figure" style="text-align: center"><span id="fig:csv"></span>
+<img src="img/csv.png" alt="Table option for csv format" width="100%" />
+<p class="caption">
+Figure 5.2: Table option for csv format
+</p>
+</div>
+<p>Below of the parameter for evaluation, you will find the option to select the parameter for the “csv” format file. In such way the file should have a table form. Figure <a href="germinaquant-data-processing.html#fig:csv">5.2</a></p>
+</div>
+<div id="indices-calculation" class="section level2">
+<h2><span class="header-section-number">5.3</span> Indices calculation</h2>
+<p>If the parameter in the “Import Data” tab are correct, in “Germination analysis” tab will be performed and the values of the germination variables for each experimental unit will be show. Table <a href="germination-variables.html#tab:varsum">2.1</a>. GerminaQuant app allows downloading the file in “csv” format with the calculation of the germination variables. Figure <a href="germinaquant-data-processing.html#fig:dwl">5.3</a></p>
+<div class="figure" style="text-align: center"><span id="fig:dwl"></span>
+<img src="img/dtdown.png" alt="Dowload option for the calculated variables" width="100%" />
+<p class="caption">
+Figure 5.3: Dowload option for the calculated variables
+</p>
+</div>
+</div>
+<div id="statistical-analysis" class="section level2">
+<h2><span class="header-section-number">5.4</span> Statistical analysis</h2>
+<p>In this tab, the app perform a factorial variance analysis, calculate the statistical description of the factor, the mean differences through Student Newman Keuls <span class="citation">(de Mendiburu <a href="references.html#ref-R-agricolae">2016</a>)</span> and made the graphics <span class="citation">(Wickham and Chang <a href="references.html#ref-R-ggplot2">2016</a>)</span> for the chosen variable.</p>
+<div class="figure" style="text-align: center"><span id="fig:stat"></span>
+<img src="img/stat.png" alt="Statitical analysis with ANOVA and mean comparison test" width="100%" />
+<p class="caption">
+Figure 5.4: Statitical analysis with ANOVA and mean comparison test
+</p>
+</div>
+<p>Remember, the independent variables will be the factor in your field book and the dependent variable will be any of the germination variables. Automatically the app will generate the graphs for the variable chosen and give the mean comparison test. The axis label can be edited manually filling the case in the “Graphics labels” section. The bar and line graphs are represented by the mean and central line is the standard error.</p>
+</div>
+<div id="germination-in-time" class="section level2">
+<h2><span class="header-section-number">5.5</span> Germination in Time</h2>
+<p>This Tab allows to visualize the germination process included in the field book. Figure <a href="germinaquant-data-processing.html#fig:gtime">5.5</a></p>
+<div class="figure" style="text-align: center"><span id="fig:gtime"></span>
+<img src="img/gtime.png" alt="Germination in time plot" width="100%" />
+<p class="caption">
+Figure 5.5: Germination in time plot
+</p>
+</div>
+<p>The app give two graphics, the first is the germination in percentage in time lapse and the second the relative germination that calculate the germination according the total number of seed germinated.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="germination-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Flavjack/GermBook/blob/master/05-DataProcessing.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

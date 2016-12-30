@@ -1,0 +1,19 @@
+bookdown::gitbook:
+  css: style.css
+  split_bib: FALSE
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./"> GerminaQuant:User Manual </a></li>
+      after: |
+        <li><a href="https://flavjack.shinyapps.io/germinaquant/" target="blank">GerminaQuant web app</a></li>
+    edit:
+      link: https://github.com/Flavjack/GermBook/blob/master/%s
+      text: "Edit"
+    fontsettings:
+      theme: sepia
+      family: sans
+    sharing:
+      facebook: no
+      twitter: no
