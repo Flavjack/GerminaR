@@ -377,7 +377,7 @@ tabPanel("osmotic tools", icon = icon("wrench", lib = "glyphicon"),
 
 tabPanel("user manual", icon = icon("book", lib = "glyphicon"),
          
-       htmlOutput("gb")
+      htmlOutput("gb")
 
 ),
 

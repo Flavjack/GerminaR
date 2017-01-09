@@ -13,7 +13,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 
 site: bookdown::bookdown_site
 
-output: bookdown::gitbook
+output: bookdown::html_document2
 documentclass: book
 bibliography: [packages.bib, book.bib]
 biblio-style: apalike
