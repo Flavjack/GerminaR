@@ -1,3 +1,0 @@
-# GermBook
-
-GerminaQuant User Manual
