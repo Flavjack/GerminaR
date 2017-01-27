@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/Flavjack/GerminaR.svg?branch=master)](https://travis-ci.org/Flavjack/GerminaR)
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
+
 
 # GerminaR
 Packages for graphics and indexes for seed germination and ecophysiological evaluation.
