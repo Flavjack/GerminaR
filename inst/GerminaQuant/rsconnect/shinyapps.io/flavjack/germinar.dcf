@@ -2,9 +2,9 @@ name: germinar
 title: germinar
 account: flavjack
 server: shinyapps.io
-appId: 136812
-bundleId: 610726
+appId: 159820
+bundleId: 727560
 url: https://flavjack.shinyapps.io/germinar/
-when: 1478749520.27754
+when: 1488259626.47514
 asMultiple: FALSE
 asStatic: FALSE

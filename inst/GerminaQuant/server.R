@@ -8,9 +8,6 @@ library(GerminaR)
 library(DT)
 
 
-
-
-
 shinyServer(function(input, output) {
 
   
@@ -385,57 +382,57 @@ output$boxplot <- renderPlot({
 
 # multivariate ------------------------------------------------------------
 
-output$crpt <- renderPlot({
-
-  file <- varCal()
-
-  fieldbook::plot_correlation(
-    data = file,
-    sig = input$corsig,
-    color = input$corcol,
-    font = input$cor_font)
-
-})
-
-
-output$pca <- renderPlot({
-
-  file <- varCal()
-
-
-  if( is.na(input$pcaqs) ){
-
-    qs <- NULL
-
-  } else {
-
-    qs <- input$pcaqs
-
-  }
-
-
-  if( input$pcalbl == "" ){
-
-    lbl <- NULL
-
-  } else {
-
-    lbl <- input$pcalbl
-
-  }
-
-
-
-
-  fieldbook::plot_PCA(
-    data = file,
-    type = input$pcatype,
-    quali.sup = qs,
-    lgl = lbl
-    )
-
-
-})
+# output$crpt <- renderPlot({
+# 
+#   file <- varCal()
+# 
+#   fieldbook::plot_correlation(
+#     data = file,
+#     sig = input$corsig,
+#     color = input$corcol,
+#     font = input$cor_font)
+# 
+# })
+# 
+# 
+# output$pca <- renderPlot({
+# 
+#   file <- varCal()
+# 
+# 
+#   if( is.na(input$pcaqs) ){
+# 
+#     qs <- NULL
+# 
+#   } else {
+# 
+#     qs <- input$pcaqs
+# 
+#   }
+# 
+# 
+#   if( input$pcalbl == "" ){
+# 
+#     lbl <- NULL
+# 
+#   } else {
+# 
+#     lbl <- input$pcalbl
+# 
+#   }
+# 
+# 
+# 
+# 
+#   fieldbook::plot_PCA(
+#     data = file,
+#     type = input$pcatype,
+#     quali.sup = qs,
+#     lgl = lbl
+#     )
+# 
+# 
+# })
 
 
 # statistics --------------------------------------------------------------
