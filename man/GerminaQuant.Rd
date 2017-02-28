@@ -13,4 +13,3 @@ GerminaQuant()
  GermiQuant App is live!. Outputs change instantly as users modify inputs, without requiring a reload the app.
  The principal features of the application allow calculate the principal germination variables, statistical analysis and easy way to plot the results.
 }
-

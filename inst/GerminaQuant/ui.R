@@ -26,16 +26,13 @@ shinyUI(dashboardPage(skin = "green",
         menuItem("Regression", tabName = "regression", icon = icon("random")),
         menuItem("Statistics", tabName = "stat", icon = icon("pie-chart")),
         menuItem("Graphics", tabName = "graph", icon = icon("tint")),
-        menuItem("Germination Intime", tabName = "germint", icon = icon("leaf")),
-        menuItem("Tools", tabName = "tools", icon = icon("leaf")),
-        menuItem("About", tabName = "info", icon = icon("book"))
+        menuItem("Intime", tabName = "germint", icon = icon("hourglass")),
+        menuItem("Tools", tabName = "tools", icon = icon("wrench"))
       )
 
 
     ),
 
-
-# Iconos :: http://getbootstrap.com/components/#glyphicons-glyphs
 
 
     dashboardBody(
@@ -65,7 +62,7 @@ shinyUI(dashboardPage(skin = "green",
                         target="_blank")), 
                     style = "color:black"),
                   
-                  p("GerminaQuant is web application based in R, you can use the app in your desktop installing the package", em("GerminaR")),
+                  p("GerminaQuant for R is web application based in R, you can use the app in your desktop installing the package", em("GerminaR")),
                   code('install.packages(GerminaR)'),
                   br(),
                   br(),
@@ -79,29 +76,40 @@ shinyUI(dashboardPage(skin = "green",
                 ),
 
 
-                box(
-                  title = "Characteristics",
-                  width = 5,
-                  status = "danger",
-                  solidHeader = T,
+                box(width = 5, 
+                    title = "Characteristics", 
+                    status = "danger",
+                    solidHeader = T,
+                    
+                    
+                    p("GerminaQuant for R is based in GerminaR R package, a highly interactive data analysis platform for germination analysis,
+                      tool develpment for the Plant Physiology Laboratory (UFPE).
+                      It is result of a continuous effort to improve data collection, quality, analysis and open access publication.
+                      The recent iteration simultaneously also represents efforts to unify best practices from experiences in germination data management.
+                      One of the main new characteristics of the current software development platform established is the web-based interface
+                      which provides also a highly interactive environment. It could be used both online and offline and on desktop as well as tablets and laptops.
+                      The aime is support the broader research community working on all aspects with germination studies."),
+                    
+                    shiny::HTML("<h5><b>Features</b></h5>"),
+                    
+                    shiny::HTML("<p>
+                                <ol>
+                                <li>Allow calculate the princiapal germination variables.</li>
+                                <li>Statistical analysis for germination variables.</li>
+                                <li>Easy way to plot the results.</li>
+                                </ol>
+                                </p>"),
 
-                  
-                  shiny::HTML("<p align='justify'>GerminaQuant allows make the calculation and graph  of the germination variables <i>incredibly easy</i> 
-                                            in an interactive applications. GerminaQuant is reactive!, outputs change instantly as users modify inputs, without requiring a reload the app.</p>"),
-                  
-                  shiny::HTML("<h4><b>Features</b></h4>"),
-                  
-                  shiny::HTML("<p>
-                              <ol>
-                              <li>Allow calculate the princiapal germination variables.</li>
-                              <li>Statistical analysis for germination variables.</li>
-                              <li>Easy way to plot the results.</li>
-                              </ol>
-                              </p>")
-
-
+                    p(strong("Project name:"), "GerminaR - An R Package for germination analysis process with interactive web app 'GerminaQuant for R'"),
+                    p(strong("Stable release:"), a("GerminaR", href = "https://cran.r-project.org/web/packages/GerminaR/index.html", target="_blank" )),
+                    p(strong("Issue tracker:"), a("github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
+                    p(strong("Operating systems:"), "independient of the platform"),
+                    p(strong("Programing language:"), "R & html")
+                    
+                    
                 ),
-
+                    
+                
                 box(
                   title = "Contributors",
                   width = 4,
@@ -113,7 +121,7 @@ shinyUI(dashboardPage(skin = "green",
                     br(),
                     a("< flavjack@gmail.com >"),
                     br(),
-                    code("Universidade Federal Rural de Pernambuco, Brazil")
+                    code("Universidade Federal Rural de Pernambuco, Brazil.")
                     ),
 
                   p(
@@ -121,15 +129,32 @@ shinyUI(dashboardPage(skin = "green",
                     br(),
                     a("< obacc07@gmail.com >"),
                     br(),
-                    code("Centro Internacional de la Papa (CIP), Peru")
+                    code("Centro Internacional de la Papa (CIP), Peru.")
                   ),
+                  
+                  p(
+                    strong("Denise Garcia de Santana"),
+                    br(),
+                    a("< denise.santana@ufu.br >"),
+                    br(),
+                    code("Universidade Federal de Uberlandia, Brazil.")
+                  ),
+                  
+                  p(
+                    strong("Marli A. Ranal"),
+                    br(),
+                    a("< ranal@ufu.br >"),
+                    br(),
+                    code("Universidade Federal de Uberlandia, Brazil.")
+                  ),
+                  
 
                   p(
                     strong("Marcelo Francisco Pompelli"),
                     br(),
                     a("< mpompelli@gmail.com >"),
                     br(),
-                    code("Universidade Federal de Pernambuco, Brazil")
+                    code("Universidade Federal de Pernambuco, Brazil.")
                   ),
 
 
@@ -239,35 +264,23 @@ shinyUI(dashboardPage(skin = "green",
           title = 'Parameters',
           
           
-          textInput("SeedN", label = strong("col name: seeds number"), value = "NSeeds"),
+          textInput("SeedN", label = strong("Seeds (col name)"), value = "NSeeds"),
           
-          textInput("evalName", label = strong("prefix: evaluation days"), value = "Ev")
+          textInput("evalName", label = strong("Evaluations (prefix)"), value = "Ev"),
           
-            ),
-
-# filter ------------------------------------------------------------------
-        
-        
-
-        box(
-
-          status = "danger",
-          solidHeader = T,
-          width = 2,
-          title = 'Filter',
-
+  
           uiOutput("filter_01"),
-
+          
           uiOutput("filter_fact01"),
-
-          br(),
-
+          
+          
           uiOutput("filter_02"),
-
+          
           uiOutput("filter_fact02")
-
-
-        )
+          
+                 
+          )
+          
 
 
         ),
@@ -811,87 +824,78 @@ shinyUI(dashboardPage(skin = "green",
 # tools -------------------------------------------------------------------
 
         tabItem(tabName = "tools", withMathJax(),
+                
+                
+                box(width = 8, 
+                    title = "Osmotic potencial calculator", 
+                    status = "primary",
+                    solidHeader = T,
+                    
+                    br(),
+                    
+                    p("The osmotic potencial, can be measured directly with an osmometer, or it can be calculated from the solute concentration."),
+                    
+                    hr(),
+                    
+                    p("For a salt, you can use the van't Hoff relation: $$\\psi_s = -RTC_i$$ where: \\(R\\) is the gas constant (i.e. \\(0.0083 L/atm/mol/K\\)), \\(T\\) is the absolute temperature in degrees in Kelvin (\\(273.15^{o}C\\)), 
+                      \\(C\\) is the solute concentration in \\(mol*L^{-1}\\), and \\(i\\) is the dissociation constant of the salt. (i.e. \\(NaCl = 1.8, KCl = 1.8, CaCl_2 = 2.4, sacarose = 1\\)). The unit for \\(\\psi_s\\) is \\(MPa\\)"), 
+                    
+                    hr(),
+                    
+                    p("For", em("PEG 6000"), "the osmotic potentials can be calculated as described by", a("Michel and Kaufmann (1973):", href = "http://www.plantphysiol.org/content/51/5/914.abstract", target="_blank"), "$$\\psi_s = -(1.18*10^{-2})C - (1.18*10^{-4})C^2 + (2.67*10^{-4})CT + (8.39*10^{-7})C^2T$$ 
+                      where: \\(C\\) is the concentration of", em("PEG 6000"), "in \\(g*L^{-1}\\) and \\(T\\) is the temperature in degrees \\(^{o}C\\).  The unit for \\(\\psi_s\\) is \\(bar (0.1 MPa)\\)."),
+                    
+                    br()
+                    
+                    ),
+                
 
 
                      box(
-                        title = "Salt", 
+                        title = "Salt (\\(g\\))", 
                         status = "info", 
-                        width = 3,
+                        solidHeader = T,
+                        width = 2,
                           
-                        
-                        br(),
-                        
-                        p(strong("Salt (\\(g\\))")),
-                        
-                        
+
                         textOutput("ops"),
                         
                         hr(),
                         
-                        numericInput("vol", label = p("volumen (\\(L\\))"), value = 1.0, min = 0),
+                        numericInput("vol", label = p("Volume (\\(L\\))"), value = 1.0, min = 0),
                         
-                        numericInput("pre", label = p("presion (\\(MPa\\))"), value = -0.8, max = 0),
+                        numericInput("pre", label = p("Pressure (\\(MPa\\))"), value = -0.8, max = 0),
                         
-                        numericInput("tem", label = p("temperature (\\(^{o}C\\))"), value = 25.0),
+                        numericInput("tem", label = p("Temperature (\\(^{o}C\\))"), value = 25.0),
                         
-                        numericInput("psm", label = p("molecular weight"), value = 58.4428, min = 0),
+                        numericInput("psm", label = p("Molecular weight"), value = 58.4428, min = 0),
                         
-                        numericInput("dis", label = p("salt dissociation constant"), value = 1.8, min = 0)
+                        numericInput("dis", label = p("Salt dissociation constant"), value = 1.8, min = 0)
                         
                           
                           ),
                       
                   box(
-                        title = "PEG 600", 
+                        title = "PEG 600 (\\(g\\))", 
+                        solidHeader = T,
                         status = "info",
-                        width = 3,
+                        width = 2,
                           
-                          
-                        br(),
-                        
-                        
-                        p(strong("PEG 600 (\\(g\\))")),
-                        
-                        
+
                         textOutput("opp"),
                         
                         hr(),
                         
-                        numericInput("volp", label = p("volumen (\\(L\\))"), value = 1.0, min = 0),
+                        numericInput("volp", label = p("Volume (\\(L\\))"), value = 1.0, min = 0),
                         
-                        numericInput("prep", label = p("presion (\\(MPa\\))"), value = -0.8, max = 0),
+                        numericInput("prep", label = p("Pressure (\\(MPa\\))"), value = -0.8, max = 0),
                         
-                        numericInput("temp", label = p("temperature (\\(^{o}C\\))"), value = 25.0)
+                        numericInput("temp", label = p("Temperature (\\(^{o}C\\))"), value = 25.0)
                         
                         
-                          ),
-
-
-                  box(width = 6,
-
-
-                      h4("Osmotic potencial"),
-                      
-                      br(),
-                      
-                      p("The osmotic potencial, can be measured directly with an osmometer, or it can be calculated from the solute concentration."),
-                      
-                      hr(),
-                      
-                      p("For a salt, you can use the van't Hoff relation: $$\\psi_s = -RTC_i$$ where: \\(R\\) is the gas constant (i.e. \\(0.0083 L/atm/mol/K\\)), \\(T\\) is the absolute temperature in degrees in Kelvin (\\(273.15^{o}C\\)), 
-                        \\(C\\) is the solute concentration in \\(mol*L^{-1}\\), and \\(i\\) is the dissociation constant of the salt. (i.e. \\(NaCl = 1.8, KCl = 1.8, CaCl_2 = 2.4, sacarose = 1\\)). The unit for \\(\\psi_s\\) is \\(MPa\\)"), 
-                      
-                      hr(),
-                      
-                      p("For", em("PEG 6000"), "the osmotic potentials can be calculated as described by", a("Michel and Kaufmann (1973):", href = "http://www.plantphysiol.org/content/51/5/914.abstract", target="_blank"), "$$\\psi_s = -(1.18*10^{-2})C - (1.18*10^{-4})C^2 + (2.67*10^{-4})CT + (8.39*10^{-7})C^2T$$ 
-                        where: \\(C\\) is the concentration of", em("PEG 6000"), "in \\(g*L^{-1}\\) and \\(T\\) is the temperature in degrees \\(^{o}C\\).  The unit for \\(\\psi_s\\) is \\(bar (0.1 MPa)\\)."),
-                      
-                      br()
-
-                  )
-
-
-
+                          )
+                
+                
           ),
 
 
@@ -1099,84 +1103,222 @@ shinyUI(dashboardPage(skin = "green",
   tabItem(tabName = "germint",
 
 
-          box(width = 10,
-
-            column(width = 6,
-              
-              h4("germination in time (percentage)"),
-              
-              plotOutput("GerInTimep"),
-              br()
-              
-            ),
-
-            
-            column(width = 6,
-              
-              h4("germination in time (relative)"),
-              
-              plotOutput("GerInTimer"),
-              br()
-              
-            )
-
-
-
+          box( width = 10,
+               
+               
+               box(width = 5, title = NULL, background = "blue",
+                   
+                   
+                   column(width = 12,
+                          
+                          textInput(
+                            inputId ="git_ly",
+                            label = "Y label",
+                            value = "Germination ('%')")
+                          
+                          
+                   ),
+                   
+                   column(width = 4,
+                          
+                          
+                          numericInput(
+                            inputId ="git_brakes",
+                            label = "Brakes",
+                            value = NA,
+                            min = 0
+                          )
+                          
+                   ),
+                   
+                   
+                   column(width = 4,
+                          
+                          
+                          numericInput(
+                            inputId ="git_lmti",
+                            label = "Limit (i)",
+                            value = NA
+                          )
+                          
+                   ),
+                   
+                   
+                   column(width = 4,
+                          
+                          
+                          numericInput(
+                            inputId ="git_lmtf",
+                            label = "Limit (f)",
+                            value = NA
+                          )
+                          
+                   )
+                   
+                   
+                   
+                   
+               ),
+               
+               
+               
+               box(width = 4, title = NULL, background = "green",
+                   
+                   
+                   
+                   
+                   column(width = 12,
+                          
+                          textInput(inputId ="git_lx", label = "X label", value = "Time")
+                          
+                          
+                   ),
+                   
+                   
+                   column(width = 12,
+                          
+                          textInput(inputId ="git_xbk", label = "Brake Text", value = "")
+                          
+                          
+                   )
+                   
+                   
+                   
+               ),
+               
+               
+               box(width = 3, background = "red",
+                   
+                   column(width = 12,
+                          
+                          textInput(inputId ="git_lz", label = "Legend", value = "")
+                          
+                          
+                   ),
+                   
+                   
+                   column(width = 12,
+                          
+                          textInput(inputId ="git_zbk", label = "Brake Text", value = "")
+                          
+                          
+                   )
+                   
+               ),
+               
+               
+               box(width = 12,
+                   status = "info", 
+                   solidHeader = T,
+                   
+                   
+                   plotOutput("GerInTime")
+                   
+                   
+                   
+               )
+               
+               
           ),
-
-
+          
           box(width = 2,
+              
+              
+              column(width = 12,
+                     
+                     
+                     uiOutput('smvar')
+                     
+              ),
+              
+              
+              column(width = 12,
+                     
+                     
+                     radioButtons(
+                       inputId ="git_type",
+                       label = "Type",
+                       choices = c("percentage", "relative"),
+                       selected = "percentage",
+                       inline = F)
+              ),
+              
+              column(width = 12,
+                     
+                     
+                     numericInput(
+                       inputId ="git_font",
+                       label = "Size",
+                       value = 2,
+                       min = 0,
+                       step = 0.1
+                     )
+                     
+              ),
+              
+              
+              column(width = 12,
+                     
+                     
+                     radioButtons(
+                       inputId ="git_color",
+                       label = "Color",
+                       choices = c("yes", "no"),
+                       selected = "yes",
+                       inline = TRUE)
+              ),
+              
+              
 
-
-                uiOutput('smvar'),
-                br(),
-
-                textInput("lgnt", "unit time", value = "Time")
-
-
-
+              
+              
+              column(width = 12,
+                     
+                     
+                     radioButtons(
+                       inputId ="git_label",
+                       label = "Legend",
+                       choices = c("none", "left", "right", "top", "bottom"),
+                       selected = "top",
+                       inline = TRUE)
+              ),
+              
+              
+              column(width = 12,
+                     
+                     numericInput('git_plot_H', 'Height (mm)',
+                                  value = 75,
+                                  min = 0,
+                                  step = 5)
+                     
+              ),
+              
+              
+              column(width = 12,
+                     
+                     
+                     numericInput('git_plot_W', 'Width (mm)',
+                                  value = 105,
+                                  min = 0,
+                                  step = 5)
+                     
+                     
+              ),
+              
+              
+              column(width = 12,
+                     
+                     downloadButton('download_plot_git', ' TIFF (300 dpi)')
+                     
+              )
+              
+              
+              
           )
 
 
 
-
-          ),
-
-
-
-# information -------------------------------------------------------------
-
-
-        tabItem(tabName = "info",
-
-
-                h4(strong("GerminaQuant for R")),
-
-                p("GerminaQuant is based in GerminaR R package, a highly interactive data analysis platform for germination analysis,
-                  tool develpment for the Plant Physiology Laboratory (UFPE).
-                  It is result of a continuous effort to improve data collection, quality, analysis and open access publication.
-                  The recent iteration simultaneously also represents efforts to unify best practices from experiences in germination data management.
-                  One of the main new characteristics of the current software development platform established is the web-based interface
-                  which provides also a highly interactive environment. It could be used both online and offline and on desktop as well as tablets and laptops.
-                  The aime is support the broader research community working on all aspects with germination studies."),
-
-                p(strong("project name:"), "GerminaR - An R Package for germination analysis process with interactive web app 'GerminaQuant for R'"),
-                p(strong("stable release:"), a("GerminaR", href = "cran.r-project.org/package = germinar", target="_blank" )),
-                p(strong("interactive application:"), a("GerminaQuant", href = "https://flavjack.shinyapps.io/germinaquant/", target="_blank" )),
-                p(strong("user manual:"), a("GerminaQuant", href = "https://flavjack.github.io/GermBook/", target="_blank" )),
-                p(strong("webpage:"), a("LEV", href = "https://www.ufpe.br/lev/index.php", target="_blank" )),
-                p(strong("issue tracker:"), a("github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
-                p(strong("operating systems:"), "independient of the platform"),
-                p(strong("programing language:"), "R & html"),
-
-                hr()
-
-
-
-
-
-
-        )
+          )
 
 
       )

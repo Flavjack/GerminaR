@@ -28,4 +28,3 @@ dt <- GerminaR
 gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
 gcs
 }
-

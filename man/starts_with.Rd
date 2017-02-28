@@ -25,4 +25,3 @@ https://github.com/hadley/dplyr/blob/50309db8f04cbcc87e4568a4bfa1f0c718e824c9/R/
 \author{
 Hadley Wickham
 }
-

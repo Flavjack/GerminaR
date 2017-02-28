@@ -24,4 +24,3 @@ dt <- GerminaR
 cvg <- ger_CVG(evalName = "Ev", data = dt)
 cvg
 }
-

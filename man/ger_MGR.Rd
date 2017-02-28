@@ -31,4 +31,3 @@ mgr
 RANAL, M. A.; SANTANA, D. G. DE. How and why to measure the germination process? 
 Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.
 }
-

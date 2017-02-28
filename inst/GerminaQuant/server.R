@@ -49,14 +49,14 @@ data_fb <-  eventReactive(input$reload, {
 
     file.rename(xls$datapath, paste(xls$datapath, ".xlsx", sep = ""))
 
-    fieldbook::getData(dir = paste(xls$datapath, ".xlsx", sep = ""), sheet = input$sheetdt)
+    GerminaR::ger_getdata(dir = paste(xls$datapath, ".xlsx", sep = ""), sheet = input$sheetdt)
 
 
   } else {
 
     url <- input$fbdt
 
-    fieldbook::getData(dir = url, sheet = input$sheetdt)
+    GerminaR::ger_getdata(dir = url, sheet = input$sheetdt)
 
   }
 
@@ -85,7 +85,7 @@ output$filter_01 <- renderUI({
 
   selectInput(
     inputId = "filter_nm01",
-    label = "Factor",
+    label = "Filter 1",
     choices = c("choose" = "", fbn)
   )
 
@@ -118,7 +118,7 @@ output$filter_02 <- renderUI({
 
   selectInput(
     inputId = "filter_nm02",
-    label = "Factor",
+    label = "Filter 2",
     choices = c("choose" = "", fbn)
   )
 
@@ -362,7 +362,7 @@ output$boxplot <- renderPlot({
   } else { brks <- brk}
 
 
-  boxp <- fieldbook::plot_box(
+  boxp <- GerminaR::ger_boxp(
 
     data = file,
     y = variable,
@@ -559,7 +559,7 @@ comp <- reactive({
 
   {
 
-    rs <- fieldbook::test_comparison(
+    rs <- GerminaR::ger_testcomp(
       aov = file,
       comp = factor[1],
       type = test,
@@ -573,7 +573,7 @@ comp <- reactive({
 
   {
 
-    rs <- fieldbook::test_comparison(
+    rs <- GerminaR::ger_testcomp(
       aov = file,
       comp = c( factor[1], factor[2] ),
       type = test,
@@ -781,7 +781,7 @@ if (gsig == "no"){
 
 if( length(factor) == 1 && !(variable == '') ){
 
-         pt <- fieldbook::plot_brln(data = df, type = gtype,
+         pt <- GerminaR::fplot(data = df, type = gtype,
                              x = factor[1],
                              y = "mean",
                              z = factor[1],
@@ -807,7 +807,7 @@ else if( length(factor) >= 2  && !(variable == ''))
 {
 
 
-  pt <- fieldbook::plot_brln(data = df, type = gtype,
+  pt <- GerminaR::fplot(data = df, type = gtype,
     x = factor[1],
     y = "mean",
     z = factor[2],
@@ -994,7 +994,7 @@ plot_lr <- reactive({
 
   }
 
-  fieldbook::plot_linereg(
+  GerminaR::ger_linereg(
     data = file,
     y = yvr,
     x = xvr,
@@ -1047,124 +1047,175 @@ output$smvar <- renderUI({
 
   evf <- GerminaR::evalFactor(evalName = input$evalName , data = inFile)
 
-  selectInput('smvr', 'summarize variable', c(Choose='', names(evf)))
+  selectInput('smvr', 'Summarize by', c(Choose='', names(evf)))
 })
 
 
 
 
-gntp <- reactive({
+gnt <- reactive({
   inFile <- fb()
   if (is.null(inFile)) { return(NULL) }
   else if (input$smvr ==''){ return(NULL) }
   else {
 
-    smt <- GerminaR::ger_intime( input$smvr, input$SeedN , input$evalName, "percentage", inFile)
+    smt <- GerminaR::ger_intime( input$smvr, input$SeedN , input$evalName, input$git_type, inFile)
 
   }
 
 })
 
 
-output$gertimep <- renderTable({
+output$gertime <- renderTable({
 
-  gntp()
+  gnt()
 
 })
 
 
-
-output$lgnt <- renderUI({
-  actionButton("action", label = input$sample_text)
-})
-
-
-output$GerInTimep = renderPlot({
-
-  df <- gntp()
-
+plot_git <- reactive({
+  
+  
+  df <- gnt()
+  
   df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(df[,"evaluation"]))
   df[,input$smvr] <- factor(df[,input$smvr], levels = gtools::mixedsort(df[,input$smvr]))
-
+  
   if (is.null(df)) return(NULL)
   else if (input$smvr =='' ){ return(NULL) }
   else{
-
-    ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvr, color = input$smvr, shape = input$smvr)) +
-      geom_line() +
-      geom_point(size=2)+
-      theme_bw()+
-      ylab("Germination (%)") +
-      xlab(input$lgnt)+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=15),
-        axis.title.y = element_text(face="bold", size=15, angle=90),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.title = element_text(face="bold", size=12),
-        legend.text = element_text(size=11),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
-
+    
+    
+    gcolor <- input$git_color
+    
+    gply <- input$git_ly
+    gplx <- input$git_lx
+    gplz <- input$git_lz
+    
+    gfont <- input$git_font
+    glabel <- input$git_label
+    
+    limits <- input$git_lmti * input$git_lmtf
+    brakes <- input$git_brakes
+    
+    xbl <- input$git_xbk
+    zbl <- input$git_zbk
+    
+    
+    # Title axis --------------------------------------------------------------
+    
+    if ( gplz == ""){
+      
+      gplz <- NULL
+      
+    }
+    
+    
+    # Color -------------------------------------------------------------------
+    
+    if ( gcolor == "yes" ){
+      
+      gcolor <- TRUE
+      
+    } else {
+      
+      gcolor <- FALSE
+      
+    }
+    
+    
+    
+    # Label brake axis --------------------------------------------------------
+    
+    
+    if ( xbl == ""){
+      
+      xbl <- NULL
+      
+    } else {
+      
+      xbl <- input$git_xbk
+      
+    }
+    
+    if ( zbl == ""){
+      
+      zbl <- NULL
+      
+    } else {
+      
+      zbl <- input$git_zbk
+      
+    }
+    
+    # limits & brake ----------------------------------------------------------
+    
+    if(is.na(limits)) {
+      
+      glimits <- NULL
+      
+    } else {
+      
+      glimits <- c(input$git_lmti, input$git_lmtf)
+      
+    }
+    
+    
+    if(is.na(brakes)) {
+      
+      gbrakes <- NULL
+      
+    } else {
+      
+      gbrakes <- brakes
+      
+    }
+    
+    
+    
+    
+    GerminaR::fplot(data = df, 
+                    type = "line", 
+                    x = "evaluation", 
+                    y = "mean", 
+                    z = input$smvr, 
+                    ylab = gply, 
+                    xlab = gplx, 
+                    lgl = gplz, 
+                    font = gfont, 
+                    lmt = glimits, 
+                    brk = gbrakes,
+                    color = gcolor, 
+                    lgd = glabel,
+                    xbl = xbl,
+                    zbl = zbl
+    )
+    
+    
   }
+  
+  
 })
 
 
+output$GerInTime = renderPlot({
 
-gntr <- reactive({
-  inFile <- fb()
+  
+  plot <-  plot_git()
+  plot
+  
+})
 
-  if (is.null(inFile)) { return(NULL) }
-  else if (input$smvr ==''){ return(NULL) }
-  else {
+# download git plot -----------------------------------------------------------
 
-    smt <- GerminaR::ger_intime( input$smvr, input$SeedN, input$evalName, "relative", inFile)
-
+output$download_plot_git <- downloadHandler(
+  file = function(){ paste( "plot_git_", input$smvr, '.tiff', sep = '')},
+  content = function(file){
+    ggplot2::ggsave(file, plot = plot_git(), device = "tiff", dpi = 300, width = input$git_plot_W, height = input$git_plot_H, units = "mm" )
+    
   }
+)
 
-})
-
-
-output$gertimer <- renderTable({
-
-  gntr()
-
-})
-
-
-output$GerInTimer = renderPlot({
-  df <- gntr()
-
-  df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(df[,"evaluation"]))
-  df[,input$smvr] <- factor(df[,input$smvr], levels = gtools::mixedsort(df[,input$smvr]))
-
-
-  if (is.null(df)) return(NULL)
-  else if (input$smvr =='' ){ return(NULL) }
-  else{
-
-    ggplot2::ggplot(df, aes_string(df$evaluation, df$mean, group = input$smvr, color = input$smvr, shape = input$smvr)) +
-      geom_line() +
-      geom_point(size=2)+
-      theme_bw()+
-      ylab("Relative Germination") +
-      xlab(input$lgnt)+
-      theme_bw()+
-      theme(
-        axis.title.x = element_text(face="bold", size=15),
-        axis.title.y = element_text(face="bold", size=15, angle=90),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.title = element_text(face="bold", size=12),
-        legend.text = element_text(size=11),
-        legend.key.size = unit(1.2, "lines"),
-        legend.key = element_blank()
-      )
-
-  }
-})
 
 # osmotic tools -----------------------------------------------------------
 

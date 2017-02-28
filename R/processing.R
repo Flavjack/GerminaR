@@ -23,7 +23,7 @@ ger_summary <- function(SeedN, evalName, data){
   gsm <-  dplyr::mutate(evf,
       GRS = ger_GRS(evalName, data), 
       GRP = ger_GRP(SeedN, evalName, data),
-      ASG = ger_ASG(SeedN, evalName, data),
+      #ASG = ger_ASG(SeedN, evalName, data),
       MGT = ger_MGT(evalName, data),
       MGR = ger_MGR(evalName, data),
       GSP = ger_GSP(evalName, data),

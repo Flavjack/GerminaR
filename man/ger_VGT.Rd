@@ -24,4 +24,3 @@ dt <- GerminaR
 vgt <- ger_VGT(evalName = "Ev", data = dt)
 vgt
 }
-

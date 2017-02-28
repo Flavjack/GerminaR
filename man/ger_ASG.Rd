@@ -26,4 +26,3 @@ dt <- GerminaR
 asg <- ger_ASG(SeedN = "NSeeds",evalName = "Ev", data = dt)
 asg
 }
-

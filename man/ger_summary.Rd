@@ -26,4 +26,3 @@ dt <- GerminaR
 smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
 smr
 }
-

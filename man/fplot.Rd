@@ -4,9 +4,9 @@
 \alias{fplot}
 \title{Plot line or bar graphic}
 \usage{
-fplot(data, type = "line", x, y, z, ylab = "", xlab = "", lgl = "",
-  lgd = "right", sig = "", erb = FALSE, lmt = NULL,
-  brk = ggplot2::waiver())
+fplot(data, type = "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
+  lgd = "top", sig = NULL, erb = FALSE, lmt = NULL, brk = NULL,
+  xbl = NULL, zbl = NULL, color = TRUE, font = 1)
 }
 \arguments{
 \item{data}{Output dtsm fuction}
@@ -34,6 +34,14 @@ fplot(data, type = "line", x, y, z, ylab = "", xlab = "", lgl = "",
 \item{lmt}{limits of the y axis}
 
 \item{brk}{break of the y axis}
+
+\item{xbl}{axis brakes labels in strign with doble space}
+
+\item{zbl}{legend label in strign with doble space}
+
+\item{color}{colored figure (TRUE), otherwise black & white (FALSE)}
+
+\item{font}{letter size in plot}
 }
 \value{
 Line o bar plot
@@ -41,4 +49,3 @@ Line o bar plot
 \description{
 Function use the dtsm funtion for plot the results
 }
-

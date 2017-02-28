@@ -24,4 +24,3 @@ dt <- GerminaR
 gsp <- ger_GSP(evalName = "Ev", data = dt)
 gsp
 }
-

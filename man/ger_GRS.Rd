@@ -24,4 +24,3 @@ dt <- GerminaR
 grs <- ger_GRS(evalName = "Ev", data = dt)
 grs
 }
-

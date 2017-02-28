@@ -25,4 +25,3 @@ Dataset containing information from a experiment with 6 genotypes Jatropha curca
 \references{
 This data set was developed in UFRPE (2015)
 }
-

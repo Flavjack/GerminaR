@@ -80,7 +80,7 @@ evalFactor <- function(evalName, data){
   
   evf <- dplyr::select(data, -starts_with(colnames(data), evalName))
   
-  evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.character)
+  #evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.character)
   
   evf
   
@@ -141,9 +141,96 @@ dtsm <- function(meanComp){
 
 
 
+#' Multiple comparison test
+#'
+#' @description Function analisis of variance for summary data.
+#' @param aov lm o aov result function.
+#' @param comp treatments will be compared.
+#' @param type method for made comparision analysis: c("snk", "tukey", "duncan").
+#' @param sig significance level. Default 0.05
+#' @return Table with complete data for graphics
+#' @importFrom agricolae SNK.test HSD.test duncan.test
+#' @export
 
 
+ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
+  
+  if( type == "snk"){
+    
+    mc <- agricolae::SNK.test(y = aov, trt = comp, alpha = sig)
+    
+  } else if (type == "tukey"){
+    
+    mc <- agricolae::HSD.test(y = aov, trt = comp, alpha = sig)
+    
+  } else if (type == "duncan"){
+    
+    mc <- agricolae::duncan.test(y = aov, trt = comp, alpha = sig)
+    
+  }
+  
+  GerminaR::dtsm(mc)
+  
+}
 
+
+#' Regresion line equation
+#'
+#' @description Construc the regression line equation
+#' @param data dataframe with the information
+#' @param y variable in the y axis
+#' @param x variable in the x axis
+#' @return regression equation
+#' @export
+
+ger_leq <- function(x, y, data){
+  
+  fml <- as.formula(paste( x , y, sep = " ~ "))
+  mdl <- lm(fml, data)
+  
+  eq <- as.character(as.expression(
+    substitute(italic(y) == a + (b) * italic(x) * "," ~~ italic(R)^2 ~ "=" ~ r2,
+               list(a = format(coef(mdl)[1], digits=2), b = format(coef(mdl)[2], digits=2),
+                    r2 = format(summary(mdl)$r.squared, digits=3) ))))
+  
+  eq
+  
+  # eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(R)^2~"="~r2,
+  #                  list(a = format(coef(mdl)[1], digits = 2),
+  #                       b = format(coef(mdl)[2], digits = 2),
+  #                       r2 = format(summary(mdl)$r.squared, digits = 3)))
+  # as.character(as.expression(eq))
+  
+  
+}
+
+
+#' Import google spreadsheet or xlsx file
+#'
+#' @description function to import information from google spreadsheet or xlsx file.
+#' @param dir local file directory for xlsx document or url from google spreadsheet
+#' @param sheet if is a xlsx file, you can choose the sheet number
+#' @return data frame
+#' @importFrom gsheet gsheet2tbl
+#' @importFrom readxl read_excel
+#' @importFrom dplyr  '%>%'
+#' @export
+
+ger_getdata <- function(dir, sheet = 1) {
+  
+  
+  if (file.exists(dir) == TRUE) {
+    
+    readxl::read_excel(path = dir, sheet = sheet) %>% as.data.frame()
+    
+  } else{
+    
+    gsheet::gsheet2tbl(url = dir) %>% as.data.frame()
+    
+  }
+  
+  
+}
 
 
 

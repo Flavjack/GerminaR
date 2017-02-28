@@ -10,25 +10,21 @@ Authors@R: c(
           )
 Description: Different types of seed indexes, rates and visualization techniques are used to provide a robust approach for germination data analysis. The package aims to make available germination seed indexes and graphical functions to analyze germination seed data.
 Imports:
-    shiny,
-    ggplot2,
     agricolae,
-    assertthat,
+    assertthat, 
+    DT,
+    gtools,
     magrittr,
-    dplyr,
-    tidyr,
-    gtools
+    shiny,
+    shinydashboard,
+    tidyverse
 Depends:
     R (>= 3.2.3)
 Suggests: 
+    testthat,
     knitr,
-    gsheet,
-    rmarkdown,
-    testthat
+    rmarkdown
 VignetteBuilder: knitr    
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
-Suggests: testthat,
-          knitr,
-          rmarkdown
+RoxygenNote: 6.0.1
