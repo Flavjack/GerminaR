@@ -3,11 +3,18 @@ Type: Package
 Title: Germination Indexes for Seed Germination Variables for Ecophysiological Studies
 Version: 1.0
 Date: 2016-12-23
-Authors@R: c( 
-          person("Flavio", "Lozano-Isla", email = "flavjack@gmail.com", role = c("aut", "cre")),
-          person("Omar", "Benites-Alfaro", , "obacc07@gmail.com", "aut"),
-          person("Marcelo F.", "Pompelli", , "mpompelli@gmail.com", "ths")
-          )
+Authors@R: c(
+    person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre")),
+    person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut"),
+    person("Denise", "Garcia de Santana", email = "denise.santana@ufu.br", role = "ctb"),
+    person("Marli A.", "Ranal", email = "ranal@ufu.br", role = "ctb"),
+    person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = "ths"),
+    person(family = "Federal University of Pernambuco", role = "cph",
+    comment = "Register of application"),
+    person(family = "Federal Rural University of Pernambuco", role = "cph",
+    comment = "Post Graduate Program")
+    )
+BugReports: https://github.com/Flavjack/GerminaR/issues
 Description: Different types of seed indexes, rates and visualization techniques are used to provide a robust approach for germination data analysis. The package aims to make available germination seed indexes and graphical functions to analyze germination seed data.
 Imports:
     agricolae,
