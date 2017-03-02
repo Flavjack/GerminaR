@@ -25,6 +25,10 @@ ger_linereg(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
 
 \item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
+\item{xbrk}{brakes for x axis}
+
+\item{ybrk}{brakes for y axis}
+
 \item{zbl}{legend label in strign with doble space}
 
 \item{color}{colored figure (TRUE), otherwise black & white (FALSE)}
@@ -34,12 +38,6 @@ ger_linereg(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
 \item{rlx}{regression line position in axis x.}
 
 \item{rly}{regression line position in axis y.}
-
-\item{lmt}{limits of the y axis}
-
-\item{brk}{break of the y axis}
-
-\item{xbl}{axis brakes labels in strign with doble space}
 }
 \value{
 Line regression plot

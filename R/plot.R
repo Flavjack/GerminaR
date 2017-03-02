@@ -379,9 +379,8 @@ ger_boxp <- function(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL, lgd = 
 #' @param xlab Title for the axis x
 #' @param lgl Title for the legend
 #' @param lgd the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
-#' @param lmt limits of the y axis
-#' @param brk break of the y axis
-#' @param xbl axis brakes labels in strign with doble space
+#' @param xbrk brakes for x axis
+#' @param ybrk brakes for y axis
 #' @param zbl legend label in strign with doble space
 #' @param color colored figure (TRUE), otherwise black & white (FALSE)
 #' @param font letter size in plot
@@ -389,7 +388,7 @@ ger_boxp <- function(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL, lgd = 
 #' @param rly regression line position in axis y.
 #' @return Line regression plot
 #' @importFrom dplyr mutate
-#' @importFrom ggplot2 geom_smooth scale_x_continuous scale_color_grey aes aes_string element_blank element_rect element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete scale_fill_grey
+#' @importFrom ggplot2 geom_smooth scale_x_continuous scale_color_grey aes aes_string element_blank element_rect element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete scale_fill_grey annotate
 #' @importFrom gtools mixedsort
 #' @importFrom stats lm
 #' @export

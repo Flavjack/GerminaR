@@ -181,6 +181,7 @@ ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
 #' @param y variable in the y axis
 #' @param x variable in the x axis
 #' @return regression equation
+#' @importFrom stats as.formula coef
 #' @export
 
 ger_leq <- function(x, y, data){

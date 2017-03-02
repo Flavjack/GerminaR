@@ -20,12 +20,15 @@ Imports:
     agricolae,
     assertthat, 
     DT,
+    dplyr,
+    ggplot2,
     gtools,
     gsheet,
     magrittr,
+    readxl,
     shiny,
     shinydashboard,
-    tidyverse
+    tidyr
 Depends:
     R (>= 3.2.3)
 Suggests: 

@@ -2,10 +2,13 @@
 
 library(shiny)
 library(shinydashboard)
-library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(DT)
 library(agricolae)
 library(GerminaR)
-library(DT)
+
 
 
 shinyServer(function(input, output) {

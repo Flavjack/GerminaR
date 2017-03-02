@@ -2,9 +2,12 @@
 
 library(shiny)
 library(shinydashboard)
-library(agricolae)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
 library(DT)
-library(tidyverse)
+library(agricolae)
+library(GerminaR)
 
 
 shinyUI(dashboardPage(skin = "green",
