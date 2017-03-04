@@ -96,7 +96,8 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 #' 
 #' library(GerminaR)
 #' dt <- prosopis
-#' grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+#' grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
+#'                   evalName = "D", method = "percentage", data = dt)
 #' head(grt, 10)
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){

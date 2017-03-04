@@ -19,3 +19,4 @@ regression equation
 \description{
 Construc the regression line equation
 }
+

@@ -27,8 +27,11 @@ This function makes a data table with the cumulative sum of values of germinatio
 Need a summary by factor before use it with function SummaryBy.
 }
 \examples{
+
 library(GerminaR)
 dt <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
+                  evalName = "D", method = "percentage", data = dt)
 head(grt, 10)
 }
+

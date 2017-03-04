@@ -24,3 +24,4 @@ dt <- prosopis
 vgt <- ger_VGT(evalName = "D", data = dt)
 vgt
 }
+
