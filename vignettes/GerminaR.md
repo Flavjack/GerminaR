@@ -1,5 +1,5 @@
 # GerminaR 1.0
-Flavio Lozano-Isla, Omar Benites Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli  
+Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli  
 `r Sys.Date()`  
 
 

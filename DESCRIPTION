@@ -9,7 +9,7 @@ Authors@R: c(
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut"),
     person("Denise", "Garcia de Santana", email = "denise.santana@ufu.br", role = "ctb"),
     person("Marli A.", "Ranal", email = "ranal@ufu.br", role = "ctb"),
-    person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = "ths"),
+    person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = c("aut","ths")),
     person(family = "Federal University of Pernambuco", role = "cph",
     comment = "Register of application"),
     person(family = "Federal Rural University of Pernambuco", role = "cph",
