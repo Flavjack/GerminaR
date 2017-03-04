@@ -48,8 +48,8 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 #' @examples 
 #' \dontrun{ 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' dm <- evalDays(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' dm <- evalDays(evalName = "D", data = dt)
 #' dm
 #' }
 
@@ -71,8 +71,8 @@ evalDays <- function(evalName, data){
 #' @examples 
 #' \dontrun{ 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' dm <- evalFactor(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' dm <- evalFactor(evalName = "D", data = dt)
 #' dm
 #' }
 
@@ -95,23 +95,7 @@ evalFactor <- function(evalName, data){
 #' @importFrom dplyr mutate select rename group_by_ summarise full_join
 #' @importFrom tidyr separate
 #' @export
-# @examples 
-# 
-# \dontrun{
-# library(GerminaR)
-# library(agricolae)
-# library(ggplot2)
-# 
-# dt <- GerminaR
-# sm <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
-# 
-# av <- aov(MGT ~ Genotype*Salt, sm)
-# summary(av)
-# mc <- SNK.test(av, c("Genotype", "Salt"))
-# 
-# gr <- dtsm(mc)
-# gr
-# 
+
 dtsm <- function(meanComp){
   
   #to avoid no bisible global variable function

@@ -22,7 +22,7 @@ This function calculates the arcsin of germination percentage for normalization.
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-asg <- ger_ASG(SeedN = "NSeeds",evalName = "Ev", data = dt)
-asg
+dt <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+gas
 }

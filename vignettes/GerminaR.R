@@ -1,72 +1,86 @@
 ## ------------------------------------------------------------------------
 library(GerminaR)
-dim(GerminaR)
-str(GerminaR)
+dim(prosopis)
+str(prosopis)
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  GerminaQuant()
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+dt <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
 knitr::kable(head(smr, 10),align = "c")
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-grs <- ger_GRS(evalName = "Ev", data = dt)
+dt <- prosopis
+grs <- ger_GRS(evalName = "D", data = dt)
 grs
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+dt <- prosopis
+grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
 grp
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-gas <- ger_ASG(SeedN = "NSeeds", evalName = "Ev", data = dt)
+dt <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
 gas
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-mgt <- ger_MGT(evalName = "Ev", data = dt)
+dt <- prosopis
+mgt <- ger_MGT(evalName = "D", data = dt)
 mgt
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-mgr <- ger_MGR(evalName = "Ev", data = dt)
+dt <- prosopis
+mgr <- ger_MGR(evalName = "D", data = dt)
 mgr
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-gsp <- ger_GSP(evalName = "Ev", data = dt)
+dt <- prosopis
+gsp <- ger_GSP(evalName = "D", data = dt)
 gsp
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-syn <- ger_SYN(evalName = "Ev", data = dt)
+dt <- prosopis
+syn <- ger_SYN(evalName = "D", data = dt)
 syn
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-unc <- ger_UNC(evalName = "Ev", data = dt)
+dt <- prosopis
+unc <- ger_UNC(evalName = "D", data = dt)
 unc
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-sdg <- ger_SDG(evalName = "Ev", data = dt)
+dt <- prosopis
+sdg <- ger_SDG(evalName = "D", data = dt)
 sdg
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-cvg <- ger_CVG(evalName = "Ev", data = dt)
+dt <- prosopis
+cvg <- ger_CVG(evalName = "D", data = dt)
 cvg
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-vgt <- ger_VGT(evalName = "Ev", data = dt)
+dt <- prosopis
+vgt <- ger_VGT(evalName = "D", data = dt)
 vgt
 
 ## ------------------------------------------------------------------------
-dt <- GerminaR
-grt <- ger_intime(Factor = "Salt", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = GerminaR)
+dt <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+head(grt, 10)
+
+## ----  warning=FALSE-----------------------------------------------------
+dt <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+
+fplot(data = grt, type = "line",
+      x = "evaluation",
+      y = "mean",
+      z = "nacl",
+      ylab = "Germination ('%')",
+      xlab = "days", lgl = "NaCl (mM)",
+      lgd = "top", color = F)
+
 

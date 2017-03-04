@@ -23,8 +23,8 @@ The average speed of germination is defined as the reciprocal of the average tim
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-mgr <- ger_MGR(evalName = "Ev", data = dt)
+dt <- prosopis
+mgr <- ger_MGR(evalName = "D", data = dt)
 mgr
 }
 \references{

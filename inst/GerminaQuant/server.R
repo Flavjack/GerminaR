@@ -56,7 +56,7 @@ data_fb <-  eventReactive(input$reload, {
 
     url <- input$fbdt
 
-    GerminaR::ger_getdata(dir = url, sheet = input$sheetdt)
+    GerminaR::ger_getdata(dir = url)
 
   }
 

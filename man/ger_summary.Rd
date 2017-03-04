@@ -22,7 +22,7 @@ This function makes a data table with the result of germination variables for ea
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+dt <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
 smr
 }

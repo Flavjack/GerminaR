@@ -20,8 +20,8 @@ Give matrix with the factor
 \examples{
 \dontrun{ 
 library(GerminaR)
-dt <- GerminaR
-dm <- evalFactor(evalName = "Ev", data = dt)
+dt <- prosopis
+dm <- evalFactor(evalName = "D", data = dt)
 dm
 }
 }

@@ -24,7 +24,7 @@ This function makes a data table with the cumulative sum of values of germinatio
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
-gcs
+dt <- prosopis
+gcs <- ger_cumsum(SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+head(gcs, 10)
 }

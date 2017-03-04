@@ -20,7 +20,7 @@ This function calculates the Germination Speed according at the time lapse of th
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-gsp <- ger_GSP(evalName = "Ev", data = dt)
+dt <- prosopis
+gsp <- ger_GSP(evalName = "D", data = dt)
 gsp
 }

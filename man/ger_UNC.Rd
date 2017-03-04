@@ -26,8 +26,8 @@ Just a germinated seed changes the value of \code{u}. This means that \code{u} m
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-unc <- ger_UNC(evalName = "Ev", data = dt)
+dt <- prosopis
+unc <- ger_UNC(evalName = "D", data = dt)
 unc
 }
 \references{

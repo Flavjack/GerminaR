@@ -206,7 +206,7 @@ shinyUI(dashboardPage(skin = "green",
            textInput("fbdt",
              label = NULL ,
              width = "100%",
-             value = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537")
+             value = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=137089581")
 
 
           ),
@@ -267,9 +267,9 @@ shinyUI(dashboardPage(skin = "green",
           title = 'Parameters',
           
           
-          textInput("SeedN", label = strong("Seeds (col name)"), value = "NSeeds"),
+          textInput("SeedN", label = strong("Seeds (col name)"), value = "seeds"),
           
-          textInput("evalName", label = strong("Evaluations (prefix)"), value = "Ev"),
+          textInput("evalName", label = strong("Evaluations (prefix)"), value = "D"),
           
   
           uiOutput("filter_01"),

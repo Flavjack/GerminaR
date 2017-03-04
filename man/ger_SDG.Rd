@@ -20,7 +20,7 @@ This function calculates the standard desviation of the mean germination time
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-sdg <- ger_SDG(evalName = "Ev", data = dt)
+dt <- prosopis
+sdg <- ger_SDG(evalName = "D", data = dt)
 sdg
 }

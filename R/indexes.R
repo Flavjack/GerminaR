@@ -9,8 +9,8 @@
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' grs <- ger_GRS(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' grs <- ger_GRS(evalName = "D", data = dt)
 #' grs
 
 ger_GRS <- function(evalName, data){
@@ -40,8 +40,8 @@ ger_GRS <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
 #' grp
 
 
@@ -68,9 +68,9 @@ ger_GRP <- function(SeedN, evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' asg <- ger_ASG(SeedN = "NSeeds",evalName = "Ev", data = dt)
-#' asg
+#' dt <- prosopis
+#' gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+#' gas
 
 
 ger_ASG <- function(SeedN, evalName, data){
@@ -100,8 +100,8 @@ ger_ASG <- function(SeedN, evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' mgt <- ger_MGT(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' mgt <- ger_MGT(evalName = "D", data = dt)
 #' mgt
 
 ger_MGT <- function(evalName, data){
@@ -132,8 +132,8 @@ ger_MGT <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' mgr <- ger_MGR(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' mgr <- ger_MGR(evalName = "D", data = dt)
 #' mgr
 
 ger_MGR <- function(evalName, data){
@@ -155,9 +155,10 @@ ger_MGR <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' gsp <- ger_GSP(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' gsp <- ger_GSP(evalName = "D", data = dt)
 #' gsp
+
 
 ger_GSP <- function(evalName, data){
   
@@ -192,8 +193,8 @@ ger_GSP <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' unc <- ger_UNC(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' unc <- ger_UNC(evalName = "D", data = dt)
 #' unc
 
 ger_UNC <- function(evalName, data){
@@ -226,8 +227,8 @@ ger_UNC <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' syn <- ger_SYN(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' syn <- ger_SYN(evalName = "D", data = dt)
 #' syn
 
 ger_SYN <- function(evalName, data){
@@ -252,8 +253,8 @@ ger_SYN <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' vgt <- ger_VGT(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' vgt <- ger_VGT(evalName = "D", data = dt)
 #' vgt
 
 ger_VGT <- function(evalName, data){
@@ -281,8 +282,8 @@ ger_VGT <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' sdg <- ger_SDG(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' sdg <- ger_SDG(evalName = "D", data = dt)
 #' sdg
 
 ger_SDG <- function(evalName, data){
@@ -304,8 +305,8 @@ ger_SDG <- function(evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' cvg <- ger_CVG(evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' cvg <- ger_CVG(evalName = "D", data = dt)
 #' cvg
 
 ger_CVG <- function(evalName, data){

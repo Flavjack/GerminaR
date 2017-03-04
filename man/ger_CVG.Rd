@@ -20,7 +20,7 @@ This function calculates the coefficient of variation of the mean germination ti
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-cvg <- ger_CVG(evalName = "Ev", data = dt)
+dt <- prosopis
+cvg <- ger_CVG(evalName = "D", data = dt)
 cvg
 }

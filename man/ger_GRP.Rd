@@ -27,8 +27,8 @@ the seminal intrauterine growth resulting protrusion (or emergence) of a living 
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-grp <- ger_GRP(SeedN = "NSeeds",evalName = "Ev", data = dt)
+dt <- prosopis
+grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
 grp
 }
 \references{

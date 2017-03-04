@@ -27,8 +27,8 @@ Thus, the value of \code{Z} assessments is the grade of overlap between seed ger
 \examples{
 
 library(GerminaR)
-dt <- GerminaR
-syn <- ger_SYN(evalName = "Ev", data = dt)
+dt <- prosopis
+syn <- ger_SYN(evalName = "D", data = dt)
 syn
 }
 \references{

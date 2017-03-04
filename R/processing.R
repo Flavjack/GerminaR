@@ -10,8 +10,8 @@
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' smr <- ger_summary(SeedN = "NSeeds", evalName = "Ev", data = dt)
+#' dt <- prosopis
+#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
 #' smr
 
 ger_summary <- function(SeedN, evalName, data){
@@ -48,9 +48,10 @@ ger_summary <- function(SeedN, evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- GerminaR
-#' gcs <- ger_cumsum(SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
-#' gcs
+#' dt <- prosopis
+#' gcs <- ger_cumsum(SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+#' head(gcs, 10)
+
 
 ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
   
@@ -91,13 +92,12 @@ ger_cumsum <- function(SeedN, evalName, method = "percentage", data){
 #' @return Data frame with the germination by period
 #' @importFrom stats sd
 #' @export
-#  @examples
-# \dontrun{
-# library(GerminaR)
-# dt <- GerminaR
-# gnt <- ger_intime(Factor= "Genotype", SeedN = "NSeeds", evalName = "Ev", method = "percentage", data = dt)
-# gnt
-# 
+#' @examples
+#' 
+#' library(GerminaR)
+#' dt <- prosopis
+#' grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+#' head(grt, 10)
 
 ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
     
