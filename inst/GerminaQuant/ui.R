@@ -861,7 +861,7 @@ shinyUI(dashboardPage(skin = "green",
                         width = 2,
                           
 
-                        textOutput("ops"),
+                        h3(textOutput("ops")),
                         
                         hr(),
                         
@@ -885,7 +885,7 @@ shinyUI(dashboardPage(skin = "green",
                         width = 2,
                           
 
-                        textOutput("opp"),
+                        h3(textOutput("opp")),
                         
                         hr(),
                         
