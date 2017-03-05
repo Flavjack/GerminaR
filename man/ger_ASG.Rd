@@ -26,4 +26,3 @@ dt <- prosopis
 gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
 gas
 }
-

@@ -28,4 +28,3 @@ dt <- prosopis
 gcs <- ger_cumsum(SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
 head(gcs, 10)
 }
-

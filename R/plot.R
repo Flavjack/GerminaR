@@ -37,8 +37,9 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
     }
   
-  data[,x] <- factor(data[,x], levels = gtools::mixedsort(data[,x]))
-  data[,z] <- factor(data[,z], levels = gtools::mixedsort(data[,z]))
+  
+  data[,x] <- factor(data[,x], levels = gtools::mixedsort(levels(as.factor(data[, x]))))
+  data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
   
   
   if ( is.null(ylab)){
