@@ -1078,8 +1078,8 @@ plot_git <- reactive({
   
   df <- gnt()
   
-  df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(df[,"evaluation"]))
-  df[,input$smvr] <- factor(df[,input$smvr], levels = gtools::mixedsort(df[,input$smvr]))
+  df[, "evaluation"] <- factor(df[,"evaluation"], levels = gtools::mixedsort(levels(as.factor(df[,"evaluation"]))))
+  df[,input$smvr] <- factor(df[,input$smvr], levels = gtools::mixedsort(levels(as.factor(df[,input$smvr]))))
   
   if (is.null(df)) return(NULL)
   else if (input$smvr =='' ){ return(NULL) }
