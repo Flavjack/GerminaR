@@ -4,7 +4,7 @@
 \alias{ger_linereg}
 \title{Plot line regression}
 \usage{
-ger_linereg(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
+ger_linereg(data, x, y, z = NULL, ylab = NULL, xlab = NULL, lgl = NULL,
   lgd = "top", xbrk = NULL, ybrk = NULL, zbl = NULL, color = TRUE,
   font = 1, rlx = NULL, rly = NULL)
 }
