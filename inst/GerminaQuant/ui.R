@@ -518,6 +518,12 @@ shinyUI(dashboardPage(skin = "green",
 
 
           box(width = 5, background = "black",
+              
+            column(width = 12,
+                   
+                   uiOutput("stat_factor")
+                   
+            ),
 
             column(width = 6,
 
@@ -532,13 +538,6 @@ shinyUI(dashboardPage(skin = "green",
 
 
             ),
-
-            column(width = 12,
-
-              uiOutput("stat_factor")
-
-            ),
-
 
 
             column(width = 6,
