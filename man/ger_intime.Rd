@@ -34,3 +34,4 @@ grt <- ger_intime(Factor = "nacl", SeedN = "seeds",
                   evalName = "D", method = "percentage", data = dt)
 head(grt, 10)
 }
+
