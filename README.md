@@ -5,6 +5,9 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 
 
+[![DOI](https://zenodo.org/badge/49505163.svg)](https://zenodo.org/badge/latestdoi/49505163)
+
+
 # GerminaR
 Packages for graphics and indexes for seed germination and ecophysiological evaluation.
 
