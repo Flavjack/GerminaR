@@ -19,7 +19,11 @@ shinyServer(function(input, output) {
   output$gb<-renderUI({
     
     getPage<-function() {
-      return(includeHTML("gb.html"))
+      return(
+        
+        HTML('<iframe src="https://flavjack.github.io/GerminaQuant-usm/" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:50px; width:100%; height:92%">')
+        
+        )
       
       
     }
