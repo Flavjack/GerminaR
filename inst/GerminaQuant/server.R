@@ -533,6 +533,45 @@ av <- reactive({
 
 })
 
+# Assumptions -------------------------------------------------------------
+
+
+assuption_homvar <- reactive({
+  
+  plot(av(),
+       main = "Homogeneity of Variance",
+       # caption = "caption",
+       sub.caption = "",
+       which = 1)
+  
+  
+})
+
+output$assuption_plot01  <- renderPlot({
+  
+  assuption_homvar ()
+  
+})
+
+
+assuption_norm <- reactive({
+  
+  plot(av(),
+       main = "Normal distribution plot",
+       # caption = "caption",
+       sub.caption = "",
+       which = 2)
+  
+  
+})
+
+output$assuption_plot02  <- renderPlot({
+  
+  assuption_norm()
+  
+})
+
+
 
 # ANOVA table
 
@@ -542,7 +581,17 @@ output$tbav = renderPrint({
 
   summary(file)
 
+})
 
+# descriptive Statistics
+
+output$stat_summary = renderTable({
+  
+  file <- av()
+  dt <-  varCal()
+  
+  stat_sm(file, dt)
+  
 })
 
 

@@ -40,6 +40,10 @@ shinyUI(dashboardPage(skin = "green",
 
     dashboardBody(
 
+      
+      tags$head(
+        tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+      ),
 
       tabItems(
 
@@ -50,6 +54,7 @@ shinyUI(dashboardPage(skin = "green",
 
         tabItem(tabName = "intro",
 
+                shiny::fluidRow(
 
                 box(
                   title = "Presentacion",
@@ -168,8 +173,8 @@ shinyUI(dashboardPage(skin = "green",
 
 
                 )
-
-
+                
+                )
 
         ),
 
@@ -242,6 +247,9 @@ shinyUI(dashboardPage(skin = "green",
         ),
 
 
+        shiny::fluidRow(
+          
+     
         box(
 
           status = "danger",
@@ -284,7 +292,7 @@ shinyUI(dashboardPage(skin = "green",
                  
           )
           
-
+        )
 
         ),
 
@@ -294,10 +302,18 @@ shinyUI(dashboardPage(skin = "green",
 
         tabItem(tabName = "germination",
                 
-                
-        dataTableOutput("summary")
+        shiny::fluidRow(
           
+          box(width = 12,
+              
+              dataTableOutput("summary")
+              
+          )   
           
+        )
+     
+        
+        
         ),
 
 
@@ -391,14 +407,16 @@ shinyUI(dashboardPage(skin = "green",
             ),
 
 
+          shiny::fluidRow(
+          
           box(width = 12,
 
           plotOutput("boxplot")
 
 
           )
-
-
+          
+          )
 
         ),
 
@@ -515,6 +533,8 @@ shinyUI(dashboardPage(skin = "green",
 # statistics -------------------------------------------------------------
 
         tabItem(tabName = "stat",
+                
+          shiny::fluidRow(
 
 
           box(width = 5, background = "black",
@@ -563,35 +583,97 @@ shinyUI(dashboardPage(skin = "green",
             ),
 
 
-              column(width = 12,
+            column(width = 12,
 
                 verbatimTextOutput("tbav")
 
-              )
-
+            ),
+            
+            
+            column(width = 12,
+                   
+                   tableOutput("stat_summary")
+                   
+            )
 
 
 
           ),
-
-
-
+          
+          
+          
           box(width = 7,
+              
+            
+              box(title = "Summary table", 
+                  solidHeader = T,
+                  width = 12, 
+                  collapsible = T,
+                  collapsed = T,
+                  status = "primary",
+                  
+                  DT::dataTableOutput("mnc")
+                  
+                  ),
+              
+              
+              box(title = "Assumptions", 
+                  solidHeader = T,
+                  width = 12, 
+                  collapsible = T,
+                  collapsed = T,
+                  status = "danger",
+                  
+    shiny::HTML("<h5><b>Don't forget the assumptions of the model!</b></h5>"),
+    
+    shiny::HTML("<p>
+                  <ol>
+                  <li>The errors are independent.</li>
+                  <li>The variable should have a normal distribution.</li>
+                  <li>The variance should be the same for all treatments.</li>
+                  </ol>
+                  </p>"),
+    
+    hr(),
+    
+    shiny::HTML("<h5><b>The following plots can help you to evaluate the assumptions</b></h5>"),
 
+    column(width = 12,
+           
+           plotOutput("assuption_plot01")
+           
+    ),
+    
+    
+    p("Any trend in the residuals would violate the assumption of independence while a trend in the variability of the residuals -for instance a funnel shape- suggests heterogeneity of variances."),
+    
+    
+    column(width = 12,
+           
+           plotOutput("assuption_plot02")
+           
+    ),
+    
+    p("Departures from the theoretical normal line are symptoms of lack of normality.")
+  
 
-            DT::dataTableOutput("mnc")
-
-
+              )
+            
+            
+          )
+          
+          
           )
 
-
+          
         ),
 
 # graphics ----------------------------------------------------------------
 
 
         tabItem(tabName = "graph",
-
+                
+          
           box( width = 10,
 
 
@@ -695,7 +777,8 @@ shinyUI(dashboardPage(skin = "green",
 
             ),
 
-
+          shiny::fluidRow(
+            
           box(width = 12,
 
 
@@ -706,8 +789,12 @@ shinyUI(dashboardPage(skin = "green",
           )
 
 
+          )
+          
       ),
 
+      shiny::fluidRow(
+      
           box(width = 2,
 
             column(width = 12,
@@ -817,8 +904,9 @@ shinyUI(dashboardPage(skin = "green",
 
 
           )
-
-
+          
+          
+          )
 
         ),
 
@@ -828,6 +916,8 @@ shinyUI(dashboardPage(skin = "green",
         tabItem(tabName = "tools", withMathJax(),
                 
                 
+                shiny::fluidRow(
+                  
                 box(width = 8, 
                     title = "Osmotic potencial calculator", 
                     status = "primary",
@@ -896,6 +986,8 @@ shinyUI(dashboardPage(skin = "green",
                         
                         
                           )
+                
+                )
                 
                 
           ),
@@ -1209,6 +1301,8 @@ shinyUI(dashboardPage(skin = "green",
                ),
                
                
+               shiny::fluidRow(
+               
                box(width = 12,
                    status = "info", 
                    solidHeader = T,
@@ -1221,7 +1315,12 @@ shinyUI(dashboardPage(skin = "green",
                )
                
                
+               )
+               
+               
           ),
+          
+          shiny::fluidRow(
           
           box(width = 2,
               
@@ -1317,7 +1416,9 @@ shinyUI(dashboardPage(skin = "green",
               
               
           )
-
+          
+          
+          )
 
 
           )

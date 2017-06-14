@@ -218,4 +218,39 @@ ger_getdata <- function(dir, sheet = 1) {
 }
 
 
+#' Descriptive Statistics for a model
+#'
+#' @description Function to summary descriptive statistics from a model
+#' @param model an object containing the results returned by a model fitting function
+#' @param data data set used for the model
+#' @return data frame
+#' @importFrom dplyr summarise
+#' @importFrom dplyr '%>%'
+#' @export
+
+stat_sm <- function(modelo, data){
+  
+  avt <- anova(modelo)
+  
+  varn <- colnames(modelo[["model"]][1])
+  
+  
+  smr <- data %>% 
+    select_( varn )
+  
+  smd <- smr %>% 
+    dplyr::summarise(
+      MSerror  =  avt["Residuals", 3],
+      mean = mean(smr[[varn]], na.rm=TRUE),
+      sd = sd(smr[[varn]], na.rm=TRUE),
+      min = min(smr[[varn]], na.rm=TRUE),
+      max = max(smr[[varn]], na.rm=TRUE),
+      num = sum(!is.na(smr[[varn]])),
+      CV = sqrt(MSerror) * 100/mean
+      
+    )
+  
+  smd
+  
+}
 

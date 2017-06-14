@@ -17,4 +17,3 @@ Data Matrix with day of the germination
 \description{
 This function made a data table with the evaluation days of germination
 }
-

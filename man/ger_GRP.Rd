@@ -34,4 +34,3 @@ grp
 \references{
 LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }
-
