@@ -7,9 +7,9 @@
 stat_sm(modelo, data)
 }
 \arguments{
-\item{data}{data set used for the model}
+\item{modelo}{an object containing the results returned by a model fitting function}
 
-\item{model}{an object containing the results returned by a model fitting function}
+\item{data}{data set used for the model}
 }
 \value{
 data frame
@@ -17,3 +17,4 @@ data frame
 \description{
 Function to summary descriptive statistics from a model
 }
+
