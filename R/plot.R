@@ -37,9 +37,13 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
     }
   
+
+  data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
+    
+
   
   data[,x] <- factor(data[,x], levels = gtools::mixedsort(levels(as.factor(data[, x]))))
-  data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
+  
   
   
   if ( is.null(ylab)){
@@ -257,19 +261,21 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
     theme(
       axis.title.x = element_text(size= 8*font),
       axis.title.y = element_text(size= 8*font, angle=90),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
+      panel.background = element_rect(fill = "transparent"), 
+      plot.background = element_rect(fill = "transparent"),
+      panel.grid.major = element_blank(), 
+      panel.grid.minor = element_blank(), 
+      legend.background = element_rect(fill = "transparent"), 
+      legend.box.background = element_rect(fill = "transparent"),
       legend.position = lgd,
       legend.title = element_text(size= 8*font),
       legend.text = element_text(size= 8*font),
       legend.key.size = unit(0.8*font, "lines"),
       legend.key = element_blank(),
-      legend.background = element_rect(fill= "transparent"),
       text = element_text(size = 8*font)
     )
   
-  
-  
+
 }
 
 
@@ -507,16 +513,25 @@ ger_linereg <- function(data, x, y, z = NULL, ylab = NULL, xlab = NULL, lgl = NU
   
   p + theme_bw()+
     theme(
-      axis.title.x = element_text(size= 8*font),
-      axis.title.y = element_text(size= 8*font, angle=90),
+      
+      panel.border = element_blank(),
+      legend.key = element_blank(),
+      axis.ticks = element_blank(),
+      axis.text.y = element_blank(),
+      axis.text.x = element_blank(),
+      panel.grid = element_blank(),
+      panel.grid.minor = element_blank(), 
       panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      legend.position = lgd,
+      panel.background = element_blank(),
+      plot.background = element_rect(fill = "transparent",colour = NA),
+      legend.background = element_rect(fill= "transparent"),
+      
       legend.title = element_text(size= 8*font),
       legend.text = element_text(size= 8*font),
       legend.key.size = unit(0.8*font, "lines"),
-      legend.key = element_blank(),
-      legend.background = element_rect(fill= "transparent"),
+      axis.title.x = element_text(size= 8*font),
+      axis.title.y = element_text(size= 8*font, angle=90),
+      legend.position = lgd,
       text = element_text(size = 8*font)
     )
 }
