@@ -99,28 +99,25 @@ evalFactor <- function(evalName, data){
 dtsm <- function(meanComp){
   
   #to avoid no bisible global variable function
-  std <- r <- trt <- means <- Min <- Max <- ste <- M <- NULL
+  std <- r <- trt <- mean <- Min <- Max <- ste <- groups <- NULL
   
-  #fct <- as.character(mc$parameters$name.t)
   fct <- as.character(meanComp$parameters$name.t)
   fct <- as.expression(strsplit(fct, split = ":"))
   
-  #dtmn <- mc$means #flavio
-  dtmn <- meanComp$means #omar
-  #dtgr <- mc$groups #flavio
-  dtgr <- meanComp$groups #omar
+  dtmn <- meanComp$means %>% rename_(mean = names(meanComp$means[1]))
+ 
+  dtgr <- meanComp$groups %>% rownames_to_column(var = "trt")
   
   dtgr$trt <- gsub("\\s", "", as.character(dtgr$trt))
   
   dta <- dtmn %>% 
     dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn))) 
                
-  sm <- dplyr::full_join(dta[2:7], dtgr, by = "trt") %>% 
-    dplyr::select(trt, means, Min, Max, r, std, ste, M) %>% 
+  sm <- dplyr::full_join(dta, dtgr, by = "trt") %>% 
+    dplyr::select(trt, mean, Min, Max, r, std, ste, groups) %>% 
     tidyr::separate("trt", sep = ":", into = eval(fct)) %>% 
-    dplyr::rename(mean = means, min = Min, max = Max, sg = M)
+    dplyr::rename(min = Min, max = Max, sg = groups)
   
-
 }
 
 
