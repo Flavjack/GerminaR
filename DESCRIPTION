@@ -2,7 +2,7 @@ Package: GerminaR
 Type: Package
 Title: Germination Indexes for Seed Germination Variables for Ecophysiological
     Studies
-Version: 1.1
+Version: 1.2
 Date: 2017-03-04
 Authors@R: c(
     person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre")),

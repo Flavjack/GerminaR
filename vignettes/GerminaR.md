@@ -119,6 +119,13 @@ The function `ger_summary()`, according to the accumulative germination data, ca
 ```r
 dt <- prosopis
 smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
+```
+
+```
+## Warning: package 'bindrcpp' was built under R version 3.3.3
+```
+
+```r
 knitr::kable(head(smr, 10),align = "c")
 ```
 
