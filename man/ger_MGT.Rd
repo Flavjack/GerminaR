@@ -33,4 +33,3 @@ mgt
 CZABATOR, F. J. Germination value: an index combining speed and completeness of pine seed germination. 
 Forest Science, v. 8, n. 4, p. 386-396, 1962.
 }
-

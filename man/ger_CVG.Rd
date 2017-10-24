@@ -24,4 +24,3 @@ dt <- prosopis
 cvg <- ger_CVG(evalName = "D", data = dt)
 cvg
 }
-

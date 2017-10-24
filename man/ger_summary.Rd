@@ -7,7 +7,7 @@
 ger_summary(SeedN, evalName, data)
 }
 \arguments{
-\item{SeedN}{Name of the colonn with the seed numbers}
+\item{SeedN}{Name of the column with the seed numbers}
 
 \item{evalName}{Prefix of the evalaution variable}
 
@@ -26,4 +26,3 @@ dt <- prosopis
 smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
 smr
 }
-

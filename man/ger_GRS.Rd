@@ -24,4 +24,3 @@ dt <- prosopis
 grs <- ger_GRS(evalName = "D", data = dt)
 grs
 }
-

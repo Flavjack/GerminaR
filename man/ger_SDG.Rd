@@ -24,4 +24,3 @@ dt <- prosopis
 sdg <- ger_SDG(evalName = "D", data = dt)
 sdg
 }
-

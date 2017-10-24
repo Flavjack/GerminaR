@@ -25,6 +25,7 @@ Imports:
     assertthat,
     DT,
     dplyr,
+    tibble,
     ggplot2,
     gtools,
     gsheet,
@@ -42,4 +43,4 @@ Suggests:
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
