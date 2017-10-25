@@ -3,7 +3,7 @@ Type: Package
 Title: Germination Indexes for Seed Germination Variables for Ecophysiological
     Studies
 Version: 1.2
-Date: 2017-03-04
+Date: 2017-10-25
 Authors@R: c(
     person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre")),
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut"),
