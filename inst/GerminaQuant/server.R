@@ -1275,59 +1275,21 @@ output$download_plot_git <- downloadHandler(
 
 output$ops <- reactive({
   
-  if( input$pre > 0) return( "presure should be negative")
+  if( input$pres > 0) return( "presure should be negative")
   else{  
     
-    r1 <- (-0.00820574587 * (input$tem + 273) * input$dis)
+    op <- osmp(type = input$tool_osmp,
+         vol = input$vol, 
+         pres = input$pres, 
+         temp = input$temp, 
+         mw = input$psm, 
+         ki = input$dis)
     
-    r2 <- input$pre/r1
-    
-    r3 <- r2 * 1000
-    
-    r4 <- (input$psm * r3 * input$vol*1000)/10^6
-    
-    round(r4, 5)
+    paste(op, "g/l", sep = " ")
     
   }
   
 }) 
-
-
-output$opp <- reactive({
-  
-  if( input$prep > 0) return( "presure should be negative")
-  else{  
-    
-    mpb <- input$prep * 10
-    
-    C <- (-1.18 * 10^(-2))
-    
-    C2 <- (-1.18 * 10^(-4))
-    
-    CT <- (2.67 * 10^(-4)) * input$temp
-    
-    C2T <- (8.39 * 10^(-7)) * input$temp
-    
-    b <- (C + CT) * (-1)
-    
-    a <- (C2 + C2T) * (-1)
-    
-    c <- mpb
-    
-    b2 <- b^2
-    
-    ac4 <- (4*a*c*(-1)) 
-    
-    delta <- b2 + ac4
-    
-    srdt <- abs(sqrt(delta))
-    
-    round(srdt, 5)
-    
-  }
-  
-})
-
 
 
 })

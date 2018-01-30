@@ -8,6 +8,7 @@ library(ggplot2)
 library(DT)
 library(agricolae)
 library(GerminaR)
+library(shinyWidgets)
 
 
 shinyUI(dashboardPage(skin = "green",
@@ -918,8 +919,8 @@ shinyUI(dashboardPage(skin = "green",
                 
                 shiny::fluidRow(
                   
-                box(width = 8, 
-                    title = "Osmotic potencial calculator", 
+                box(width = 7, 
+                    title = "Osmotic potencial", 
                     status = "primary",
                     solidHeader = T,
                     
@@ -934,60 +935,72 @@ shinyUI(dashboardPage(skin = "green",
                     
                     hr(),
                     
-                    p("For", em("PEG 6000"), "the osmotic potentials can be calculated as described by", a("Michel and Kaufmann (1973):", href = "http://www.plantphysiol.org/content/51/5/914.abstract", target="_blank"), "$$\\psi_s = -(1.18*10^{-2})C - (1.18*10^{-4})C^2 + (2.67*10^{-4})CT + (8.39*10^{-7})C^2T$$ 
-                      where: \\(C\\) is the concentration of", em("PEG 6000"), "in \\(g*L^{-1}\\) and \\(T\\) is the temperature in degrees \\(^{o}C\\).  The unit for \\(\\psi_s\\) is \\(bar (0.1 MPa)\\)."),
+                    p("For", em("PEG-6000"), "the osmotic potentials can be calculated as described by", a("Michel and Kaufmann (1973):", href = "http://www.plantphysiol.org/content/51/5/914.abstract", target="_blank"), "$$\\psi_s = -(1.18*10^{-2})C - (1.18*10^{-4})C^2 + (2.67*10^{-4})CT + (8.39*10^{-7})C^2T$$ 
+                      where: \\(C\\) is the concentration of", em("PEG-6000"), "in \\(g*L^{-1}\\) and \\(T\\) is the temperature in degrees \\(^{o}C\\).  The unit for \\(\\psi_s\\) is \\(bar (0.1 MPa)\\)."),
                     
                     br()
                     
                     ),
                 
+                box(
+                  title = "Calculator", 
+                  status = "info", 
+                  solidHeader = T,
+                  width = 5,
+                  
+                  column(width = 12,
+                         
+                         h2(textOutput("ops")),
+                         tags$style(type="text/css", "#ops { height: 50px; width: 100%; text-align:center; font-size: 35px;}")
+                         
+                  ),
+                  
+                  column(width = 12,
+                         
+                         radioGroupButtons(
+                           inputId = "tool_osmp",  
+                           status = "primary", 
+                           justified = TRUE,
+                           individual = TRUE,
+                           choiceNames = list("Salt", "PEG-6000"),
+                           choiceValues =  list("salt", "peg6000"), 
+                           selected = "salt", 
+                           checkIcon = list(yes = icon("ok", lib = "glyphicon"))
+                         ),
+                         
+                         
+                         numericInput("vol", label = p("Volume (\\(litres\\))"), value = 1.0, min = 0),
+                         
+                         numericInput("pres", label = p("Pressure (\\(MPa\\))"), value = -0.05, max = 0),
+                         
+                         numericInput("temp", label = p("Temperature (\\(^{o}C\\))"), value = 25.0),
+                         
+                         conditionalPanel(
+                           
+                           
+                           condition = "input.tool_osmp == 'salt'",
+                           
+                           column(width = 6,
+                                  
+                            numericInput("psm", label = p("Molecular weight"), value = 58.4428, min = 0)
+                                  
+                                ),
+                           
+                           column(width = 6,
+                                  
+                            numericInput("dis", label = p("Salt dissociation constant"), value = 1.8, min = 0)
+                                  
+                                  
+                           )
+                                    
+    
+                         )
+                         
+                  )
 
-
-                     box(
-                        title = "Salt (\\(g\\))", 
-                        status = "info", 
-                        solidHeader = T,
-                        width = 2,
-                          
-
-                        h3(textOutput("ops")),
-                        
-                        hr(),
-                        
-                        numericInput("vol", label = p("Volume (\\(L\\))"), value = 1.0, min = 0),
-                        
-                        numericInput("pre", label = p("Pressure (\\(MPa\\))"), value = -0.8, max = 0),
-                        
-                        numericInput("tem", label = p("Temperature (\\(^{o}C\\))"), value = 25.0),
-                        
-                        numericInput("psm", label = p("Molecular weight"), value = 58.4428, min = 0),
-                        
-                        numericInput("dis", label = p("Salt dissociation constant"), value = 1.8, min = 0)
-                        
-                          
-                          ),
-                      
-                  box(
-                        title = "PEG 600 (\\(g\\))", 
-                        solidHeader = T,
-                        status = "info",
-                        width = 2,
-                          
-
-                        h3(textOutput("opp")),
-                        
-                        hr(),
-                        
-                        numericInput("volp", label = p("Volume (\\(L\\))"), value = 1.0, min = 0),
-                        
-                        numericInput("prep", label = p("Pressure (\\(MPa\\))"), value = -0.8, max = 0),
-                        
-                        numericInput("temp", label = p("Temperature (\\(^{o}C\\))"), value = 25.0)
-                        
-                        
-                          )
-                
                 )
+
+            )
                 
                 
           ),

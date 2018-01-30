@@ -1,6 +1,17 @@
-# GerminaR 1.0
-Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli  
-`r Sys.Date()`  
+---
+title: "GerminaR 1.0"
+author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
+date: "2018-01-29"
+output: 
+      rmarkdown::html_vignette:
+        toc: true
+        toc_depth: 4
+        keep_md: true
+vignette: >
+  %\VignetteIndexEntry{GerminaR 1.0}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 
 The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/GerminaQuant-usm/))
@@ -119,13 +130,6 @@ The function `ger_summary()`, according to the accumulative germination data, ca
 ```r
 dt <- prosopis
 smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
-```
-
-```
-## Warning: package 'bindrcpp' was built under R version 3.3.3
-```
-
-```r
 knitr::kable(head(smr, 10),align = "c")
 ```
 
