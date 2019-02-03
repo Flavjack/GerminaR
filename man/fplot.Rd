@@ -4,9 +4,9 @@
 \alias{fplot}
 \title{Plot line or bar graphic}
 \usage{
-fplot(data, type = "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
-  lgd = "top", sig = NULL, erb = FALSE, lmt = NULL, brk = NULL,
-  xbl = NULL, zbl = NULL, color = TRUE, font = 1)
+fplot(data, type = "bar", x, y, z, ylab = NULL, xlab = NULL,
+  lgl = NULL, lgd = "top", sig = NULL, erb = FALSE, lmt = NULL,
+  brk = NULL, xbl = NULL, zbl = NULL, color = TRUE, font = 1)
 }
 \arguments{
 \item{data}{Output dtsm fuction}
