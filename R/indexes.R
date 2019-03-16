@@ -1,4 +1,3 @@
-
 #' Germinated Seed Number
 #' 
 #' @export
@@ -44,7 +43,6 @@ ger_GRS <- function(evalName, data){
 #' grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
 #' grp
 
-
 ger_GRP <- function(SeedN, evalName, data){
   
   sdn <- data[, SeedN]
@@ -71,7 +69,6 @@ ger_GRP <- function(SeedN, evalName, data){
 #' dt <- prosopis
 #' gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
 #' gas
-
 
 ger_ASG <- function(SeedN, evalName, data){
   
@@ -172,7 +169,6 @@ ger_GSP <- function(evalName, data){
   rst
   
 }
-
 
 
 #' Germination Uncertainty

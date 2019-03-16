@@ -1,25 +1,22 @@
-Package: GerminaR
 Type: Package
-Title: Germination Indexes for Seed Germination Variables for Ecophysiological
-    Studies
+Package: GerminaR
+Title: Germination indices and graphics for seed germination in ecophysiological studies
 Version: 1.2
-Date: 2017-10-25
+Description: GerminaR is a package for calculate different seed germination indices and visualization techniques that provide a robust approach for germination data analysis.
+Date: 2019-03-22
 Authors@R: c(
-    person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre")),
-    person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut"),
+    person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X")),
+    person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-6852-9598")),
     person("Denise", "Garcia de Santana", email = "denise.santana@ufu.br", role = "ctb"),
     person("Marli A.", "Ranal", email = "ranal@ufu.br", role = "ctb"),
-    person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = c("aut","ths")),
+    person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = c("aut","ths"), comment = c(ORCID = "0000-0002-4408-6374")),
     person(family = "Federal University of Pernambuco", role = "cph",
     comment = "Register of application"),
     person(family = "Federal Rural University of Pernambuco", role = "cph",
     comment = "Post Graduate Program")
     )
+URL: https://flavjack.shinyapps.io/germinaquant/
 BugReports: https://github.com/Flavjack/GerminaR/issues
-Description: Different types of seed indexes, rates and visualization techniques
-    are used to provide a robust approach for germination data analysis. The package
-    aims to make available germination seed indexes and graphical functions to
-    analyze germination seed data.
 Imports:
     agricolae,
     assertthat,
@@ -43,4 +40,4 @@ Suggests:
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

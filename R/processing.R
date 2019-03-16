@@ -1,6 +1,6 @@
-#' Summary of Germination Variables
+#' Summary of Germination indices
 #' 
-#' @description This function makes a data table with the result of germination variables for each experimental unit.
+#' @description This function makes a data table with the result of germination indices for each experimental unit.
 #' @param SeedN Name of the column with the seed numbers
 #' @param evalName Prefix of the evalaution variable
 #' @param data The name of the data frame containing the data.

@@ -9,20 +9,24 @@
 
 
 # GerminaR
-Packages for graphics and indexes for seed germination and ecophysiological evaluation.
+
+Germination indices and graphics for seed germination in ecophysiological studies.
 
 ### Installation
 
 To install this package you need package devtools:
+
 ```{r eval=F}
 install.packages(devtools)
 ```
 Then type:
+
 ```{r eval=F}
 devtools::install_github("Flavjack/GerminaR")
 ```
 
 ### Usage
+
 To load the package type in your computer:
 
 ```{r eval=F}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/processing.R
 \name{ger_summary}
 \alias{ger_summary}
-\title{Summary of Germination Variables}
+\title{Summary of Germination indices}
 \usage{
 ger_summary(SeedN, evalName, data)
 }
@@ -17,7 +17,7 @@ ger_summary(SeedN, evalName, data)
 Data frame with the summary values of germination variables.
 }
 \description{
-This function makes a data table with the result of germination variables for each experimental unit.
+This function makes a data table with the result of germination indices for each experimental unit.
 }
 \examples{
 

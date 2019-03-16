@@ -279,7 +279,6 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
 }
 
 
-
 #' Boxplot graphic
 #'
 #' @description Function use the raw data for made a boxplot graphic
@@ -460,8 +459,6 @@ ger_linereg <- function(data, x, y, z = NULL, ylab = NULL, xlab = NULL, lgl = NU
   }
   
   
-  
-  
   if(is.null(xbrk)){
     
     xbrks <- ggplot2::waiver() } else {
@@ -535,5 +532,4 @@ ger_linereg <- function(data, x, y, z = NULL, ylab = NULL, xlab = NULL, lgl = NU
       text = element_text(size = 8*font)
     )
 }
-
 
