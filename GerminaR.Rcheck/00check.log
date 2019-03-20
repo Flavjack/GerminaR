@@ -1,0 +1,28 @@
+* using log directory 'D:/Github_Repos/GerminaR/GerminaR.Rcheck'
+* using R version 3.4.3 (2017-11-30)
+* using platform: x86_64-w64-mingw32 (64-bit)
+* using session charset: ISO8859-1
+* using option '--as-cran'
+* checking for file 'GerminaR/DESCRIPTION' ... OK
+* checking extension type ... Package
+* this is package 'GerminaR' version '1.3'
+* checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
+Maintainer: 'Flavio Lozano Isla <flavjack@gmail.com>'
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available:
+  'agricolae' 'assertthat' 'DT' 'dplyr' 'tibble' 'ggplot2' 'gtools'
+  'gsheet' 'magrittr' 'readxl' 'shiny' 'shinydashboard' 'tidyr'
+
+Packages suggested but not available: 'testthat' 'knitr' 'rmarkdown'
+
+VignetteBuilder package required for checking but not installed: 'knitr'
+
+The suggested packages are required for a complete check.
+Checking can be attempted without them by setting the environment
+variable _R_CHECK_FORCE_SUGGESTS_ to a false value.
+
+See section 'The DESCRIPTION file' in the 'Writing R Extensions'
+manual.
+* DONE
+Status: 1 ERROR

@@ -1,6 +1,7 @@
 Type: Package
 Package: GerminaR
-Title: Germination Indices and Graphics for Seed Germination in Ecophysiological Studies
+Title: Germination Indices and Graphics for Seed Germination in
+        Ecophysiological Studies
 Version: 1.3
 Description: The aim of GerminaR consists of the assessment of different seed germination indices and visualization techniques that provide a robust approach for germination data analysis.
 Date: 2019-03-22
@@ -17,27 +18,21 @@ Authors@R: c(
     )
 URL: https://flavjack.shinyapps.io/germinaquant/
 BugReports: https://github.com/Flavjack/GerminaR/issues
-Imports:
-    agricolae,
-    assertthat,
-    DT,
-    dplyr,
-    tibble,
-    ggplot2,
-    gtools,
-    gsheet,
-    magrittr,
-    readxl,
-    shiny,
-    shinydashboard,
-    tidyr
-Depends:
-    R (>= 3.2.3)
-Suggests:
-    testthat,
-    knitr,
-    rmarkdown
+Imports: agricolae, assertthat, DT, dplyr, tibble, ggplot2, gtools,
+        gsheet, magrittr, readxl, shiny, shinydashboard, tidyr
+Depends: R (>= 3.2.3)
+Suggests: testthat, knitr, rmarkdown
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2019-03-19 03:01:50 UTC; omar_
+Author: Flavio Lozano Isla [aut, cre] (0000-0002-0714-669X),
+  Omar Benites Alfaro [aut] (0000-0002-6852-9598),
+  Denise Garcia de Santana [ctb],
+  Marli A. Ranal [ctb],
+  Marcelo F. Pompelli [aut, ths] (0000-0002-4408-6374),
+  Federal University of Pernambuco [cph] (Register of application),
+  Federal Rural University of Pernambuco [cph] (Post Graduate Program)
+Maintainer: Flavio Lozano Isla <flavjack@gmail.com>

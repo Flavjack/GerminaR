@@ -4,3 +4,4 @@
 inst/GerminaR
 ^appveyor\.yml$
 ^\.travis\.yml$
+^\.httr-oauth$
