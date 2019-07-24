@@ -34,29 +34,22 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
       brks <- (((round(mean(data[,y]), 0))*(-20)):((round(mean(data[,y]), 0))*(+20))) * brk
       
-      
     }
   
-
   data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
-    
-
   
   data[,x] <- factor(data[,x], levels = gtools::mixedsort(levels(as.factor(data[, x]))))
-  
-  
   
   if ( is.null(ylab)){
     
     ylab <- y
-    
+ 
   } else {
     
     yl <- gsub(pattern = " ",replacement = "~", ylab)
     ylab <- eval(expression(parse(text = yl)))
     
   }
-  
   
   if ( is.null(xlab)){
     
@@ -68,9 +61,7 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
     xl <- gsub(pattern = " ",replacement = "~", xlab)
     xlab <- eval(expression(parse(text = xl)))
     
-    
   }
-  
   
   if ( is.null(lgl)){
     
@@ -82,14 +73,9 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
     ll <- gsub(pattern = " ",replacement = "~", lgl)
     lgl  <- eval(expression(parse(text = ll)))
     
-    
   }
   
-  
-  
-  
   data <- data %>% mutate(ymax = mean+ste)
-  
   
   if( !is.null(xbl) ){
     
@@ -115,24 +101,19 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
     
   }
   
-  
-  
   if (type == "bar"){
     
     bsp <- ggplot(data, aes_string(x , y, fill= z))+
       geom_bar(position=position_dodge(),colour="black",stat="identity", size=.4)+
       scale_x_discrete(xlab, labels = xbl)+
       
-      
       if ( color == TRUE ){
         
         scale_fill_discrete(lgl, labels = zbl)
         
-        
       } else if ( color == FALSE ) {
         
         scale_fill_grey(lgl, labels = zbl, start = 1, end = 0.1)
-        
         
       }
     
@@ -149,14 +130,11 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
     }
     
-    
-    
     if( erb == TRUE && !(is.null(sig)) ){
       
       p <-   gr +
         geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2, position=position_dodge(.9)) +
         geom_text(aes_string(label= sig, y = "ymax"), colour="black", size= 2*font, vjust=-.5, angle = 0, position=position_dodge(.9))
-      
       
     }
     
@@ -164,7 +142,6 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
       p <- gr +
         geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2, position=position_dodge(.9))
-      
       
     }
     
@@ -184,9 +161,6 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
     
   } else if(type == "line"){
     
-    
-    
-    
     if ( color == TRUE ){
       
       bsp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
@@ -195,8 +169,7 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
         scale_x_discrete(xlab, labels = xbl)+
         scale_color_discrete(lgl, labels = zbl)+
         scale_shape_discrete(lgl, labels = zbl)
-      
-      
+    
     } else if (color == FALSE ){
       
       bsp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
@@ -207,7 +180,6 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
         scale_shape_discrete(lgl, labels = zbl)
       
     }
-    
     
     if (is.null(lmt)){
       
@@ -234,8 +206,7 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
       p <- gr +
         geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)
-      
-      
+    
     }
     
     if ( erb == FALSE && !(is.null(sig)) ){
@@ -251,13 +222,10 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       
     }
     
-    
-    
   }
-  
-  
-  
-  p + theme_bw()+
+
+  p + 
+    theme_bw()+
     theme(
       axis.title.x = element_text(size= 8*font),
       axis.title.y = element_text(size= 8*font, angle=90),
@@ -274,8 +242,6 @@ fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NU
       legend.key = element_blank(),
       text = element_text(size = 8*font)
     )
-  
-
 }
 
 

@@ -1,7 +1,7 @@
 ---
 title: "GerminaR 1.0"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
-date: "2019-03-18"
+date: "2019-07-24"
 output: 
       rmarkdown::html_vignette:
         toc: true
@@ -130,13 +130,6 @@ The function `ger_summary()`, according to the accumulative germination data, ca
 ```r
 dt <- prosopis
 smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
-```
-
-```
-## Warning: package 'bindrcpp' was built under R version 3.4.4
-```
-
-```r
 knitr::kable(head(smr, 10),align = "c")
 ```
 
