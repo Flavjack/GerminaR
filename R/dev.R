@@ -218,7 +218,7 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
       
       p <-   gr +
         geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)+
-        geom_text(aes(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
+        geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
     }
     
     if ( erb == TRUE && is.null(sig) ){
@@ -231,7 +231,7 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
     if ( erb == FALSE && !(is.null(sig)) ){
       
       p <- gr +
-        geom_text(aes(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
+        geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
       
     }
     
