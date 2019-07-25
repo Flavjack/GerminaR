@@ -25,7 +25,7 @@
 #' @importFrom gtools mixedsort
 #' @export
 
-tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_lab = NULL, lgd = "top", sig = NULL, erb = FALSE, y_lmt = NULL, y_brk = NULL, x_brk = NULL, g_brk = NULL, color = TRUE, ang = 0, font = 1.5){
+plot_gr <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_lab = NULL, lgd = "top", sig = NULL, erb = FALSE, y_lmt = NULL, y_brk = NULL, x_brk = NULL, g_brk = NULL, color = TRUE, ang = 0, font = 1.5){
   
   ste <- NULL #To avoid this NOTE: fplot: no visible binding for global variable 'ste'
   
@@ -149,7 +149,7 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
         geom_text(
           aes_string(label = sig, y = "ymax"),
           position = position_dodge(0.9),
-          vjust = -0.4, size= 2*font)
+          vjust = -0.5, size= 2*font)
       
     }
     
@@ -169,7 +169,7 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
         geom_text(
           aes_string(label = sig, y = "ymax"),
           position = position_dodge(0.9),
-          vjust = -0.4, size= 2*font)
+          vjust = -0.5, size= 2*font)
       
     }
     
@@ -184,8 +184,8 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
     if ( color == TRUE ){
       
       bsp <- ggplot(data, aes_string(x, y, group = group, shape= group, color= group))+
-        geom_line(size = 0.3)+
-        geom_point(size = 1.2*font)+
+        geom_line(size = 0.4)+
+        geom_point(size = 1.3*font)+
         scale_x_discrete(x_lab, labels = x_brk)+
         scale_color_discrete(g_lab, labels = g_brk)+
         scale_shape_manual(g_lab, labels = g_brk, values = 1:nlevels(data[,group]))
@@ -194,8 +194,8 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
     } else if (color == FALSE ){
       
       bsp <- ggplot(data, aes_string(x, y, group = group, shape= group, color= group))+
-        geom_line(size = 0.3)+
-        geom_point(size = 1.2*font)+
+        geom_line(size = 0.4)+
+        geom_point(size = 1.3*font)+
         scale_x_discrete(x_lab, labels = x_brk)+
         scale_color_grey(g_lab, labels = g_brk, start = 0, end = 0) +
         scale_shape_manual(g_lab, labels = g_brk, values = 1:nlevels(data[,group]))
@@ -217,14 +217,14 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
     if( erb == TRUE && !(is.null(sig)) ){
       
       p <-   gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)+
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), width=.2)+
         geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
     }
     
     if ( erb == TRUE && is.null(sig) ){
       
       p <- gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)
+        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), width=.2)
       
     }
     
@@ -263,3 +263,34 @@ tplot <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, g_
 
     )
 }
+
+
+#' HTML tables for markdown documents
+#'
+#' @description Export tables with download, pasta and copy buttons
+#' @param data dataset
+#' @param digits digits number in the table exported
+#' @param title Title for the table
+#' @param rnames row names
+#' @return table in markdown format for html documents
+#' @importFrom dplyr mutate_if
+#' @importFrom DT datatable
+#' @export
+
+tb_web <- function(data, title = NULL, digits = 3, rnames = FALSE){
+  
+  data %>% 
+    
+    mutate_if(is.numeric, ~round(., digits)) %>% 
+    
+    datatable(extensions = c('Buttons', 'Scroller'),
+              rownames = rnames,
+              options = list(dom = 'Bt',
+                             buttons = list('copy', 'excel'),
+                             autoWidth = TRUE, scroller = TRUE,
+                             scrollY = "50vh", scrollX = TRUE),
+              
+              caption =  title)
+  
+}
+
