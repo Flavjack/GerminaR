@@ -293,4 +293,3 @@ tb_web <- function(data, title = NULL, digits = 3, rnames = FALSE){
               caption =  title)
   
 }
-

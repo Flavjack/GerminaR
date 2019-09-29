@@ -168,22 +168,15 @@ ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
 
 ger_leq <- function(x, y, data){
   
-  fml <- as.formula(paste( x , y, sep = " ~ "))
+  fml <- as.formula(paste( y , x, sep = " ~ "))
   mdl <- lm(fml, data)
   
-  eq <- as.character(as.expression(
-    substitute(italic(y) == a + (b) * italic(x) * "," ~~ italic(R)^2 ~ "=" ~ r2,
-               list(a = format(coef(mdl)[1], digits=2), b = format(coef(mdl)[2], digits=2),
-                    r2 = format(summary(mdl)$r.squared, digits=3) ))))
+  eq <- substitute(italic(y) == a + b*italic(x)*',' ~~ italic(R)^2 ~ "=" ~ r2,
+               list(a = format(unname(coef(mdl)[1]), digits=3),
+                    b = format(unname(coef(mdl)[2]), digits=3),
+                    r2 = format(summary(mdl)$r.squared, digits=3)))
   
-  eq
-  
-  # eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(R)^2~"="~r2,
-  #                  list(a = format(coef(mdl)[1], digits = 2),
-  #                       b = format(coef(mdl)[2], digits = 2),
-  #                       r2 = format(summary(mdl)$r.squared, digits = 3)))
-  # as.character(as.expression(eq))
-  
+  as.character(as.expression(eq))
   
 }
 
