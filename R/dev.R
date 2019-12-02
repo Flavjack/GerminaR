@@ -12,6 +12,8 @@
 #' @param index Column name of a data frame with the type and level from the variables
 #' @param colnames Character vector with the column names
 #' @return List with original fieldbook, variables and new fieldbook
+#' @export
+
 
 metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
