@@ -4,10 +4,26 @@
 \alias{plot_gr}
 \title{Plot line or bar graphic}
 \usage{
-plot_gr(data, type = "bar", x, y, group, x_lab = NULL, y_lab = NULL,
-  g_lab = NULL, lgd = "top", sig = NULL, erb = FALSE,
-  y_lmt = NULL, y_brk = NULL, x_brk = NULL, g_brk = NULL,
-  color = TRUE, ang = 0, font = 1.5)
+plot_gr(
+  data,
+  type = "bar",
+  x,
+  y,
+  group,
+  x_lab = NULL,
+  y_lab = NULL,
+  g_lab = NULL,
+  lgd = "top",
+  sig = NULL,
+  erb = FALSE,
+  y_lmt = NULL,
+  y_brk = NULL,
+  x_brk = NULL,
+  g_brk = NULL,
+  color = TRUE,
+  ang = 0,
+  font = 1.5
+)
 }
 \arguments{
 \item{data}{Output dtsm fuction}

@@ -4,8 +4,18 @@
 \alias{ger_boxp}
 \title{Boxplot graphic}
 \usage{
-ger_boxp(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,
-  lgd = "top", brk = NULL, font = 1)
+ger_boxp(
+  data,
+  x,
+  y,
+  z,
+  ylab = NULL,
+  xlab = NULL,
+  lgl = NULL,
+  lgd = "top",
+  brk = NULL,
+  font = 1
+)
 }
 \arguments{
 \item{data}{raw data}

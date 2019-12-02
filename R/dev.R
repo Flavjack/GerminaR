@@ -75,46 +75,44 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
 }
 
 
-# -------------------------------------------------------------------------
-# test --------------------------------------------------------------------
-# -------------------------------------------------------------------------
-
-library(googlesheets4)
-library(tidyverse)
-sheets_auth(T)
-url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
-gs <- as_sheets_id(url)
-# browseURL(url)
-
-
-# fielbook = fb
-# dictionary = dc
-# from = "org_name"
-# to = "new_name"
-# index = "type"
-# colnames = c("colname", "var")
-
-
-# Importa fieldbook -------------------------------------------------------
-
-fb<- gs %>%
-  sheets_read(sheet = "fb_0")
-
-# Import dictionary -------------------------------------------------------
-
-dc<- gs %>%
-  sheets_read(sheet = "var")
-
-
-ndf <- fb %>% 
-  metamorphosis(fielbook = ., 
-                dictionary = dc,
-                from = "org_name", 
-                to = "new_name", 
-                index = "type",
-                colnames = "colname")
-
-
+# # -------------------------------------------------------------------------
+# # test --------------------------------------------------------------------
+# # -------------------------------------------------------------------------
+# 
+# library(googlesheets4)
+# library(tidyverse)
+# sheets_auth(T)
+# url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
+# gs <- as_sheets_id(url)
+# # browseURL(url)
+# 
+# 
+# # fielbook = fb
+# # dictionary = dc
+# # from = "org_name"
+# # to = "new_name"
+# # index = "type"
+# # colnames = c("colname", "var")
+# 
+# 
+# # Importa fieldbook -------------------------------------------------------
+# 
+# fb<- gs %>%
+#   sheets_read(sheet = "fb_0")
+# 
+# # Import dictionary -------------------------------------------------------
+# 
+# dc<- gs %>%
+#   sheets_read(sheet = "var")
+# 
+# 
+# ndf <- fb %>% 
+#   metamorphosis(fielbook = ., 
+#                 dictionary = dc,
+#                 from = "org_name", 
+#                 to = "new_name", 
+#                 index = "type",
+#                 colnames = "colname")
 
 
 
