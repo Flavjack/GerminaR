@@ -18,16 +18,16 @@
 metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
   data <- fielbook  
+  dict <- dictionary %>% 
+    drop_na(from) %>% 
+    mutate_at(vars(from, to), as.character) 
   
-  cln <- dictionary %>%
-    mutate_at(vars(from, to), as.character) %>% 
+  cln <- dict %>%
     dplyr::filter(!!sym(index) %in% colnames) 
-  
   
   # Varible levels ----------------------------------------------------------
   
-  vrl <- dictionary %>% 
-    mutate_at(vars(from, to), as.character) %>%  
+  vrl <- dict %>% 
     dplyr::filter(!(!!sym(index)) %in% colnames) 
   
   # Change colnames in the fieldbook ----------------------------------------
@@ -77,44 +77,84 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
 }
 
 
-# # -------------------------------------------------------------------------
-# # test --------------------------------------------------------------------
-# # -------------------------------------------------------------------------
-# 
-# library(googlesheets4)
-# library(tidyverse)
-# sheets_auth(T)
-# url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
-# gs <- as_sheets_id(url)
-# # browseURL(url)
-# 
-# 
-# # fielbook = fb
-# # dictionary = dc
-# # from = "org_name"
-# # to = "new_name"
-# # index = "type"
-# # colnames = c("colname", "var")
-# 
-# 
-# # Importa fieldbook -------------------------------------------------------
-# 
-# fb<- gs %>%
-#   sheets_read(sheet = "fb_0")
-# 
-# # Import dictionary -------------------------------------------------------
-# 
-# dc<- gs %>%
-#   sheets_read(sheet = "var")
-# 
-# 
-# ndf <- fb %>% 
-#   metamorphosis(fielbook = ., 
-#                 dictionary = dc,
-#                 from = "org_name", 
-#                 to = "new_name", 
-#                 index = "type",
-#                 colnames = "colname")
+# -------------------------------------------------------------------------
+# test --------------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+library(googlesheets4)
+library(tidyverse)
+sheets_auth(T)
+url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
+gs <- as_sheets_id(url)
+# browseURL(url)
+
+
+# fielbook = fb
+# dictionary = dc
+# from = "org_name"
+# to = "new_name"
+# index = "type"
+# colnames = c("colname", "var")
+
+
+
+# Case 01 -----------------------------------------------------------------
+
+# Importa fieldbook -------------------------------------------------------
+
+fb <- gs %>%
+  sheets_read(sheet = "fb_1")
+
+# Import dictionary -------------------------------------------------------
+
+dc <- gs %>%
+  sheets_read(sheet = "var")
+
+
+ndf <- fb %>%
+  metamorphosis(fielbook = .,
+                dictionary = dc,
+                from = "fb1_org_name",
+                to = "new_name",
+                index = "type",
+                colnames = c("colname", "var"))
+
+nfb <- ndf$data_final
+
+
+
+# Case 02 -----------------------------------------------------------------
+
+# Importa fieldbook -------------------------------------------------------
+
+fb <- gs %>%
+  sheets_read(sheet = "fb_2") %>% 
+  gather(-parcela, -trat, key = "var", value = "val") %>% 
+  separate(var, into = c("var", "pheno", "sample"), sep = "_") %>% 
+  spread(var, val)
+
+# Import dictionary -------------------------------------------------------
+
+dc <- gs %>%
+  sheets_read(sheet = "var")
+
+
+ndf <- fb %>%
+  metamorphosis(fielbook = .,
+                dictionary = dc,
+                from = "fb2_org_name",
+                to = "new_name",
+                index = "type",
+                colnames = c("colname", "var"))
+
+nfb <- ndf$data_final
+
+
+
+
+
+
+
 
 
 
