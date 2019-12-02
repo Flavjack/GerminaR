@@ -1,3 +1,127 @@
+# -------------------------------------------------------------------------
+# Data dictionary function and test ---------------------------------------
+# -------------------------------------------------------------------------
+
+#' Transfor dataframe based in a dictionary
+#'
+#' @description Transfor all fieldbook data frame according to data dictionary
+#' @param fieldbook data frame with the original information
+#' @param dictionary data frame with at least 3 colums (original names, new names and variable type)
+#' @param from Column name of a data frame with the original names of the variables
+#' @param to Column name of a data frame with the new names of the variables
+#' @param index Column name of a data frame with the type and level from the variables
+#' @param colnames Character vector with the column names
+#' @return List with original fieldbook, variables and new fieldbook
+
+metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
+  
+  data <- fielbook  
+  
+  cln <- dictionary %>%
+    mutate_at(vars(from, to), as.character) %>% 
+    dplyr::filter(!!sym(index) %in% colnames) 
+  
+  
+  # Varible levels ----------------------------------------------------------
+  
+  vrl <- dictionary %>% 
+    mutate_at(vars(from, to), as.character) %>%  
+    dplyr::filter(!(!!sym(index)) %in% colnames) 
+  
+  # Change colnames in the fieldbook ----------------------------------------
+  
+  old <- cln %>% 
+    select(from) %>% 
+    as_vector()
+  
+  new <- cln %>% 
+    select(to) %>% 
+    as_vector()
+  
+  fb <- data %>% 
+    rename_at(vars(old), ~ new)
+  
+  # Recode the variable levels ----------------------------------------------
+  
+  vrs <- vrl %>%
+    select(index) %>%
+    unique %>%
+    as_vector()
+  
+  old_v <- vrl %>%
+    select(from) %>%
+    as_vector()
+  
+  new_v <- vrl %>%
+    select(to) %>%
+    as_vector()
+  
+  rnm <- structure(as.character(new_v), names = as.character(old_v))
+  
+  nfb <- fb %>%
+    mutate_at(vars(!!vrs), list(~recode(., !!!rnm)))
+  
+  
+  # Result ------------------------------------------------------------------
+  
+  list(
+    column_names = cln,
+    variable_names = vrl,
+    data_orginal = data,
+    data_arranged = fb,
+    data_final = nfb
+  )
+  
+}
+
+
+# -------------------------------------------------------------------------
+# test --------------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+library(googlesheets4)
+library(tidyverse)
+sheets_auth(T)
+url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
+gs <- as_sheets_id(url)
+# browseURL(url)
+
+
+# fielbook = fb
+# dictionary = dc
+# from = "org_name"
+# to = "new_name"
+# index = "type"
+# colnames = c("colname", "var")
+
+
+# Importa fieldbook -------------------------------------------------------
+
+fb<- gs %>%
+  sheets_read(sheet = "fb_0")
+
+# Import dictionary -------------------------------------------------------
+
+dc<- gs %>%
+  sheets_read(sheet = "var")
+
+
+ndf <- fb %>% 
+  metamorphosis(fielbook = ., 
+                dictionary = dc,
+                from = "org_name", 
+                to = "new_name", 
+                index = "type",
+                colnames = "colname")
+
+
+
+
+
+# -------------------------------------------------------------------------
+# New graph function ------------------------------------------------------
+# -------------------------------------------------------------------------
+
 #' Plot line or bar graphic
 #'
 #' @description Function for present the results in line or bar plot
@@ -264,6 +388,10 @@ plot_gr <- function(data, type= "bar", x, y, group, x_lab = NULL, y_lab = NULL, 
     )
 }
 
+
+# -------------------------------------------------------------------------
+# Export html table -------------------------------------------------------
+# -------------------------------------------------------------------------
 
 #' HTML tables for markdown documents
 #'
