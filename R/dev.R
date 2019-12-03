@@ -24,71 +24,99 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
     drop_na(from) %>% 
     mutate_at(vars(from, to), as.character) 
   
-  cln <- dict %>%
-    dplyr::filter(!!sym(index) %in% colnames) 
-  
-  # Varible levels ----------------------------------------------------------
-  
-  vrl <- dict %>% 
-    dplyr::filter(!(!!sym(index)) %in% colnames) 
-  
-  # Change colnames in the fieldbook ----------------------------------------
-  
-  old <- cln %>% 
-    select(from) %>% 
-    as_vector()
-  
-  new <- cln %>% 
-    select(to) %>% 
-    as_vector()
-  
-  fbr <- data %>% 
-    rename_at(vars(old), ~ new)
-  
-  # Recode the variable levels ----------------------------------------------
-  
-  vlst <- vrl %>%
-    select(!!sym(index)) %>% 
-    unique() %>% 
-    as_vector()
-  
-  
-  rename_levels <- function(data, variable){
-    
-    var <- variable
-    
-    old_v <-  vrl  %>%
-      filter(!!sym(index) == var) %>% 
-      select(from) %>%
-      as_vector()
-    
-    new_v <-  vrl %>%
-      filter(!!sym(index) == var) %>% 
-      select(to) %>%
-      as_vector()
-    
-    rnm <- structure(as.character(new_v),
-      names = as.character(old_v))
-    
-    rnf <- data %>%
-      mutate_at(vars(var), list(~recode(., !!!rnm))) 
-    
-    rnf
-  }
-  
 
-  nfb <- fbr %>% 
-    rename_levels(., vlst[1])
+# column names ------------------------------------------------------------
 
-  # Result ------------------------------------------------------------------
+cln <- dict %>%
+  dplyr::filter(!!sym(index) %in% colnames) 
+
+# Varible levels ----------------------------------------------------------
+
+vrl <- dict %>% 
+  dplyr::filter(!(!!sym(index)) %in% colnames) 
+
+# Change colnames in the fieldbook ----------------------------------------
+
+old <- cln %>% 
+  select(from) %>% 
+  as_vector()
+
+new <- cln %>% 
+  select(to) %>% 
+  as_vector()
+
+fbr <- data %>% 
+  rename_at(vars(old), ~ new)
+
+# Recode the variable levels ----------------------------------------------
+
+vlst <- vrl %>%
+  select(!!sym(index)) %>% 
+  unique() %>% 
+  as_vector()
+
+
+rename_levels <- function(data, variable){
   
-  list(
-    column_names = cln,
-    variable_names = vrl,
-    data_orginal = data,
-    data_arranged = fbr,
-    data_final = nfb
-  )
+  var <- variable
+  
+  old_v <-  vrl  %>%
+    filter(!!sym(index) == var) %>% 
+    select(from) %>%
+    as_vector()
+  
+  new_v <-  vrl %>%
+    filter(!!sym(index) == var) %>% 
+    select(to) %>%
+    as_vector()
+  
+  rnm <- structure(as.character(new_v),
+    names = as.character(old_v))
+  
+  rnf <- data %>%
+    mutate_at(vars(var), list(~recode(., !!!rnm))) 
+  
+  rnf # Out put olny one variable (select)
+}
+
+# lapply(1:lng(col), function(x){rename_levels(data, variables = names(data)[x] )})
+
+
+# col1 <- iris %>% dplyr::select(Species)
+# col2 <- iris %>% dplyr::select(Species)
+# 
+# res <- list(a1, b1)
+# do.call(cbind, res)
+
+# res<- lapply(1:5, function(x) iris[,x]  )
+# #res <- list(a1, b1)
+# do.call(cbind, res)
+
+# res<- lapply(X = 1:5, function(x) iris %>% dplyr::select(x)  )
+# #res <- list(a1, b1)
+# do.call(cbind, res)
+
+# res<- lapply(X = 1:5, function(x) { iris %>% dplyr::select(x) }  )
+# #res <- list(a1, b1)
+# do.call(cbind, res)
+
+# res<- lapply(X = 1:ncol(iris), function(x) { iris %>% dplyr::select(x) }  )
+# #res <- list(a1, b1)
+# do.call(cbind, res)
+
+nfb <- fbr %>% 
+  rename_levels(., vlst[2])
+
+
+# Result ------------------------------------------------------------------
+
+list(
+  column_names = cln,
+  variable_names = vrl,
+  data_orginal = data,
+  data_arranged = fbr,
+  data_final = nfb
+)
   
 }
 
@@ -134,7 +162,14 @@ ndf <- fb %>%
                 index = "type",
                 colnames = c("colname", "var"))
 
+
+
+ndf$column_names
+ndf$variable_names
+ndf$data_orginal
+ndf$data_arranged
 nfb <- ndf$data_final
+
 View(nfb)
 
 # Case 02 -----------------------------------------------------------------
