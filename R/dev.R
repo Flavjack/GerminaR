@@ -8,26 +8,28 @@
 #' @param fieldbook data frame with the original information
 #' @param dictionary data frame with at least 3 colums (original names, new names and variable type)
 #' @param from Column name of a data frame with the original names of the variables
-#' @param to Column name of a data frame with the new names of the variables
-#' @param index Column name of a data frame with the type and level from the variables
+#' @param to Column name of a data frame with the new names for the variables
+#' @param index Column name of a data frame with the type and level of the variables
 #' @param colnames Character vector with the column names
 #' @return List with original fieldbook, variables and new fieldbook
 #' @export
 
-
 metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
+  library(tidyverse)
+  library(googlesheets4)
+  
   data <- fielbook  
+  dict <- dictionary %>% 
+    drop_na(from) %>% 
+    mutate_at(vars(from, to), as.character) 
   
-  cln <- dictionary %>%
-    mutate_at(vars(from, to), as.character) %>% 
+  cln <- dict %>%
     dplyr::filter(!!sym(index) %in% colnames) 
-  
   
   # Varible levels ----------------------------------------------------------
   
-  vrl <- dictionary %>% 
-    mutate_at(vars(from, to), as.character) %>%  
+  vrl <- dict %>% 
     dplyr::filter(!(!!sym(index)) %in% colnames) 
   
   # Change colnames in the fieldbook ----------------------------------------
@@ -40,37 +42,51 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
     select(to) %>% 
     as_vector()
   
-  fb <- data %>% 
+  fbr <- data %>% 
     rename_at(vars(old), ~ new)
   
   # Recode the variable levels ----------------------------------------------
   
-  vrs <- vrl %>%
-    select(index) %>%
-    unique %>%
+  vlst <- vrl %>%
+    select(!!sym(index)) %>% 
+    unique() %>% 
     as_vector()
   
-  old_v <- vrl %>%
-    select(from) %>%
-    as_vector()
   
-  new_v <- vrl %>%
-    select(to) %>%
-    as_vector()
+  rename_levels <- function(data, variable){
+    
+    var <- variable
+    
+    old_v <-  vrl  %>%
+      filter(!!sym(index) == var) %>% 
+      select(from) %>%
+      as_vector()
+    
+    new_v <-  vrl %>%
+      filter(!!sym(index) == var) %>% 
+      select(to) %>%
+      as_vector()
+    
+    rnm <- structure(as.character(new_v),
+      names = as.character(old_v))
+    
+    rnf <- data %>%
+      mutate_at(vars(var), list(~recode(., !!!rnm))) 
+    
+    rnf
+  }
   
-  rnm <- structure(as.character(new_v), names = as.character(old_v))
-  
-  nfb <- fb %>%
-    mutate_at(vars(!!vrs), list(~recode(., !!!rnm)))
-  
-  
+
+  nfb <- fbr %>% 
+    rename_levels(., vlst[1])
+
   # Result ------------------------------------------------------------------
   
   list(
     column_names = cln,
     variable_names = vrl,
     data_orginal = data,
-    data_arranged = fb,
+    data_arranged = fbr,
     data_final = nfb
   )
   
@@ -83,7 +99,7 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
 
 library(googlesheets4)
 library(tidyverse)
-library(GerminaR)
+
 sheets_auth(T)
 url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
 gs <- as_sheets_id(url)
@@ -92,11 +108,13 @@ gs <- as_sheets_id(url)
 
 # fielbook = fb
 # dictionary = dc
-# from = "org_name"
+# from = "fb1_org_name"
 # to = "new_name"
 # index = "type"
 # colnames = c("colname", "var")
 
+
+# Case 01 -----------------------------------------------------------------
 
 # Importa fieldbook -------------------------------------------------------
 
@@ -106,19 +124,55 @@ fb <- gs %>%
 # Import dictionary -------------------------------------------------------
 
 dc <- gs %>%
-  sheets_read(sheet = "var") %>% 
-  drop_na()
-
+  sheets_read(sheet = "var") 
 
 ndf <- fb %>%
   metamorphosis(fielbook = .,
                 dictionary = dc,
-                from = "org_name",
+                from = "fb1_org_name",
                 to = "new_name",
                 index = "type",
                 colnames = c("colname", "var"))
 
 nfb <- ndf$data_final
+View(nfb)
+
+# Case 02 -----------------------------------------------------------------
+
+# Importa fieldbook -------------------------------------------------------
+
+fb <- gs %>%
+  sheets_read(sheet = "fb_2") %>% 
+  gather(-parcela, -trat, key = "var", value = "val") %>% 
+  separate(var, into = c("var", "pheno", "sample"), sep = "_") %>% 
+  spread(var, val)
+
+# Import dictionary -------------------------------------------------------
+
+dc <- gs %>%
+  sheets_read(sheet = "var")
+
+
+ndf <- fb %>%
+  metamorphosis(fielbook = .,
+                dictionary = dc,
+                from = "fb2_org_name",
+                to = "new_name",
+                index = "type",
+                colnames = c("colname", "var"))
+
+nfb <- ndf$data_final
+View(nfb)
+
+
+
+
+
+
+
+
+
+
 
 
 # -------------------------------------------------------------------------
