@@ -129,3 +129,141 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
    
 
 }
+
+
+#' Transform dataframe based in a dictionary
+#'
+#' @description Transfor all fieldbook data frame according to data dictionary
+#' @param fieldbook data frame with the original information
+#' @param dictionary data frame with at least 3 colums (original names, new names and variable type)
+#' @param from Column name of a data frame with the original names of the variables
+#' @param to Column name of a data frame with the new names for the variables
+#' @param index Column name of a data frame with the type and level of the variables
+#' @param colnames Character vector with the column names
+#' @return List with original fieldbook, variables and new fieldbook
+#' @export
+
+metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
+  
+  library(tidyverse)
+  library(googlesheets4)
+  
+  dictionary <- dictionary %>% 
+    drop_na(from) %>% 
+    mutate_at(vars(from, to), as.character) 
+  
+  # column names ------------------------------------------------------------
+  
+  rename_colums <- function(fielbook, dictionary, from, to, index, colnames) {
+    
+    
+    cln <- dictionary %>%
+      dplyr::filter(!!sym(index) %in% colnames) 
+    
+    # Varible levels ----------------------------------------------------------
+    
+    vrl <- dictionary %>% 
+      dplyr::filter(!(!!sym(index)) %in% colnames) 
+    
+    # Change colnames in the fieldbook ----------------------------------------
+    
+    old <- cln %>% 
+      select(from) %>% 
+      as_vector()
+    
+    new <- cln %>% 
+      select(to) %>% 
+      as_vector()
+    
+    fbr <- fielbook %>% 
+      rename_at(vars(old), ~ new)  
+    
+    fbr
+    
+  }
+  
+  fb_renamed <- rename_colums(fielbook, dictionary, from, to, index, colnames)
+  
+  # Recode the variable levels ----------------------------------------------
+  
+  rename_levels <- function(fb_renamed, dictionary, from, to, index, colnames, variable){
+    
+    # variable levels
+    
+    vrl <- dictionary %>% 
+      dplyr::filter(!(!!sym(index)) %in% colnames) 
+    
+    
+    # Check if variable exist
+    
+    colums_to_recode <- dictionary %>% 
+      dplyr::filter(!(!!sym(index)) %in% colnames) %>% 
+      select(index) %>% 
+      unique() %>% 
+      as_vector()
+    
+    
+    if(is.element(variable, colums_to_recode) == FALSE){ 
+      
+      rnf <- fb_renamed %>% 
+        select(variable)
+      
+      rnf
+      
+    } else { 
+      
+      # Old variable names
+      
+      old_v <-  vrl  %>%
+        filter(!!sym(index) == variable) %>% 
+        select(from) %>%
+        as_vector()
+      
+      # New variable names
+      
+      new_v <-  vrl %>%
+        filter(!!sym(index) == variable) %>% 
+        select(to) %>%
+        as_vector()
+      
+      # Lista variables to recode
+      
+      rnm <- structure(as.character(new_v),
+                       names = as.character(old_v))
+      
+      # Recode one variable
+      
+      rnf <- fb_renamed %>%
+        mutate_at(variable, list(~recode(., !!!rnm))) %>% 
+        select(variable)
+      
+      rnf 
+      
+    }
+    
+    
+  }
+  
+  # Recode all the variables in the data frame
+  
+  fb_recoded <- lapply(1:ncol(fb_renamed), function(x) {
+    
+    fb_renamed %>% 
+      rename_levels(., dictionary, from, to, index, colnames, variable = colnames(.)[x])
+    
+  })
+  
+  # Unite the lists ---------------------------------------------------------
+  
+  fb_mutated <- do.call(cbind, fb_recoded) %>% tibble()
+  
+  
+  # Result ------------------------------------------------------------------
+  
+  list(
+    dictionary = dictionary,
+    fielbook_org = fielbook,
+    fielbook_new = fb_mutated
+  )
+  
+}
