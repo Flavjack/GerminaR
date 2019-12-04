@@ -255,7 +255,7 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
   # Unite the lists ---------------------------------------------------------
   
-  fb_mutated <- do.call(cbind, fb_recoded) %>% tibble()
+  fb_mutated <- do.call(cbind, fb_recoded) %>% as_tibble()
   
   
   # Result ------------------------------------------------------------------

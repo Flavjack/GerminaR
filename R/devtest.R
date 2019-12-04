@@ -4,6 +4,7 @@
 
 # library(googlesheets4)
 # library(tidyverse)
+# library(GerminaR)
 # 
 # sheets_auth(T)
 # url <- "https://docs.google.com/spreadsheets/d/1iIGsgXU_IBjmwqJ_Vo0sICUZpuTzZ_JGwD5ZgBG1jlk/edit#gid=1365339641"
@@ -15,7 +16,7 @@
 # # Import dictionary -------------------------------------------------------
 # 
 # dc <- gs %>%
-#   sheets_read(sheet = "var") 
+#   sheets_read(sheet = "var")
 # 
 # # Case 01 -----------------------------------------------------------------
 # 
@@ -42,9 +43,9 @@
 # # Importa fieldbook and reshape field book---------------------------------
 # 
 # fb2 <- gs %>%
-#   sheets_read(sheet = "fb_2") %>% 
-#   gather(-parcela, -trat, key = "var", value = "val") %>% 
-#   separate(var, into = c("var", "pheno", "sample"), sep = "_") %>% 
+#   sheets_read(sheet = "fb_2") %>%
+#   gather(-parcela, -trat, key = "var", value = "val") %>%
+#   separate(var, into = c("var", "pheno", "sample"), sep = "_") %>%
 #   spread(var, val)
 # 
 # # Import dictionary -------------------------------------------------------
