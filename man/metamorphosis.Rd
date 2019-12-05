@@ -4,9 +4,11 @@
 \alias{metamorphosis}
 \title{Transform dataframe based in a dictionary}
 \usage{
-metamorphosis(fielbook, dictionary, from, to, index, colnames)
+metamorphosis(fieldbook, dictionary, from, to, index, colnames)
 }
 \arguments{
+\item{fieldbook}{data frame with the original information}
+
 \item{dictionary}{data frame with at least 3 colums (original names, new names and variable type)}
 
 \item{from}{Column name of a data frame with the original names of the variables}
@@ -16,8 +18,6 @@ metamorphosis(fielbook, dictionary, from, to, index, colnames)
 \item{index}{Column name of a data frame with the type and level of the variables}
 
 \item{colnames}{Character vector with the column names}
-
-\item{fieldbook}{data frame with the original information}
 }
 \value{
 List with original fieldbook, variables and new fieldbook

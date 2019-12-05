@@ -143,7 +143,7 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
 #' @return List with original fieldbook, variables and new fieldbook
 #' @export
 
-metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
+metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   
   library(tidyverse)
   library(googlesheets4)
@@ -154,7 +154,7 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
   # column names ------------------------------------------------------------
   
-  rename_colums <- function(fielbook, dictionary, from, to, index, colnames) {
+  rename_colums <- function(fieldbook, dictionary, from, to, index, colnames) {
     
     
     cln <- dictionary %>%
@@ -175,14 +175,14 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
       select(to) %>% 
       as_vector()
     
-    fbr <- fielbook %>% 
+    fbr <- fieldbook %>% 
       rename_at(vars(old), ~ new)  
     
     fbr
     
   }
   
-  fb_renamed <- rename_colums(fielbook, dictionary, from, to, index, colnames)
+  fb_renamed <- rename_colums(fieldbook, dictionary, from, to, index, colnames)
   
   # Recode the variable levels ----------------------------------------------
   
@@ -262,8 +262,8 @@ metamorphosis <- function(fielbook, dictionary, from, to, index, colnames){
   
   list(
     dictionary = dictionary,
-    fielbook_org = fielbook,
-    fielbook_new = fb_mutated
+    fieldbook_org = fieldbook,
+    fieldbook_new = fb_mutated
   )
   
 }
