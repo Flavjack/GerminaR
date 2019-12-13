@@ -148,7 +148,9 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   library(tidyverse)
   library(googlesheets4)
   
-  dictionary <- dictionary %>% 
+  # Import dictionary -------------------------------------------------
+  
+  dictionary_used <- dictionary %>% 
     drop_na(from) %>% 
     mutate_at(vars(from, to), as.character) 
   
@@ -182,7 +184,7 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
     
   }
   
-  fb_renamed <- rename_colums(fieldbook, dictionary, from, to, index, colnames)
+  fb_renamed <- rename_colums(fieldbook, dictionary_used, from, to, index, colnames)
   
   # Recode the variable levels ----------------------------------------------
   
@@ -249,7 +251,7 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   fb_recoded <- lapply(1:ncol(fb_renamed), function(x) {
     
     fb_renamed %>% 
-      rename_levels(., dictionary, from, to, index, colnames, variable = colnames(.)[x])
+      rename_levels(., dictionary_used, from, to, index, colnames, variable = colnames(.)[x])
     
   })
   
@@ -258,12 +260,35 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   fb_mutated <- do.call(cbind, fb_recoded) %>% as_tibble()
   
   
+  # Extract used dictionary -------------------------------------------------
+  
+  vrl_used <- dictionary %>% 
+    drop_na(from) %>% 
+    filter(!!sym(index) %in% colnames) %>% 
+    select(to) %>% 
+    unique() %>% 
+    as_vector()
+  
+  lvl_used <- dictionary %>% 
+    filter(!!sym(index) %in% c(vrl_used)) %>% 
+    select(to) %>% 
+    unique() %>% 
+    as_vector()
+  
+  
+  dictionary_all <- dictionary %>% 
+    filter(!!sym(to) %in% c(vrl_used, lvl_used)) %>% 
+    mutate_at(vars(from, to), as.character) %>% 
+    distinct(!!sym(from), !!sym(to), .keep_all = TRUE) %>% 
+    distinct(!!sym(to), .keep_all = TRUE)
+
+
+
   # Result ------------------------------------------------------------------
   
   list(
-    dictionary = dictionary,
-    fieldbook_org = fieldbook,
-    fieldbook_new = fb_mutated
+    dictionary = dictionary_all,
+    fieldbook = fb_mutated
   )
   
 }
