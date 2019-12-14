@@ -152,7 +152,7 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   
   dictionary_used <- dictionary %>% 
     drop_na(from) %>% 
-    mutate_at(vars(from, to), as.character) 
+    mutate_all(as.character) 
   
   # column names ------------------------------------------------------------
   
@@ -160,25 +160,20 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
     
     
     cln <- dictionary %>%
-      dplyr::filter(!!sym(index) %in% colnames) 
+      dplyr::filter(!!sym(index) %in% colnames) %>% 
+      select(from, to) %>% 
+      drop_na(from)
     
-    # Varible levels ----------------------------------------------------------
-    
-    vrl <- dictionary %>% 
-      dplyr::filter(!(!!sym(index)) %in% colnames) 
-    
-    # Change colnames in the fieldbook ----------------------------------------
-    
-    old <- cln %>% 
-      select(from) %>% 
+    old_names <- cln %>% 
+      select(from) %>%  
       as_vector()
     
-    new <- cln %>% 
+    new_names <- cln %>% 
       select(to) %>% 
       as_vector()
     
     fbr <- fieldbook %>% 
-      rename_at(vars(old), ~ new)  
+      rename_at(vars(old_names), ~ new_names)  
     
     fbr
     
@@ -257,38 +252,29 @@ metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
   
   # Unite the lists ---------------------------------------------------------
   
-  fb_mutated <- do.call(cbind, fb_recoded) %>% as_tibble()
+  fb_recoded <- do.call(cbind, fb_recoded) %>% as_tibble()
   
   
   # Extract used dictionary -------------------------------------------------
   
-  vrl_used <- dictionary %>% 
+  vrl <- dictionary %>% 
     drop_na(from) %>% 
     filter(!!sym(index) %in% colnames) %>% 
     select(to) %>% 
     unique() %>% 
-    as_vector()
-  
-  lvl_used <- dictionary %>% 
-    filter(!!sym(index) %in% c(vrl_used)) %>% 
-    select(to) %>% 
-    unique() %>% 
+    unlist() %>% 
     as_vector()
   
   
   dictionary_all <- dictionary %>% 
-    filter(!!sym(to) %in% c(vrl_used, lvl_used)) %>% 
-    mutate_at(vars(from, to), as.character) %>% 
-    distinct(!!sym(from), !!sym(to), .keep_all = TRUE) %>% 
-    distinct(!!sym(to), .keep_all = TRUE)
-
-
-
+    mutate_all(as.character) %>% 
+    filter(!!sym(to) %in% vrl | !!sym(index) %in% vrl)
+    
   # Result ------------------------------------------------------------------
   
   list(
     dictionary = dictionary_all,
-    fieldbook = fb_mutated
+    fieldbook = fb_recoded
   )
   
 }
