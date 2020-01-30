@@ -107,71 +107,31 @@ shinyUI(dashboardPage(skin = "green",
                                 <li>Statistical analysis for germination variables.</li>
                                 <li>Easy way to plot the results.</li>
                                 </ol>
-                                </p>"),
-
-                    p(strong("Project name:"), "GerminaR - An R Package for germination analysis process with interactive web app 'GerminaQuant for R'"),
-                    p(strong("Stable release:"), a("GerminaR", href = "https://cran.r-project.org/web/packages/GerminaR/index.html", target="_blank" )),
-                    p(strong("Issue tracker:"), a("github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
-                    p(strong("Operating systems:"), "independient of the platform"),
-                    p(strong("Programing language:"), "R & html")
-                    
+                                </p>")
                     
                 ),
                     
                 
                 box(
-                  title = "Contributors",
+                  title = "Package Info",
                   width = 4,
                   status = "success",
                   solidHeader = T,
 
-                  p(
-                    strong("Flavio Lozano Isla "),
-                    br(),
-                    a("< flavjack@gmail.com >"),
-                    br(),
-                    code("Universidade Federal Rural de Pernambuco, Brazil.")
-                    ),
-
-                  p(
-                    strong("Omar Benites Alfaro"),
-                    br(),
-                    a("< obacc07@gmail.com >"),
-                    br(),
-                    code("Centro Internacional de la Papa (CIP), Peru.")
-                  ),
+                  p(strong("Publiaction")),
                   
-                  p(
-                    strong("Denise Garcia de Santana"),
-                    br(),
-                    a("< denise.santana@ufu.br >"),
-                    br(),
-                    code("Universidade Federal de Uberlandia, Brazil.")
-                  ),
+                  shiny::HTML('<p><strong>Flavio Lozano-Isla</strong>; <strong>Omar E. Benites-Alfaro</strong>, and<strong> Marcelo F. Pompelli</strong>. <strong>2019</strong>. GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research 34(2): 339–346. doi: <a href="http://doi.org/10.1111/1440-1703.1275">doi.org/10.1111/1440-1703.1275</a>.</p>'),
                   
-                  p(
-                    strong("Marli A. Ranal"),
-                    br(),
-                    a("< ranal@ufu.br >"),
-                    br(),
-                    code("Universidade Federal de Uberlandia, Brazil.")
-                  ),
+                  p(strong("CRAN project:"), a("GerminaR", href = "https://cran.r-project.org/web/packages/GerminaR/index.html", target="_blank" )),
+                  p(strong("Issue tracker:"), a("Github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
+                  p(strong("Operating systems:"), "Independient of the platform"),
+                  p(strong("Programing language:"), "R & html"),
                   
-
-                  p(
-                    strong("Marcelo Francisco Pompelli"),
-                    br(),
-                    a("< mpompelli@gmail.com >"),
-                    br(),
-                    code("Universidade Federal de Pernambuco, Brazil.")
-                  ),
-
 
                   hr(),
-
-                  p(strong("If you have any question, commment or sugestion you can write a email for us, enjoy GerminaQuant for R!!"))
-
-
+                  
+                  shiny::HTML('<p>If you have any question, comment or suggestion you can write at an email: <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>
+<p>Enjoy GerminaQuant for R!!</p>')
 
                 )
                 

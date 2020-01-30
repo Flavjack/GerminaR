@@ -36,7 +36,7 @@ library(GerminaR)
 
 ```
 
-#Help
+# Help
 
 To get help about package:
 
