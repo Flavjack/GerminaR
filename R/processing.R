@@ -18,7 +18,7 @@ ger_summary <- function(SeedN, evalName, data){
   
   data <- as.data.frame(data)
   
-  evf <- GerminaR::evalFactor(evalName, data)
+  evf <- evalFactor(evalName, data)
   
   gsm <-  dplyr::mutate(evf,
       GRS = ger_GRS(evalName, data), 

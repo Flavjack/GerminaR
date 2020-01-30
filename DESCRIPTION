@@ -15,22 +15,17 @@ Authors@R: c(
     person(family = "Federal Rural University of Pernambuco", role = "cph",
     comment = "Post Graduate Program")
     )
-URL: https://flavjack.shinyapps.io/germinaquant/
+URL:  https://doi.org/10.1111/1440-1703.1275, https://flavjack.shinyapps.io/germinaquant/
 BugReports: https://github.com/Flavjack/GerminaR/issues
 Imports:
     agricolae,
+    tidyverse,
     assertthat,
     DT,
-    dplyr,
-    tibble,
-    ggplot2,
     gtools,
     gsheet,
-    magrittr,
-    readxl,
     shiny,
-    shinydashboard,
-    tidyr
+    shinydashboard
 Depends:
     R (>= 3.2.3)
 Suggests:
@@ -40,4 +35,4 @@ Suggests:
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 7.0.1
+RoxygenNote: 7.0.2
