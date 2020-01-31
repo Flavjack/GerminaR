@@ -58,29 +58,45 @@ shinyUI(dashboardPage(skin = "green",
                 shiny::fluidRow(
 
                 box(
-                  title = "Presentacion",
+                  title = "GerminaQuant",
                   width = 3,
                   status = "primary",
                   solidHeader = T,
+                  
+                  shiny::HTML(
+                  '
+                  <p>
+                  <strong>GerminaQuant</strong> for R is web application based in R,
+                  you can use the app in your desktop installing the <em><strong>GerminaR</strong></em> package:
+                  </p>
+                  '),
 
+                  shiny::HTML(
+                    '
+                    <center>
+                    <img src="icon.png" width="50%">
+                    </center>
+                    '
+                    ),
                   
-                  img(src = "germinaquant.png", height = 180, width = 180),
-                  span(
-                    p(a("Plant Physiology Laboratory (UFPE)", 
-                        href = "https://www.ufpe.br/lev/", 
-                        target="_blank")), 
-                    style = "color:black"),
                   
-                  p("GerminaQuant for R is web application based in R, you can use the app in your desktop installing the package", em("GerminaR")),
-                  code('install.packages(GerminaR)'),
-                  br(),
-                  br(),
-                  p("For use the interactive app:"),
-                  code("library(GerminaR)"),
-                  br(),
-                  code("GerminaQuant()"),
-                  br(),
-                  br()
+                  shiny::HTML(
+                    
+                    '
+                    <br>
+                    Install the package in the R console
+                    <br>
+                    <code>install.packages("GerminaR")</code>
+                    <br>
+                    <br>
+                    For use the interactive app 
+                    <br>
+                    <code>GerminaR::GerminaQuant()</code>
+                    <br>
+                    <br>
+                    Enjoy GerminaQuant for R!!
+                    '
+                    )
                   
                 ),
 
@@ -118,7 +134,7 @@ shinyUI(dashboardPage(skin = "green",
                   status = "success",
                   solidHeader = T,
 
-                  p(strong("Publiaction")),
+                  p(strong("Publication")),
                   
                   shiny::HTML('<p><strong>Flavio Lozano-Isla</strong>; <strong>Omar E. Benites-Alfaro</strong>, and<strong> Marcelo F. Pompelli</strong>. <strong>2019</strong>. GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research 34(2): 339–346. doi: <a href="http://doi.org/10.1111/1440-1703.1275">doi.org/10.1111/1440-1703.1275</a>.</p>'),
                   
@@ -130,8 +146,7 @@ shinyUI(dashboardPage(skin = "green",
 
                   hr(),
                   
-                  shiny::HTML('<p>If you have any question, comment or suggestion you can write at an email: <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>
-<p>Enjoy GerminaQuant for R!!</p>')
+                  shiny::HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>')
 
                 )
                 
