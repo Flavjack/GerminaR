@@ -1,0 +1,24 @@
+citHeader("To cite GerminaR in publications use:")
+
+citEntry(
+
+  entry    = "Article",
+  title = "{{GerminaR}}: {{An R}} package for germination analysis with the interactive web application ``{{GerminaQuant}} for {{R}}''",
+  shorttitle = "{{GerminaR}}",
+  author = "{Lozano-Isla}, Flavio and {Benites-Alfaro}, Omar E. and Pompelli, Marcelo F.",
+  year = "2019",
+  month = "mar",
+  volume = "34",
+  number = "2",
+  pages = "339--346",
+  issn = "0912-3814",
+  doi = "10.1111/1440-1703.1275",
+  journal = "Ecological Research",
+  keywords = "CRAN, germination index, GitHub, mobile application, programming",
+
+  textVersion = paste(
+
+  )
+)
+
+

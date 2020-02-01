@@ -4,25 +4,26 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 
-
-[![DOI](https://zenodo.org/badge/49505163.svg)](https://zenodo.org/badge/latestdoi/49505163)
-
-
 # GerminaR
 
-Germination indices and graphics for seed germination in ecophysiological studies.
+Germination Indices and Graphics for Seed Germination in Ecophysiological Studies
 
 ### Installation
 
-To install this package you need package devtools:
+To install the developing version of this package you need package devtools:
 
 ```{r eval=F}
+
 install.packages(devtools)
+
 ```
+
 Then type:
 
 ```{r eval=F}
+
 devtools::install_github("Flavjack/GerminaR")
+
 ```
 
 ### Usage
@@ -30,13 +31,17 @@ devtools::install_github("Flavjack/GerminaR")
 To load the package type in your computer:
 
 ```{r eval=F}
+
 library(GerminaR)
+
 ```
 
-#Help
+# Help
 
 To get help about package:
 
 ```{r eval=F}
+
 help(package = GerminaR)
+
 ```

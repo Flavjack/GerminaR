@@ -11,32 +11,9 @@ magrittr::`%>%`
 #' @return Data Matrix with day of the germination
 #' @export
 
-rep_row<-function(Rseq,Nrow){
+rep_row <- function(Rseq,Nrow){
   matrix(rep(Rseq,each=Nrow),nrow=Nrow)
 }
-
-
-#' Select colum according the initial letters of the words
-#' 
-#' @description Select colum according the initial letters of the words
-#' @param vars vars
-#' @param match match 
-#' @param ignore.case case
-#' @return Matrix with the select colum
-#' @author Hadley Wickham
-#' @details https://github.com/hadley/dplyr/blob/50309db8f04cbcc87e4568a4bfa1f0c718e824c9/R/select-utils.R
-#' @importFrom assertthat is.string
-
-starts_with <- function(vars, match, ignore.case = TRUE) {
-  stopifnot(is.string(match), !is.na(match), nchar(match) > 0)
-  
-  if (ignore.case) match <- tolower(match)
-  n <- nchar(match)
-  
-  if (ignore.case) vars <- tolower(vars)
-  which(substr(vars, 1, n) == match)
-}
-
 
 #' Select Evaluation Days
 #' 
@@ -55,7 +32,8 @@ starts_with <- function(vars, match, ignore.case = TRUE) {
 
 evalDays <- function(evalName, data){
   
-    evd <- dplyr::select(data, starts_with(colnames(data), evalName))
+    evd <- data %>% 
+      dplyr::select(starts_with(evalName))
     evd
 
 }
@@ -78,9 +56,8 @@ evalDays <- function(evalName, data){
 
 evalFactor <- function(evalName, data){
   
-  evf <- dplyr::select(data, -starts_with(colnames(data), evalName))
-  
-  #evf[,colnames(evf)] <- lapply(evf[,colnames(evf)] , as.character)
+  evf <- data %>% 
+    dplyr::select(-starts_with(evalName))
   
   evf
   
@@ -168,22 +145,15 @@ ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
 
 ger_leq <- function(x, y, data){
   
-  fml <- as.formula(paste( x , y, sep = " ~ "))
+  fml <- as.formula(paste( y , x, sep = " ~ "))
   mdl <- lm(fml, data)
   
-  eq <- as.character(as.expression(
-    substitute(italic(y) == a + (b) * italic(x) * "," ~~ italic(R)^2 ~ "=" ~ r2,
-               list(a = format(coef(mdl)[1], digits=2), b = format(coef(mdl)[2], digits=2),
-                    r2 = format(summary(mdl)$r.squared, digits=3) ))))
+  eq <- substitute(italic(y) == a + b*italic(x)*',' ~~ italic(R)^2 ~ "=" ~ r2,
+               list(a = format(unname(coef(mdl)[1]), digits=3),
+                    b = format(unname(coef(mdl)[2]), digits=3),
+                    r2 = format(summary(mdl)$r.squared, digits=3)))
   
-  eq
-  
-  # eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(R)^2~"="~r2,
-  #                  list(a = format(coef(mdl)[1], digits = 2),
-  #                       b = format(coef(mdl)[2], digits = 2),
-  #                       r2 = format(summary(mdl)$r.squared, digits = 3)))
-  # as.character(as.expression(eq))
-  
+  as.character(as.expression(eq))
   
 }
 
@@ -295,6 +265,64 @@ osmp <- function(type = "salt", vol, pres, temp, mw, ki){
     
     round(x*vol, 5)  
 
+  }
+  
+}
+
+
+#' HTML tables for markdown documents
+#'
+#' @description Export tables with download, pasta and copy buttons
+#' @param data dataset
+#' @param digits digits number in the table exported
+#' @param title Title for the table
+#' @param rnames row names
+#' @param buttons "excel", "copy" or "none". Default c("excel", "copy")
+#' @return table in markdown format for html documents
+#' @importFrom dplyr mutate_if
+#' @importFrom DT datatable
+#' @export
+
+web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = NULL){
+  
+  library(DT)
+  
+  if (is.null(buttons)){
+    
+    data %>% 
+      mutate_if(is.numeric, ~round(., digits)) %>% 
+      datatable(extensions = c('Buttons', 'Scroller'),
+                rownames = rnames,
+                options = list(dom = 'Bt',
+                               buttons = c("excel", "copy"),
+                               autoWidth = TRUE, scroller = TRUE,
+                               scrollY = "50vh", scrollX = TRUE),
+                caption =  title)
+    
+  } else if (buttons == "none"){
+    
+    data %>% 
+      mutate_if(is.numeric, ~round(., digits)) %>% 
+      datatable(extensions = c('Scroller'),
+                rownames = rnames,
+                options = list(dom = 'Bt',
+                               buttons = buttons,
+                               autoWidth = TRUE, scroller = TRUE,
+                               scrollY = "50vh", scrollX = TRUE),
+                caption =  title)
+    
+  } else {
+    
+    data %>% 
+      mutate_if(is.numeric, ~round(., digits)) %>% 
+      datatable(extensions = c('Buttons','Scroller'),
+                rownames = rnames,
+                options = list(dom = 'Bt',
+                               buttons = buttons,
+                               autoWidth = TRUE, scroller = TRUE,
+                               scrollY = "50vh", scrollX = TRUE),
+                caption =  title)
+    
   }
   
 }
