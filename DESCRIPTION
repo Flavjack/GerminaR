@@ -3,7 +3,7 @@ Package: GerminaR
 Title: Germination Indices and Graphics for Seed Germination in Ecophysiological Studies
 Version: 1.3
 Description: The aim of GerminaR consists of the assessment of different seed germination indices and visualization techniques that provide a robust approach for germination data analysis.
-Date: 2019-03-22
+Date: 2019-04-17
 Authors@R: c(
     person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X")),
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-6852-9598")),
