@@ -2,6 +2,7 @@
 #' @export
 magrittr::`%>%`
 
+utils::globalVariables(c("."))
 
 #' Repeated Rows in a data matrix
 #' 
@@ -284,8 +285,6 @@ osmp <- function(type = "salt", vol, pres, temp, mw, ki){
 #' @export
 
 web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = NULL){
-  
-  library(DT)
   
   if (is.null(buttons)){
     

@@ -528,7 +528,7 @@ ger_linereg <- function(data, x, y, z = NULL, ylab = NULL, xlab = NULL, lgl = NU
 #' @param font letter size in plot
 #' @return Line o bar plot
 #' @importFrom dplyr mutate
-#' @importFrom ggplot2 aes aes_string element_blank element_rect element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete
+#' @importFrom ggplot2 aes aes_string element_blank element_rect element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete geom_col position_dodge2 scale_shape_manual geom_col position_dodge2 scale_shape_manual
 #' @importFrom gtools mixedsort
 #' @export
 
