@@ -19,15 +19,21 @@ URL:  https://doi.org/10.1111/1440-1703.1275, https://flavjack.shinyapps.io/germ
 BugReports: https://github.com/Flavjack/GerminaR/issues
 Imports:
     agricolae,
-    tidyverse,
+    dplyr,
+    ggplot2,
+    magrittr,
+    readxl,
+    tibble,
+    tidyr,
     assertthat,
     DT,
+    purrr,
     gtools,
     gsheet,
     shiny,
     shinydashboard
 Depends:
-    R (>= 3.2.3)
+    R (>= 3.5.0)
 Suggests:
     testthat,
     knitr,

@@ -141,12 +141,12 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
 #' @param index Column name of a data frame with the type and level of the variables
 #' @param colnames Character vector with the column names
 #' @return List with original fieldbook, variables and new fieldbook
+#' @importFrom dplyr mutate_all starts_with sym vars filter rename_at mutate_at 
+#' @importFrom purrr as_vector 
+#' @importFrom tidyr drop_na as_tibble
 #' @export
 
 metamorphosis <- function(fieldbook, dictionary, from, to, index, colnames){
-  
-  library(tidyverse)
-  library(googlesheets4)
   
   # Import dictionary -------------------------------------------------
   
