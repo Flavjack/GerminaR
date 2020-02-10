@@ -1,7 +1,7 @@
 ---
 title: "GerminaR 1.0"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
-date: "2019-12-04"
+date: "2020-02-09"
 output: 
       rmarkdown::html_vignette:
         toc: true
