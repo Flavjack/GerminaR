@@ -7,73 +7,73 @@ str(prosopis)
 #  GerminaQuant()
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
+dfr <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dfr)
 knitr::kable(head(smr, 10),align = "c")
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-grs <- ger_GRS(evalName = "D", data = dt)
+dfr <- prosopis
+grs <- ger_GRS(evalName = "D", data = dfr)
 grs
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
+dfr <- prosopis
+grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dfr)
 grp
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+dfr <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
 gas
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-mgt <- ger_MGT(evalName = "D", data = dt)
+dfr <- prosopis
+mgt <- ger_MGT(evalName = "D", data = dfr)
 mgt
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-mgr <- ger_MGR(evalName = "D", data = dt)
+dfr <- prosopis
+mgr <- ger_MGR(evalName = "D", data = dfr)
 mgr
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-gsp <- ger_GSP(evalName = "D", data = dt)
+dfr <- prosopis
+gsp <- ger_GSP(evalName = "D", data = dfr)
 gsp
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-syn <- ger_SYN(evalName = "D", data = dt)
+dfr <- prosopis
+syn <- ger_SYN(evalName = "D", data = dfr)
 syn
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-unc <- ger_UNC(evalName = "D", data = dt)
+dfr <- prosopis
+unc <- ger_UNC(evalName = "D", data = dfr)
 unc
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-sdg <- ger_SDG(evalName = "D", data = dt)
+dfr <- prosopis
+sdg <- ger_SDG(evalName = "D", data = dfr)
 sdg
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-cvg <- ger_CVG(evalName = "D", data = dt)
+dfr <- prosopis
+cvg <- ger_CVG(evalName = "D", data = dfr)
 cvg
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-vgt <- ger_VGT(evalName = "D", data = dt)
+dfr <- prosopis
+vgt <- ger_VGT(evalName = "D", data = dfr)
 vgt
 
 ## -----------------------------------------------------------------------------
-dt <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+dfr <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
 head(grt, 10)
 
 ## ----  warning=FALSE----------------------------------------------------------
-dt <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+dfr <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
 
 fplot(data = grt, type = "line",
       x = "evaluation",

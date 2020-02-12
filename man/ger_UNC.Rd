@@ -24,10 +24,9 @@ Low values of \code{u} indicate frequencies with short peaks, i.e. the more conc
 Just a germinated seed changes the value of \code{u}. This means that \code{u} measures the degree of germination scattering.
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-unc <- ger_UNC(evalName = "D", data = dt)
+dfr <- prosopis
+unc <- ger_UNC(evalName = "D", data = dfr)
 unc
 }
 \references{

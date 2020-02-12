@@ -1,7 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
-inst/GerminaR
+inst/CITATION
+^inst/GerminaQuant
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^\.httr-oauth$

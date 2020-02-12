@@ -62,12 +62,10 @@ ger_GRP <- function(SeedN, evalName, data){
 #' @param data The name of the data frame containing the data.
 #' @return It returns an vector with the ArcSin of Germination values
 #' @export
-#' @export
-#' @examples 
-#' 
+#' @examples
 #' library(GerminaR)
-#' dt <- prosopis
-#' gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+#' dfr <- prosopis
+#' gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
 #' gas
 
 ger_ASG <- function(SeedN, evalName, data){
@@ -97,8 +95,8 @@ ger_ASG <- function(SeedN, evalName, data){
 #' @examples 
 #' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' mgt <- ger_MGT(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' mgt <- ger_MGT(evalName = "D", data = dfr)
 #' mgt
 
 ger_MGT <- function(evalName, data){
@@ -127,10 +125,9 @@ ger_MGT <- function(evalName, data){
 #' @return It returns an vector with the values of Mean Germination Rate
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' mgr <- ger_MGR(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' mgr <- ger_MGR(evalName = "D", data = dfr)
 #' mgr
 
 ger_MGR <- function(evalName, data){
@@ -150,10 +147,9 @@ ger_MGR <- function(evalName, data){
 #' @return  It returns an vector with the Germination Speed
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' gsp <- ger_GSP(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' gsp <- ger_GSP(evalName = "D", data = dfr)
 #' gsp
 
 
@@ -187,10 +183,9 @@ ger_GSP <- function(evalName, data){
 #' @return  It returns an vector with the values of Germination Uncertainty.
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' unc <- ger_UNC(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' unc <- ger_UNC(evalName = "D", data = dfr)
 #' unc
 
 ger_UNC <- function(evalName, data){
@@ -221,10 +216,9 @@ ger_UNC <- function(evalName, data){
 #' @return  It returns an vector with the values of Germination Synchrony
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' syn <- ger_SYN(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' syn <- ger_SYN(evalName = "D", data = dfr)
 #' syn
 
 ger_SYN <- function(evalName, data){
@@ -247,10 +241,9 @@ ger_SYN <- function(evalName, data){
 #' @return It returns an vector with the values of Variance of Germination
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' vgt <- ger_VGT(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' vgt <- ger_VGT(evalName = "D", data = dfr)
 #' vgt
 
 ger_VGT <- function(evalName, data){
@@ -276,10 +269,9 @@ ger_VGT <- function(evalName, data){
 #' @return It returns an vector with the values of Standard desviation of germination
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' sdg <- ger_SDG(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' sdg <- ger_SDG(evalName = "D", data = dfr)
 #' sdg
 
 ger_SDG <- function(evalName, data){
@@ -299,10 +291,9 @@ ger_SDG <- function(evalName, data){
 #' @return It returns an vector with the values of Coefficient of Variance of germination
 #' @export
 #' @examples 
-#' 
 #' library(GerminaR)
-#' dt <- prosopis
-#' cvg <- ger_CVG(evalName = "D", data = dt)
+#' dfr <- prosopis
+#' cvg <- ger_CVG(evalName = "D", data = dfr)
 #' cvg
 
 ger_CVG <- function(evalName, data){

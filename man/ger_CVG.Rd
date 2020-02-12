@@ -18,9 +18,8 @@ It returns an vector with the values of Coefficient of Variance of germination
 This function calculates the coefficient of variation of the mean germination time
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-cvg <- ger_CVG(evalName = "D", data = dt)
+dfr <- prosopis
+cvg <- ger_CVG(evalName = "D", data = dfr)
 cvg
 }

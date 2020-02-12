@@ -25,8 +25,8 @@ It is expressed in terms of the same units of time used in the germination count
 \examples{
 
 library(GerminaR)
-dt <- prosopis
-mgt <- ger_MGT(evalName = "D", data = dt)
+dfr <- prosopis
+mgt <- ger_MGT(evalName = "D", data = dfr)
 mgt
 }
 \references{

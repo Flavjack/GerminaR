@@ -18,9 +18,8 @@ It returns an vector with the Germination Speed
 This function calculates the Germination Speed according at the time lapse of the evaluations.
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-gsp <- ger_GSP(evalName = "D", data = dt)
+dfr <- prosopis
+gsp <- ger_GSP(evalName = "D", data = dfr)
 gsp
 }

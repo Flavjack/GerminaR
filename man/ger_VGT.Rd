@@ -18,9 +18,8 @@ It returns an vector with the values of Variance of Germination
 This function calculates the variance of the mean germination time.
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-vgt <- ger_VGT(evalName = "D", data = dt)
+dfr <- prosopis
+vgt <- ger_VGT(evalName = "D", data = dfr)
 vgt
 }

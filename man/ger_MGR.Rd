@@ -21,10 +21,9 @@ This function calculates the mean germination rate of the germination.
 The average speed of germination is defined as the reciprocal of the average time germination (RANAL; SANTANA, 2006).
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-mgr <- ger_MGR(evalName = "D", data = dt)
+dfr <- prosopis
+mgr <- ger_MGR(evalName = "D", data = dfr)
 mgr
 }
 \references{

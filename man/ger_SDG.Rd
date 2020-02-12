@@ -18,9 +18,8 @@ It returns an vector with the values of Standard desviation of germination
 This function calculates the standard desviation of the mean germination time
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-sdg <- ger_SDG(evalName = "D", data = dt)
+dfr <- prosopis
+sdg <- ger_SDG(evalName = "D", data = dfr)
 sdg
 }

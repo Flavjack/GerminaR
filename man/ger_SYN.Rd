@@ -25,10 +25,9 @@ By adopting the idea expressed by PRIMACK, R.B. (1980) the synchrony of one seed
 Thus, the value of \code{Z} assessments is the grade of overlap between seed germination.
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-syn <- ger_SYN(evalName = "D", data = dt)
+dfr <- prosopis
+syn <- ger_SYN(evalName = "D", data = dfr)
 syn
 }
 \references{

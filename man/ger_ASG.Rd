@@ -20,9 +20,8 @@ It returns an vector with the ArcSin of Germination values
 This function calculates the arcsin of germination percentage for normalization.
 }
 \examples{
-
 library(GerminaR)
-dt <- prosopis
-gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+dfr <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
 gas
 }

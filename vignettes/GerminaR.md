@@ -1,7 +1,7 @@
 ---
 title: "GerminaR 1.0"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
-date: "2020-02-09"
+date: "2020-02-12"
 output: 
       rmarkdown::html_vignette:
         toc: true
@@ -17,7 +17,7 @@ vignette: >
 The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/GerminaQuant-usm/))
 
 
-First we load the `GerminaR 1.0` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
+First we load the `GerminaR 1.4` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
 
 
 ## Data: GerminaR
@@ -128,8 +128,8 @@ The function `ger_summary()`, according to the accumulative germination data, ca
 
 
 ```r
-dt <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
+dfr <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dfr)
 knitr::kable(head(smr, 10),align = "c")
 ```
 
@@ -159,8 +159,8 @@ On the other hand, you can analyze each variable independently using the followi
 
 
 ```r
-dt <- prosopis
-grs <- ger_GRS(evalName = "D", data = dt)
+dfr <- prosopis
+grs <- ger_GRS(evalName = "D", data = dfr)
 grs
 ```
 
@@ -178,8 +178,8 @@ grs
 
 
 ```r
-dt <- prosopis
-grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)
+dfr <- prosopis
+grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dfr)
 grp
 ```
 
@@ -198,8 +198,8 @@ grp
 
 
 ```r
-dt <- prosopis
-gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dt)
+dfr <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
 gas
 ```
 
@@ -225,8 +225,8 @@ gas
 
 
 ```r
-dt <- prosopis
-mgt <- ger_MGT(evalName = "D", data = dt)
+dfr <- prosopis
+mgt <- ger_MGT(evalName = "D", data = dfr)
 mgt
 ```
 
@@ -250,8 +250,8 @@ mgt
 
 
 ```r
-dt <- prosopis
-mgr <- ger_MGR(evalName = "D", data = dt)
+dfr <- prosopis
+mgr <- ger_MGR(evalName = "D", data = dfr)
 mgr
 ```
 
@@ -277,8 +277,8 @@ mgr
 
 
 ```r
-dt <- prosopis
-gsp <- ger_GSP(evalName = "D", data = dt)
+dfr <- prosopis
+gsp <- ger_GSP(evalName = "D", data = dfr)
 gsp
 ```
 
@@ -304,8 +304,8 @@ gsp
 
 
 ```r
-dt <- prosopis
-syn <- ger_SYN(evalName = "D", data = dt)
+dfr <- prosopis
+syn <- ger_SYN(evalName = "D", data = dfr)
 syn
 ```
 
@@ -333,8 +333,8 @@ syn
 
 
 ```r
-dt <- prosopis
-unc <- ger_UNC(evalName = "D", data = dt)
+dfr <- prosopis
+unc <- ger_UNC(evalName = "D", data = dfr)
 unc
 ```
 
@@ -360,8 +360,8 @@ unc
 
 
 ```r
-dt <- prosopis
-sdg <- ger_SDG(evalName = "D", data = dt)
+dfr <- prosopis
+sdg <- ger_SDG(evalName = "D", data = dfr)
 sdg
 ```
 
@@ -387,8 +387,8 @@ sdg
 
 
 ```r
-dt <- prosopis
-cvg <- ger_CVG(evalName = "D", data = dt)
+dfr <- prosopis
+cvg <- ger_CVG(evalName = "D", data = dfr)
 cvg
 ```
 
@@ -412,8 +412,8 @@ cvg
 
 
 ```r
-dt <- prosopis
-vgt <- ger_VGT(evalName = "D", data = dt)
+dfr <- prosopis
+vgt <- ger_VGT(evalName = "D", data = dfr)
 vgt
 ```
 
@@ -440,8 +440,8 @@ vgt
 
 
 ```r
-dt <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+dfr <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
 head(grt, 10)
 ```
 
@@ -467,8 +467,8 @@ head(grt, 10)
 
 
 ```r
-dt <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dt)
+dfr <- prosopis
+grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
 
 fplot(data = grt, type = "line",
       x = "evaluation",
