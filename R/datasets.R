@@ -1,7 +1,7 @@
 #' @name prosopis
 #' @title Germination under different osmotic potentials and temperatures.
 #' @docType data
-#' @aliases GerminaR
+#' @aliases prosopis
 #' @format A data frame with 15 columns and 80 rows.
 #' @description Dataset containing information from germination experiment with Prosopis juliflor under different osmotic potentials and temperatures.
 #' \itemize{
@@ -12,7 +12,7 @@
 #'  \item \code{D0-D10} numeric vectors, ten evaluations days performed in the germination experiment.
 #' }
 #' @references MIRANDA, R. D. Q.; CORREIA, R. M.; DE ALMEIDA-CORTEZ, J. S.; POMPELLI, M. F. Germination of Prosopis juliflora (Sw.) D.C. seeds at different osmotic potentials and temperatures. Plant Species Biology, v. 29, n. 3, p. E9-E20, set. 2014. 
-#' @usage GerminaR
+#' @usage prosopis
 #' @source LEV-UFRPE
 NULL
 

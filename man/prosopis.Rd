@@ -3,14 +3,13 @@
 \docType{data}
 \name{prosopis}
 \alias{prosopis}
-\alias{GerminaR}
 \title{Germination under different osmotic potentials and temperatures.}
 \format{A data frame with 15 columns and 80 rows.}
 \source{
 LEV-UFRPE
 }
 \usage{
-GerminaR
+prosopis
 }
 \description{
 Dataset containing information from germination experiment with Prosopis juliflor under different osmotic potentials and temperatures.
