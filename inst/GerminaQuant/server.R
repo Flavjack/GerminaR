@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
     getPage<-function() {
       return(
         
-        HTML('<iframe src="https://flavjack.github.io/GerminaQuant-usm/" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:50px; width:100%; height:92%">')
+        HTML('<iframe src="https://flavjack.github.io/germinaquant/" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:50px; width:100%; height:92%">')
         
         )
       
