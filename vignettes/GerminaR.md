@@ -1,7 +1,7 @@
 ---
 title: "GerminaR 1.0"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
-date: "2020-02-14"
+date: "2020-02-28"
 output: 
       rmarkdown::html_vignette:
         toc: true
@@ -479,7 +479,7 @@ fplot(data = grt, type = "line",
       lgd = "top", color = F)
 ```
 
-![](C:/Users/User/git/GerminaR/vignettes/GerminaR_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](/home/flavjack/git/GerminaR/vignettes/GerminaR_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 
 
