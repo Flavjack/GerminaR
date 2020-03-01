@@ -14,7 +14,7 @@ vignette: >
 ---
 
 
-The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/GerminaQuant-usm/))
+The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
 
 
 First we load the `GerminaR 1.4` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
