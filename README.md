@@ -4,38 +4,39 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 
-# GerminaR
+# GerminaR 
 
-A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies.
+GerminaR is the first platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called "GerminQuant for R" for non programming user.
 
-## Citation 
+<div id=footer style="width:100%; margin:auto;">
+  <div style="display:inline-block; width:49%">
+    <p style="text-align:center">
+       <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://www.r-project.org/Rlogo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
+    </p>
+  </div>
+  <div style="display:inline-block; width:49%">
+    <p style="text-align:center">
+      <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:90px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+    </p>
+  </div>
+</div>
+
+## Citation
 
 Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. <https://doi.org/10.1111/1440-1703.1275>
-
-## GerminaR CRAN
-
-<https://CRAN.R-project.org/package=GerminaR>
-
-## GerminaQuant app 
-
-Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2016). GerminaQuant for R (Patent No. BR 51 2016 001327-3). <https://flavjack.shinyapps.io/germinaquant/>
 
 ## Installation
 
 To install the developing version of this package you need package devtools:
 
 ```{r eval=F}
-
 install.packages(devtools)
-
 ```
 
 Then type:
 
 ```{r eval=F}
-
 devtools::install_github("Flavjack/GerminaR")
-
 ```
 
 ## Usage
@@ -43,9 +44,7 @@ devtools::install_github("Flavjack/GerminaR")
 To load the package type in your computer:
 
 ```{r eval=F}
-
 library(GerminaR)
-
 ```
 
 More information in the user manual: <https://flavjack.github.io/germinaquant/>

@@ -9,7 +9,7 @@ metamorphosis(fieldbook, dictionary, from, to, index, colnames)
 \arguments{
 \item{fieldbook}{data frame with the original information}
 
-\item{dictionary}{data frame with at least 3 colums (original names, new names and variable type)}
+\item{dictionary}{data frame with at least 3 columns (original names, new names and variable type)}
 
 \item{from}{Column name of a data frame with the original names of the variables}
 
@@ -23,5 +23,5 @@ metamorphosis(fieldbook, dictionary, from, to, index, colnames)
 List with original fieldbook, variables and new fieldbook
 }
 \description{
-Transfor all fieldbook data frame according to data dictionary
+Transform all fieldbook data frame according to data dictionary
 }

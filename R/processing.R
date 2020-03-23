@@ -119,7 +119,7 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
    
    rsl <- git %>% 
      dplyr:: group_by_(Factor, "evaluation") %>% 
-     dplyr::summarise(mean = mean(germination), r = n(), std = sd(germination)) %>% 
+     dplyr::summarise(mean = mean(germination), r = dplyr::n(), std = sd(germination)) %>% 
      dplyr::mutate(ste = std/sqrt(r)) %>% 
      as.data.frame()
    
@@ -133,9 +133,9 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
 
 #' Transform dataframe based in a dictionary
 #'
-#' @description Transfor all fieldbook data frame according to data dictionary
+#' @description Transform all fieldbook data frame according to data dictionary
 #' @param fieldbook data frame with the original information
-#' @param dictionary data frame with at least 3 colums (original names, new names and variable type)
+#' @param dictionary data frame with at least 3 columns (original names, new names and variable type)
 #' @param from Column name of a data frame with the original names of the variables
 #' @param to Column name of a data frame with the new names for the variables
 #' @param index Column name of a data frame with the type and level of the variables

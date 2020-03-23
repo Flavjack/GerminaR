@@ -276,7 +276,7 @@ osmp <- function(type = "salt", vol, pres, temp, mw, ki){
 #' @description Export tables with download, pasta and copy buttons
 #' @param data dataset
 #' @param digits digits number in the table exported
-#' @param title Title for the table
+#' @param caption Title for the table
 #' @param rnames row names
 #' @param buttons "excel", "copy" or "none". Default c("excel", "copy")
 #' @return table in markdown format for html documents
@@ -284,7 +284,7 @@ osmp <- function(type = "salt", vol, pres, temp, mw, ki){
 #' @importFrom DT datatable
 #' @export
 
-web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = NULL){
+web_table <- function(data, caption = NULL, digits = 3, rnames = FALSE, buttons = NULL){
   
   if (is.null(buttons)){
     
@@ -296,7 +296,7 @@ web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = 
                                buttons = c("excel", "copy"),
                                autoWidth = TRUE, scroller = TRUE,
                                scrollY = "50vh", scrollX = TRUE),
-                caption =  title)
+                caption =  caption)
     
   } else if (buttons == "none"){
     
@@ -308,7 +308,7 @@ web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = 
                                buttons = buttons,
                                autoWidth = TRUE, scroller = TRUE,
                                scrollY = "50vh", scrollX = TRUE),
-                caption =  title)
+                caption =  caption)
     
   } else {
     
@@ -320,7 +320,7 @@ web_table <- function(data, title = NULL, digits = 3, rnames = FALSE, buttons = 
                                buttons = buttons,
                                autoWidth = TRUE, scroller = TRUE,
                                scrollY = "50vh", scrollX = TRUE),
-                caption =  title)
+                caption =  caption)
     
   }
   
