@@ -8,6 +8,7 @@
 
 GerminaR is the first platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called "GerminQuant for R" for non programming user.
 
+```html
 <div id=footer style="width:100%; margin:auto;">
   <div style="display:inline-block; width:49%">
     <p style="text-align:center">
@@ -20,6 +21,7 @@ GerminaR is the first platform base in open source package to calculate and grap
     </p>
   </div>
 </div>
+```
 
 ## Citation
 
