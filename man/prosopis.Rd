@@ -4,9 +4,7 @@
 \name{prosopis}
 \alias{prosopis}
 \title{Germination under different osmotic potentials and temperatures.}
-\format{
-A data frame with 15 columns and 80 rows.
-}
+\format{A data frame with 15 columns and 80 rows.}
 \source{
 LEV-UFRPE
 }
