@@ -2,26 +2,70 @@
 % Please edit documentation in R/metamorfosis.R
 \name{metamorphosis}
 \alias{metamorphosis}
-\title{Transform dataframe based in a dictionary}
+\title{Transform data frame based in a dictionary}
 \usage{
 metamorphosis(fieldbook, dictionary, from, to, index, colnames)
 }
 \arguments{
-\item{fieldbook}{data frame with the original information}
+\item{fieldbook}{Data frame with the original information.}
 
-\item{dictionary}{data frame with at least 3 columns (original names, new names and variable type)}
+\item{dictionary}{Data frame with new names and categories. See details.}
 
-\item{from}{Column name of a data frame with the original names of the variables}
+\item{from}{Column of the dictionary with the original names.}
 
-\item{to}{Column name of a data frame with the new names for the variables}
+\item{to}{Column of the dictionary with the new names.}
 
-\item{index}{Column name of a data frame with the type and level of the variables}
+\item{index}{Column of the dictionary with the type and level of the variables.}
 
-\item{colnames}{Character vector with the column names}
+\item{colnames}{Character vector with the name of the columns.}
 }
 \value{
-List with original fieldbook, variables and new fieldbook
+List with two objects.
+
+1. New data frame.
+
+2. Dictionary.
 }
 \description{
-Transform all fieldbook data frame according to data dictionary
+Transform entire data frame (field book) according to data a dictionary.
+}
+\details{
+The function requiere at least three colums.
+
+1. Original names (\code{from}).
+
+2. New names (\code{to}). 
+
+3. Variable type (\code{index}).
+}
+\examples{
+
+library(googlesheets4)
+library(tidyverse)
+
+url <- "https://docs.google.com/spreadsheets/d/1gue-wSQcEu4nJigVZdUWsTfIIzhtxpDRdWAQiEHgKak/edit#gid=1981295232"
+gs <- as_sheets_id(url)
+# browseURL(url)
+
+fb_old <- gs \%>\%
+  sheets_read("fb_old") \%>\%
+  select(ID:SNum) \%>\%
+  filter(SS == "S1")
+
+dic <- gs \%>\% sheets_read("var_old") \%>\%
+  slice(1:20)
+
+mtm <- metamorphosis(fieldbook = fb_old
+                        , dictionary = dic
+                        , from = "old_name"
+                        , to = "Abbreviation"
+                        , index = "Type"
+                        , colnames = c("colname")
+                     )
+
+fb_new <- mtm$fieldbook
+
+}
+\author{
+Flavio Lozano Isla
 }

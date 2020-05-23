@@ -16,7 +16,7 @@ adjmeans(data, trait, treatment, fix.model)
 \item{treat}{Name of the treat.}
 }
 \value{
-A data frame with the BLUEs
+A data frame with the BLUEs.
 }
 \description{
 Function to calculate the adjusted means using the Best Linear Unbiased Estimators (BLUEs).
@@ -25,6 +25,7 @@ Function to calculate the adjusted means using the Best Linear Unbiased Estimato
 The blues calculation is based in the pairwaise comparison and its could takes time according the number of the treatments.
 }
 \examples{
+
 library(agridat)
 adm <- adjmeans(data = john.alpha
                 , trait = "yield"

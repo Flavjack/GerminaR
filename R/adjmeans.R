@@ -7,9 +7,10 @@
 #' @param treat Name of the treat.
 #' @param fix.model The fixed effects in the model. See examples.
 #' @details The blues calculation is based in the pairwaise comparison and its could takes time according the number of the treatments.
-#' @return A data frame with the BLUEs
+#' @return A data frame with the BLUEs.
 #' @author Flavio Lozano-Isla
 #' @examples 
+#' 
 #' library(agridat)
 #' adm <- adjmeans(data = john.alpha
 #'                 , trait = "yield"

@@ -43,9 +43,12 @@ H2cal(
 }
 \value{
 A list with three object: 
-1. Table with the variance components and hertitabilities
-2. BLUPs
-3. BLUEs
+
+1. Table with the variance components and hertitabilities.
+
+2. BLUPs.
+
+3. BLUEs.
 }
 \description{
 Function to calculate:
@@ -56,11 +59,19 @@ Function to calculate:
 }
 \details{
 The function allows to made the calculation for individual or multi-enviomental trials (MET) using th fixed and random model.
+
 For individual experiments is necesary provide the \code{trait}, \code{gen.name}, \code{rep.n}.
-For MET experiments you should \code{loc.n} and \code{loc.name} y/o \code{year.n} and \code{year.name} according your experiment. For more information review the references.
-The blues calculation is based in the pairwaise comparison and its could takes time according the number of the genotypes. You can especify as \code{blues = FALSE} for calculate the variance componets and blups faster.
+
+For MET experiments you should \code{loc.n} and \code{loc.name} y/o \code{year.n} and \code{year.name} according your experiment. 
+
+The blues calculation is based in the pairwaise comparison and its could takes time according the number of the genotypes. 
+
+You can especify as \code{blues = FALSE} for calculate the variance componets and blups faster.
+
+For more information review the references.
 }
 \examples{
+
 library(agridat)
 hr <- H2cal(data = john.alpha
             , blues = F
@@ -71,6 +82,7 @@ hr <- H2cal(data = john.alpha
             , ran.model = "rep + (1|rep:block) + (1|gen)"
             )
 hr$tabsmr 
+
 }
 \references{
 Schmidt, P., J. Hartung, J. Bennewitz, and H.-P. Piepho. 2019. Heritability in Plant Breeding on a Genotype-Difference Basis. Genetics 212(4): 991–1008. doi: 10.1534/genetics.119.302134.
