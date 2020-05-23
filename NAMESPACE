@@ -2,6 +2,8 @@
 
 export("%>%")
 export(GerminaQuant)
+export(H2cal)
+export(adjmeans)
 export(dtsm)
 export(evalDays)
 export(evalFactor)
