@@ -3,6 +3,11 @@
 \name{H2cal}
 \alias{H2cal}
 \title{Heritability in plant breeding on a genotype-difference basis}
+\source{
+https://github.com/PaulSchmidtGit/Heritability/tree/master/Alternative%20Heritability%20Measures
+
+https://stackoverflow.com/questions/38697477/mean-variance-of-a-difference-of-blues-or-blups-in-lme4
+}
 \usage{
 H2cal(
   data,
@@ -44,7 +49,7 @@ H2cal(
 \value{
 A list with three object: 
 
-1. Table with the variance components and hertitabilities.
+1. Table with the variance components and heritability.
 
 2. BLUPs.
 
@@ -53,34 +58,41 @@ A list with three object:
 \description{
 Function to calculate:
 1. The variance components.
-2. Heritability under three approachs: Standart, Cullis and Piepho.
+2. Heritability under three approaches: Standard, Cullis and Piepho.
 3. Best Linear Unbiased Predictors (BLUPs).
 4. Best Linear Unbiased Estimators (BLUEs).
 }
 \details{
-The function allows to made the calculation for individual or multi-enviomental trials (MET) using th fixed and random model.
+The function allows to made the calculation for individual or multi-environmental trials (MET) using th fixed and random model.
 
-For individual experiments is necesary provide the \code{trait}, \code{gen.name}, \code{rep.n}.
+For individual experiments is necessary provide the \code{trait}, \code{gen.name}, \code{rep.n}.
 
 For MET experiments you should \code{loc.n} and \code{loc.name} y/o \code{year.n} and \code{year.name} according your experiment. 
 
-The blues calculation is based in the pairwaise comparison and its could takes time according the number of the genotypes. 
+The blues calculation is based in the pairwise comparison and its could takes time according the number of the genotypes. 
 
-You can especify as \code{blues = FALSE} for calculate the variance componets and blups faster.
+You can specify as \code{blues = FALSE} for calculate the variance components and blups faster.
 
 For more information review the references.
 }
 \examples{
 
+library(tidyverse)
+library(emmeans)
+library(lme4) 
+library(lmerTest)
+library(GerminaR)
 library(agridat)
-hr <- H2cal(data = john.alpha
-            , blues = F
+ 
+ dt <- john.alpha
+ hr <- H2cal(data = dt
+            , blues = T
             , trait = "yield"
             , gen.name = "gen"
             , rep.n = 3
             , fix.model = "rep + (1|rep:block) + gen"
             , ran.model = "rep + (1|rep:block) + (1|gen)"
-            )
+)
 hr$tabsmr 
 
 }
@@ -90,7 +102,7 @@ Schmidt, P., J. Hartung, J. Bennewitz, and H.-P. Piepho. 2019. Heritability in P
 Schmidt, P., J. Hartung, J. Rath, and H.-P. Piepho. 2019. Estimating Broad-Sense Heritability with Unbalanced Data from Agricultural Cultivar Trials. Crop Science 59(2): 525–536. doi: 10.2135/cropsci2018.06.0376.
 }
 \author{
-Belen Kistner
+Maria Belen Kistner
 
 Flavio Lozano-Isla
 }
