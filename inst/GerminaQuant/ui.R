@@ -1,5 +1,6 @@
 # GerminaQuant -----------------------------------------------------------------
 
+library(GerminaR)
 library(shiny)
 library(shinydashboard)
 library(tidyr)
@@ -7,7 +8,6 @@ library(dplyr)
 library(ggplot2)
 library(DT)
 library(agricolae)
-library(GerminaR)
 library(shinyWidgets)
 
 shinyUI(dashboardPage(skin = "green",
@@ -90,7 +90,7 @@ shinyUI(dashboardPage(skin = "green",
                     <br>
                     <br>
                     <center>
-                    <img src="germinaquant.png" width="38%">
+                    <img src="germinaquant.png" width="35%">
                     </center>
                     <br>
                     Enjoy GerminaQuant for R!!

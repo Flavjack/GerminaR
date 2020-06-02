@@ -17,19 +17,19 @@ URL: https://flavjack.github.io/germinaquant/
 BugReports: https://github.com/flavjack/germinar/issues
 Imports:
     agricolae,
+    shiny,
+    shinydashboard,
     dplyr,
+    tidyr,
     ggplot2,
     magrittr,
     readxl,
     tibble,
-    tidyr,
-    assertthat,
     DT,
     purrr,
     gtools,
     gsheet,
-    shiny,
-    shinydashboard
+    assertthat
 Depends:
     R (>= 3.5.0)
 Suggests:

@@ -7,12 +7,12 @@
 evalFactor(evalName, data)
 }
 \arguments{
-\item{evalName}{Prefix of the evalaution variable}
+\item{evalName}{Prefix of the evaluation variable}
 
 \item{data}{Data with germination values}
 }
 \value{
-Factor columsl
+Factor columns
 }
 \description{
 Give matrix with the factor

@@ -7,7 +7,7 @@
 rep_row(Rseq, Nrow)
 }
 \arguments{
-\item{Rseq}{Row sequance for the data matrix}
+\item{Rseq}{Row sequence for the data matrix}
 
 \item{Nrow}{Number of rows for the data matrix}
 }

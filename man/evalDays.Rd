@@ -7,12 +7,12 @@
 evalDays(evalName, data)
 }
 \arguments{
-\item{evalName}{Prefix of the evalaution variable}
+\item{evalName}{Prefix of the evaluation variable}
 
 \item{data}{Data with germination values}
 }
 \value{
-Evalution colums
+Evaluation columns
 }
 \description{
 Give matrix with the evaluation days

@@ -1,5 +1,6 @@
 # GerminaQuant -----------------------------------------------------------------
 
+library(GerminaR)
 library(shiny)
 library(shinydashboard)
 library(tidyr)
@@ -7,11 +8,9 @@ library(dplyr)
 library(ggplot2)
 library(DT)
 library(agricolae)
-library(GerminaR)
 
 shinyServer(function(input, output) {
 
-  
 # User Manual ------------------------------------------------------------
 
   output$gb<-renderUI({
@@ -30,8 +29,6 @@ shinyServer(function(input, output) {
     getPage()
     
   })
-  
-  
   
 # import data -----------------------------------------------------------
 
@@ -146,9 +143,7 @@ output$filter_fact02 <- renderUI({
 
 })
 
-
 # Data analisys -----------------------------------------------------------
-
 
 fb <- reactive({
 
