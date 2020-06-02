@@ -71,14 +71,6 @@ shinyUI(dashboardPage(skin = "green",
                   </p>
                   '),
 
-                  shiny::HTML(
-                    '
-                    <center>
-                    <img src="icon.png" width="50%">
-                    </center>
-                    '
-                    ),
-                  
                   
                   shiny::HTML(
                     
@@ -89,10 +81,18 @@ shinyUI(dashboardPage(skin = "green",
                     <code>install.packages("GerminaR")</code>
                     <br>
                     <br>
+                    <center>
+                    <img src="icon.png" width="35%">
+                    </center>
+                    <br>
                     For use the interactive app 
                     <br>
                     <code>GerminaR::GerminaQuant()</code>
                     <br>
+                    <br>
+                    <center>
+                    <img src="germinaquant.png" width="38%">
+                    </center>
                     <br>
                     Enjoy GerminaQuant for R!!
                     '

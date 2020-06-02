@@ -1,14 +1,14 @@
 Type: Package
 Package: GerminaR
 Title: Indices and Graphics for Assess Seed Germination Process
-Version: 1.4.2
+Version: 1.5.0
 Description: A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies (Lozano-Isla et al. 2019) <doi:10.1111/1440-1703.1275>.
-Date: 2020-03-23
+Date: 2020-06-02
 Authors@R: c(
     person("Flavio", "Lozano Isla", email = "flavjack@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X")),
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-6852-9598")),
-    person("Denise", "Garcia de Santana", email = "denise.santana@ufu.br", role = "ctb"),
-    person("Marli A.", "Ranal", email = "ranal@ufu.br", role = "ctb"),
+    person("Denise", "Garcia de Santana", email = "denise.santana@ufu.br", role = "aut"),
+    person("Marli A.", "Ranal", email = "ranal@ufu.br", role = "aut"),
     person("Marcelo F.", "Pompelli", email = "mpompelli@gmail.com", role = c("aut","ths"), comment = c(ORCID = "0000-0002-4408-6374")),
     person(family = "Federal University of Pernambuco", role = "cph",comment = "Register of application"),
     person(family = "Federal Rural University of Pernambuco", role = "cph", comment = "Post Graduate Program")
@@ -38,5 +38,6 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
