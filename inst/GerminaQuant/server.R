@@ -9,8 +9,6 @@ library(DT)
 library(agricolae)
 library(GerminaR)
 
-
-
 shinyServer(function(input, output) {
 
   

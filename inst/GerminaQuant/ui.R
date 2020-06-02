@@ -10,7 +10,6 @@ library(agricolae)
 library(GerminaR)
 library(shinyWidgets)
 
-
 shinyUI(dashboardPage(skin = "green",
 
 
