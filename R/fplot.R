@@ -1,248 +1,326 @@
 #' Plot line or bar graphic
 #'
-#' @description Function use the dtsm funtion for plot the results
-#' @param data Output dtsm fuction
+#' @description Function use the dtsm function for plot the results
+#' @param data Output ger_testcomp function
 #' @param type Type of graphic. "bar" or "line"
 #' @param x Axis x variable
 #' @param y Axis y variable
-#' @param z Group variable
+#' @param groups Group variable
 #' @param ylab Title for the axis y
 #' @param xlab Title for the axis x
-#' @param lgl Title for the legend
-#' @param lgd the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
-#' @param sig Significance of the result (letters)
-#' @param erb Show the error bar.
-#' @param lmt limits of the y axis
-#' @param brk break of the y axis
-#' @param xbl axis brakes labels in strign with doble space
-#' @param zbl legend label in strign with doble space
+#' @param glab Title for the legend
+#' @param legend the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
+#' @param sig Column with the significance
+#' @param error Show the error bar ("ste" or "std").
+#' @param limits limits of the y axis
+#' @param brakes break of the y axis
+#' @param xbrks axis brakes labels in string with double space
+#' @param gbrks legend label in string with double space
 #' @param color colored figure (TRUE), otherwise black & white (FALSE)
-#' @param font letter size in plot
 #' @return Line o bar plot
-#' @importFrom dplyr mutate
-#' @importFrom ggplot2 aes aes_string element_blank element_rect element_text geom_bar geom_errorbar geom_line geom_point geom_text ggplot position_dodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete
-#' @importFrom gtools mixedsort
+#' @import dplyr
+#' @importFrom grDevices colorRampPalette colors
+#' @importFrom tibble deframe
+#' @importFrom grDevices gray.colors
+#' @import ggplot2
 #' @export
+#' 
+#' @examples  
+#' 
+#' \dontrun{
+#' 
+#' library(GerminaR)
+#' library(dplyr)
+#' data <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
+#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+#' 
+#' aov <- aov(grp ~ nacl*temp, smr)
+#' 
+#' mc <- ger_testcomp(aov = aov
+#'                    , comp <- c("nacl", "temp")
+#'                    )
+#'                     
+#' mc$table %>% fplot(type = "bar"
+#'                    , x = "temp"
+#'                    , y = "grp"
+#'                    , groups = "nacl"
+#'                    )
+#'                    
+#' } 
 
-fplot <- function(data, type= "bar", x, y, z, ylab = NULL, xlab = NULL, lgl = NULL,lgd = "top", sig = NULL, erb = FALSE, lmt = NULL, brk = NULL, xbl = NULL, zbl = NULL, color = TRUE, font = 1){
+
+fplot <- function(data
+                  , type = "bar"
+                  , x
+                  , y
+                  , groups
+                  , xlab = NULL
+                  , ylab = NULL
+                  , glab = NULL
+                  , legend = "top"
+                  , sig = "sig"
+                  , error = "ste"
+                  , limits = NULL
+                  , brakes = NULL
+                  , xbrks = NULL
+                  , gbrks = NULL
+                  , color = TRUE
+                  ){
   
-  ste <- NULL #To avoid this NOTE: fplot: no visible binding for global variable 'ste'
+  # xlab <- ylab <- glab <- NULL
+  # limits <- brakes <- legend <- NULL
+  # type = "bar"
+  # legend = "top"
+  # color = TRUE
   
-  if(is.null(brk)){
+# arguments ---------------------------------------------------------------
+
+  legend <- match.arg(legend, c("top", "left", "right", "bottom", "none"))
+  
+  type <- match.arg(type, c("barra", "linea"))
+  
+  plot_dt <- data
+
+# -------------------------------------------------------------------------
+  
+  if ( !is.null(xlab) ) { 
     
-    brks <- ggplot2::waiver() } else {
-      
-      brks <- (((round(mean(data[,y]), 0))*(-20)):((round(mean(data[,y]), 0))*(+20))) * brk
-      
-    }
-  
-  data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
-  
-  data[,x] <- factor(data[,x], levels = gtools::mixedsort(levels(as.factor(data[, x]))))
-  
-  if ( is.null(ylab)){
+    xlab <- xlab %>%
+      gsub(pattern = " ", "~", .)
+    xlab <- eval(expression(parse(text = xlab)))
     
-    ylab <- y
+  } else { xlab <- x }
+  
+  if ( !is.null(ylab) ) { #
     
-  } else {
+    ylab <- ylab %>%
+      gsub(pattern = " ", "~", .)
     
-    yl <- gsub(pattern = " ",replacement = "~", ylab)
-    ylab <- eval(expression(parse(text = yl)))
+    ylab <- eval(expression(parse(text = ylab)))
+    
+  } else { ylab <- x }
+  
+  if ( !is.null(glab) ) {
+    
+    glab <- glab %>%
+      gsub(pattern = " ", "~", .)
+    glab <- eval(expression(parse(text = glab)))
+    
+  } else { glab <- groups }
+  
+  # -------------------------------------------------------------------------
+  
+  min_value <- min(plot_dt$min)
+  max_value <- max(plot_dt$max)
+  
+  if ( min_value >= 0 & max_value > 0 ) {
+    
+    limits <- paste(0, round(max_value*1.2, 1),  sep = "x")
+    brakes <- abs(round(max_value*1.2, 1))/5
+    
+  } else if ( min_value < 0 &  max_value > 0 ) {
+    
+    limits <- paste(round(min_value*1.2, 1)
+                    , round(max_value*1.2, 1),  sep = "x")
+    brakes <- abs(round(max_value*1.2, 1))/5
+    
+  } else if ( min_value < 0 &  max_value <= 0 ) {
+    
+    limits <- paste( round(min_value*1.2, 1), 0,  sep = "x")
+    brakes <- abs(round(min_value*1.2, 1))/5
     
   }
   
-  if ( is.null(xlab)){
+  limits <- limits %>% strsplit(., "x") %>% deframe() %>% as.numeric()
+  
+  if ( limits[1] >= 0 & limits[2] >= 0 ) {
     
-    xlab <- x
+    limits_brk <- ((limits[1]*-100):(limits[2]*+100)) * brakes
     
-  } else {
+  } else if ( limits[1] <= 0 &  limits[2] <= 0 ) {
     
+    limits_brk <- ((limits[1]*+100):(limits[2]*-100)) * brakes
     
-    xl <- gsub(pattern = " ",replacement = "~", xlab)
-    xlab <- eval(expression(parse(text = xl)))
+  } else if ( limits[1] <= 0 & limits[2] >= 0 ) {
+    
+    limits_brk <- ((limits[1]*+100):(limits[2]*+100)) * brakes
     
   }
   
-  if ( is.null(lgl)){
+# -------------------------------------------------------------------------
+  
+  if (color != TRUE ) {
     
-    lgl <- z
+    color_grps <- gray.colors(n =  plot_dt[[groups]] %>% unique() %>% length()
+                          , start = 0.8
+                          , end = 0.3) 
+  }
+
+# bar plot ----------------------------------------------------------------
+# -------------------------------------------------------------------------
+  
+  barplot <- function(plot_dt
+                      , x
+                      , y
+                      , groups
+                      , xlab
+                      , ylab
+                      , glab
+                      , limits
+                      , brakes
+                      , sig
+                      , error
+                      , legend
+  ) {
     
-  } else {
+    plot_dt %>%
+      
+      {if ( x != groups ) complete(., .data[[groups]], .data[[x]] ) else . } %>%
+      
+      ggplot( aes( .data[[x]] , .data[[y]], fill = .data[[groups]] ) ) +
+      geom_col(
+        position = position_dodge2()
+        , colour="black"
+        , size=.4
+        , na.rm = T
+        ) +
+      
+      scale_y_continuous(limits = limits
+                         , breaks = limits_brk
+                         , expand = c(0,0)) +
+      
+      { if (color != TRUE ) scale_fill_manual(values = color_grps) } +
+      
+      geom_errorbar(
+        aes(ymin = .data[[y]] - .data[[error]]
+            , ymax = .data[[y]] + .data[[error]] )
+        , position = position_dodge(width = 0.9)
+        , width = 0.15
+        , na.rm = T
+      ) +
+      
+      {if (!is.null(sig))  geom_text(
+        aes(label = .data[[sig]],
+            y = .data[[y]] + .data[[error]]  )
+        , position = position_dodge(width = 0.9)
+        , na.rm = T
+        , colour = "black"
+        , vjust = -0.5
+        , hjust = 0.5
+        , angle = 0
+      ) } +
+      
+      labs(x = xlab
+           , y = ylab
+           , fill = glab
+      )
+  }
+  
+  # line plot ---------------------------------------------------------------
+  # -------------------------------------------------------------------------
+  
+  lineplot <- function(plot_dt
+                       , x
+                       , y
+                       , groups
+                       , xlab
+                       , ylab
+                       , glab
+                       , limits
+                       , brakes
+                       , sig
+                       , error
+                       , legend
+  ) {
     
-    
-    ll <- gsub(pattern = " ",replacement = "~", lgl)
-    lgl  <- eval(expression(parse(text = ll)))
+    plot_dt %>%
+      ggplot( aes( .data[[x]] , .data[[y]]
+                   , shape = .data[[groups]]
+                   , colour = .data[[groups]]
+                   ) ) +
+      
+      geom_point( aes(group =  .data[[groups]]
+                      , shape = .data[[groups]]
+                      , color = .data[[groups]]
+      ), size = 2.5 ) +
+      
+      geom_line( aes( group =  .data[[groups]]
+                      , color = .data[[groups]]
+                      , linetype = .data[[groups]]
+      ) ,  size = 1 ) +
+      
+      scale_y_continuous(limits = limits
+                         , breaks = limits_brk
+                         , expand = c(0,0)) +
+      
+      { if (color != TRUE ) scale_fill_manual(values = color_grps) } +
+      
+      geom_errorbar(aes(ymin = .data[[y]] - .data[[error]]
+                        , ymax = .data[[y]] + .data[[error]])
+                    , width = 0.08) +
+      
+      {if (!is.null(sig))  geom_text(aes(label = .data[[sig]], y = .data[[y]] + .data[[error]])
+                                     , colour = "black"
+                                     , vjust = -0.5
+                                     , hjust = 0.5
+                                     , angle = 0) } +
+      
+      labs(x = xlab, y = ylab
+           , shape = glab, color = glab, linetype = glab)
     
   }
   
-  data <- data %>% mutate(ymax = mean+ste)
+  # apply functions----------------------------------------------------------
+  # -------------------------------------------------------------------------
   
-  if( !is.null(xbl) ){
+  if ( type == "barra" ) {
     
-    xbl <- unlist(strsplit(xbl, split = "  "))
-    xbl <- factor(unique( xbl[ xbl != "  "]))
-    xbl <- as.character(xbl)
-    
-  } else {
-    
-    xbl <- ggplot2::waiver()
-    
-  }
-  
-  if( !is.null(zbl) ){
-    
-    zbl <- unlist(strsplit(zbl, split = "  "))
-    zbl <- factor(unique( zbl[ zbl != "  "]))
-    zbl <- as.character(zbl)
-    
-  } else {
-    
-    zbl <- ggplot2::waiver()
-    
-  }
-  
-  if (type == "bar"){
-    
-    bsp <- ggplot(data, aes_string(x , y, fill= z))+
-      geom_bar(position=position_dodge(),colour="black",stat="identity", size=.4)+
-      scale_x_discrete(xlab, labels = xbl)+
-      
-      if ( color == TRUE ){
-        
-        scale_fill_discrete(lgl, labels = zbl)
-        
-      } else if ( color == FALSE ) {
-        
-        scale_fill_grey(lgl, labels = zbl, start = 1, end = 0.1)
-        
-      }
-    
-    
-    if (is.null(lmt)){
-      
-      gr <- bsp + scale_y_continuous(ylab, breaks = brks)
-      
-    }
-    
-    if ( !is.null(lmt)){
-      
-      gr <- bsp + scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brks)
-      
-    }
-    
-    if( erb == TRUE && !(is.null(sig)) ){
-      
-      p <-   gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2, position=position_dodge(.9)) +
-        geom_text(aes_string(label= sig, y = "ymax"), colour="black", size= 2*font, vjust=-.5, angle = 0, position=position_dodge(.9))
-      
-    }
-    
-    if ( erb == TRUE && is.null(sig) ){
-      
-      p <- gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2, position=position_dodge(.9))
-      
-    }
-    
-    if ( erb == FALSE && !(is.null(sig)) ){
-      
-      p <- gr +
-        geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, angle = 0, position=position_dodge(.9))
-      
-    }
-    
-    if ( erb == FALSE && is.null(sig) ) {
-      
-      p <- gr
-      
-    }
-    
-    
-  } else if(type == "line"){
-    
-    if ( color == TRUE ){
-      
-      bsp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
-        geom_line(size = 0.3)+
-        geom_point(size = 1.2*font)+
-        scale_x_discrete(xlab, labels = xbl)+
-        scale_color_discrete(lgl, labels = zbl)+
-        scale_shape_discrete(lgl, labels = zbl)
-      
-    } else if (color == FALSE ){
-      
-      bsp <- ggplot(data, aes_string(x, y, group = z, shape= z, color= z))+
-        geom_line(size = 0.3)+
-        geom_point(size = 1.2*font)+
-        scale_x_discrete(xlab, labels = xbl)+
-        scale_color_grey(lgl, labels = zbl, start = 0, end = 0) +
-        scale_shape_discrete(lgl, labels = zbl)
-      
-    }
-    
-    if (is.null(lmt)){
-      
-      gr <- bsp + scale_y_continuous(ylab, breaks = brks)
-      
-    }
-    
-    if ( !is.null(lmt)){
-      
-      gr <- bsp + scale_y_continuous(ylab, expand = c(0,0), limits = lmt, breaks = brks)
-      
-    }
-    
-    
-    if( erb == TRUE && !(is.null(sig)) ){
-      
-      p <-   gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)+
-        geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
-      
-    }
-    
-    if ( erb == TRUE && is.null(sig) ){
-      
-      p <- gr +
-        geom_errorbar(aes(ymin= mean - ste , ymax= mean + ste), size=.2, width=.2)
-      
-    }
-    
-    if ( erb == FALSE && !(is.null(sig)) ){
-      
-      p <- gr +
-        geom_text(aes_string(label= sig, y = "mean"), colour="black", size= 2*font, vjust=-.5, hjust = -.5,angle = 0)
-      
-    }
-    
-    if ( erb == FALSE && is.null(sig) ) {
-      
-      p <- gr
-      
-    }
-    
-  }
-  
-  p + 
-    theme_bw()+
-    theme(
-      axis.title.x = element_text(size= 8*font),
-      axis.title.y = element_text(size= 8*font, angle=90),
-      panel.background = element_rect(fill = "transparent"), 
-      plot.background = element_rect(fill = "transparent"),
-      panel.grid.major = element_blank(), 
-      panel.grid.minor = element_blank(), 
-      legend.background = element_rect(fill = "transparent"), 
-      legend.box.background = element_rect(fill = "transparent"),
-      legend.position = lgd,
-      legend.title = element_text(size= 8*font),
-      legend.text = element_text(size= 8*font),
-      legend.key.size = unit(0.8*font, "lines"),
-      legend.key = element_blank(),
-      text = element_text(size = 8*font)
+    plot <- barplot(plot_dt
+                    , x
+                    , y
+                    , groups
+                    , xlab
+                    , ylab
+                    , glab
+                    , limits
+                    , brakes
+                    , sig
+                    , error
+                    , legend
     )
+  }
+  
+  if ( type == "linea" ) {
+    
+    plot <- lineplot(plot_dt
+                     , x
+                     , y
+                     , groups
+                     , xlab
+                     , ylab
+                     , glab
+                     , limits
+                     , brakes
+                     , sig
+                     , error
+                     , legend 
+                     )
+  }
+  
+  # results -----------------------------------------------------------------
+  # -------------------------------------------------------------------------
+  
+  plot +
+    theme_bw() +
+    theme(
+      panel.background = element_rect(fill = "transparent"),
+      plot.background = element_rect(fill = "transparent"),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      legend.background = element_rect(fill = "transparent"),
+      legend.box.background = element_rect(fill = "transparent"),
+      legend.position = legend
+    )
+  
 }
-
-
 

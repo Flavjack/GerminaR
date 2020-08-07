@@ -11,7 +11,7 @@ ger_testcomp(aov, comp, type = "snk", sig = 0.05)
 
 \item{comp}{treatments will be compared.}
 
-\item{type}{method for made comparision analysis: c("snk", "tukey", "duncan").}
+\item{type}{method for made comparison analysis: c("snk", "tukey", "duncan").}
 
 \item{sig}{significance level. Default 0.05}
 }
@@ -19,5 +19,22 @@ ger_testcomp(aov, comp, type = "snk", sig = 0.05)
 Table with complete data for graphics
 }
 \description{
-Function analisis of variance for summary data.
+Function analysis of variance for summary data.
+}
+\examples{
+ 
+
+\dontrun{
+
+library(GerminaR)
+library(dplyr)
+data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+
+aov <- aov(grp ~ nacl*temp, smr)
+
+mc <- ger_testcomp(aov = aov
+                   , comp <- c("nacl", "temp")
+                   )
+} 
 }

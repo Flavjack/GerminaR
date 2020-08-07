@@ -1,19 +1,28 @@
-# GerminaQuant -----------------------------------------------------------------
+# GerminaR ----------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+# open https://flavjack.shinyapps.io/germinaquant/
+
+# packages ----------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+if (file.exists("setup.R")) { source("setup.R") }
 
 library(GerminaR)
 library(shiny)
+library(metathis)
+library(tidyverse)
 library(shinydashboard)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
+library(gsheet)
+library(readxl)
 library(DT)
-library(agricolae)
-library(shinyWidgets)
+
+# app ---------------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 shinyUI(dashboardPage(skin = "green",
 
-
-    dashboardHeader(title = "GerminaQuant for R"),
+    dashboardHeader(title = "GerminaQuant"),
 
 # Sider -------------------------------------------------------------------
 
@@ -21,12 +30,9 @@ shinyUI(dashboardPage(skin = "green",
 
       sidebarMenu(
         menuItem("Presentacion", tabName = "intro", icon = icon("home")),
-        menuItem("User Manual", tabName = "manual", icon = icon("book")),
-        menuItem("Fieldbook", tabName = "fieldbook", icon = icon("leaf")),
-        menuItem("Germination", tabName = "germination", icon = icon("leaf")),
+        menuItem("Fieldbook", tabName = "fieldbook", icon = icon("file-alt")),
+        menuItem("Germination", tabName = "germination", icon = icon("seedling")),
         menuItem("Box plot", tabName = "outlier", icon = icon("search")),
-        #menuItem("Multivariate", tabName = "multv", icon = icon("paperclip")),
-        #menuItem("Regression", tabName = "regression", icon = icon("random")),
         menuItem("Statistics", tabName = "stat", icon = icon("pie-chart")),
         menuItem("Graphics", tabName = "graph", icon = icon("tint")),
         menuItem("Intime", tabName = "germint", icon = icon("hourglass")),
@@ -36,21 +42,29 @@ shinyUI(dashboardPage(skin = "green",
 
     ),
 
-
-
     dashboardBody(
 
       
       tags$head(
         tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
       ),
+      
+      tags$head(includeHTML(("www/analytics.html"))),
+      tags$head(tags$link(rel="shortcut icon", href="https://flavjack.shinyapps.io/germinaquant/_w_6f298bc3/icon.png")),
+      
+      meta() %>%
+        meta_social(
+          title = "GerminaR",
+          description = "Indices and Graphics for Assess Seed Germination Process",
+          url = "https://flavjack.shinyapps.io/germinaquant/",
+          image = "https://flavjack.shinyapps.io/germinaquant/_w_4854280b/icon.png",
+          image_alt = "GerminaR"
+        ), 
 
       tabItems(
 
-        
-
 # presentacion ------------------------------------------------------------
-
+# -------------------------------------------------------------------------
 
         tabItem(tabName = "intro",
 
@@ -62,41 +76,38 @@ shinyUI(dashboardPage(skin = "green",
                   status = "primary",
                   solidHeader = T,
                   
-                  shiny::HTML(
-                  '
+                  HTML('
                   <p>
                   <strong>GerminaQuant</strong> for R is web application based in R,
                   you can use the app in your desktop installing the <em><strong>GerminaR</strong></em> package:
                   </p>
-                  '),
+                  Install the package in the R console
+                  <br>
+                  <code>install.packages("GerminaR")</code>
+                  <br>
+                  <br>
+                  For use the interactive app 
+                  <br>
+                  <code>GerminaR::GerminaQuant()</code>
+                  <br>
+                  <br>
+                  <div id=footer style="width:100%; margin:auto;">
+                  <div style="display:inline-block; width:49%">
+                  <p style="text-align:center">
+                  <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
+                  <span style="display:block;"><small>GerminaR</small></span>
+                  </p></div>
+                  
+                  <div style="display:inline-block; width:49%">
+                  <p style="text-align:center">
+                  <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+                  <span style="display:block;"><small>GerminaQuant</small></span>
+                  </p></div>
 
-                  
-                  shiny::HTML(
+                  </div>
                     
-                    '
-                    <br>
-                    Install the package in the R console
-                    <br>
-                    <code>install.packages("GerminaR")</code>
-                    <br>
-                    <br>
-                    <center>
-                    <img src="icon.png" width="35%">
-                    </center>
-                    <br>
-                    For use the interactive app 
-                    <br>
-                    <code>GerminaR::GerminaQuant()</code>
-                    <br>
-                    <br>
-                    <center>
-                    <img src="germinaquant.png" width="35%">
-                    </center>
-                    <br>
-                    Enjoy GerminaQuant for R!!
-                    '
-                    )
-                  
+                  ')
+
                 ),
 
 
@@ -114,19 +125,19 @@ shinyUI(dashboardPage(skin = "green",
                       which provides also a highly interactive environment. It could be used both online and offline and on desktop as well as tablets and laptops.
                       The aime is support the broader research community working on all aspects with germination studies."),
                     
-                    shiny::HTML("<h5><b>Features</b></h5>"),
-                    
-                    shiny::HTML("<p>
-                                <ol>
-                                <li>Allow calculate the princiapal germination variables.</li>
-                                <li>Statistical analysis for germination variables.</li>
-                                <li>Easy way to plot the results.</li>
-                                </ol>
-                                </p>")
+                    HTML("
+                    <h5><b>Features</b></h5>
+                    <p>
+                    <ol>
+                    <li> Allow calculate the principal germination indices.</li>
+                    <li> Statistical analysis for germination.</li>
+                    <li> Easy way to plot the results.</li>
+                    </ol>
+                    </p>
+                         ")
                     
                 ),
                     
-                
                 box(
                   title = "Package Info",
                   width = 4,
@@ -135,35 +146,41 @@ shinyUI(dashboardPage(skin = "green",
 
                   p(strong("Publication")),
                   
-                  shiny::HTML('<p><strong>Flavio Lozano-Isla</strong>; <strong>Omar E. Benites-Alfaro</strong>, and<strong> Marcelo F. Pompelli</strong>. <strong>2019</strong>. GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research 34(2): 339–346. doi: <a href="http://doi.org/10.1111/1440-1703.1275">doi.org/10.1111/1440-1703.1275</a>.</p>'),
+                  HTML('<p><strong>Flavio Lozano-Isla</strong>; <strong>Omar E. Benites-Alfaro</strong>, and<strong> Marcelo F. Pompelli</strong>. <strong>2019</strong>.
+                       GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” 
+                       Ecological Research 34(2): 339–346. doi: <a href="http://doi.org/10.1111/1440-1703.1275">doi.org/10.1111/1440-1703.1275</a>.</p>'),
                   
-                  p(strong("CRAN project:"), a("GerminaR", href = "https://cran.r-project.org/web/packages/GerminaR/index.html", target="_blank" )),
-                  p(strong("Issue tracker:"), a("Github", href = "https://github.com/Flavjack/GerminaR/issues", target="_blank" )),
-                  p(strong("Operating systems:"), "Independient of the platform"),
-                  p(strong("Programing language:"), "R & html"),
+                  br(),
                   
+                  HTML('
+                       
+                      <div id=footer style="width:100%; margin:auto;">
+
+                      <div style="display:inline-block; width:49%">
+                      <p style="text-align:center">
+                      <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:70px" title="Github" alt="Github"></a>
+                      <span style="display:block;"><small>Github</small></span>
+                      </p></div>
+                      
+                      <div style="display:inline-block; width:49%">
+                      <p style="text-align:center">
+                      <a target="_blank" href="https://flavjack.github.io/germinaquant/"><img src="https://bookdown.org/yihui/bookdown/images/logo.png" style="height:70px" title="PLEX" alt="PLEX"></a> 
+                      <span style="display:block;"><small>Manual</small></span>
+                      </p></div>
+                      
+                      </div>
+                       
+                       '),
 
                   hr(),
                   
-                  shiny::HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>')
+                  HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>')
 
                 )
                 
                 )
 
         ),
-
-
-
-# User Manual -------------------------------------------------------------
-    
-          tabItem(tabName = "manual",
-            
-            
-                  htmlOutput("gb")  
-            
-          ),
-
 
 
 # fieldbook -------------------------------------------------------------

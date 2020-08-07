@@ -7,7 +7,7 @@
 ger_ASG(SeedN, evalName, data)
 }
 \arguments{
-\item{SeedN}{Name of the colum with the number of seeds sown.}
+\item{SeedN}{Name of the column with the number of seeds sown.}
 
 \item{evalName}{Prefix of the names of the periods of evaluation.}
 

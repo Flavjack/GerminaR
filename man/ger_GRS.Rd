@@ -12,7 +12,7 @@ ger_GRS(evalName, data)
 \item{data}{The name of the data frame containing the data.}
 }
 \value{
-Number of seed germianated
+Number of seed germinated
 }
 \description{
 This function calculates the number of seed germinated.

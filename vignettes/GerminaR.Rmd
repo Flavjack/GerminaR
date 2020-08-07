@@ -1,5 +1,5 @@
 ---
-title: "GerminaR 1.0"
+title: "GerminaR 1.6"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
 date: "`r Sys.Date()`"
 output: 
@@ -8,17 +8,14 @@ output:
         toc_depth: 4
         keep_md: true
 vignette: >
-  %\VignetteIndexEntry{GerminaR 1.0}
+  %\VignetteIndexEntry{GerminaR 1.6}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
+The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
 
-The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's book. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
-
-
-First we load the `GerminaR 1.4` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
-
+First we load the `GerminaR` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
 
 ## Data: GerminaR
 
@@ -26,26 +23,14 @@ The `prosopis` dataset contains information from an experiment containing inform
 
 ```{r}
 library(GerminaR)
-dim(prosopis)
-str(prosopis)
+library(dplyr)
+library(GerminaR)
+dt <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
 ```
-
 
 ## List of the principal functions
 
-* `GerminaQuant`
 * `ger_summary`
-* `ger_GRS`
-* `ger_GRP`
-* `ger_ASG`
-* `ger_MGT`
-* `ger_MGR`
-* `ger_GSP`
-* `ger_SYN`
-* `ger_UNC`
-* `ger_SDG`
-* `ger_CVG`
-* `ger_VGT`
 * `ger_intime`
 * `fplot` 
 
@@ -57,173 +42,44 @@ The function`GerminaQuant()` activates an interactive application with friendly 
 GerminaQuant()
 ```
 
-
 ## Summary of Germination Variables
 
-The function `ger_summary()`, according to the accumulative germination data, calculates eleven germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis
-
+The function `ger_summary()`, according to the accumulative germination data, calculates several germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis.
 
 ```{r}
-dfr <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dfr)
+smr <- ger_summary(SeedN = "seeds"
+                   , evalName = "D"
+                   , data = dt
+                   )
+
 knitr::kable(head(smr, 10),align = "c")
 ```
 
-
 On the other hand, you can analyze each variable independently using the following germination indexes.
-
-
-## Germinated Seed Number
-
-`ger_GRS()` allows you to calculate the number of seed germinated.
-
-
-```{r}
-dfr <- prosopis
-grs <- ger_GRS(evalName = "D", data = dfr)
-grs
-```
-
-
-## Germination Seed Percentage
-
-`ger_GRP()` calculates the germination percentage related at total seed sown for experimental unit.
-
-```{r}
-dfr <- prosopis
-grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dfr)
-grp
-```
-
-
-## ArcSino of the germination
-
-`ger_ASG()`  calculates the arc sin of germination percentage for normalization.
-
-```{r}
-dfr <- prosopis
-gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
-gas
-```
-
-
-## Mean Germination Time
-
-`ger_MGT()` estimates the mean germination time according at the time lapse of the evaluations
-
-```{r}
-dfr <- prosopis
-mgt <- ger_MGT(evalName = "D", data = dfr)
-mgt
-```
-
-
-## Mean Germination Rate
-
-`ger_MGR()` estimates the mean of germination rate
-
-```{r}
-dfr <- prosopis
-mgr <- ger_MGR(evalName = "D", data = dfr)
-mgr
-```
-
-
-## Germination Speed
-
-`ger_GSP()` performs the calculation of germination speed according at the time lapse of the evaluations.
-
-```{r}
-dfr <- prosopis
-gsp <- ger_GSP(evalName = "D", data = dfr)
-gsp
-```
-
-
-## Germination Synchronization Index
-
-`ger_SYN()` calculates germination synchronization of the germination process.
-
-```{r}
-dfr <- prosopis
-syn <- ger_SYN(evalName = "D", data = dfr)
-syn
-```
-
-## Germination Uncertainty
-
-`ger_UNC()` measures the germination uncertainty into the germination process.
-
-
-```{r}
-dfr <- prosopis
-unc <- ger_UNC(evalName = "D", data = dfr)
-unc
-```
-
-
-## Standard deviation of the Mean Germination Time
-
-`ger_SDG()` estimates the standard deviation of the mean germination time.
-
-```{r}
-dfr <- prosopis
-sdg <- ger_SDG(evalName = "D", data = dfr)
-sdg
-```
-
-
-## Coefficient of Variance of the Mean Germination Time
-
-`ger_CVG()`  Coefficient of Variance of the Mean Germination Time
-
-```{r}
-dfr <- prosopis
-cvg <- ger_CVG(evalName = "D", data = dfr)
-cvg
-```
-
-
-## Variance of the Mean Germination Time
-
-`ger_VGT()` compute the variance of the mean during germination time.
-
-```{r}
-dfr <- prosopis
-vgt <- ger_VGT(evalName = "D", data = dfr)
-vgt
-```
-
-## Accumulative germination
-
-`ger_intime()` Allow to calculate the accumulative germination
-
-```{r}
-dfr <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
-head(grt, 10)
-```
-
 
 ## Plot function
 
+`fplot()` is generic plot function optimized for publication graphs and you can add modification using `ggplot2` package.
 
-`fplot()` is generic plot function optimized for publication graphs
+```{r,  eval=F}
 
-```{r,  warning=FALSE }
-dfr <- prosopis
-grt <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = dfr)
+grt <- ger_intime(Factor = "nacl"
+                  , SeedN = "seeds"
+                  , evalName = "D"
+                  , method = "percentage"
+                  , data = dt)
 
-fplot(data = grt, type = "line",
-      x = "evaluation",
-      y = "mean",
-      z = "nacl",
-      ylab = "Germination ('%')",
-      xlab = "days", lgl = "NaCl (mM)",
-      lgd = "top", color = F)
+fplot(data = grt
+      , type = "line"
+      , x = "evaluation"
+      , y = "mean"
+      , z = "nacl"
+      , ylab = "Germination ('%')"
+      , xlab = "days"
+      , lgl = "NaCl (mM)"
+      , lgd = "top"
+      , color = F
+      )
 
 ```
-
-
-
 

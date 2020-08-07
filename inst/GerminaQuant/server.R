@@ -1,35 +1,27 @@
-# GerminaQuant -----------------------------------------------------------------
+# GerminaR ----------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+# open https://flavjack.shinyapps.io/germinaquant/
+
+# packages ----------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+if (file.exists("setup.R")) { source("setup.R") }
 
 library(GerminaR)
 library(shiny)
+library(metathis)
+library(tidyverse)
 library(shinydashboard)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
+library(gsheet)
+library(readxl)
 library(DT)
-library(agricolae)
+
+# app ---------------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 shinyServer(function(input, output) {
 
-# User Manual ------------------------------------------------------------
-
-  output$gb<-renderUI({
-    
-    getPage<-function() {
-      return(
-        
-        HTML('<iframe src="https://flavjack.github.io/germinaquant/" style="border: 0; position:fixed; top:50px; left:0; right:0; bottom:50px; width:100%; height:92%">')
-        
-        )
-      
-      
-    }
-    
-    
-    getPage()
-    
-  })
-  
 # import data -----------------------------------------------------------
 
 data_fb <-  eventReactive(input$reload, {

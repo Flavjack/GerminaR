@@ -12,7 +12,7 @@ ger_SYN(evalName, data)
 \item{data}{The name of the data frame containing the data.}
 }
 \value{
-It returns an vector with the values of Germination Synchrony
+It returns an vector with the values of Germination synchrony
 }
 \description{
 This function calculates the germination synchronization of the germination process.

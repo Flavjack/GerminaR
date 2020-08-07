@@ -7,15 +7,15 @@
 ger_intime(Factor, SeedN, evalName, method = "percentage", data)
 }
 \arguments{
-\item{Factor}{Factor wich will be graph in time}
+\item{Factor}{Factor which will be graph in time}
 
-\item{SeedN}{Name of the colonn with the seed numbers}
+\item{SeedN}{Name of the column with the seed numbers}
 
-\item{evalName}{Prefix of the evalaution variable}
+\item{evalName}{Prefix of the evaluation variable}
 
-\item{method}{Type of cummulative germination. "percentage" or "relative"}
+\item{method}{Type of cumulative germination. "percentage" or "relative"}
 
-\item{data}{Data with the germination avaliation process}
+\item{data}{Data with the germination evaluation process}
 }
 \value{
 Data frame with the germination by period
@@ -29,8 +29,8 @@ Need a summary by factor before use it with function SummaryBy.
 \examples{
 
 library(GerminaR)
-dt <- prosopis
+data <- prosopis
 grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
-                  evalName = "D", method = "percentage", data = dt)
+                  evalName = "D", method = "percentage", data = data)
 head(grt, 10)
 }

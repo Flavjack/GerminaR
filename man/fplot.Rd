@@ -9,23 +9,22 @@ fplot(
   type = "bar",
   x,
   y,
-  z,
-  ylab = NULL,
+  groups,
   xlab = NULL,
-  lgl = NULL,
-  lgd = "top",
-  sig = NULL,
-  erb = FALSE,
-  lmt = NULL,
-  brk = NULL,
-  xbl = NULL,
-  zbl = NULL,
-  color = TRUE,
-  font = 1
+  ylab = NULL,
+  glab = NULL,
+  legend = "top",
+  sig = "sig",
+  error = "ste",
+  limits = NULL,
+  brakes = NULL,
+  xbrks = NULL,
+  gbrks = NULL,
+  color = TRUE
 )
 }
 \arguments{
-\item{data}{Output dtsm fuction}
+\item{data}{Output ger_testcomp function}
 
 \item{type}{Type of graphic. "bar" or "line"}
 
@@ -33,35 +32,57 @@ fplot(
 
 \item{y}{Axis y variable}
 
-\item{z}{Group variable}
-
-\item{ylab}{Title for the axis y}
+\item{groups}{Group variable}
 
 \item{xlab}{Title for the axis x}
 
-\item{lgl}{Title for the legend}
+\item{ylab}{Title for the axis y}
 
-\item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+\item{glab}{Title for the legend}
 
-\item{sig}{Significance of the result (letters)}
+\item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
-\item{erb}{Show the error bar.}
+\item{sig}{Column with the significance}
 
-\item{lmt}{limits of the y axis}
+\item{error}{Show the error bar ("ste" or "std").}
 
-\item{brk}{break of the y axis}
+\item{limits}{limits of the y axis}
 
-\item{xbl}{axis brakes labels in strign with doble space}
+\item{brakes}{break of the y axis}
 
-\item{zbl}{legend label in strign with doble space}
+\item{xbrks}{axis brakes labels in string with double space}
+
+\item{gbrks}{legend label in string with double space}
 
 \item{color}{colored figure (TRUE), otherwise black & white (FALSE)}
-
-\item{font}{letter size in plot}
 }
 \value{
 Line o bar plot
 }
 \description{
-Function use the dtsm funtion for plot the results
+Function use the dtsm function for plot the results
+}
+\examples{
+ 
+
+\dontrun{
+
+library(GerminaR)
+library(dplyr)
+data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+
+aov <- aov(grp ~ nacl*temp, smr)
+
+mc <- ger_testcomp(aov = aov
+                   , comp <- c("nacl", "temp")
+                   )
+                    
+mc$table \%>\% fplot(type = "bar"
+                   , x = "temp"
+                   , y = "grp"
+                   , groups = "nacl"
+                   )
+                   
+} 
 }

@@ -9,7 +9,7 @@ ger_summary(SeedN, evalName, data)
 \arguments{
 \item{SeedN}{Name of the column with the seed numbers}
 
-\item{evalName}{Prefix of the evalaution variable}
+\item{evalName}{Prefix of the evaluation variable}
 
 \item{data}{The name of the data frame containing the data.}
 }
@@ -22,7 +22,7 @@ This function makes a data table with the result of germination indices for each
 \examples{
 
 library(GerminaR)
-dt <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = dt)
+data <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 smr
 }

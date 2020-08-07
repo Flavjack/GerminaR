@@ -12,10 +12,10 @@ ger_SDG(evalName, data)
 \item{data}{The name of the data frame containing the data.}
 }
 \value{
-It returns an vector with the values of Standard desviation of germination
+It returns an vector with the values of Standard deviation of germination
 }
 \description{
-This function calculates the standard desviation of the mean germination time
+This function calculates the standard deviation of the mean germination time
 }
 \examples{
 library(GerminaR)

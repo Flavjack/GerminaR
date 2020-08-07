@@ -1,66 +1,86 @@
-#' Mean Comparison Table Summary
-#' 
-#' @description Function using resulting output from mean comparison test from agricolae package optimized for graphs. 
-#' @param meanComp Object list with the result from mean comparison test
-#' @return Table with complete data for graphics
-#' @importFrom dplyr mutate select rename_ group_by_ summarise full_join rename
-#' @importFrom tibble rownames_to_column
-#' @importFrom tidyr separate
-#' @export
-
-dtsm <- function(meanComp){
-  
-  #to avoid no bisible global variable function
-  std <- r <- trt <- mean <- Min <- Max <- ste <- groups <- NULL
-  
-  fct <- as.character(meanComp$parameters$name.t)
-  fct <- as.expression(strsplit(fct, split = ":"))
-  
-  dtmn <- meanComp$means %>% rename_(mean = names(meanComp$means[1]))
-  
-  dtgr <- meanComp$groups %>% rownames_to_column(var = "trt")
-  
-  dtgr$trt <- gsub("\\s", "", as.character(dtgr$trt))
-  
-  dta <- dtmn %>% 
-    dplyr::mutate(ste = std/sqrt(r), trt = as.character(row.names(dtmn))) 
-  
-  sm <- dplyr::full_join(dta, dtgr, by = "trt") %>% 
-    dplyr::select(trt, mean, Min, Max, r, std, ste, groups) %>% 
-    tidyr::separate("trt", sep = ":", into = eval(fct)) %>% 
-    dplyr::rename(min = Min, max = Max, sg = groups)
-  
-}
-
-
 #' Multiple comparison test
 #'
-#' @description Function analisis of variance for summary data.
+#' @description Function analysis of variance for summary data.
 #' @param aov lm o aov result function.
 #' @param comp treatments will be compared.
-#' @param type method for made comparision analysis: c("snk", "tukey", "duncan").
+#' @param type method for made comparison analysis: c("snk", "tukey", "duncan").
 #' @param sig significance level. Default 0.05
 #' @return Table with complete data for graphics
 #' @importFrom agricolae SNK.test HSD.test duncan.test
+#' @import dplyr 
+#' @importFrom tibble rownames_to_column
+#' @importFrom purrr pluck
 #' @export
-
+#' 
+#' @examples  
+#' 
+#' \dontrun{
+#' 
+#' library(GerminaR)
+#' library(dplyr)
+#' data <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
+#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+#' 
+#' aov <- aov(grp ~ nacl*temp, smr)
+#' 
+#' mc <- ger_testcomp(aov = aov
+#'                    , comp <- c("nacl", "temp")
+#'                    )
+#' } 
 
 ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
   
-  if( type == "snk"){
+  if (type == "snk"){
     
-    mc <- agricolae::SNK.test(y = aov, trt = comp, alpha = sig)
+    mc <- SNK.test(
+      y = aov
+      , trt = comp
+      , alpha = sig
+    )
     
-  } else if (type == "tukey"){
+  } else if (type == "tukey") {
     
-    mc <- agricolae::HSD.test(y = aov, trt = comp, alpha = sig)
+    mc <- HSD.test(
+      y = aov
+      , trt = comp
+      , alpha = sig
+    )
     
-  } else if (type == "duncan"){
+  } else if (type == "duncan") {
     
-    mc <- agricolae::duncan.test(y = aov, trt = comp, alpha = sig)
+    mc <- duncan.test(
+      y = aov
+      , trt = comp
+      , alpha = sig
+    )
+  }
+  
+  tb_mc <- merge(
+    mc %>% pluck("means") %>% rownames_to_column("treatments")
+    , mc %>% pluck("groups") %>% rownames_to_column("treatments")
+    , all = TRUE) %>%
+    rename_with(tolower) %>%
+    mutate(ste = .data$std/sqrt(.data$r), .after = .data$r) %>%
+    select(!c(.data$q25, .data$q50, .data$q75)) %>%
+    rename("sig" = .data$groups)
+  
+  if ( length(comp) <= 2 ) {
+    
+    tb_mc <- tb_mc %>%
+      tidyr::separate(.data$treatments, {{comp}}, sep = ":")
     
   }
   
-  GerminaR::dtsm(mc)
-  
+  smr_stat <- mc %>%
+    pluck("statistics") %>%
+    merge(mc$parameters, .) 
+
+# result ------------------------------------------------------------------
+
+mean_comparison <- list(
+    table = tb_mc
+    , stats = smr_stat
+  )
+    
 }
+

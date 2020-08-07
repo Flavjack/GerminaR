@@ -30,6 +30,6 @@ unc <- ger_UNC(evalName = "D", data = dfr)
 unc
 }
 \references{
-GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington: [s.n.].
+GOUVEA LABOURIAU, L. L. G. L. A germinacao das sementes. Washington.
 LABOURIAU, L. G.; VALADARES, M. E. B. The germination of seeds. OEA, Washington, DC, 1983.
 }
