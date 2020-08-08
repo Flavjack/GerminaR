@@ -16,8 +16,12 @@
 #' 
 #' library(GerminaR)
 #' data <- prosopis
-#' grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
-#'                   evalName = "D", method = "percentage", data = data)
+#' grt <- ger_intime(Factor = "nacl"
+#'                   , SeedN = "seeds"
+#'                   , evalName = "D"
+#'                   , method = "relative"
+#'                   , data = data
+#'                   )
 #' head(grt, 10)
 #'  
 #' fplot(data = grt
@@ -35,11 +39,13 @@ ger_intime <- function(Factor
                        , data
                        ){
     
-   n <- std <- r <- germination <- evaluation <- NULL  
+   n <- std <- r <- germination <- evaluation <- where <- NULL  
    
 # arguments ---------------------------------------------------------------
+   
+   method <- match.arg(method, c("percentage", "relative"))
 
-   evf <- data %>% select(!starts_with(evalName)) 
+   evf <- data %>% select(!starts_with({{evalName}})) 
    evd <- data %>% select(starts_with({{evalName}}))
    sdn <- data[, SeedN]
    
@@ -65,23 +71,25 @@ ger_intime <- function(Factor
 # -------------------------------------------------------------------------
    
    git <- acum %>% 
-     pivot_longer(names(evd)
+      pivot_longer(names(evd)
                   , names_to = "evaluation"
                   , values_to = "germination"
                   ) %>% 
-     group_by(.data[[Factor]], evaluation) %>% 
-     summarise(mean = mean(germination)
+      group_by(.data[[Factor]], evaluation) %>% 
+      summarise(mean = mean(germination)
                , r = dplyr::n()
                , std = sd(germination)
                , min = min(germination)
                , max = max(germination)
                ) %>% 
-     ungroup() %>% 
-     mutate(ste = std/sqrt(r)) %>% 
-     mutate(evaluation = gsub("\\D", "", evaluation)) %>% 
-     mutate(across(evaluation, ~ as.numeric(.))) %>% 
-     arrange(evaluation) %>% 
-     mutate(across( Factor,  ~ as.factor(.)))
+      ungroup() %>% 
+      mutate(ste = std/sqrt(r)) %>% 
+      mutate(evaluation = gsub("\\D", "", evaluation)) %>% 
+      mutate(across(evaluation, ~ as.numeric(.))) %>% 
+      arrange(evaluation) %>% 
+      mutate(across( {{Factor}},  ~ as.factor(.))) %>% 
+      mutate(across(where(is.numeric), ~replace(., is.na(.), 0))) %>% 
+      mutate(across(where(is.numeric), ~replace(., is.nan(.), 0)))
 
 # result ------------------------------------------------------------------
    
