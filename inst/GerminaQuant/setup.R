@@ -39,3 +39,5 @@ rm(cran, git, installed)
 # References .:
 
 # open https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
+
+# http://r-pkgs.had.co.nz/release.html
