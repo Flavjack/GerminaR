@@ -14,7 +14,7 @@ fplot(
   ylab = NULL,
   glab = NULL,
   legend = "top",
-  sig = "sig",
+  sig = NULL,
   error = "ste",
   limits = NULL,
   brakes = NULL,
@@ -24,7 +24,7 @@ fplot(
 )
 }
 \arguments{
-\item{data}{Output ger_testcomp function}
+\item{data}{Output from ger_testcomp function}
 
 \item{type}{Type of graphic. "bar" or "line"}
 
@@ -75,14 +75,20 @@ smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 aov <- aov(grp ~ nacl*temp, smr)
 
 mc <- ger_testcomp(aov = aov
-                   , comp <- c("nacl", "temp")
+                   , comp = c("nacl", "temp")
                    )
+                   
+data <- mc$table
                     
-mc$table \%>\% fplot(type = "bar"
-                   , x = "temp"
-                   , y = "grp"
-                   , groups = "nacl"
-                   )
+ fplot(data = data
+       , type = "line"
+       , x = "temp"
+       , y = "grp"
+       , groups = "nacl"
+       , limits = c(0,150)
+       , brakes = 20
+       , color = FALSE
+       )
                    
 } 
 }

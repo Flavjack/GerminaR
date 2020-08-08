@@ -1,7 +1,7 @@
 #' Plot line or bar graphic
 #'
 #' @description Function use the dtsm function for plot the results
-#' @param data Output ger_testcomp function
+#' @param data Output from ger_testcomp function
 #' @param type Type of graphic. "bar" or "line"
 #' @param x Axis x variable
 #' @param y Axis y variable
@@ -37,17 +37,22 @@
 #' aov <- aov(grp ~ nacl*temp, smr)
 #' 
 #' mc <- ger_testcomp(aov = aov
-#'                    , comp <- c("nacl", "temp")
-#'                    )
-#'                     
-#' mc$table %>% fplot(type = "bar"
-#'                    , x = "temp"
-#'                    , y = "grp"
-#'                    , groups = "nacl"
+#'                    , comp = c("nacl", "temp")
 #'                    )
 #'                    
+#' data <- mc$table
+#'                     
+#'  fplot(data = data
+#'        , type = "line"
+#'        , x = "temp"
+#'        , y = "grp"
+#'        , groups = "nacl"
+#'        , limits = c(0,150)
+#'        , brakes = 20
+#'        , color = FALSE
+#'        )
+#'                    
 #' } 
-
 
 fplot <- function(data
                   , type = "bar"
@@ -58,7 +63,7 @@ fplot <- function(data
                   , ylab = NULL
                   , glab = NULL
                   , legend = "top"
-                  , sig = "sig"
+                  , sig = NULL
                   , error = "ste"
                   , limits = NULL
                   , brakes = NULL
@@ -98,7 +103,7 @@ fplot <- function(data
     
     ylab <- eval(expression(parse(text = ylab)))
     
-  } else { ylab <- x }
+  } else { ylab <- y }
   
   if ( !is.null(glab) ) {
     
@@ -113,40 +118,43 @@ fplot <- function(data
   min_value <- min(plot_dt$min)
   max_value <- max(plot_dt$max)
   
-  if ( min_value >= 0 & max_value > 0 ) {
+  if ( is.null(brakes) ) { brakes <- abs(round(max_value*1.2, 1))/5 } 
     
-    limits <- paste(0, round(max_value*1.2, 1),  sep = "x")
-    brakes <- abs(round(max_value*1.2, 1))/5
+  if ( is.null(limits) ) {
     
-  } else if ( min_value < 0 &  max_value > 0 ) {
+    if ( min_value >= 0 & max_value > 0 ) {
+      
+      limits <- paste(0, round(max_value*1.2, 1),  sep = "x")
+
+    } else if ( min_value < 0 &  max_value > 0 ) {
+      
+      limits <- paste(round(min_value*1.2, 1)
+                      , round(max_value*1.2, 1),  sep = "x")
+
+    } else if ( min_value < 0 &  max_value <= 0 ) {
+      
+      limits <- paste( round(min_value*1.2, 1), 0,  sep = "x")
+
+    }
     
-    limits <- paste(round(min_value*1.2, 1)
-                    , round(max_value*1.2, 1),  sep = "x")
-    brakes <- abs(round(max_value*1.2, 1))/5
-    
-  } else if ( min_value < 0 &  max_value <= 0 ) {
-    
-    limits <- paste( round(min_value*1.2, 1), 0,  sep = "x")
-    brakes <- abs(round(min_value*1.2, 1))/5
-    
-  }
-  
-  limits <- limits %>% strsplit(., "x") %>% deframe() %>% as.numeric()
-  
+    limits <- limits %>% strsplit(., "x") %>% deframe() %>% as.numeric()
+
+  } 
+
   if ( limits[1] >= 0 & limits[2] >= 0 ) {
     
-    limits_brk <- ((limits[1]*-100):(limits[2]*+100)) * brakes
+    brakes <- ((limits[1]*-100):(limits[2]*+100)) * brakes
     
   } else if ( limits[1] <= 0 &  limits[2] <= 0 ) {
     
-    limits_brk <- ((limits[1]*+100):(limits[2]*-100)) * brakes
+    brakes <- ((limits[1]*+100):(limits[2]*-100)) * brakes
     
   } else if ( limits[1] <= 0 & limits[2] >= 0 ) {
     
-    limits_brk <- ((limits[1]*+100):(limits[2]*+100)) * brakes
+    brakes <- ((limits[1]*+100):(limits[2]*+100)) * brakes
     
   }
-  
+    
 # -------------------------------------------------------------------------
   
   if (color != TRUE ) {
@@ -186,7 +194,7 @@ fplot <- function(data
         ) +
       
       scale_y_continuous(limits = limits
-                         , breaks = limits_brk
+                         , breaks = brakes
                          , expand = c(0,0)) +
       
       { if (color != TRUE ) scale_fill_manual(values = color_grps) } +
@@ -250,10 +258,10 @@ fplot <- function(data
       ) ,  size = 1 ) +
       
       scale_y_continuous(limits = limits
-                         , breaks = limits_brk
+                         , breaks = brakes
                          , expand = c(0,0)) +
       
-      { if (color != TRUE ) scale_fill_manual(values = color_grps) } +
+      { if (color != TRUE ) scale_color_manual(values = color_grps) } +
       
       geom_errorbar(aes(ymin = .data[[y]] - .data[[error]]
                         , ymax = .data[[y]] + .data[[error]])
@@ -287,7 +295,7 @@ fplot <- function(data
                     , sig
                     , error
                     , legend
-    )
+                    )
   }
   
   if ( type == "linea" ) {

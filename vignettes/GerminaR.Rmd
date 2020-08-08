@@ -61,7 +61,7 @@ On the other hand, you can analyze each variable independently using the followi
 
 `fplot()` is generic plot function optimized for publication graphs and you can add modification using `ggplot2` package.
 
-```{r,  eval=F}
+```{r}
 
 grt <- ger_intime(Factor = "nacl"
                   , SeedN = "seeds"
@@ -73,12 +73,13 @@ fplot(data = grt
       , type = "line"
       , x = "evaluation"
       , y = "mean"
-      , z = "nacl"
+      , groups = "nacl"
       , ylab = "Germination ('%')"
       , xlab = "days"
-      , lgl = "NaCl (mM)"
-      , lgd = "top"
-      , color = F
+      , glab  = "NaCl (mM)"
+      , legend = "top"
+      , sig = NULL
+      , color = T
       )
 
 ```

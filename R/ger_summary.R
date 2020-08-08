@@ -16,13 +16,10 @@
 
 ger_summary <- function(SeedN, evalName, data){
   
-  evalName <- data %>% 
-    select(starts_with({{evalName}})) %>% 
-    names
+  evf <- data %>% 
+    select(!starts_with({{evalName}})) 
   
-  gsm <- data %>% 
-    as.data.frame() %>% 
-    mutate(
+  gsm <- mutate( evf,
       grs = ger_GRS(evalName, data), 
       grp = ger_GRP(SeedN, evalName, data),
       mgt = ger_MGT(evalName, data),

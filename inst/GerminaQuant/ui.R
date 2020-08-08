@@ -16,6 +16,7 @@ library(shinydashboard)
 library(gsheet)
 library(readxl)
 library(DT)
+library(ggpubr)
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -39,12 +40,10 @@ shinyUI(dashboardPage(skin = "green",
         menuItem("Tools", tabName = "tools", icon = icon("wrench"))
       )
 
-
     ),
 
     dashboardBody(
 
-      
       tags$head(
         tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
       ),
@@ -63,7 +62,7 @@ shinyUI(dashboardPage(skin = "green",
 
       tabItems(
 
-# presentacion ------------------------------------------------------------
+# presentation ------------------------------------------------------------
 # -------------------------------------------------------------------------
 
         tabItem(tabName = "intro",
@@ -182,40 +181,38 @@ shinyUI(dashboardPage(skin = "green",
 
         ),
 
-
 # fieldbook -------------------------------------------------------------
-
 
         tabItem(tabName = "fieldbook",
 
-
         box(
-
+          
           status = "info",
           width = 12,
-          background = "black",
+          background = "black"
+          , height = "120px",
 
 
           column(width = 6,
 
-           h4(icon("book"), "Google SpreadSheet (URL)", width = "100%"),
+           h4(icon("google"), "Google SpreadSheet (URL)", width = "100%"),
 
-           textInput("fbdt",
+           textInput("import_gsheet",
              label = NULL ,
              width = "100%",
              value = "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=137089581")
 
-
           ),
-
 
           column(width = 4,
 
-            h4(icon("book"), "Excel file (.xlsx)", width = "100%"),
+            h4(icon("file-excel"), "Excel file (.xlsx)", width = "100%"),
 
-            fileInput('impdata',
-              label = NULL,
-              accept = c(".xlsx"))
+            fileInput('import_excel'
+                      , multiple = FALSE
+                      , label = NULL
+                      , accept = c(".xlsx")
+                      )
 
           ),
 
@@ -235,29 +232,21 @@ shinyUI(dashboardPage(skin = "green",
 
           )
 
-
         ),
 
-
         shiny::fluidRow(
-          
-     
+
         box(
 
           status = "danger",
           solidHeader = T,
           width = 10,
 
-        # DT::dataTableOutput('fbook')
         htmlOutput("fbook")
-
 
         ),
 
-
-
 # Germination parameters --------------------------------------------------
-
 
         box(
           
@@ -265,30 +254,24 @@ shinyUI(dashboardPage(skin = "green",
           solidHeader = T,
           width = 2,
           title = 'Parameters',
-          
-          
-          textInput("SeedN", label = strong("Seeds (col name)"), value = "seeds"),
+
+          textInput("SeedN", label = strong("Seeds (column name)"), value = "seeds"),
           
           textInput("evalName", label = strong("Evaluations (prefix)"), value = "D"),
           
-  
           uiOutput("filter_01"),
           
           uiOutput("filter_fact01"),
           
-          
           uiOutput("filter_02"),
           
           uiOutput("filter_fact02")
-          
-                 
+
           )
           
         )
 
         ),
-
-
 
 # Germination analisys ----------------------------------------------------
 
@@ -303,13 +286,8 @@ shinyUI(dashboardPage(skin = "green",
           )   
           
         )
-     
-        
-        
+
         ),
-
-
-
 
 # outliers ----------------------------------------------------------------
 
@@ -323,22 +301,17 @@ shinyUI(dashboardPage(skin = "green",
 
                     ),
 
-
                     column(width = 4,
 
                       uiOutput("bpx")
 
                     ),
 
-
                     column(width = 4,
 
                       uiOutput("bpz")
 
-
                     ),
-
-
 
                     column(width = 4,
 
@@ -347,15 +320,11 @@ shinyUI(dashboardPage(skin = "green",
 
                     ),
 
-
                     column(width = 4,
-
 
                       textInput(inputId ="bplx", label = "X label", value = "")
 
-
                     ),
-
 
                     column(width = 4,
 
@@ -369,7 +338,6 @@ shinyUI(dashboardPage(skin = "green",
 
           ),
 
-
           box(width = 2, background = "black",
 
 
@@ -382,7 +350,6 @@ shinyUI(dashboardPage(skin = "green",
 
             ),
 
-
             column(width = 12,
 
               numericInput(
@@ -391,13 +358,9 @@ shinyUI(dashboardPage(skin = "green",
                 value = 2,
                 min = 0,
                 step = 0.1)
-
-
             )
 
-
             ),
-
 
           shiny::fluidRow(
           
@@ -405,122 +368,11 @@ shinyUI(dashboardPage(skin = "green",
 
           plotOutput("boxplot")
 
-
           )
           
           )
 
         ),
-
-
-# multivariate ------------------------------------------------------------
-
-        tabItem(tabName = "multv",
-
-         box(width = 6,
-
-           column(width = 3,
-
-             h5(icon("book"), "Correlation", width = "100%")
-
-           ),
-
-
-           column(width = 2,
-
-            numericInput("corsig",
-               label = "Significance",
-              value = 0.05,
-              min = 0,
-              max = 5,
-              step = 0.01)
-
-           ),
-
-
-           column(width = 2,
-
-             numericInput("cor_font",
-               label = "Font",
-               value = 1,
-               min = 0,
-               step = 0.1)
-
-
-           ),
-
-            column(width = 5,
-
-              textInput("corcol",
-                label = "Color",
-                value = "#DD5143 #F38A78 #68C7EC #00A0DC"
-               )
-
-            )
-
-
-          ),
-
-
-          box(width = 6,
-
-            column(width = 2,
-
-              h5(icon("book"), "PCA", width = "100%")
-
-            ),
-
-
-            column(width = 3,
-
-              selectInput("pcatype",
-                label = "Type",
-                choices = c("ind", "var", "biplot"),
-                selected = "biplot")
-
-            ),
-
-            column(width = 2,
-
-              numericInput("pcaqs",
-                label = "Variable",
-                value = NA,
-                min = 1,
-                step = 1
-              )
-
-            ),
-
-            column(width = 5,
-
-              textInput("pcalbl",
-                label = "Label",
-                value =  ""
-              )
-
-            )
-
-
-
-          ),
-
-
-          box(width = 6,
-
-            plotOutput("crpt", width = "580px", height = "520px")
-
-          ),
-
-          box(width = 6,
-
-
-            plotOutput("pca", width = "580px", height = "520px")
-
-
-          )
-
-        ),
-
 
 # statistics -------------------------------------------------------------
 
@@ -543,14 +395,11 @@ shinyUI(dashboardPage(skin = "green",
 
             ),
 
-
             column(width = 6,
 
               uiOutput("stat_block")
 
-
             ),
-
 
             column(width = 6,
 
@@ -561,7 +410,6 @@ shinyUI(dashboardPage(skin = "green",
                 max = 5,
                 step = 0.01)
 
-
             ),
 
             column(width = 6,
@@ -571,9 +419,7 @@ shinyUI(dashboardPage(skin = "green",
                 choices = c("tukey", "duncan", "snk"),
                 selected = "snk")
 
-
             ),
-
 
             column(width = 12,
 
@@ -581,21 +427,15 @@ shinyUI(dashboardPage(skin = "green",
 
             ),
             
-            
             column(width = 12,
                    
                    tableOutput("stat_summary")
                    
             )
 
-
-
           ),
-          
-          
-          
+    
           box(width = 7,
-              
             
               box(title = "Summary table", 
                   solidHeader = T,
@@ -608,52 +448,18 @@ shinyUI(dashboardPage(skin = "green",
                   
                   ),
               
-              
-              box(title = "Assumptions", 
+              box(title = "Model plots", 
                   solidHeader = T,
                   width = 12, 
                   collapsible = T,
                   collapsed = T,
                   status = "danger",
                   
-    shiny::HTML("<h5><b>Don't forget the assumptions of the model!</b></h5>"),
-    
-    shiny::HTML("<p>
-                  <ol>
-                  <li>The errors are independent.</li>
-                  <li>The variable should have a normal distribution.</li>
-                  <li>The variance should be the same for all treatments.</li>
-                  </ol>
-                  </p>"),
-    
-    hr(),
-    
-    shiny::HTML("<h5><b>The following plots can help you to evaluate the assumptions</b></h5>"),
-
-    column(width = 12,
-           
-           plotOutput("assuption_plot01")
-           
-    ),
-    
-    
-    p("Any trend in the residuals would violate the assumption of independence while a trend in the variability of the residuals -for instance a funnel shape- suggests heterogeneity of variances."),
-    
-    
-    column(width = 12,
-           
-           plotOutput("assuption_plot02")
-           
-    ),
-    
-    p("Departures from the theoretical normal line are symptoms of lack of normality.")
-  
+           plotOutput("modelplots")
 
               )
             
-            
           )
-          
           
           )
 
@@ -661,32 +467,29 @@ shinyUI(dashboardPage(skin = "green",
         ),
 
 # graphics ----------------------------------------------------------------
-
+# -------------------------------------------------------------------------
 
         tabItem(tabName = "graph",
                 
-          
-          box( width = 10,
-
+                
+          fluidRow(
+                
+          column( width = 10,
 
             box(width = 5, title = NULL, background = "blue",
-
 
                       column(width = 12,
 
                         textInput(
-                          inputId ="gply",
-                          label = "Y label",
-                          value = "")
-
+                          inputId ="plot_ylab",
+                          label = "Y label")
 
                       ),
 
                       column(width = 4,
 
-
                         numericInput(
-                          inputId ="gbrakes",
+                          inputId ="plot_ybrakes",
                           label = "Brakes",
                           value = NA,
                           min = 0
@@ -694,214 +497,330 @@ shinyUI(dashboardPage(skin = "green",
 
                       ),
 
-
                       column(width = 4,
 
-
                         numericInput(
-                          inputId ="glmti",
+                          inputId ="plot_limit1",
                           label = "Limit (i)",
                           value = NA
                         )
 
                       ),
 
-
                       column(width = 4,
 
 
                         numericInput(
-                          inputId ="glmtf",
+                          inputId ="plot_limit2",
                           label = "Limit (f)",
                           value = NA
                         )
 
                       )
 
-
-
-
               ),
-
-
 
             box(width = 4, title = NULL, background = "green",
 
-
-
-
                   column(width = 12,
 
-                    textInput(inputId ="gplx", label = "X label", value = "")
-
+                    textInput(inputId ="plot_xlab", label = "X label")
 
                   ),
 
-
                   column(width = 12,
 
-                    textInput(inputId ="gp_xbk", label = "Brake Text", value = "")
-
+                    textInput(inputId ="plot_xbrakes", label = "Brake labels")
 
                   )
 
-
-
             ),
-
 
             box(width = 3, background = "red",
 
                   column(width = 12,
 
-                    textInput(inputId ="gplz", label = "Legend", value = "")
-
+                    textInput(inputId ="plot_glab", label = "Groups label")
 
                   ),
 
-
                 column(width = 12,
 
-                  textInput(inputId ="gp_zbk", label = "Brake Text", value = "")
-
+                  textInput(inputId ="plot_gbrakes", label = "Brake labels")
 
                 )
 
             ),
 
-          shiny::fluidRow(
+              div(imageOutput("plotgr"), align = "center")
             
-          box(width = 12,
-
-
-                plotOutput("stplot")
-
-
-
-          )
-
-
-          )
-          
-      ),
-
-      shiny::fluidRow(
-      
-          box(width = 2,
-
-            column(width = 12,
-
-
-              numericInput(
-                inputId ="gfont",
-                label = "Size",
-                value = 2,
-                min = 0,
-                step = 0.1
-              )
-
             ),
 
+          column(width = 2,
 
             column(width = 12,
 
-
               radioButtons(
-                inputId ="gtype",
+                inputId ="plot_type",
                 label = "Type",
                 choices = c("bar", "line"),
-                selected = "bar",
-                inline = TRUE)
+                inline = TRUE
+                )
             ),
-
 
             column(width = 12,
 
-
               radioButtons(
-                inputId ="gcolor",
+                inputId ="plot_color",
                 label = "Color",
-                choices = c("yes", "no"),
-                selected = "yes",
+                choices = c("yes" = TRUE
+                            , "no" = FALSE
+                            ),
                 inline = TRUE)
             ),
 
-
             column(width = 12,
 
-
               radioButtons(
-                inputId ="gsig",
+                inputId ="plot_sig",
                 label = "Significance",
-                choices = c("yes", "no"),
-                selected = "yes",
+                choices = c("yes" = "sig"
+                            , "no"
+                            ),
                 inline = TRUE)
             ),
 
             column(width = 12,
 
-
               radioButtons(
-                inputId ="gerbr",
+                inputId ="plot_error",
                 label = "Error",
-                choices = c("yes", "no"),
-                selected = "yes",
+                choices = c("ste"
+                            , "std"
+                            ),
                 inline = TRUE)
             ),
 
-
             column(width = 12,
 
-
-              radioButtons(
-                inputId ="glabel",
+              selectInput(
+                inputId ="plot_legend",
                 label = "Legend",
-                choices = c("none", "left", "right", "top", "bottom"),
-                selected = "top",
-                inline = TRUE)
+                choices = c("top", "bottom", "left", "right", "none")
+                )
             ),
-
-
+            
+            column(width = 12,
+                   
+                   numericInput('plot_width', 'Width (cm)',
+                                value = 15,
+                                min = 5,
+                                step = 5)
+                   
+            ),
 
             column(width = 12,
 
-              numericInput('plot_H', 'Height (mm)',
-                value = 75,
-                min = 0,
+              numericInput('plot_height', 'Height (cm)',
+                value = 10,
+                min = 5,
                 step = 5)
-
              ),
 
-
             column(width = 12,
-
-
-              numericInput('plot_W', 'Width (mm)',
-                value = 105,
-                min = 0,
-                step = 5)
-
-
-            ),
-
-
-            column(width = 12,
-
-              downloadButton('download_plot', ' TIFF (300 dpi)')
-
+                   
+                   numericInput('plot_res', 'Resolution (dpi)',
+                                value = 100,
+                                min = 50,
+                                step = 50)
+                   
             )
 
-
-
-
-
           )
-          
           
           )
 
         ),
 
+# Germination in time -----------------------------------------------------
+# -------------------------------------------------------------------------
+
+tabItem(tabName = "germint",
+        
+        column( width = 10,
+             
+             
+             box(width = 5, title = NULL, background = "blue",
+                 
+                 
+                 column(width = 12,
+                        
+                        textInput(
+                          inputId ="intime_ylab",
+                          label = "Y label",
+                          value = "Germination ('%')")
+                        
+                        
+                 ),
+                 
+                 column(width = 4,
+                        
+                        
+                        numericInput(
+                          inputId ="intime_ybrakes",
+                          label = "Brakes",
+                          value = NA,
+                          min = 0
+                        )
+                        
+                 ),
+                 
+                 
+                 column(width = 4,
+                        
+                        
+                        numericInput(
+                          inputId ="intime_limit1",
+                          label = "Limit (i)",
+                          value = NA
+                        )
+                        
+                 ),
+                 
+                 
+                 column(width = 4,
+                        
+                        
+                        numericInput(
+                          inputId ="intime_limit2",
+                          label = "Limit (f)",
+                          value = NA
+                        )
+                        
+                 )
+                 
+             ),
+             
+             box(width = 4, title = NULL, background = "green",
+                 
+                 column(width = 12,
+                        
+                        textInput(inputId ="intime_xlab", label = "X label", value = "Time")
+                        
+                        
+                 ),
+                 
+                 column(width = 12,
+                        
+                        textInput(inputId ="intime_xbrake", label = "Brake labels", value = "")
+                        
+                        
+                 )
+             ),
+             
+             
+             box(width = 3, background = "red",
+                 
+                 column(width = 12,
+                        
+                        textInput(inputId ="intime_glab", label = "Legend", value = "")
+                        
+                        
+                 ),
+                 
+                 
+                 column(width = 12,
+                        
+                        textInput(inputId ="intime_gbrakes", label = "Brake Text", value = "")
+                        
+                        
+                 )
+                 
+             ),
+             
+               div(imageOutput("intime_plot"), align = "center")
+
+        ),
+        
+          column(width = 2,
+              
+              
+              column(width = 12,
+                     
+                     
+                     uiOutput('smvar')
+                     
+              ),
+              
+              column(width = 12,
+                     
+                     
+                     radioButtons(
+                       inputId ="intime_type",
+                       label = "Type",
+                       choices = c("percentage", "relative"),
+                       selected = "percentage",
+                       inline = F)
+              ),
+              
+              column(width = 12,
+              
+              radioButtons(
+                inputId ="intime_color",
+                label = "Color",
+                choices = c("yes" = TRUE
+                            , "no" = FALSE
+                ),
+                inline = TRUE),
+              
+              ),
+
+              column(width = 12,
+               
+               radioButtons(
+                 inputId ="intime_error",
+                 label = "Error",
+                 choices = c("ste"
+                             , "std"
+                 ),
+                 inline = TRUE)
+        ),
+        
+        column(width = 12,
+               
+               selectInput(
+                 inputId ="intime_legend",
+                 label = "Legend",
+                 choices = c("top", "bottom", "left", "right", "none")
+               )
+        ),
+        
+        column(width = 12,
+               
+               numericInput('intime_width', 'Width (cm)',
+                            value = 15,
+                            min = 5,
+                            step = 5)
+        ),
+        
+        column(width = 12,
+               
+               numericInput('intime_height', 'Height (cm)',
+                            value = 10,
+                            min = 5,
+                            step = 5)
+        ),
+        
+        column(width = 12,
+               
+               numericInput('intime_res', 'Resolution (dpi)',
+                            value = 100,
+                            min = 50,
+                            step = 50)
+               )
+        )
+          
+),
 
 # tools -------------------------------------------------------------------
 
@@ -994,443 +913,9 @@ shinyUI(dashboardPage(skin = "green",
             )
                 
                 
-          ),
-
-
-# Lineal Regression -------------------------------------------------------
-
-        tabItem(tabName = "regression",
-
-          box( width = 10,
-
-
-            box(width = 4, title = NULL, background = "blue",
-
-
-              column(width = 12,
-
-                uiOutput("lrg_variable2")
-
-
-              ),
-
-              column(width = 8,
-
-                textInput("lr_lbv2", label = "Label", value = "")
-
-
-              ),
-
-
-              column(width = 4,
-
-                numericInput("lr_brk2", label = "Brakes", value = NA, min = 0)
-
-
-              )
-
-
-            ),
-
-
-
-            box(width = 4, title = NULL, background = "green",
-
-
-
-
-              column(width = 12,
-
-                uiOutput("lrg_variable1")
-
-
-              ),
-
-              column(width = 8,
-
-                textInput("lr_lbv1", label = "Label", value = "")
-
-
-              ),
-
-              column(width = 4,
-
-                numericInput("lr_brk1", label = "Brakes", value = NA, min = 0)
-
-              )
-
-
-            ),
-
-
-            box(width = 4, background = "red",
-
-              column(width = 12,
-
-                uiOutput("lrg_grouped")
-
-
-              ),
-
-
-              column(width = 6,
-
-                textInput("lr_lbgp", label = "Legend", value = "")
-
-
-              ),
-
-
-              column(width = 6,
-
-                textInput("lr_lglv", label = "Levels", value = "")
-
-
-              )
-
-
-            ),
-
-
-            box(width = 12,
-
-
-              plotOutput("plot_regression")
-
-
-
-            )
-
-
-          ),
-
-          box(width = 2,
-
-            column(width = 12,
-
-
-              numericInput(
-                inputId ="lr_font",
-                label = "Size",
-                value = 2,
-                min = 0,
-                step = 0.1
-              )
-
-            ),
-
-
-            column(width = 12,
-
-
-              radioButtons(
-                inputId ="lr_color",
-                label = "Color",
-                choices = c("yes", "no"),
-                selected = "yes",
-                inline = TRUE)
-            ),
-
-
-            column(width = 12,
-
-
-              radioButtons(
-                inputId ="lr_label",
-                label = "Legend",
-                choices = c("none", "left", "right", "top", "bottom"),
-                selected = "top",
-                inline = TRUE)
-            ),
-
-
-            column(width = 12,
-
-               numericInput('lr_eq_x', 'Eq. x',
-                            value = NA),
-
-               numericInput('lr_eq_y', 'Eq. y',
-                            value = NA)
-
-            ),
-
-
-
-
-            column(width = 12,
-
-              numericInput('lr_plot_H', 'Height (mm)',
-                value = 75,
-                min = 0,
-                step = 5)
-
-            ),
-
-
-            column(width = 12,
-
-
-              numericInput('lr_plot_W', 'Width (mm)',
-                value = 105,
-                min = 0,
-                step = 5)
-
-
-            ),
-
-
-            column(width = 12,
-
-              downloadButton('download_plot_lr', ' TIFF (300 dpi)')
-
-            )
-
-
-
-
-
           )
-
-
-
-        ),
-
-
-# Germination in time -----------------------------------------------------
-
-  tabItem(tabName = "germint",
-
-
-          box( width = 10,
-               
-               
-               box(width = 5, title = NULL, background = "blue",
-                   
-                   
-                   column(width = 12,
-                          
-                          textInput(
-                            inputId ="git_ly",
-                            label = "Y label",
-                            value = "Germination ('%')")
-                          
-                          
-                   ),
-                   
-                   column(width = 4,
-                          
-                          
-                          numericInput(
-                            inputId ="git_brakes",
-                            label = "Brakes",
-                            value = NA,
-                            min = 0
-                          )
-                          
-                   ),
-                   
-                   
-                   column(width = 4,
-                          
-                          
-                          numericInput(
-                            inputId ="git_lmti",
-                            label = "Limit (i)",
-                            value = NA
-                          )
-                          
-                   ),
-                   
-                   
-                   column(width = 4,
-                          
-                          
-                          numericInput(
-                            inputId ="git_lmtf",
-                            label = "Limit (f)",
-                            value = NA
-                          )
-                          
-                   )
-                   
-                   
-                   
-                   
-               ),
-               
-               
-               
-               box(width = 4, title = NULL, background = "green",
-                   
-                   
-                   
-                   
-                   column(width = 12,
-                          
-                          textInput(inputId ="git_lx", label = "X label", value = "Time")
-                          
-                          
-                   ),
-                   
-                   
-                   column(width = 12,
-                          
-                          textInput(inputId ="git_xbk", label = "Brake Text", value = "")
-                          
-                          
-                   )
-                   
-                   
-                   
-               ),
-               
-               
-               box(width = 3, background = "red",
-                   
-                   column(width = 12,
-                          
-                          textInput(inputId ="git_lz", label = "Legend", value = "")
-                          
-                          
-                   ),
-                   
-                   
-                   column(width = 12,
-                          
-                          textInput(inputId ="git_zbk", label = "Brake Text", value = "")
-                          
-                          
-                   )
-                   
-               ),
-               
-               
-               shiny::fluidRow(
-               
-               box(width = 12,
-                   status = "info", 
-                   solidHeader = T,
-                   
-                   
-                   plotOutput("GerInTime")
-                   
-                   
-                   
-               )
-               
-               
-               )
-               
-               
-          ),
-          
-          shiny::fluidRow(
-          
-          box(width = 2,
-              
-              
-              column(width = 12,
-                     
-                     
-                     uiOutput('smvar')
-                     
-              ),
-              
-              
-              column(width = 12,
-                     
-                     
-                     radioButtons(
-                       inputId ="git_type",
-                       label = "Type",
-                       choices = c("percentage", "relative"),
-                       selected = "percentage",
-                       inline = F)
-              ),
-              
-              column(width = 12,
-                     
-                     
-                     numericInput(
-                       inputId ="git_font",
-                       label = "Size",
-                       value = 2,
-                       min = 0,
-                       step = 0.1
-                     )
-                     
-              ),
-              
-              
-              column(width = 12,
-                     
-                     
-                     radioButtons(
-                       inputId ="git_color",
-                       label = "Color",
-                       choices = c("yes", "no"),
-                       selected = "yes",
-                       inline = TRUE)
-              ),
-              
-              
-
-              
-              
-              column(width = 12,
-                     
-                     
-                     radioButtons(
-                       inputId ="git_label",
-                       label = "Legend",
-                       choices = c("none", "left", "right", "top", "bottom"),
-                       selected = "top",
-                       inline = TRUE)
-              ),
-              
-              
-              column(width = 12,
-                     
-                     numericInput('git_plot_H', 'Height (mm)',
-                                  value = 75,
-                                  min = 0,
-                                  step = 5)
-                     
-              ),
-              
-              
-              column(width = 12,
-                     
-                     
-                     numericInput('git_plot_W', 'Width (mm)',
-                                  value = 105,
-                                  min = 0,
-                                  step = 5)
-                     
-                     
-              ),
-              
-              
-              column(width = 12,
-                     
-                     downloadButton('download_plot_git', ' TIFF (300 dpi)')
-                     
-              )
-              
-              
-              
-          )
-          
-          
-          )
-
-
-          )
-
 
       )
-
-
 
     )
 

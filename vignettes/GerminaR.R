@@ -15,24 +15,25 @@ smr <- ger_summary(SeedN = "seeds"
 
 knitr::kable(head(smr, 10),align = "c")
 
-## ----  eval=F-----------------------------------------------------------------
-#  
-#  grt <- ger_intime(Factor = "nacl"
-#                    , SeedN = "seeds"
-#                    , evalName = "D"
-#                    , method = "percentage"
-#                    , data = dt)
-#  
-#  fplot(data = grt
-#        , type = "line"
-#        , x = "evaluation"
-#        , y = "mean"
-#        , z = "nacl"
-#        , ylab = "Germination ('%')"
-#        , xlab = "days"
-#        , lgl = "NaCl (mM)"
-#        , lgd = "top"
-#        , color = F
-#        )
-#  
+## -----------------------------------------------------------------------------
+
+grt <- ger_intime(Factor = "nacl"
+                  , SeedN = "seeds"
+                  , evalName = "D"
+                  , method = "percentage"
+                  , data = dt)
+
+fplot(data = grt
+      , type = "line"
+      , x = "evaluation"
+      , y = "mean"
+      , groups = "nacl"
+      , ylab = "Germination ('%')"
+      , xlab = "days"
+      , glab  = "NaCl (mM)"
+      , legend = "top"
+      , sig = NULL
+      , color = T
+      )
+
 

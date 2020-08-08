@@ -19,8 +19,21 @@
 #' grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
 #'                   evalName = "D", method = "percentage", data = data)
 #' head(grt, 10)
+#'  
+#' fplot(data = grt
+#'       , type = "line"
+#'       , x = "evaluation"
+#'       , y = "mean"
+#'       , groups = "nacl"
+#'       , sig = NULL
+#'       ) 
 
-ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
+ger_intime <- function(Factor
+                       , SeedN
+                       , evalName
+                       , method = "percentage"
+                       , data
+                       ){
     
    n <- std <- r <- germination <- evaluation <- NULL  
    
@@ -60,11 +73,15 @@ ger_intime <- function(Factor, SeedN, evalName, method = "percentage", data){
      summarise(mean = mean(germination)
                , r = dplyr::n()
                , std = sd(germination)
+               , min = min(germination)
+               , max = max(germination)
                ) %>% 
+     ungroup() %>% 
      mutate(ste = std/sqrt(r)) %>% 
      mutate(evaluation = gsub("\\D", "", evaluation)) %>% 
      mutate(across(evaluation, ~ as.numeric(.))) %>% 
-     arrange(evaluation)
+     arrange(evaluation) %>% 
+     mutate(across( Factor,  ~ as.factor(.)))
 
 # result ------------------------------------------------------------------
    

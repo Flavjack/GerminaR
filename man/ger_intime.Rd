@@ -33,4 +33,12 @@ data <- prosopis
 grt <- ger_intime(Factor = "nacl", SeedN = "seeds", 
                   evalName = "D", method = "percentage", data = data)
 head(grt, 10)
+ 
+fplot(data = grt
+      , type = "line"
+      , x = "evaluation"
+      , y = "mean"
+      , groups = "nacl"
+      , sig = NULL
+      ) 
 }

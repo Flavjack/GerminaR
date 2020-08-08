@@ -15,10 +15,11 @@ cran <- c("devtools"
           , "gsheet"
           , "readxl"
           , "DT"
+          , "ggpubr"
           )
 
 git <- c(
-  # "Flavjack/GerminaR" 
+  # "Flavjack/GerminaR"
 )
 
 installed <- c(cran, sub(".*/", "", git)) %in% rownames(installed.packages())
@@ -34,3 +35,7 @@ if (any(installed == FALSE)) {
 invisible(lapply(git, devtools::install_github))
 invisible(lapply(c(cran, sub(".*/", "", git)), library, character.only = TRUE))
 rm(cran, git, installed)
+
+# References .:
+
+# open https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
