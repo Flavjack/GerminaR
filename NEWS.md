@@ -10,6 +10,7 @@
 - Include examples in the functions
 - Update vignettes
 - Update functions to tidyverse.
+- Conditional data viewer in the app.
 
 ## Bug fixes
 

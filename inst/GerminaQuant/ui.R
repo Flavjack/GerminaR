@@ -16,8 +16,8 @@ library(shinydashboard)
 library(shinyWidgets)
 library(gsheet)
 library(readxl)
-library(DT)
 library(ggpubr)
+library(DT)
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -243,7 +243,7 @@ shinyUI(dashboardPage(skin = "green",
           solidHeader = T,
           width = 10,
 
-        htmlOutput("fbook")
+          htmlOutput("data_viewer")
 
         ),
 
@@ -614,7 +614,7 @@ shinyUI(dashboardPage(skin = "green",
             column(width = 12,
                    
                    numericInput('plot_width', 'Width (cm)',
-                                value = 15,
+                                value = 20,
                                 min = 5,
                                 step = 5)
                    
@@ -799,7 +799,7 @@ tabItem(tabName = "germint",
         column(width = 12,
                
                numericInput('intime_width', 'Width (cm)',
-                            value = 15,
+                            value = 20,
                             min = 5,
                             step = 5)
         ),

@@ -16,8 +16,8 @@ library(shinydashboard)
 library(shinyWidgets)
 library(gsheet)
 library(readxl)
-library(DT)
 library(ggpubr)
+library(DT)
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -60,16 +60,68 @@ shinyServer(function(input, output) {
     
   }, ignoreNULL = FALSE)
 
+
+# data viewer -------------------------------------------------------------
+# -------------------------------------------------------------------------
   
+output$fb_excel <- DT::renderDataTable(server = FALSE, {
+    
+    DT::datatable(data = data_fb(),
+                filter = 'top',
+                extensions = c('Buttons', 'Scroller'),
+                rownames = FALSE,
+                
+                options = list(
+                  
+                  searchHighlight = TRUE,
+                  searching = TRUE,
+                  
+                  dom = 'Bfrtip',
+                  buttons = list(
+                    'copy',
+                    list(extend = 'csv', filename = input$stat_rsp),
+                    list(extend = 'excel', filename = input$stat_rsp)
+                  ),
+                  
+                  autoWidth = TRUE,
+                  columnDefs = list(list(className = 'dt-center', targets ="_all")),
+                  deferRender=TRUE,
+                  scrollY = 400,
+                  scrollX = TRUE,
+                  scroller = TRUE,
+                  
+                  initComplete = DT::JS(
+                    "function(settings, json) {",
+                    "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
+                    "}")
+                ))
+  })
+
 # -------------------------------------------------------------------------
 
-output$fbook <- renderUI({
+output$fb_gsheets <- renderUI({
+  
+  tags$iframe(src = input$import_gsheet,
+              style="height:450px; width:100%; scrolling=no")
+  
+})
+  
+output$data_viewer <- renderUI({
+  
+  if ( !is.null(input$import_excel) & input$import_gsheet != "" ) {
+    
+    DT::dataTableOutput("fb_excel")
 
-  gss <- tags$iframe(src = input$import_gsheet,
-    style="height:450px; width:100%; scrolling=no")
-
-  print(gss)
-
+  } else if ( input$import_gsheet != "" ) {
+    
+    htmlOutput("fb_gsheets")
+    
+  } else if ( !is.null(input$import_excel) ) {
+    
+    DT::dataTableOutput("fb_excel")
+    
+  } else { "Insert a Google spreadsheet URL or xlsx file" }
+  
 })
 
 # filter ------------------------------------------------------------------

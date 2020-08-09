@@ -20,7 +20,7 @@ cran <- c("devtools"
 
 git <- c(
   "Flavjack/GerminaR"
-)
+  )
 
 installed <- c(cran, sub(".*/", "", git)) %in% rownames(installed.packages())
 
