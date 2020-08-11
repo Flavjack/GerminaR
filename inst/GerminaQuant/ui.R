@@ -57,7 +57,7 @@ shinyUI(dashboardPage(skin = "green",
           title = "GerminaR",
           description = "Indices and Graphics for Assess Seed Germination Process",
           url = "https://flavjack.shinyapps.io/germinaquant/",
-          image = "https://flavjack.shinyapps.io/germinaquant/_w_4854280b/icon.png",
+          image = "https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png",
           image_alt = "GerminaR"
         ), 
 
