@@ -50,8 +50,8 @@ shinyUI(dashboardPage(skin = "green",
       ),
       
       tags$head(includeHTML(("www/analytics.html"))),
-      tags$head(tags$link(rel="shortcut icon", href="https://flavjack.shinyapps.io/germinaquant/_w_6f298bc3/icon.png")),
-      
+      tags$head(includeHTML(("www/favicon/icons.html"))),
+
       meta() %>%
         meta_social(
           title = "GerminaR",
