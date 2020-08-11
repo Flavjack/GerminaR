@@ -50,7 +50,7 @@ shinyUI(dashboardPage(skin = "green",
       ),
       
       tags$head(includeHTML(("www/analytics.html"))),
-      tags$head(includeHTML(("www/favicon/icons.html"))),
+      tags$head(tags$link(rel="shortcut icon", href="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png")),
 
       meta() %>%
         meta_social(
