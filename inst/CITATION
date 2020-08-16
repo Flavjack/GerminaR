@@ -3,7 +3,7 @@ citHeader("To cite GerminaR in publications use:")
 citEntry(
 
   entry    = "Article",
-  title = "{{GerminaR}}: {{An R}} package for germination analysis with the interactive web application ``{{GerminaQuant}} for {{R}}''",
+  title = "{{GerminaR}}: {{An R}} package for germination analysis with the interactive web application {{GerminaQuant}} for {{R}}",
   shorttitle = "{{GerminaR}}",
   author = "{Lozano-Isla}, Flavio and {Benites-Alfaro}, {Omar Eduardo} and Pompelli, {Marcelo Francisco}",
   year = "2019",
