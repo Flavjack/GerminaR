@@ -20,7 +20,7 @@ cran <- c("devtools"
 
 git <- c(
   "Flavjack/GerminaR"
-)
+  )
 
 installed <- c(cran, sub(".*/", "", git)) %in% rownames(installed.packages())
 
@@ -41,3 +41,5 @@ rm(cran, git, installed)
 # open https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
 
 # http://r-pkgs.had.co.nz/release.html
+
+# open https://realfavicongenerator.net/

@@ -30,19 +30,19 @@ Need a summary by factor before use it with function SummaryBy.
 
 library(GerminaR)
 data <- prosopis
-grt <- ger_intime(Factor = "nacl"
+grt <- ger_intime(Factor = "temp"
                   , SeedN = "seeds"
                   , evalName = "D"
-                  , method = "relative"
+                  , method = "rel"
                   , data = data
-                  )
+                  ) 
 head(grt, 10)
  
 fplot(data = grt
       , type = "line"
       , x = "evaluation"
       , y = "mean"
-      , groups = "nacl"
+      , groups = "temp"
       , sig = NULL
       ) 
 }

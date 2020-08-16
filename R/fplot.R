@@ -115,8 +115,8 @@ fplot <- function(data
   
   # -------------------------------------------------------------------------
   
-  min_value <- min(plot_dt$min)
-  max_value <- max(plot_dt$max)
+  min_value <- min(plot_dt$min, na.rm = TRUE)
+  max_value <- max(plot_dt$max, na.rm = TRUE)
   
   if ( is.null(brakes) ) { brakes <- abs(round(max_value*1.2, 1))/5 } 
     

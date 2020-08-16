@@ -16,19 +16,19 @@
 #' 
 #' library(GerminaR)
 #' data <- prosopis
-#' grt <- ger_intime(Factor = "nacl"
+#' grt <- ger_intime(Factor = "temp"
 #'                   , SeedN = "seeds"
 #'                   , evalName = "D"
-#'                   , method = "relative"
+#'                   , method = "rel"
 #'                   , data = data
-#'                   )
+#'                   ) 
 #' head(grt, 10)
 #'  
 #' fplot(data = grt
 #'       , type = "line"
 #'       , x = "evaluation"
 #'       , y = "mean"
-#'       , groups = "nacl"
+#'       , groups = "temp"
 #'       , sig = NULL
 #'       ) 
 
@@ -74,22 +74,21 @@ ger_intime <- function(Factor
       pivot_longer(names(evd)
                   , names_to = "evaluation"
                   , values_to = "germination"
+                  , values_drop_na = TRUE
                   ) %>% 
       group_by(.data[[Factor]], evaluation) %>% 
-      summarise(mean = mean(germination)
+      summarise(mean = mean(germination, rm.na = TRUE)
                , r = dplyr::n()
                , std = sd(germination)
                , min = min(germination)
                , max = max(germination)
                ) %>% 
       ungroup() %>% 
-      mutate(ste = std/sqrt(r)) %>% 
+      mutate(ste = std/sqrt(r)) %>%
       mutate(evaluation = gsub("\\D", "", evaluation)) %>% 
       mutate(across(evaluation, ~ as.numeric(.))) %>% 
       arrange(evaluation) %>% 
-      mutate(across( {{Factor}},  ~ as.factor(.))) %>% 
-      mutate(across(where(is.numeric), ~replace(., is.na(.), 0))) %>% 
-      mutate(across(where(is.numeric), ~replace(., is.nan(.), 0)))
+      mutate(across( {{Factor}},  ~ as.factor(.))) 
 
 # result ------------------------------------------------------------------
    

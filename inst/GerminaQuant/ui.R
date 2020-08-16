@@ -16,8 +16,8 @@ library(shinydashboard)
 library(shinyWidgets)
 library(gsheet)
 library(readxl)
-library(DT)
 library(ggpubr)
+library(DT)
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -50,14 +50,14 @@ shinyUI(dashboardPage(skin = "green",
       ),
       
       tags$head(includeHTML(("www/analytics.html"))),
-      tags$head(tags$link(rel="shortcut icon", href="https://flavjack.shinyapps.io/germinaquant/_w_6f298bc3/icon.png")),
-      
+      tags$head(tags$link(rel="shortcut icon", href="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png")),
+
       meta() %>%
         meta_social(
           title = "GerminaR",
           description = "Indices and Graphics for Assess Seed Germination Process",
           url = "https://flavjack.shinyapps.io/germinaquant/",
-          image = "https://flavjack.shinyapps.io/germinaquant/_w_4854280b/icon.png",
+          image = "https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png",
           image_alt = "GerminaR"
         ), 
 
@@ -243,7 +243,7 @@ shinyUI(dashboardPage(skin = "green",
           solidHeader = T,
           width = 10,
 
-        htmlOutput("fbook")
+          htmlOutput("data_viewer")
 
         ),
 
@@ -614,7 +614,7 @@ shinyUI(dashboardPage(skin = "green",
             column(width = 12,
                    
                    numericInput('plot_width', 'Width (cm)',
-                                value = 15,
+                                value = 20,
                                 min = 5,
                                 step = 5)
                    
@@ -799,7 +799,7 @@ tabItem(tabName = "germint",
         column(width = 12,
                
                numericInput('intime_width', 'Width (cm)',
-                            value = 15,
+                            value = 20,
                             min = 5,
                             step = 5)
         ),
