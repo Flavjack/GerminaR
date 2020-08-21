@@ -22,8 +22,20 @@ library(DT)
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
+  
+# close auto local session ------------------------------------------------
 
+observe({
+  
+  if(Sys.getenv('SHINY_PORT') == "") {
+    
+    session$onSessionEnded(stopApp)
+    
+  }
+  
+})
+  
 # import data -----------------------------------------------------------
   
   observe({
