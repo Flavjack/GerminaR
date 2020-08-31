@@ -12,7 +12,10 @@
 #' @import dplyr
 #' @import tidyr
 #' @export
+#' 
 #' @examples
+#' 
+#' \dontrun{
 #' 
 #' library(GerminaR)
 #' data <- prosopis
@@ -20,8 +23,8 @@
 #'                   , SeedN = "seeds"
 #'                   , evalName = "D"
 #'                   , method = "rel"
-#'                   , data = data
-#'                   ) 
+#'                   , data = data)
+#'                    
 #' head(grt, 10)
 #'  
 #' fplot(data = grt
@@ -29,8 +32,10 @@
 #'       , x = "evaluation"
 #'       , y = "mean"
 #'       , groups = "temp"
-#'       , sig = NULL
-#'       ) 
+#'       , sig = NULL) 
+#'       
+#' }
+#'       
 
 ger_intime <- function(Factor
                        , SeedN

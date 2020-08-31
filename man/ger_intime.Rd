@@ -28,14 +28,16 @@ Need a summary by factor before use it with function SummaryBy.
 }
 \examples{
 
+\dontrun{
+
 library(GerminaR)
 data <- prosopis
 grt <- ger_intime(Factor = "temp"
                   , SeedN = "seeds"
                   , evalName = "D"
                   , method = "rel"
-                  , data = data
-                  ) 
+                  , data = data)
+                   
 head(grt, 10)
  
 fplot(data = grt
@@ -43,6 +45,8 @@ fplot(data = grt
       , x = "evaluation"
       , y = "mean"
       , groups = "temp"
-      , sig = NULL
-      ) 
+      , sig = NULL) 
+      
+}
+      
 }

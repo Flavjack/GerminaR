@@ -5,3 +5,4 @@
 ^\.travis\.yml$
 ^\.httr-oauth$
 docs
+^cran-comments\.md$
