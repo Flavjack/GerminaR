@@ -6,3 +6,4 @@
 ^\.httr-oauth$
 docs
 ^cran-comments\.md$
+^CRAN-RELEASE$
