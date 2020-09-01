@@ -1,19 +1,19 @@
 ---
-title: "GerminaR 1.6"
+title: "GerminaR package"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
-date: "2020-08-10"
+date: "2020-09-01"
 output: 
       rmarkdown::html_vignette:
         toc: true
         toc_depth: 4
         keep_md: true
 vignette: >
-  %\VignetteIndexEntry{GerminaR 1.6}
+  %\VignetteIndexEntry{GerminaR package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
+The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary accumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
 
 First we load the `GerminaR` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
 
@@ -25,28 +25,10 @@ The `prosopis` dataset contains information from an experiment containing inform
 ```r
 library(GerminaR)
 library(dplyr)
-```
+library(knitr)
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
-library(GerminaR)
-dt <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
+dt <- prosopis %>% 
+  mutate(across(c(nacl, temp, rep), as.factor))
 ```
 
 ## List of the principal functions
@@ -64,7 +46,7 @@ The function`GerminaQuant()` activates an interactive application with friendly 
 GerminaQuant()
 ```
 
-## Summary of Germination Variables
+## Germination Variables
 
 The function `ger_summary()`, according to the accumulative germination data, calculates several germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis.
 
@@ -95,7 +77,80 @@ knitr::kable(head(smr, 10),align = "c")
 
 On the other hand, you can analyze each variable independently using the following germination indexes.
 
-## Plot function
+### Mean Germination Time
+
+
+```r
+## Mean Germination Time (MGT)
+
+# analysis of variance
+
+av <- aov(formula = mgt ~ nacl*temp + rep, data = smr)
+
+# mean comparison test
+
+mc_mgt <- ger_testcomp(aov = av
+                       , comp = c("temp", "nacl")
+                       , type = "snk")
+
+# data result
+
+mc_mgt$table %>% 
+   kable(caption = "Mean germination time comparison")
+```
+
+
+
+Table: Mean germination time comparison
+
+|temp |nacl |      mgt|       std|  r|       ste|      min|      max|sig |
+|:----|:----|--------:|---------:|--:|---------:|--------:|--------:|:---|
+|25   |0    | 1.240000| 0.0783156|  4| 0.0391578| 1.140000| 1.320000|j   |
+|25   |0.5  | 1.830000| 0.0901850|  4| 0.0450925| 1.700000| 1.900000|i   |
+|25   |1    | 2.701218| 0.1512339|  4| 0.0756169| 2.531915| 2.897959|g   |
+|25   |1.5  | 5.442365| 0.0415525|  4| 0.0207763| 5.382979| 5.479167|c   |
+|25   |2    | 6.523349| 0.3068542|  4| 0.1534271| 6.063830| 6.695652|b   |
+|30   |0    | 1.030000| 0.0258199|  4| 0.0129099| 1.000000| 1.060000|j   |
+|30   |0.5  | 1.100000| 0.0432049|  4| 0.0216025| 1.060000| 1.160000|j   |
+|30   |1    | 1.898129| 0.0609184|  4| 0.0304592| 1.833333| 1.959184|i   |
+|30   |1.5  | 2.994362| 0.1138473|  4| 0.0569236| 2.900000| 3.160000|f   |
+|30   |2    | 4.388259| 0.0676715|  4| 0.0338357| 4.326087| 4.446809|d   |
+|35   |0    | 1.015000| 0.0191485|  4| 0.0095743| 1.000000| 1.040000|j   |
+|35   |0.5  | 1.076250| 0.0291905|  4| 0.0145952| 1.060000| 1.120000|j   |
+|35   |1    | 1.817607| 0.2398098|  4| 0.1199049| 1.653061| 2.173913|i   |
+|35   |1.5  | 3.370480| 0.0159689|  4| 0.0079844| 3.354167| 3.387755|e   |
+|35   |2    | 6.984343| 0.3784214|  4| 0.1892107| 6.555556| 7.400000|a   |
+|40   |0    | 1.035000| 0.0191485|  4| 0.0095743| 1.020000| 1.060000|j   |
+|40   |0.5  | 2.327648| 0.0512449|  4| 0.0256225| 2.255319| 2.375000|h   |
+|40   |1    | 2.728780| 0.1714562|  4| 0.0857281| 2.520833| 2.940000|g   |
+|40   |1.5  | 3.287500| 0.1012651|  4| 0.0506326| 3.166667| 3.400000|e   |
+
+```r
+# bar graphics for mean germination time
+
+plot <- mc_mgt$table %>% 
+  fplot(data = .
+       , type = "bar" 
+       , x = "temp"
+       , y = "mgt"
+       , groups = "nacl"
+       , limits = c(0,9)
+       , brakes = 1
+       , ylab = "Mean germination time (days)"
+       , xlab = "Temperature (ºC)"
+       , glab = "NaCl (MPa)"
+       , legend = "top"
+       , sig = "sig"
+       , error = "ste"
+       , color = T
+       )
+
+plot
+```
+
+<img src="C:/Users/User/git/GerminaR/vignettes/GerminaR_files/figure-html/unnamed-chunk-4-1.png" width="60%" />
+
+## In time analysis
 
 `fplot()` is generic plot function optimized for publication graphs and you can add modification using `ggplot2` package.
 
@@ -107,19 +162,20 @@ grt <- ger_intime(Factor = "nacl"
                   , method = "percentage"
                   , data = dt)
 
-fplot(data = grt
-      , type = "line"
-      , x = "evaluation"
-      , y = "mean"
-      , groups = "nacl"
-      , ylab = "Germination ('%')"
-      , xlab = "days"
-      , glab  = "NaCl (mM)"
-      , legend = "top"
-      , sig = NULL
-      , color = T
-      )
+plot <- grt %>% 
+  fplot(data = .
+        , type = "line"
+        , x = "evaluation"
+        , y = "mean"
+        , groups = "nacl"
+        , ylab = "Germination ('%')"
+        , xlab = "days"
+        , glab  = "NaCl (mM)"
+        , sig = NULL
+        , color = T
+        )
+
+plot
 ```
 
-![](D:/omar/Github/GerminaR/vignettes/GerminaR_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-
+<img src="C:/Users/User/git/GerminaR/vignettes/GerminaR_files/figure-html/unnamed-chunk-5-1.png" width="60%" />

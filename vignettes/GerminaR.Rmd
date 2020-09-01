@@ -1,5 +1,5 @@
 ---
-title: "GerminaR 1.6"
+title: "GerminaR package"
 author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
 date: "`r Sys.Date()`"
 output: 
@@ -8,12 +8,12 @@ output:
         toc_depth: 4
         keep_md: true
 vignette: >
-  %\VignetteIndexEntry{GerminaR 1.6}
+  %\VignetteIndexEntry{GerminaR package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary acumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
+The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary accumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
 
 First we load the `GerminaR` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
 
@@ -21,11 +21,14 @@ First we load the `GerminaR` package. It provides the `prosopis` dataset set tha
 
 The `prosopis` dataset contains information from an experiment containing information from germination experiment with *Prosopis juliflor* under different osmotic potentials and temperatures evaluated during 10 days.
 
-```{r}
+```{r message=F, warning=FALSE}
 library(GerminaR)
 library(dplyr)
-library(GerminaR)
-dt <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
+library(knitr)
+
+dt <- prosopis %>% 
+  mutate(across(c(nacl, temp, rep), as.factor))
+
 ```
 
 ## List of the principal functions
@@ -42,7 +45,7 @@ The function`GerminaQuant()` activates an interactive application with friendly 
 GerminaQuant()
 ```
 
-## Summary of Germination Variables
+## Germination Variables
 
 The function `ger_summary()`, according to the accumulative germination data, calculates several germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis.
 
@@ -57,11 +60,55 @@ knitr::kable(head(smr, 10),align = "c")
 
 On the other hand, you can analyze each variable independently using the following germination indexes.
 
-## Plot function
+### Mean Germination Time
+
+```{r, out.width="60%"}
+## Mean Germination Time (MGT)
+
+# analysis of variance
+
+av <- aov(formula = mgt ~ nacl*temp + rep, data = smr)
+
+# mean comparison test
+
+mc_mgt <- ger_testcomp(aov = av
+                       , comp = c("temp", "nacl")
+                       , type = "snk")
+
+# data result
+
+mc_mgt$table %>% 
+   kable(caption = "Mean germination time comparison")
+
+
+# bar graphics for mean germination time
+
+plot <- mc_mgt$table %>% 
+  fplot(data = .
+       , type = "bar" 
+       , x = "temp"
+       , y = "mgt"
+       , groups = "nacl"
+       , limits = c(0,9)
+       , brakes = 1
+       , ylab = "Mean germination time (days)"
+       , xlab = "Temperature (ºC)"
+       , glab = "NaCl (MPa)"
+       , legend = "top"
+       , sig = "sig"
+       , error = "ste"
+       , color = T
+       )
+
+plot
+
+```
+
+## In time analysis
 
 `fplot()` is generic plot function optimized for publication graphs and you can add modification using `ggplot2` package.
 
-```{r}
+```{r, out.width="60%"}
 
 grt <- ger_intime(Factor = "nacl"
                   , SeedN = "seeds"
@@ -69,18 +116,19 @@ grt <- ger_intime(Factor = "nacl"
                   , method = "percentage"
                   , data = dt)
 
-fplot(data = grt
-      , type = "line"
-      , x = "evaluation"
-      , y = "mean"
-      , groups = "nacl"
-      , ylab = "Germination ('%')"
-      , xlab = "days"
-      , glab  = "NaCl (mM)"
-      , legend = "top"
-      , sig = NULL
-      , color = T
-      )
+plot <- grt %>% 
+  fplot(data = .
+        , type = "line"
+        , x = "evaluation"
+        , y = "mean"
+        , groups = "nacl"
+        , ylab = "Germination ('%')"
+        , xlab = "days"
+        , glab  = "NaCl (mM)"
+        , sig = NULL
+        , color = T
+        )
+
+plot
 
 ```
-
