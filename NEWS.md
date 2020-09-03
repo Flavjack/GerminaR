@@ -1,4 +1,4 @@
-# GerminaR 2.0
+# GerminaR 2.0.0
 
 ## Major changes
 

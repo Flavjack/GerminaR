@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">GerminaR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
       </span>
     </div>
 
@@ -73,37 +73,62 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-
-<p><a href="https://travis-ci.org/Flavjack/GerminaR"><img src="https://travis-ci.org/Flavjack/GerminaR.svg?branch=master" alt="Build Status"></a></p>
-<p><a href="https://cran.r-project.org/package=GerminaR"><img src="http://www.r-pkg.org/badges/version/GerminaR" alt="CRAN_Status_Badge"></a></p>
-<div id="germinar" class="section level1">
+<div id="germinar-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#germinar" class="anchor"></a>GerminaR</h1></div>
+<a href="#germinar-" class="anchor"></a>GerminaR <img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" align="right" alt="" width="120">
+</h1></div>
+<!-- badges: start -->
+
 <p>GerminaR is the first platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called “GerminQuant for R” for non programming user.</p>
-<div style="display:inline-block; width:100%">
-<p style="text-align:center">
-<a target="_blank" href="https://cran.r-project.org/web/packages/GerminaR/index.html"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
-</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the released version of GerminaR from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"GerminaR"</span>)
+</pre></div>
+<p>And the development version from <a href="https://github.com/flavjack/GerminaR">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># install.packages("devtools")</span>
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Flavjack/GerminaR"</span>)
+</pre></div>
 </div>
+</div>
+<div id="germinaquant" class="section level1">
+<h1 class="hasAnchor">
+<a href="#germinaquant" class="anchor"></a>GerminaQuant</h1>
+<!--html_preserve-->
+<div id="footer" style="width:100%; margin:auto;">
+<div style="display:inline-block; width:23%">
+<p style="text-align:center">
+</p>
+<p><a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:80px" title="R cran" alt="GerminaR"></a> <span style="display:block;"><small>GerminaR</small></span></p>
+
+</div>
+<div style="display:inline-block; width:23%">
+<p style="text-align:center">
+</p>
+<p><a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:75px" title="GerminaQuant" alt="GerminaQuant for R"></a> <span style="display:block;"><small>GerminaQuant</small></span></p>
+
+</div>
+<div style="display:inline-block; width:23%">
+<p style="text-align:center">
+</p>
+<p><a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:75px" title="Github" alt="Github"></a> <span style="display:block;"><small>Github</small></span></p>
+
+</div>
+<div style="display:inline-block; width:23%">
+<p style="text-align:center">
+</p>
+<p><a target="_blank" href="https://flavjack.github.io/germinaquant/"><img src="https://bookdown.org/yihui/bookdown/images/logo.png" style="height:80px" title="PLEX" alt="PLEX"></a> <span style="display:block;"><small>Manual</small></span></p>
+
+</div>
+</div>
+<!--/html_preserve-->
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h2>
 <p>Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. <a href="https://doi.org/10.1111/1440-1703.1275" class="uri">https://doi.org/10.1111/1440-1703.1275</a></p>
-</div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>To install the developing version of this package you need package devtools:</p>
-<p><code>{r eval=F} install.packages(devtools)</code></p>
-<p>Then type:</p>
-<p><code>{r eval=F} devtools::install_github("Flavjack/GerminaR")</code></p>
-</div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>To load the package type in your computer:</p>
-<p><code>{r eval=F} library(GerminaR)</code></p>
-<p>More information in the user manual: <a href="https://flavjack.github.io/germinaquant/" class="uri">https://flavjack.github.io/germinaquant/</a></p>
 </div>
 </div>
 
@@ -151,6 +176,8 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://ci.appveyor.com/project/omarbenites/germinar"><img src="https://ci.appveyor.com/api/projects/status/v3o938fhw0unvbs7?svg=true" alt="Build status"></a></li>
+<li><a href="https://travis-ci.org/Flavjack/GerminaR"><img src="https://travis-ci.org/Flavjack/GerminaR.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://cran.r-project.org/package=GerminaR"><img src="http://www.r-pkg.org/badges/version/GerminaR" alt="CRAN_Status_Badge"></a></li>
 </ul>
 </div>
 </div>
