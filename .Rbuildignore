@@ -4,9 +4,9 @@
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^\.httr-oauth$
-docs
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^\.github$
