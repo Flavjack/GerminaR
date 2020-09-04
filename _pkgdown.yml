@@ -1,7 +1,8 @@
 home:
   title: Indices and Graphics for Assess Seed Germination Process
   description: A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies.
-author: Flavio Lozano-Isla
+  url: https://github.com/flavjack/germinar/
+  author: Flavio Lozano-Isla
 template:
   opengraph:
     image:
@@ -13,13 +14,18 @@ template:
 navbar:
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
     - text: "Getting started"
+      icon: fa-seedling
       href: articles/GerminaR.html
     - text: "Articles"
+      icon: fa-book
       href: articles/coding.html
     - text: "Functions"
+      icon: fa-file-code
       href: reference/index.html
     - text: "News"
+      icon: fa-file-alt
       href: news/index.html
 

@@ -8,11 +8,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
   out.width = "100%"
 )
-
-library(htmltools)
 ```
 
 # GerminaR <img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" align="right" alt="" width="120" />
@@ -42,4 +39,5 @@ devtools::install_github("Flavjack/GerminaR")
 ## Citation
 
 Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. <https://doi.org/10.1111/1440-1703.1275>
+
 

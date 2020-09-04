@@ -17,7 +17,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-source("https://lozanoisla.com/setup.r")
+source("files/setup.r")
 ```
 
 # GerminaR: data analysis with code 
@@ -30,8 +30,7 @@ Analysis for the germination experiment can follow a routine. The functions will
 # Install packages and dependencies
 
 library(GerminaR)
-library(tidyverse)
-library(knitr)
+library(dplyr)
 
 # load data
 
@@ -243,6 +242,8 @@ temp
 As the function `fplot()` is build using [ggplot2](https://ggplot2.tidyverse.org/) [@R-ggplot2]. You can add more arguments for modify the graphics using `+`.
 
 ```{r, echo=TRUE}
+
+library(ggplot2)
 
 git <- ger_intime(Factor = "temp"
                   , SeedN = "seeds"

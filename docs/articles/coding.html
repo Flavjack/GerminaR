@@ -45,19 +45,39 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">Home</a>
+  <a href="../index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
-  <a href="../articles/GerminaR.html">Getting started</a>
+  <a href="../articles/GerminaR.html">
+    <span class="fa fa-seedling"></span>
+     
+    Getting started
+  </a>
 </li>
 <li>
-  <a href="../articles/coding.html">Articles</a>
+  <a href="../articles/coding.html">
+    <span class="fa fa-book"></span>
+     
+    Articles
+  </a>
 </li>
 <li>
-  <a href="../reference/index.html">Functions</a>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code"></span>
+     
+    Functions
+  </a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">
+    <span class="fa fa-file-alt"></span>
+     
+    News
+  </a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -103,8 +123,7 @@
 <span class="co"># Install packages and dependencies</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://flavjack.github.io/germinar">GerminaR</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://yihui.org/knitr">knitr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
 
 <span class="co"># load data</span>
 
@@ -115,7 +134,7 @@
 
 <span class="kw">fb</span> <span class="op">%&gt;%</span> 
    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Prosopis dataset loaded"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Prosopis dataset loaded"</span>)
 </pre></div>
 <table class="table">
 <caption>Prosopis dataset loaded</caption>
@@ -313,6 +332,7 @@
 <li>Calculate the germination indices and perform the ANOVA and the mean comparison tests. The user can generate the graphs, expressing their results, which can be either of bars or lines graphics.</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="downlit">
+
 <span class="co"># germination analysis (ten variables)</span>
 
 <span class="kw">gsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_summary.html">ger_summary</a></span>(SeedN = <span class="st">"seeds"</span>
@@ -324,7 +344,7 @@
 
 <span class="kw">gsm</span> <span class="op">%&gt;%</span> 
    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Function ger_summary performe ten germination indices"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Function ger_summary performe ten germination indices"</span>)
 </pre></div>
 <table class="table">
 <caption>Function ger_summary performe ten germination indices</caption>
@@ -530,6 +550,7 @@
 <h3 class="hasAnchor">
 <a href="#germination-percentage" class="anchor"></a>Germination percentage</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit">
+
 <span class="co">## Germination Percentage (GRP)</span>
 
 <span class="co"># analysis of variance</span>
@@ -546,7 +567,7 @@
 <span class="co"># data result</span>
 
 <span class="kw">mc_grp</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Germination percentage mean comparision"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Germination percentage mean comparision"</span>)
 </pre></div>
 <table class="table">
 <caption>Germination percentage mean comparision</caption>
@@ -785,6 +806,7 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb4"><pre class="downlit">
+
 <span class="co"># bar graphics for germination percentage</span>
 
 <span class="kw">grp</span> <span class="op">&lt;-</span> <span class="kw">mc_grp</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
@@ -816,6 +838,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <h3 class="hasAnchor">
 <a href="#mean-germination-time" class="anchor"></a>Mean germination time</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit">
+
 <span class="co">## Mean Germination Time (MGT)</span>
 
 <span class="co"># analysis of variance</span>
@@ -831,7 +854,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <span class="co"># data result</span>
 
 <span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Mean germination time comparison"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Mean germination time comparison"</span>)
 </pre></div>
 <table class="table">
 <caption>Mean germination time comparison</caption>
@@ -1059,6 +1082,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 </tbody>
 </table>
 <div class="sourceCode" id="cb6"><pre class="downlit">
+
 <span class="co"># bar graphics for mean germination time</span>
 
 <span class="kw">mgt</span> <span class="op">&lt;-</span> <span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
@@ -1098,6 +1122,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <h3 class="hasAnchor">
 <a href="#in-time-analysis-for-nacl" class="anchor"></a>In time analysis for NaCl</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit">
+
 <span class="co"># data frame with percentage or relative germination in time by NaCl</span>
 
 <span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"nacl"</span>
@@ -1111,7 +1136,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="kw">git</span> <span class="op">%&gt;%</span> 
    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Cumulative germination by nacl factor"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Cumulative germination by nacl factor"</span>)
 </pre></div>
 <table class="table">
 <caption>Cumulative germination by nacl factor</caption>
@@ -1229,6 +1254,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 </tbody>
 </table>
 <div class="sourceCode" id="cb8"><pre class="downlit">
+
 <span class="co"># graphic germination in time by NaCl</span>
 
 <span class="kw">nacl</span> <span class="op">&lt;-</span> <span class="kw">git</span> <span class="op">%&gt;%</span> 
@@ -1258,6 +1284,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <h3 class="hasAnchor">
 <a href="#in-time-analysis-for-temperature" class="anchor"></a>In time analysis for temperature</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit">
+
 <span class="co"># data frame with percentage or relative germination in time by temperature</span>
 
 <span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"temp"</span>
@@ -1270,7 +1297,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="kw">git</span> <span class="op">%&gt;%</span> 
    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Cumulative germination by temperature factor"</span>)
+   <span class="fu">kable</span>(caption = <span class="st">"Cumulative germination by temperature factor"</span>)
 </pre></div>
 <table class="table">
 <caption>Cumulative germination by temperature factor</caption>
@@ -1388,6 +1415,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 </tbody>
 </table>
 <div class="sourceCode" id="cb10"><pre class="downlit">
+
 <span class="co"># graphic germination in time by temperature</span>
 
 <span class="kw">temp</span> <span class="op">&lt;-</span> <span class="kw">git</span> <span class="op">%&gt;%</span> 
@@ -1417,6 +1445,9 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <a href="#in-time-using-ggplot2" class="anchor"></a>In time using ggplot2</h3>
 <p>As the function <code><a href="../reference/fplot.html">fplot()</a></code> is build using <a href="https://ggplot2.tidyverse.org/">ggplot2</a> <span class="citation">(Wickham et al., <a href="#ref-R-ggplot2" role="doc-biblioref">2020</a>)</span>. You can add more arguments for modify the graphics using <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+
 <span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"temp"</span>
                   , SeedN = <span class="st">"seeds"</span>
                   , evalName = <span class="st">"D"</span>
@@ -1438,7 +1469,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
         , legend = <span class="st">"top"</span>
         , color = <span class="kw">F</span>
         ) <span class="op">+</span>
-   <span class="fu">scale_x_continuous</span>(n.breaks = <span class="fl">10</span>
+   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(n.breaks = <span class="fl">10</span>
                       , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">11</span>)
                       ) 
 

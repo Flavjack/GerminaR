@@ -164,8 +164,8 @@ shinyUI(dashboardPage(skin = "green",
                       
                       <div style="display:inline-block; width:49%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.github.io/germinaquant/"><img src="https://bookdown.org/yihui/bookdown/images/logo.png" style="height:70px" title="PLEX" alt="PLEX"></a> 
-                      <span style="display:block;"><small>Manual</small></span>
+                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" style="height:75px" title="PLEX" alt="PLEX"></a> 
+                      <span style="display:block;"><small>manual</small></span>
                       </p></div>
                       
                       </div>
