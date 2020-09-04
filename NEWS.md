@@ -1,3 +1,8 @@
+# GerminaR 2.0.1
+
+- Build pkgdown for documentation.
+- Update vignettes.
+
 # GerminaR 2.0.0
 
 ## Major changes
