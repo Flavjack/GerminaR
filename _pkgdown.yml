@@ -1,0 +1,25 @@
+home:
+  title: Indices and Graphics for Assess Seed Germination Process
+  description: A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies.
+author: Flavio Lozano-Isla
+template:
+  opengraph:
+    image:
+      src: https://flavjack.github.io/germinaquant/files/icon.png
+  params:
+    bootswatch: cerulean
+    ganalytics: UA-113308628-8
+
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Getting started"
+      href: articles/GerminaR.html
+    - text: "Articles"
+      href: articles/coding.html
+    - text: "Functions"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+

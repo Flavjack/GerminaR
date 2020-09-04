@@ -1,134 +1,173 @@
 ---
-title: "GerminaR package"
-author: "Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli"
+title: "GerminaR"
+subtitle: "GerminaR version `r utils::packageVersion('GerminaR')`"
 date: "`r Sys.Date()`"
 output: 
       rmarkdown::html_vignette:
         toc: true
-        toc_depth: 4
-        keep_md: true
+link-citations: true
+colorlinks: true
+zotero: true
+bibliography: [files/book.bib, files/pkgs.bib]
+csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{GerminaR package}
+  %\VignetteIndexEntry{GerminaR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-The package `GerminaR` has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary accumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar's user manual. ([GerminaQuant](https://flavjack.github.io/germinaquant/))
-
-First we load the `GerminaR` package. It provides the `prosopis` dataset set that we will work throughout all the examples. 
-
-## Data: GerminaR
-
-The `prosopis` dataset contains information from an experiment containing information from germination experiment with *Prosopis juliflor* under different osmotic potentials and temperatures evaluated during 10 days.
-
-```{r message=F, warning=FALSE}
-library(GerminaR)
-library(dplyr)
-library(knitr)
-
-dt <- prosopis %>% 
-  mutate(across(c(nacl, temp, rep), as.factor))
-
+```{r setup, include=FALSE}
+source("https://lozanoisla.com/setup.r")
 ```
 
-## List of the principal functions
+# Introduction {-}
 
-* `ger_summary`
-* `ger_intime`
-* `fplot` 
+**GerminaQuant for R** allows make the calculations for germination indices incredibly easy in an interactive web applications build in R [@R-base], based in `GerminaR` [@R-GerminaR] and `Shiny` R package [@R-shiny] . GerminaQuant app is reactive!. Outputs change instantly as users modify inputs. The principal features of the application allows to calculate the principal germination indices, statistical analysis and easy way to plot the results.
 
-## Interactive shiny application
+```{r echo=FALSE}
+HTML('
 
-The function`GerminaQuant()` activates an interactive application with friendly interface for performing the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection
+<div id=footer style="width:100%; margin:auto;">
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:85px" title="R cran" alt="GerminaR"></a> 
+<span style="display:block;"><small>GerminaR</small></span>
+</p></div>
 
-```{r, eval=FALSE}
-GerminaQuant()
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+<span style="display:block;"><small>GerminaQuant</small></span>
+</p></div>
+
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:80px" title="Github" alt="Github"></a>
+<span style="display:block;"><small>Github</small></span>
+</p></div>
+
+</div>
+
+')
 ```
 
-## Germination Variables
+# Seed germination process
 
-The function `ger_summary()`, according to the accumulative germination data, calculates several germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis.
+The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions [@Marcos-Filho1998]. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination [@Penfield2009]. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data [@Joosen2010]. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed [@Ranal2006].
 
-```{r}
-smr <- ger_summary(SeedN = "seeds"
-                   , evalName = "D"
-                   , data = dt
-                   )
+# Germination fieldbook
 
-knitr::kable(head(smr, 10),align = "c")
+For a correct analysis and fast data processing is important to take into account the data organization and the proper record of the germination process. In this section we will explain how you should collect and organize your data.
+
+## Prepare you fieldbook
+
+For using GerminaR and GerminaQuant is necessary that you have a dataset with germination values. You can use a following data as an example [*"prosopis"*](https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537). 
+
+If you have a Google account you can made a copy of the document and edit it online or download in Excel format for your own analysis.
+
+## Data organization
+
+The field book should have three essential parts.(1) The factor columns (red), according to the experimental design;(2) the seed number column, indicate the number of seeds sown in each experimental unit (green) and (3) the evaluation columns with the germination values (blue) (Figure \@ref(fig:dtorg)). You can design your own field book with different names in the column according your experimental design.
+
+
+```{r dtorg, fig.cap='Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination.',fig.align='center', out.width='100%'}
+knitr::include_graphics('files/dtorg.png')
 ```
 
-On the other hand, you can analyze each variable independently using the following germination indexes.
+## Data collection
 
-### Mean Germination Time
+The evaluation of the germination process is obtained of the count of the germination in each experimental unit and It can be evaluated in any time lapse (hours, days, months, etc) in continuous interval of the same length always beginning with the time zero (ei. Ti00), until the end of the germination process or according to the researcher criteria.
 
-```{r, out.width="60%"}
-## Mean Germination Time (MGT)
+# Germination analysis
 
-# analysis of variance
-
-av <- aov(formula = mgt ~ nacl*temp + rep, data = smr)
-
-# mean comparison test
-
-mc_mgt <- ger_testcomp(aov = av
-                       , comp = c("temp", "nacl")
-                       , type = "snk")
-
-# data result
-
-mc_mgt$table %>% 
-   kable(caption = "Mean germination time comparison")
+After the data collection, the information can be processed using GerminaR by the R console or using the GerminaQuant App. The web application can be used in any device in an interactive way. The application is compound for different tabs (Table \@ref(tab:tabs)) that allow to make the analysis very easy.
 
 
-# bar graphics for mean germination time
+```{r tabs}
+tab <- data.frame( 
+  
+"Tabs" = c(
+  "Presentation",
+  "User Manual",
+  "Fieldbook",
+  "Germination",
+  "Boxplot",
+  "Statistics",
+  "Graphics",
+  "InTime",
+  "Tools"),
 
-plot <- mc_mgt$table %>% 
-  fplot(data = .
-       , type = "bar" 
-       , x = "temp"
-       , y = "mgt"
-       , groups = "nacl"
-       , limits = c(0,9)
-       , brakes = 1
-       , ylab = "Mean germination time (days)"
-       , xlab = "Temperature (ºC)"
-       , glab = "NaCl (MPa)"
-       , legend = "top"
-       , sig = "sig"
-       , error = "ste"
-       , color = T
-       )
+"Description" = c(
+  'Presentation of the application, principal characteristics and contributors',
+  "User manual explain the meaning of each index and how to collect and process your data",
+  "Interface to upload the field book and choose the parameter for the germination analysis, GerminaQuant allows to upload the data from google sheet or excel file",
+  "Calculate automatically the germination variables and export the data file.",
+  "Interface to explore your data and their distribution",
+  "Interface to choose the variables according the experimental design for analysis of variance and summarize the information according the principal mean comparison test",
+  "Graphic the mean comparison test for the variables selected in the statistical analysis and plot the information in customized bar or line plot.",
+  "Selecting the factor from your experiment, allows plotting the germination process in time.",
+  "Tool for calculate the osmotic potential for any salt or PEG for germination experiments")
+  
+)
 
-plot
-
+knitr::kable(
+  tab, 
+  booktabs = TRUE,
+  caption = 'Name and description of each tab of GerminaQuant to evaluate and analyze the germination process.'
+  )
 ```
 
-## In time analysis
+# GerminaQuant data processing
 
-`fplot()` is generic plot function optimized for publication graphs and you can add modification using `ggplot2` package.
+## Fieldbook
 
-```{r, out.width="60%"}
+When you have your fieldbook, you can access to the app [GerminaQuant for R](https://flavjack.shinyapps.io/germinaquant/) and go "Fieldbook" tab. Figure \@ref(fig:impdt).
 
-grt <- ger_intime(Factor = "nacl"
-                  , SeedN = "seeds"
-                  , evalName = "D"
-                  , method = "percentage"
-                  , data = dt)
-
-plot <- grt %>% 
-  fplot(data = .
-        , type = "line"
-        , x = "evaluation"
-        , y = "mean"
-        , groups = "nacl"
-        , ylab = "Germination ('%')"
-        , xlab = "days"
-        , glab  = "NaCl (mM)"
-        , sig = NULL
-        , color = T
-        )
-
-plot
-
+```{r impdt, out.width='100%', fig.cap= "Fieldbook interface for import your data", fig.align='center'}
+knitr::include_graphics('files/impdt.png')
 ```
+
+You can paste a Google spread sheet URL or upload a local file in xlsx format. In "Seeds (col name)" you have to write the name of the column containing the information of the number of seed sown in each experimental unit, for "Evaluations (prefix)" you have to put the prefix of the names for the evaluated days from the germination time lapse. 
+
+## Germination
+
+If the parameter in the "Fieldbook" tab are correct, in "Germination" tab will be performed and the values of the germination indices will be shown maintaining the experimental design. GerminaQuant allows to copy or downloading the information in "csv" or "xlsx" format. Figure \@ref(fig:dwl)
+
+```{r dwl, fig.cap='Dowload option for the calculated variables', fig.align='center',out.width='100%'}
+knitr::include_graphics('files/dtdown.png')
+```
+
+## Statistical
+
+The GerminaQuant application can perform analysis for experimental design in a Complete Randomize Design (CRD), Randomize Complete Block Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing calculate the analysis of variance (AOV) and the mean differences through Student Newman Keuls (SNK), Tukey or Duncan test.
+
+```{r stat,  fig.cap="Statitical analysis with ANOVA and mean comparison test", fig.align='center', out.width='100%'}
+knitr::include_graphics('files/stat.png')
+```
+
+## Graphics
+
+Automatically after performed the statistical analysis the application will generate the graphs for the variable chosen with the mean comparison test. The app interface allows customized the graphics in a bar or line plot and export in "tiff" format for publication quality.
+
+```{r plot,  fig.cap="Customized interface for bar or line plot", fig.align='center', out.width='100%'}
+knitr::include_graphics('files/plot.png')
+```
+
+## InTime
+
+This Tab allows to visualize the germination process according one of the experimental factors. The app interface allows customized the graphic. Figure \@ref(fig:gtime)
+
+```{r gtime,  fig.cap='Germination in time plot', fig.align='center', out.width='100%'}
+knitr::include_graphics('files/gtime.png')
+```
+
+The application allows to plot two type of graphics, the first is the germination percentage in time lapse, and the second the relative germination that calculates the germination according the total number of germinated seeds.
+
+# References {-}
+
+<div id="refs"></div>
+
+```{r references}
+if(!file.exists("files/pkgs.bib")){write_bib(c(.packages()),'files/pkgs.bib')}
+```
+

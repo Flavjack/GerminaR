@@ -19,7 +19,8 @@ application called “GerminQuant for R” for non programming user.
 ## Installation
 
 You can install the released version of GerminaR from
-[CRAN](https://CRAN.R-project.org) with:
+[CRAN](https://cloud.r-project.org/web/packages/GerminaR/index.html)
+with:
 
 ``` r
 install.packages("GerminaR")
@@ -32,60 +33,6 @@ And the development version from
 # install.packages("devtools")
 devtools::install_github("Flavjack/GerminaR")
 ```
-
-# GerminaQuant
-
-<!--html_preserve-->
-
-<div id="footer" style="width:100%; margin:auto;">
-
-<div style="display:inline-block; width:23%">
-
-<p style="text-align:center">
-
-<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:80px" title="R cran" alt="GerminaR"></a>
-<span style="display:block;"><small>GerminaR</small></span>
-
-</p>
-
-</div>
-
-<div style="display:inline-block; width:23%">
-
-<p style="text-align:center">
-
-<a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:75px" title="GerminaQuant" alt="GerminaQuant for R"></a>
-<span style="display:block;"><small>GerminaQuant</small></span>
-
-</p>
-
-</div>
-
-<div style="display:inline-block; width:23%">
-
-<p style="text-align:center">
-
-<a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:75px" title="Github" alt="Github"></a>
-<span style="display:block;"><small>Github</small></span>
-
-</p>
-
-</div>
-
-<div style="display:inline-block; width:23%">
-
-<p style="text-align:center">
-
-<a target="_blank" href="https://flavjack.github.io/germinaquant/"><img src="https://bookdown.org/yihui/bookdown/images/logo.png" style="height:80px" title="PLEX" alt="PLEX"></a>
-<span style="display:block;"><small>Manual</small></span>
-
-</p>
-
-</div>
-
-</div>
-
-<!--/html_preserve-->
 
 ## Citation
 

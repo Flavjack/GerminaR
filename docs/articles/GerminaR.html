@@ -5,18 +5,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GerminaR package • GerminaR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<title>GerminaR • GerminaR</title>
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="GerminaR package">
+<script src="../pkgdown.js"></script><meta property="og:title" content="GerminaR">
 <meta property="og:description" content="GerminaR">
+<meta property="og:image" content="https://flavjack.github.io/germinaquant/files/icon.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-113308628-8"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113308628-8');
+</script>
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
@@ -38,19 +45,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
+  <a href="../index.html">Home</a>
 </li>
 <li>
-  <a href="../articles/GerminaR.html">Get started</a>
+  <a href="../articles/GerminaR.html">Getting started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/coding.html">Articles</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -73,8 +80,8 @@
       </header><script src="GerminaR_files/header-attrs-2.3/header-attrs.js"></script><script src="GerminaR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>GerminaR package</h1>
-                        <h4 class="author">Flavio Lozano-Isla, Omar Benites-Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo Francisco Pompelli</h4>
+      <h1 data-toc-skip>GerminaR</h1>
+            <h3 class="subtitle">GerminaR version 2.0.0</h3>
             
             <h4 class="date">2020-09-04</h4>
       
@@ -85,545 +92,205 @@
 
     
     
-<p>The package <code>GerminaR</code> has been developed to calculate different germination indices and graphical functions to analyze punctual and accumulative germination. For calculating the indices is necessary accumulative germination data. For more details, you can read the description of each index, the seed germination dataset and analysis in the germinar’s user manual. (<a href="https://flavjack.github.io/germinaquant/">GerminaQuant</a>)</p>
-<p>First we load the <code>GerminaR</code> package. It provides the <code>prosopis</code> dataset set that we will work throughout all the examples.</p>
-<div id="data-germinar" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-germinar" class="anchor"></a>Data: GerminaR</h2>
-<p>The <code>prosopis</code> dataset contains information from an experiment containing information from germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures evaluated during 10 days.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://flavjack.github.io/germinaquant">GerminaR</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://yihui.org/knitr">knitr</a></span>)
+<div id="introduction" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p><strong>GerminaQuant for R</strong> allows make the calculations for germination indices incredibly easy in an interactive web applications build in R <span class="citation">(R Core Team, <a href="#ref-R-base" role="doc-biblioref">2020</a>)</span>, based in <code>GerminaR</code> <span class="citation">(Lozano Isla et al., <a href="#ref-R-GerminaR" role="doc-biblioref">2020</a>)</span> and <code>Shiny</code> R package <span class="citation">(Chang et al., <a href="#ref-R-shiny" role="doc-biblioref">2020</a>)</span> . GerminaQuant app is reactive!. Outputs change instantly as users modify inputs. The principal features of the application allows to calculate the principal germination indices, statistical analysis and easy way to plot the results.</p>
 
-<span class="kw">dt</span> <span class="op">&lt;-</span> <span class="kw">prosopis</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">nacl</span>, <span class="kw">temp</span>, <span class="kw">rep</span>), <span class="kw">as.factor</span>))
-</pre></div>
-</div>
-<div id="list-of-the-principal-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#list-of-the-principal-functions" class="anchor"></a>List of the principal functions</h2>
-<ul>
-<li><code>ger_summary</code></li>
-<li><code>ger_intime</code></li>
-<li><code>fplot</code></li>
-</ul>
-</div>
-<div id="interactive-shiny-application" class="section level2">
-<h2 class="hasAnchor">
-<a href="#interactive-shiny-application" class="anchor"></a>Interactive shiny application</h2>
-<p>The function<code><a href="../reference/GerminaQuant.html">GerminaQuant()</a></code> activates an interactive application with friendly interface for performing the different germination, statistical and graphic analysis. For activation of some function could be necessary internet connection</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/GerminaQuant.html">GerminaQuant</a></span>()
-</pre></div>
-</div>
-<div id="germination-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#germination-variables" class="anchor"></a>Germination Variables</h2>
-<p>The function <code><a href="../reference/ger_summary.html">ger_summary()</a></code>, according to the accumulative germination data, calculates several germination indices maintaining the values of each experimental unit and experiments factor for statistical analysis.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">smr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_summary.html">ger_summary</a></span>(SeedN = <span class="st">"seeds"</span>
-                   , evalName = <span class="st">"D"</span>
-                   , data = <span class="kw">dt</span>
-                   )
 
-<span class="kw">knitr</span>::<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">smr</span>, <span class="fl">10</span>),align = <span class="st">"c"</span>)
-</pre></div>
+<div id="footer" style="width:100%; margin:auto;">
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:85px" title="R cran" alt="GerminaR"></a> 
+<span style="display:block;"><small>GerminaR</small></span>
+</p>
+</div>
+
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+<span style="display:block;"><small>GerminaQuant</small></span>
+</p>
+</div>
+
+<div style="display:inline-block; width:33%">
+<p style="text-align:center">
+<a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:80px" title="Github" alt="Github"></a>
+<span style="display:block;"><small>Github</small></span>
+</p>
+</div>
+
+</div>
+
+
+</div>
+<div id="seed-germination-process" class="section level1">
+<h1 class="hasAnchor">
+<a href="#seed-germination-process" class="anchor"></a>Seed germination process</h1>
+<p>The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions <span class="citation">(Marcos-Filho, <a href="#ref-Marcos-Filho1998" role="doc-biblioref">1998</a>)</span>. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination <span class="citation">(Penfield &amp; King, <a href="#ref-Penfield2009" role="doc-biblioref">2009</a>)</span>. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data <span class="citation">(Joosen et al., <a href="#ref-Joosen2010" role="doc-biblioref">2009</a>)</span>. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed <span class="citation">(Ranal &amp; Santana, <a href="#ref-Ranal2006" role="doc-biblioref">2006</a>)</span>.</p>
+</div>
+<div id="germination-fieldbook" class="section level1">
+<h1 class="hasAnchor">
+<a href="#germination-fieldbook" class="anchor"></a>Germination fieldbook</h1>
+<p>For a correct analysis and fast data processing is important to take into account the data organization and the proper record of the germination process. In this section we will explain how you should collect and organize your data.</p>
+<div id="prepare-you-fieldbook" class="section level2">
+<h2 class="hasAnchor">
+<a href="#prepare-you-fieldbook" class="anchor"></a>Prepare you fieldbook</h2>
+<p>For using GerminaR and GerminaQuant is necessary that you have a dataset with germination values. You can use a following data as an example <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537"><em>“prosopis”</em></a>.</p>
+<p>If you have a Google account you can made a copy of the document and edit it online or download in Excel format for your own analysis.</p>
+</div>
+<div id="data-organization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#data-organization" class="anchor"></a>Data organization</h2>
+<p>The field book should have three essential parts.(1) The factor columns (red), according to the experimental design;(2) the seed number column, indicate the number of seeds sown in each experimental unit (green) and (3) the evaluation columns with the germination values (blue) (Figure @ref(fig:dtorg)). You can design your own field book with different names in the column according your experimental design.</p>
+<div class="figure" style="text-align: center">
+<img src="files/dtorg.png" alt="Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination." width="100%"><p class="caption">
+Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination.
+</p>
+</div>
+</div>
+<div id="data-collection" class="section level2">
+<h2 class="hasAnchor">
+<a href="#data-collection" class="anchor"></a>Data collection</h2>
+<p>The evaluation of the germination process is obtained of the count of the germination in each experimental unit and It can be evaluated in any time lapse (hours, days, months, etc) in continuous interval of the same length always beginning with the time zero (ei. Ti00), until the end of the germination process or according to the researcher criteria.</p>
+</div>
+</div>
+<div id="germination-analysis" class="section level1">
+<h1 class="hasAnchor">
+<a href="#germination-analysis" class="anchor"></a>Germination analysis</h1>
+<p>After the data collection, the information can be processed using GerminaR by the R console or using the GerminaQuant App. The web application can be used in any device in an interactive way. The application is compound for different tabs (Table @ref(tab:tabs)) that allow to make the analysis very easy.</p>
 <table class="table">
+<caption>Name and description of each tab of GerminaQuant to evaluate and analyze the germination process.</caption>
 <colgroup>
-<col width="4%">
-<col width="5%">
-<col width="5%">
-<col width="6%">
-<col width="4%">
-<col width="4%">
-<col width="5%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="8%">
+<col width="7%">
+<col width="92%">
 </colgroup>
 <thead><tr class="header">
-<th align="center">rep</th>
-<th align="center">nacl</th>
-<th align="center">temp</th>
-<th align="center">seeds</th>
-<th align="center">grs</th>
-<th align="center">grp</th>
-<th align="center">mgt</th>
-<th align="center">mgr</th>
-<th align="center">gsp</th>
-<th align="center">unc</th>
-<th align="center">syn</th>
-<th align="center">vgt</th>
-<th align="center">sdg</th>
-<th align="center">cvg</th>
+<th align="left">Tabs</th>
+<th align="left">Description</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.28</td>
-<td align="center">0.7812500</td>
-<td align="center">78.12500</td>
-<td align="center">0.9461447</td>
-<td align="center">0.6302041</td>
-<td align="center">0.3281633</td>
-<td align="center">0.5728554</td>
-<td align="center">44.75433</td>
+<td align="left">Presentation</td>
+<td align="left">Presentation of the application, principal characteristics and contributors</td>
 </tr>
 <tr class="even">
-<td align="center">2</td>
-<td align="center">0</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.22</td>
-<td align="center">0.8196721</td>
-<td align="center">81.96721</td>
-<td align="center">0.8157272</td>
-<td align="center">0.6661224</td>
-<td align="center">0.2159184</td>
-<td align="center">0.4646702</td>
-<td align="center">38.08772</td>
+<td align="left">User Manual</td>
+<td align="left">User manual explain the meaning of each index and how to collect and process your data</td>
 </tr>
 <tr class="odd">
-<td align="center">3</td>
-<td align="center">0</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.32</td>
-<td align="center">0.7575758</td>
-<td align="center">75.75758</td>
-<td align="center">0.9043815</td>
-<td align="center">0.5559184</td>
-<td align="center">0.2220408</td>
-<td align="center">0.4712121</td>
-<td align="center">35.69788</td>
+<td align="left">Fieldbook</td>
+<td align="left">Interface to upload the field book and choose the parameter for the germination analysis, GerminaQuant allows to upload the data from google sheet or excel file</td>
 </tr>
 <tr class="even">
-<td align="center">4</td>
-<td align="center">0</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.14</td>
-<td align="center">0.8771930</td>
-<td align="center">87.71930</td>
-<td align="center">0.5842388</td>
-<td align="center">0.7542857</td>
-<td align="center">0.1228571</td>
-<td align="center">0.3505098</td>
-<td align="center">30.74648</td>
+<td align="left">Germination</td>
+<td align="left">Calculate automatically the germination variables and export the data file.</td>
 </tr>
 <tr class="odd">
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">30</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.04</td>
-<td align="center">0.9615385</td>
-<td align="center">96.15385</td>
-<td align="center">0.2422922</td>
-<td align="center">0.9216327</td>
-<td align="center">0.0391837</td>
-<td align="center">0.1979487</td>
-<td align="center">19.03353</td>
+<td align="left">Boxplot</td>
+<td align="left">Interface to explore your data and their distribution</td>
 </tr>
 <tr class="even">
-<td align="center">2</td>
-<td align="center">0</td>
-<td align="center">30</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.06</td>
-<td align="center">0.9433962</td>
-<td align="center">94.33962</td>
-<td align="center">0.3274449</td>
-<td align="center">0.8848980</td>
-<td align="center">0.0575510</td>
-<td align="center">0.2398979</td>
-<td align="center">22.63188</td>
+<td align="left">Statistics</td>
+<td align="left">Interface to choose the variables according the experimental design for analysis of variance and summarize the information according the principal mean comparison test</td>
 </tr>
 <tr class="odd">
-<td align="center">3</td>
-<td align="center">0</td>
-<td align="center">30</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.00</td>
-<td align="center">1.0000000</td>
-<td align="center">100.00000</td>
-<td align="center">0.0000000</td>
-<td align="center">1.0000000</td>
-<td align="center">0.0000000</td>
-<td align="center">0.0000000</td>
-<td align="center">0.00000</td>
+<td align="left">Graphics</td>
+<td align="left">Graphic the mean comparison test for the variables selected in the statistical analysis and plot the information in customized bar or line plot.</td>
 </tr>
 <tr class="even">
-<td align="center">4</td>
-<td align="center">0</td>
-<td align="center">30</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.02</td>
-<td align="center">0.9803922</td>
-<td align="center">98.03922</td>
-<td align="center">0.1414405</td>
-<td align="center">0.9600000</td>
-<td align="center">0.0200000</td>
-<td align="center">0.1414214</td>
-<td align="center">13.86484</td>
+<td align="left">InTime</td>
+<td align="left">Selecting the factor from your experiment, allows plotting the germination process in time.</td>
 </tr>
 <tr class="odd">
-<td align="center">1</td>
-<td align="center">0.5</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.90</td>
-<td align="center">0.5263158</td>
-<td align="center">52.63158</td>
-<td align="center">1.0844751</td>
-<td align="center">0.5812245</td>
-<td align="center">0.3775510</td>
-<td align="center">0.6144518</td>
-<td align="center">32.33957</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">0.5</td>
-<td align="center">25</td>
-<td align="center">50</td>
-<td align="center">50</td>
-<td align="center">100</td>
-<td align="center">1.70</td>
-<td align="center">0.5882353</td>
-<td align="center">58.82353</td>
-<td align="center">1.1985488</td>
-<td align="center">0.4800000</td>
-<td align="center">0.3775510</td>
-<td align="center">0.6144518</td>
-<td align="center">36.14422</td>
+<td align="left">Tools</td>
+<td align="left">Tool for calculate the osmotic potential for any salt or PEG for germination experiments</td>
 </tr>
 </tbody>
 </table>
-<p>On the other hand, you can analyze each variable independently using the following germination indexes.</p>
-<div id="mean-germination-time" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mean-germination-time" class="anchor"></a>Mean Germination Time</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co">## Mean Germination Time (MGT)</span>
-
-<span class="co"># analysis of variance</span>
-
-<span class="kw">av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span>(formula = <span class="kw">mgt</span> <span class="op">~</span> <span class="kw">nacl</span><span class="op">*</span><span class="kw">temp</span> <span class="op">+</span> <span class="kw">rep</span>, data = <span class="kw">smr</span>)
-
-<span class="co"># mean comparison test</span>
-
-<span class="kw">mc_mgt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_testcomp.html">ger_testcomp</a></span>(aov = <span class="kw">av</span>
-                       , comp = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"temp"</span>, <span class="st">"nacl"</span>)
-                       , type = <span class="st">"snk"</span>)
-
-<span class="co"># data result</span>
-
-<span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(caption = <span class="st">"Mean germination time comparison"</span>)
-</pre></div>
-<table class="table">
-<caption>Mean germination time comparison</caption>
-<thead><tr class="header">
-<th align="left">temp</th>
-<th align="left">nacl</th>
-<th align="right">mgt</th>
-<th align="right">std</th>
-<th align="right">r</th>
-<th align="right">ste</th>
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="left">sig</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">25</td>
-<td align="left">0</td>
-<td align="right">1.240000</td>
-<td align="right">0.0783156</td>
-<td align="right">4</td>
-<td align="right">0.0391578</td>
-<td align="right">1.140000</td>
-<td align="right">1.320000</td>
-<td align="left">j</td>
-</tr>
-<tr class="even">
-<td align="left">25</td>
-<td align="left">0.5</td>
-<td align="right">1.830000</td>
-<td align="right">0.0901850</td>
-<td align="right">4</td>
-<td align="right">0.0450925</td>
-<td align="right">1.700000</td>
-<td align="right">1.900000</td>
-<td align="left">i</td>
-</tr>
-<tr class="odd">
-<td align="left">25</td>
-<td align="left">1</td>
-<td align="right">2.701218</td>
-<td align="right">0.1512339</td>
-<td align="right">4</td>
-<td align="right">0.0756169</td>
-<td align="right">2.531915</td>
-<td align="right">2.897959</td>
-<td align="left">g</td>
-</tr>
-<tr class="even">
-<td align="left">25</td>
-<td align="left">1.5</td>
-<td align="right">5.442365</td>
-<td align="right">0.0415525</td>
-<td align="right">4</td>
-<td align="right">0.0207763</td>
-<td align="right">5.382979</td>
-<td align="right">5.479167</td>
-<td align="left">c</td>
-</tr>
-<tr class="odd">
-<td align="left">25</td>
-<td align="left">2</td>
-<td align="right">6.523349</td>
-<td align="right">0.3068542</td>
-<td align="right">4</td>
-<td align="right">0.1534271</td>
-<td align="right">6.063830</td>
-<td align="right">6.695652</td>
-<td align="left">b</td>
-</tr>
-<tr class="even">
-<td align="left">30</td>
-<td align="left">0</td>
-<td align="right">1.030000</td>
-<td align="right">0.0258199</td>
-<td align="right">4</td>
-<td align="right">0.0129099</td>
-<td align="right">1.000000</td>
-<td align="right">1.060000</td>
-<td align="left">j</td>
-</tr>
-<tr class="odd">
-<td align="left">30</td>
-<td align="left">0.5</td>
-<td align="right">1.100000</td>
-<td align="right">0.0432049</td>
-<td align="right">4</td>
-<td align="right">0.0216025</td>
-<td align="right">1.060000</td>
-<td align="right">1.160000</td>
-<td align="left">j</td>
-</tr>
-<tr class="even">
-<td align="left">30</td>
-<td align="left">1</td>
-<td align="right">1.898129</td>
-<td align="right">0.0609184</td>
-<td align="right">4</td>
-<td align="right">0.0304592</td>
-<td align="right">1.833333</td>
-<td align="right">1.959184</td>
-<td align="left">i</td>
-</tr>
-<tr class="odd">
-<td align="left">30</td>
-<td align="left">1.5</td>
-<td align="right">2.994362</td>
-<td align="right">0.1138473</td>
-<td align="right">4</td>
-<td align="right">0.0569236</td>
-<td align="right">2.900000</td>
-<td align="right">3.160000</td>
-<td align="left">f</td>
-</tr>
-<tr class="even">
-<td align="left">30</td>
-<td align="left">2</td>
-<td align="right">4.388259</td>
-<td align="right">0.0676715</td>
-<td align="right">4</td>
-<td align="right">0.0338357</td>
-<td align="right">4.326087</td>
-<td align="right">4.446809</td>
-<td align="left">d</td>
-</tr>
-<tr class="odd">
-<td align="left">35</td>
-<td align="left">0</td>
-<td align="right">1.015000</td>
-<td align="right">0.0191485</td>
-<td align="right">4</td>
-<td align="right">0.0095743</td>
-<td align="right">1.000000</td>
-<td align="right">1.040000</td>
-<td align="left">j</td>
-</tr>
-<tr class="even">
-<td align="left">35</td>
-<td align="left">0.5</td>
-<td align="right">1.076250</td>
-<td align="right">0.0291905</td>
-<td align="right">4</td>
-<td align="right">0.0145952</td>
-<td align="right">1.060000</td>
-<td align="right">1.120000</td>
-<td align="left">j</td>
-</tr>
-<tr class="odd">
-<td align="left">35</td>
-<td align="left">1</td>
-<td align="right">1.817607</td>
-<td align="right">0.2398098</td>
-<td align="right">4</td>
-<td align="right">0.1199049</td>
-<td align="right">1.653061</td>
-<td align="right">2.173913</td>
-<td align="left">i</td>
-</tr>
-<tr class="even">
-<td align="left">35</td>
-<td align="left">1.5</td>
-<td align="right">3.370480</td>
-<td align="right">0.0159689</td>
-<td align="right">4</td>
-<td align="right">0.0079844</td>
-<td align="right">3.354167</td>
-<td align="right">3.387755</td>
-<td align="left">e</td>
-</tr>
-<tr class="odd">
-<td align="left">35</td>
-<td align="left">2</td>
-<td align="right">6.984343</td>
-<td align="right">0.3784214</td>
-<td align="right">4</td>
-<td align="right">0.1892107</td>
-<td align="right">6.555556</td>
-<td align="right">7.400000</td>
-<td align="left">a</td>
-</tr>
-<tr class="even">
-<td align="left">40</td>
-<td align="left">0</td>
-<td align="right">1.035000</td>
-<td align="right">0.0191485</td>
-<td align="right">4</td>
-<td align="right">0.0095743</td>
-<td align="right">1.020000</td>
-<td align="right">1.060000</td>
-<td align="left">j</td>
-</tr>
-<tr class="odd">
-<td align="left">40</td>
-<td align="left">0.5</td>
-<td align="right">2.327648</td>
-<td align="right">0.0512449</td>
-<td align="right">4</td>
-<td align="right">0.0256225</td>
-<td align="right">2.255319</td>
-<td align="right">2.375000</td>
-<td align="left">h</td>
-</tr>
-<tr class="even">
-<td align="left">40</td>
-<td align="left">1</td>
-<td align="right">2.728780</td>
-<td align="right">0.1714562</td>
-<td align="right">4</td>
-<td align="right">0.0857281</td>
-<td align="right">2.520833</td>
-<td align="right">2.940000</td>
-<td align="left">g</td>
-</tr>
-<tr class="odd">
-<td align="left">40</td>
-<td align="left">1.5</td>
-<td align="right">3.287500</td>
-<td align="right">0.1012651</td>
-<td align="right">4</td>
-<td align="right">0.0506326</td>
-<td align="right">3.166667</td>
-<td align="right">3.400000</td>
-<td align="left">e</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co"># bar graphics for mean germination time</span>
-
-<span class="kw">plot</span> <span class="op">&lt;-</span> <span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-       , type = <span class="st">"bar"</span> 
-       , x = <span class="st">"temp"</span>
-       , y = <span class="st">"mgt"</span>
-       , groups = <span class="st">"nacl"</span>
-       , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">9</span>)
-       , brakes = <span class="fl">1</span>
-       , ylab = <span class="st">"Mean germination time (days)"</span>
-       , xlab = <span class="st">"Temperature (ºC)"</span>
-       , glab = <span class="st">"NaCl (MPa)"</span>
-       , legend = <span class="st">"top"</span>
-       , sig = <span class="st">"sig"</span>
-       , error = <span class="st">"ste"</span>
-       , color = <span class="kw">T</span>
-       )
-
-<span class="kw">plot</span>
-</pre></div>
-<p><img src="GerminaR_files/figure-html/unnamed-chunk-4-1.png" width="60%"></p>
 </div>
-</div>
-<div id="in-time-analysis" class="section level2">
+<div id="germinaquant-data-processing" class="section level1">
+<h1 class="hasAnchor">
+<a href="#germinaquant-data-processing" class="anchor"></a>GerminaQuant data processing</h1>
+<div id="fieldbook" class="section level2">
 <h2 class="hasAnchor">
-<a href="#in-time-analysis" class="anchor"></a>In time analysis</h2>
-<p><code><a href="../reference/fplot.html">fplot()</a></code> is generic plot function optimized for publication graphs and you can add modification using <code>ggplot2</code> package.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">grt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"nacl"</span>
-                  , SeedN = <span class="st">"seeds"</span>
-                  , evalName = <span class="st">"D"</span>
-                  , method = <span class="st">"percentage"</span>
-                  , data = <span class="kw">dt</span>)
-
-<span class="kw">plot</span> <span class="op">&lt;-</span> <span class="kw">grt</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-        , type = <span class="st">"line"</span>
-        , x = <span class="st">"evaluation"</span>
-        , y = <span class="st">"mean"</span>
-        , groups = <span class="st">"nacl"</span>
-        , ylab = <span class="st">"Germination ('%')"</span>
-        , xlab = <span class="st">"days"</span>
-        , glab  = <span class="st">"NaCl (mM)"</span>
-        , sig = <span class="kw">NULL</span>
-        , color = <span class="kw">T</span>
-        )
-
-<span class="kw">plot</span>
-</pre></div>
-<p><img src="GerminaR_files/figure-html/unnamed-chunk-5-1.png" width="60%"></p>
+<a href="#fieldbook" class="anchor"></a>Fieldbook</h2>
+<p>When you have your fieldbook, you can access to the app <a href="https://flavjack.shinyapps.io/germinaquant/">GerminaQuant for R</a> and go “Fieldbook” tab. Figure @ref(fig:impdt).</p>
+<div class="figure" style="text-align: center">
+<img src="files/impdt.png" alt="Fieldbook interface for import your data" width="100%"><p class="caption">
+Fieldbook interface for import your data
+</p>
+</div>
+<p>You can paste a Google spread sheet URL or upload a local file in xlsx format. In “Seeds (col name)” you have to write the name of the column containing the information of the number of seed sown in each experimental unit, for “Evaluations (prefix)” you have to put the prefix of the names for the evaluated days from the germination time lapse.</p>
+</div>
+<div id="germination" class="section level2">
+<h2 class="hasAnchor">
+<a href="#germination" class="anchor"></a>Germination</h2>
+<p>If the parameter in the “Fieldbook” tab are correct, in “Germination” tab will be performed and the values of the germination indices will be shown maintaining the experimental design. GerminaQuant allows to copy or downloading the information in “csv” or “xlsx” format. Figure @ref(fig:dwl)</p>
+<div class="figure" style="text-align: center">
+<img src="files/dtdown.png" alt="Dowload option for the calculated variables" width="100%"><p class="caption">
+Dowload option for the calculated variables
+</p>
+</div>
+</div>
+<div id="statistical" class="section level2">
+<h2 class="hasAnchor">
+<a href="#statistical" class="anchor"></a>Statistical</h2>
+<p>The GerminaQuant application can perform analysis for experimental design in a Complete Randomize Design (CRD), Randomize Complete Block Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing calculate the analysis of variance (AOV) and the mean differences through Student Newman Keuls (SNK), Tukey or Duncan test.</p>
+<div class="figure" style="text-align: center">
+<img src="files/stat.png" alt="Statitical analysis with ANOVA and mean comparison test" width="100%"><p class="caption">
+Statitical analysis with ANOVA and mean comparison test
+</p>
+</div>
+</div>
+<div id="graphics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#graphics" class="anchor"></a>Graphics</h2>
+<p>Automatically after performed the statistical analysis the application will generate the graphs for the variable chosen with the mean comparison test. The app interface allows customized the graphics in a bar or line plot and export in “tiff” format for publication quality.</p>
+<div class="figure" style="text-align: center">
+<img src="files/plot.png" alt="Customized interface for bar or line plot" width="100%"><p class="caption">
+Customized interface for bar or line plot
+</p>
+</div>
+</div>
+<div id="intime" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intime" class="anchor"></a>InTime</h2>
+<p>This Tab allows to visualize the germination process according one of the experimental factors. The app interface allows customized the graphic. Figure @ref(fig:gtime)</p>
+<div class="figure" style="text-align: center">
+<img src="files/gtime.png" alt="Germination in time plot" width="100%"><p class="caption">
+Germination in time plot
+</p>
+</div>
+<p>The application allows to plot two type of graphics, the first is the germination percentage in time lapse, and the second the relative germination that calculates the germination according the total number of germinated seeds.</p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+<div id="refs" class="references hanging-indent">
+<div id="ref-R-shiny">
+<p>Chang, W., Cheng, J., Allaire, J., Xie, Y., &amp; McPherson, J. (2020). <em>Shiny: Web application framework for r</em>. <a href="http://shiny.rstudio.com">http://shiny.rstudio.com</a></p>
+</div>
+<div id="ref-Joosen2010">
+<p>Joosen, R. V. L., Kodde, J., Willems, L. A. J., Ligterink, W., Plas, L. H. W. van der, &amp; Hilhorst, H. W. M. (2009). Germinator: A software package for high-throughput scoring and curve fitting of <em>arabidopsis</em> seed germination. <em>The Plant Journal</em>, <em>62</em>(1), 148–159. <a href="https://doi.org/10.1111/j.1365-313x.2009.04116.x">https://doi.org/10.1111/j.1365-313x.2009.04116.x</a></p>
+</div>
+<div id="ref-R-GerminaR">
+<p>Lozano Isla, F., Benites Alfaro, O., &amp; Pompelli, M. F. (2020). <em>GerminaR: Indices and graphics for assess seed germination process</em>. <a href="https://CRAN.R-project.org/package=GerminaR">https://CRAN.R-project.org/package=GerminaR</a></p>
+</div>
+<div id="ref-Marcos-Filho1998">
+<p>Marcos-Filho, J. (1998). New approaches to seed vigor testing. <em>Scientia Agricola</em>, <em>55</em>, 27–33. <a href="https://doi.org/10.1590/S0103-90161998000500005">https://doi.org/10.1590/S0103-90161998000500005</a></p>
+</div>
+<div id="ref-Penfield2009">
+<p>Penfield, S., &amp; King, J. (2009). Towards a systems biology approach to understanding seed dormancy and germination. <em>Proceedings of the Royal Society B: Biological Sciences</em>, <em>276</em>(1673), 3561–3569. <a href="https://doi.org/10.1098/rspb.2009.0592">https://doi.org/10.1098/rspb.2009.0592</a></p>
+</div>
+<div id="ref-Ranal2006">
+<p>Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure the germination process? <em>Revista Brasileira de Botânica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10.1590/s0100-84042006000100002">https://doi.org/10.1590/s0100-84042006000100002</a></p>
+</div>
+<div id="ref-R-base">
+<p>R Core Team. (2020). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a></p>
+</div>
+</div>
 </div>
   </div>
 
