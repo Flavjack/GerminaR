@@ -1,17 +1,13 @@
 ---
-title: "Coding"
-subtitle: "GerminaR version `r utils::packageVersion('GerminaR')`"
-date: "`r Sys.Date()`"
-output: 
-      rmarkdown::html_vignette:
-        toc: true
+title: "GerminaR: data analysis with code"
+output: rmarkdown::html_vignette
 link-citations: true
 colorlinks: true
 zotero: true
 bibliography: [files/book.bib, files/pkgs.bib]
 csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{Coding}
+  %\VignetteIndexEntry{GerminaR: data analysis with code}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,8 +15,6 @@ vignette: >
 ```{r setup, include=FALSE}
 source("files/setup.r")
 ```
-
-# GerminaR: data analysis with code 
 
 Analysis for the germination experiment can follow a routine. The functions will de explain according to the data set included in the GerminaR package ("*prosopis*"). 
 

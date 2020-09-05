@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# GerminaR <img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" align="right" alt="" width="120" />
+# GerminaR <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 

@@ -8,11 +8,12 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  fig.path = "man/figures/README-",
   out.width = "100%"
 )
 ```
 
-# GerminaR <img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" align="right" alt="" width="120" />
+# GerminaR <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 [![Build status](https://ci.appveyor.com/api/projects/status/v3o938fhw0unvbs7?svg=true)](https://ci.appveyor.com/project/omarbenites/germinar)
