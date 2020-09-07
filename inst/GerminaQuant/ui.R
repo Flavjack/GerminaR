@@ -50,14 +50,14 @@ shinyUI(dashboardPage(skin = "green",
       ),
       
       tags$head(includeHTML(("www/analytics.html"))),
-      tags$head(tags$link(rel="shortcut icon", href="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png")),
+      tags$head(tags$link(rel="shortcut icon", href="https://flavjack.github.io/GerminaR/reference/figures/logo.png")),
 
       meta() %>%
         meta_social(
           title = "GerminaR",
           description = "Indices and Graphics for Assess Seed Germination Process",
           url = "https://flavjack.shinyapps.io/germinaquant/",
-          image = "https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png",
+          image = "https://flavjack.github.io/GerminaR/reference/figures/logo.png",
           image_alt = "GerminaR"
         ), 
 
