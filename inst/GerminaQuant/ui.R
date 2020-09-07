@@ -94,13 +94,13 @@ shinyUI(dashboardPage(skin = "green",
                   <div id=footer style="width:100%; margin:auto;">
                   <div style="display:inline-block; width:49%">
                   <p style="text-align:center">
-                  <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/germinaquant/files/icon.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
+                  <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
                   <span style="display:block;"><small>GerminaR</small></span>
                   </p></div>
                   
                   <div style="display:inline-block; width:49%">
                   <p style="text-align:center">
-                  <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+                  <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/reference/figures/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
                   <span style="display:block;"><small>GerminaQuant</small></span>
                   </p></div>
 
@@ -164,8 +164,8 @@ shinyUI(dashboardPage(skin = "green",
                       
                       <div style="display:inline-block; width:49%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/www/favicon/android-chrome-256x256.png" style="height:75px" title="PLEX" alt="PLEX"></a> 
-                      <span style="display:block;"><small>manual</small></span>
+                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://flavjack.github.io/GerminaR/reference/figures/GerminaR.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
+                      <span style="display:block;"><small>Project</small></span>
                       </p></div>
                       
                       </div>

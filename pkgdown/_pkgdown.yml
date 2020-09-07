@@ -6,7 +6,7 @@ home:
 template:
   opengraph:
     image:
-      src: https://flavjack.github.io/germinaquant/files/icon.png
+      src: https://flavjack.github.io/GerminaR/reference/figures/logo.png
   params:
     bootswatch: cerulean
     ganalytics: UA-113308628-1
@@ -16,10 +16,10 @@ development:
 
 navbar:
   left:
-    - text: "Home"
+    - text: ""
       icon: fa-home
       href: index.html
-    - text: "Getting started"
+    - text: "Get started"
       icon: fa-seedling
       href: articles/GerminaR.html
     - text: "Articles"
