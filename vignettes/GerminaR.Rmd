@@ -13,7 +13,26 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-source("files/setup.r")
+library(shiny)
+library(knitr)
+
+knitr::opts_chunk$set(
+    fig.align = "center" # Center images in the export file
+  , out.width = "98%" # Figure width in html
+  , echo = FALSE # Avoid print code in the export file
+  , message = FALSE # Avoid print messages in the export file
+  , warning = FALSE # Avoid print messages in the export file
+  , collapse = TRUE
+  , comment = "#>"
+  )
+
+options(
+    OutDec= "." # Use "." instead of "," in the decimal values
+  , scipen = 99 # Avoid use "6e-04"
+  , knitr.kable.NA = "" # NA values will appear as empty cell
+  , knitr.table.format = "pipe" # Format for export tables
+  , citr.use_betterbiblatex = FALSE # For zotero addin 
+  ) 
 ```
 
 **GerminaQuant for R** allows make the calculations for germination indices incredibly easy in an interactive web applications build in R [@R-base], based in `GerminaR` [@R-GerminaR] and `Shiny` R package [@R-shiny] . GerminaQuant app is reactive!. Outputs change instantly as users modify inputs. The principal features of the application allows to calculate the principal germination indices, statistical analysis and easy way to plot the results.
