@@ -173,7 +173,7 @@
     <p>This function calculates the mean germination rate of the germination.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ger_MGR</span>(<span class='kw'>evalName</span>, <span class='kw'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>ger_MGR</span><span class='op'>(</span><span class='va'>evalName</span>, <span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,10 +200,10 @@
 Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://flavjack.github.io/germinar'>GerminaR</a></span>)
-<span class='kw'>dfr</span> <span class='op'>&lt;-</span> <span class='kw'>prosopis</span>
-<span class='kw'>mgr</span> <span class='op'>&lt;-</span> <span class='fu'>ger_MGR</span>(evalName = <span class='st'>"D"</span>, data = <span class='kw'>dfr</span>)
-<span class='kw'>mgr</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://flavjack.github.io/GerminaR/'>GerminaR</a></span><span class='op'>)</span>
+<span class='va'>dfr</span> <span class='op'>&lt;-</span> <span class='va'>prosopis</span>
+<span class='va'>mgr</span> <span class='op'>&lt;-</span> <span class='fu'>ger_MGR</span><span class='op'>(</span>evalName <span class='op'>=</span> <span class='st'>"D"</span>, data <span class='op'>=</span> <span class='va'>dfr</span><span class='op'>)</span>
+<span class='va'>mgr</span>
 </div><div class='output co'>#&gt;  [1] 0.7812500 0.8196721 0.7575758 0.8771930 0.9615385 0.9433962 1.0000000
 #&gt;  [8] 0.9803922 0.5263158 0.5882353 0.5319149 0.5434783 0.9090909 0.8620690
 #&gt; [15] 0.9259259 0.9433962 0.3750000 0.3692308 0.3949580 0.3450704 0.5104167
@@ -231,7 +231,7 @@ Revista Brasileira de Botanica, v. 29, n. 1, p. 1-11, mar. 2006.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

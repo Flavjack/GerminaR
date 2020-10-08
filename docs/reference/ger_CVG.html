@@ -173,7 +173,7 @@
     <p>This function calculates the coefficient of variation of the mean germination time</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ger_CVG</span>(<span class='kw'>evalName</span>, <span class='kw'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>ger_CVG</span><span class='op'>(</span><span class='va'>evalName</span>, <span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,10 +193,10 @@
     <p>It returns an vector with the values of Coefficient of Variance of germination</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://flavjack.github.io/germinar'>GerminaR</a></span>)
-<span class='kw'>dfr</span> <span class='op'>&lt;-</span> <span class='kw'>prosopis</span>
-<span class='kw'>cvg</span> <span class='op'>&lt;-</span> <span class='fu'>ger_CVG</span>(evalName = <span class='st'>"D"</span>, data = <span class='kw'>dfr</span>)
-<span class='kw'>cvg</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://flavjack.github.io/GerminaR/'>GerminaR</a></span><span class='op'>)</span>
+<span class='va'>dfr</span> <span class='op'>&lt;-</span> <span class='va'>prosopis</span>
+<span class='va'>cvg</span> <span class='op'>&lt;-</span> <span class='fu'>ger_CVG</span><span class='op'>(</span>evalName <span class='op'>=</span> <span class='st'>"D"</span>, data <span class='op'>=</span> <span class='va'>dfr</span><span class='op'>)</span>
+<span class='va'>cvg</span>
 </div><div class='output co'>#&gt;  [1] 44.75433 38.08772 35.69788 30.74648 19.03353 22.63188  0.00000 13.86484
 #&gt;  [9] 32.33957 36.14422 17.46068 20.12652 27.54961 31.92483 25.37477 22.63188
 #&gt; [17] 26.04211 32.27728 36.69263 24.64789 23.20194 19.23058 20.54301 18.84461
@@ -222,7 +222,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

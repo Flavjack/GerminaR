@@ -7,7 +7,10 @@
 Lozano-Isla, F., Benites Alfaro, O., & Pompelli, M. F. (2016). GerminaQuant for R (Patent No. BR 51 2016 001327-3). https://flavjack.shinyapps.io/germinaquant/
 }
 \usage{
-GerminaQuant()
+GerminaQuant(dependencies = FALSE)
+}
+\arguments{
+\item{dependencies}{Install package dependencies for run the app}
 }
 \description{
 GermiQuant for R app allows make the calculation for the germination indices incredibly easy in a interactive applications build in base a GerminaR R package and Shiny.

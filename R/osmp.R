@@ -14,7 +14,7 @@ osmp <- function(type = "salt", vol, pres, temp, mw, ki){
   
   if( type == "salt"){
     
-    r1 <- (-0.00820574587 * (temp + 273) * ki)
+    r1 <- (-0.00820574587 * (temp + 273.15) * ki)
     
     r2 <- pres/r1
     

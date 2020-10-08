@@ -164,7 +164,7 @@ shinyUI(dashboardPage(skin = "green",
                       
                       <div style="display:inline-block; width:49%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://flavjack.github.io/GerminaR/reference/figures/GerminaR.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
+                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
                       <span style="display:block;"><small>Project</small></span>
                       </p></div>
                       

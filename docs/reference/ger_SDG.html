@@ -173,7 +173,7 @@
     <p>This function calculates the standard deviation of the mean germination time</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ger_SDG</span>(<span class='kw'>evalName</span>, <span class='kw'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>ger_SDG</span><span class='op'>(</span><span class='va'>evalName</span>, <span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,10 +193,10 @@
     <p>It returns an vector with the values of Standard deviation of germination</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://flavjack.github.io/germinar'>GerminaR</a></span>)
-<span class='kw'>dfr</span> <span class='op'>&lt;-</span> <span class='kw'>prosopis</span>
-<span class='kw'>sdg</span> <span class='op'>&lt;-</span> <span class='fu'>ger_SDG</span>(evalName = <span class='st'>"D"</span>, data = <span class='kw'>dfr</span>)
-<span class='kw'>sdg</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://flavjack.github.io/GerminaR/'>GerminaR</a></span><span class='op'>)</span>
+<span class='va'>dfr</span> <span class='op'>&lt;-</span> <span class='va'>prosopis</span>
+<span class='va'>sdg</span> <span class='op'>&lt;-</span> <span class='fu'>ger_SDG</span><span class='op'>(</span>evalName <span class='op'>=</span> <span class='st'>"D"</span>, data <span class='op'>=</span> <span class='va'>dfr</span><span class='op'>)</span>
+<span class='va'>sdg</span>
 </div><div class='output co'>#&gt;  [1] 0.5728554 0.4646702 0.4712121 0.3505098 0.1979487 0.2398979 0.0000000
 #&gt;  [8] 0.1414214 0.6144518 0.6144518 0.3282607 0.3703280 0.3030458 0.3703280
 #&gt; [15] 0.2740475 0.2398979 0.6944563 0.8741764 0.9290262 0.7142857 0.4545686
@@ -224,7 +224,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

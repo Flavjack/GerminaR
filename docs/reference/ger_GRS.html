@@ -173,7 +173,7 @@
     <p>This function calculates the number of seed germinated.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ger_GRS</span>(<span class='kw'>evalName</span>, <span class='kw'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>ger_GRS</span><span class='op'>(</span><span class='va'>evalName</span>, <span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,10 +194,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://flavjack.github.io/germinar'>GerminaR</a></span>)
-<span class='kw'>dt</span> <span class='op'>&lt;-</span> <span class='kw'>prosopis</span>
-<span class='kw'>grs</span> <span class='op'>&lt;-</span> <span class='fu'>ger_GRS</span>(evalName = <span class='st'>"D"</span>, data = <span class='kw'>dt</span>)
-<span class='kw'>grs</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://flavjack.github.io/GerminaR/'>GerminaR</a></span><span class='op'>)</span>
+<span class='va'>dt</span> <span class='op'>&lt;-</span> <span class='va'>prosopis</span>
+<span class='va'>grs</span> <span class='op'>&lt;-</span> <span class='fu'>ger_GRS</span><span class='op'>(</span>evalName <span class='op'>=</span> <span class='st'>"D"</span>, data <span class='op'>=</span> <span class='va'>dt</span><span class='op'>)</span>
+<span class='va'>grs</span>
 </div><div class='output co'>#&gt;  [1] 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 48 48 47 49 49 50 48 50 47
 #&gt; [26] 48 48 49 50 50 50 47 47 47 46 49 46 48 47 47 50 50 50 50 50 50 50 50 50 48
 #&gt; [51] 50 48 48 49 48 47 49 48 46 49 50 48 49 50 50 48 50 49  6  6  4  5 10 10  9
@@ -217,7 +217,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

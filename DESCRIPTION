@@ -3,7 +3,7 @@ Package: GerminaR
 Title: Indices and Graphics for Assess Seed Germination Process
 Version: 2.0.0
 Description: A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies (Lozano-Isla et al. 2019) <doi:10.1111/1440-1703.1275>.
-Date: 2020-09-04
+Date: 2020-10-09
 Authors@R: c(
     person("Flavio", "Lozano-Isla", email = "flavjack@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X")),
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-6852-9598")),
@@ -13,7 +13,7 @@ Authors@R: c(
     person(family = "Federal University of Pernambuco", role = "cph",comment = "Register of application"),
     person(family = "Federal Rural University of Pernambuco", role = "cph", comment = "Post Graduate Program")
     )
-URL: https://flavjack.github.io/germinar/
+URL: https://flavjack.github.io/GerminaR/
 BugReports: https://github.com/flavjack/germinar/issues
 Imports:
     agricolae,

@@ -111,7 +111,7 @@
 
       
 
-      </header><script src="coding_files/header-attrs-2.3/header-attrs.js"></script><script src="coding_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="coding_files/header-attrs-2.4/header-attrs.js"></script><script src="coding_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>GerminaR: data analysis with code</h1>
@@ -131,20 +131,19 @@
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co"># Install packages and dependencies</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://flavjack.github.io/germinar">GerminaR</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://flavjack.github.io/GerminaR/">GerminaR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="co"># load data</span>
 
-<span class="kw">fb</span> <span class="op">&lt;-</span> <span class="kw">prosopis</span> <span class="op">%&gt;%</span> 
-   <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">nacl</span>, <span class="kw">temp</span>, <span class="kw">rep</span>), <span class="kw">as.factor</span>))
+<span class="va">fb</span> <span class="op">&lt;-</span> <span class="va">prosopis</span> <span class="op">%&gt;%</span> 
+   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">nacl</span>, <span class="va">temp</span>, <span class="va">rep</span><span class="op">)</span>, <span class="va">as.factor</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Prosopis data set</span>
 
-<span class="kw">fb</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Prosopis dataset loaded"</span>)
-</pre></div>
+<span class="va">fb</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Prosopis dataset loaded"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Prosopis dataset loaded</caption>
 <thead><tr class="header">
@@ -344,17 +343,16 @@
 
 <span class="co"># germination analysis (ten variables)</span>
 
-<span class="kw">gsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_summary.html">ger_summary</a></span>(SeedN = <span class="st">"seeds"</span>
-                   , evalName = <span class="st">"D"</span>
-                   , data = <span class="kw">fb</span>
-                   )
+<span class="va">gsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_summary.html">ger_summary</a></span><span class="op">(</span>SeedN <span class="op">=</span> <span class="st">"seeds"</span>
+                   , evalName <span class="op">=</span> <span class="st">"D"</span>
+                   , data <span class="op">=</span> <span class="va">fb</span>
+                   <span class="op">)</span>
 
 <span class="co"># Prosopis data set processed</span>
 
-<span class="kw">gsm</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Function ger_summary performe ten germination indices"</span>)
-</pre></div>
+<span class="va">gsm</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Function ger_summary performe ten germination indices"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Function ger_summary performe ten germination indices</caption>
 <colgroup>
@@ -564,20 +562,19 @@
 
 <span class="co"># analysis of variance</span>
 
-<span class="kw">av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span>(formula = <span class="kw">grp</span> <span class="op">~</span> <span class="kw">nacl</span><span class="op">*</span><span class="kw">temp</span> <span class="op">+</span> <span class="kw">rep</span>, data = <span class="kw">gsm</span>)
+<span class="va">av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">grp</span> <span class="op">~</span> <span class="va">nacl</span><span class="op">*</span><span class="va">temp</span> <span class="op">+</span> <span class="va">rep</span>, data <span class="op">=</span> <span class="va">gsm</span><span class="op">)</span>
 
 <span class="co"># mean comparison test</span>
 
-<span class="kw">mc_grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_testcomp.html">ger_testcomp</a></span>(aov = <span class="kw">av</span>
-                       , comp = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"temp"</span>, <span class="st">"nacl"</span>)
-                       , type = <span class="st">"snk"</span>
-                       )
+<span class="va">mc_grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_testcomp.html">ger_testcomp</a></span><span class="op">(</span>aov <span class="op">=</span> <span class="va">av</span>
+                       , comp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"temp"</span>, <span class="st">"nacl"</span><span class="op">)</span>
+                       , type <span class="op">=</span> <span class="st">"snk"</span>
+                       <span class="op">)</span>
 
 <span class="co"># data result</span>
 
-<span class="kw">mc_grp</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Germination percentage mean comparision"</span>)
-</pre></div>
+<span class="va">mc_grp</span><span class="op">$</span><span class="va">table</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Germination percentage mean comparision"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Germination percentage mean comparision</caption>
 <thead><tr class="header">
@@ -818,25 +815,24 @@
 
 <span class="co"># bar graphics for germination percentage</span>
 
-<span class="kw">grp</span> <span class="op">&lt;-</span> <span class="kw">mc_grp</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-       , type = <span class="st">"bar"</span>
-       , x = <span class="st">"temp"</span>
-       , y = <span class="st">"grp"</span>
-       , groups = <span class="st">"nacl"</span>
-       , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">150</span>)
-       , brakes = <span class="fl">30</span>
-       , ylab = <span class="st">"Germination ('%')"</span>
-       , xlab = <span class="st">"Temperature (ºC)"</span>
-       , glab = <span class="st">"NaCl (MPa)"</span>
-       , legend = <span class="st">"top"</span>
-       , error = <span class="st">"ste"</span>
-       , sig = <span class="st">"sig"</span>
-       , color = <span class="kw">F</span>
-       )
+<span class="va">grp</span> <span class="op">&lt;-</span> <span class="va">mc_grp</span><span class="op">$</span><span class="va">table</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="../reference/fplot.html">fplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>
+       , type <span class="op">=</span> <span class="st">"bar"</span>
+       , x <span class="op">=</span> <span class="st">"temp"</span>
+       , y <span class="op">=</span> <span class="st">"grp"</span>
+       , groups <span class="op">=</span> <span class="st">"nacl"</span>
+       , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">150</span><span class="op">)</span>
+       , brakes <span class="op">=</span> <span class="fl">30</span>
+       , ylab <span class="op">=</span> <span class="st">"Germination ('%')"</span>
+       , xlab <span class="op">=</span> <span class="st">"Temperature (ºC)"</span>
+       , glab <span class="op">=</span> <span class="st">"NaCl (MPa)"</span>
+       , legend <span class="op">=</span> <span class="st">"top"</span>
+       , error <span class="op">=</span> <span class="st">"ste"</span>
+       , sig <span class="op">=</span> <span class="st">"sig"</span>
+       , color <span class="op">=</span> <span class="cn">F</span>
+       <span class="op">)</span>
 
-<span class="kw">grp</span>
-</pre></div>
+<span class="va">grp</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="coding_files/figure-html/unnamed-chunk-3-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Bar graph with germination percentage in a factorial analisys" width="98%"><p class="caption">
 Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Bar graph with germination percentage in a factorial analisys
@@ -852,19 +848,18 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># analysis of variance</span>
 
-<span class="kw">av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span>(formula = <span class="kw">mgt</span> <span class="op">~</span> <span class="kw">nacl</span><span class="op">*</span><span class="kw">temp</span> <span class="op">+</span> <span class="kw">rep</span>, data = <span class="kw">gsm</span>)
+<span class="va">av</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">mgt</span> <span class="op">~</span> <span class="va">nacl</span><span class="op">*</span><span class="va">temp</span> <span class="op">+</span> <span class="va">rep</span>, data <span class="op">=</span> <span class="va">gsm</span><span class="op">)</span>
 
 <span class="co"># mean comparison test</span>
 
-<span class="kw">mc_mgt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_testcomp.html">ger_testcomp</a></span>(aov = <span class="kw">av</span>
-                       , comp = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"temp"</span>, <span class="st">"nacl"</span>)
-                       , type = <span class="st">"snk"</span>)
+<span class="va">mc_mgt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_testcomp.html">ger_testcomp</a></span><span class="op">(</span>aov <span class="op">=</span> <span class="va">av</span>
+                       , comp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"temp"</span>, <span class="st">"nacl"</span><span class="op">)</span>
+                       , type <span class="op">=</span> <span class="st">"snk"</span><span class="op">)</span>
 
 <span class="co"># data result</span>
 
-<span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Mean germination time comparison"</span>)
-</pre></div>
+<span class="va">mc_mgt</span><span class="op">$</span><span class="va">table</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Mean germination time comparison"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Mean germination time comparison</caption>
 <thead><tr class="header">
@@ -1094,25 +1089,24 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># bar graphics for mean germination time</span>
 
-<span class="kw">mgt</span> <span class="op">&lt;-</span> <span class="kw">mc_mgt</span><span class="op">$</span><span class="kw">table</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-       , type = <span class="st">"bar"</span> 
-       , x = <span class="st">"temp"</span>
-       , y = <span class="st">"mgt"</span>
-       , groups = <span class="st">"nacl"</span>
-       , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>,<span class="fl">9</span>)
-       , brakes = <span class="fl">1</span>
-       , ylab = <span class="st">"Mean germination time (days)"</span>
-       , xlab = <span class="st">"Temperature (ºC)"</span>
-       , glab = <span class="st">"NaCl (MPa)"</span>
-       , legend = <span class="st">"top"</span>
-       , sig = <span class="st">"sig"</span>
-       , error = <span class="st">"ste"</span>
-       , color = <span class="kw">T</span>
-       )
+<span class="va">mgt</span> <span class="op">&lt;-</span> <span class="va">mc_mgt</span><span class="op">$</span><span class="va">table</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="../reference/fplot.html">fplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>
+       , type <span class="op">=</span> <span class="st">"bar"</span> 
+       , x <span class="op">=</span> <span class="st">"temp"</span>
+       , y <span class="op">=</span> <span class="st">"mgt"</span>
+       , groups <span class="op">=</span> <span class="st">"nacl"</span>
+       , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9</span><span class="op">)</span>
+       , brakes <span class="op">=</span> <span class="fl">1</span>
+       , ylab <span class="op">=</span> <span class="st">"Mean germination time (days)"</span>
+       , xlab <span class="op">=</span> <span class="st">"Temperature (ºC)"</span>
+       , glab <span class="op">=</span> <span class="st">"NaCl (MPa)"</span>
+       , legend <span class="op">=</span> <span class="st">"top"</span>
+       , sig <span class="op">=</span> <span class="st">"sig"</span>
+       , error <span class="op">=</span> <span class="st">"ste"</span>
+       , color <span class="op">=</span> <span class="cn">T</span>
+       <span class="op">)</span>
 
-<span class="kw">mgt</span>
-</pre></div>
+<span class="va">mgt</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="coding_files/figure-html/unnamed-chunk-4-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Bar graph for mean germination time in a factorial analisys." width="98%"><p class="caption">
 Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Bar graph for mean germination time in a factorial analisys.
@@ -1134,19 +1128,18 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># data frame with percentage or relative germination in time by NaCl</span>
 
-<span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"nacl"</span>
-                  , SeedN = <span class="st">"seeds"</span>
-                  , evalName = <span class="st">"D"</span>
-                  , method = <span class="st">"percentage"</span>
-                  , data = <span class="kw">fb</span>
-                  )
+<span class="va">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span><span class="op">(</span>Factor <span class="op">=</span> <span class="st">"nacl"</span>
+                  , SeedN <span class="op">=</span> <span class="st">"seeds"</span>
+                  , evalName <span class="op">=</span> <span class="st">"D"</span>
+                  , method <span class="op">=</span> <span class="st">"percentage"</span>
+                  , data <span class="op">=</span> <span class="va">fb</span>
+                  <span class="op">)</span>
 
 <span class="co"># data result</span>
 
-<span class="kw">git</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Cumulative germination by nacl factor"</span>)
-</pre></div>
+<span class="va">git</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Cumulative germination by nacl factor"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Cumulative germination by nacl factor</caption>
 <thead><tr class="header">
@@ -1266,23 +1259,22 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># graphic germination in time by NaCl</span>
 
-<span class="kw">nacl</span> <span class="op">&lt;-</span> <span class="kw">git</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-        , type = <span class="st">"line"</span>
-        , x = <span class="st">"evaluation"</span>
-        , y = <span class="st">"mean"</span>
-        , groups = <span class="st">"nacl"</span>
-        , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">110</span>)
-        , brakes = <span class="fl">10</span>
-        , ylab = <span class="st">"Germination ('%')"</span>
-        , xlab = <span class="st">"Day"</span>
-        , glab = <span class="st">"NaCl (MPa)"</span>
-        , legend = <span class="st">"top"</span>
-        , color = <span class="kw">T</span>
-        , error = <span class="st">"ste"</span>
-        )
-<span class="kw">nacl</span>
-</pre></div>
+<span class="va">nacl</span> <span class="op">&lt;-</span> <span class="va">git</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="../reference/fplot.html">fplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>
+        , type <span class="op">=</span> <span class="st">"line"</span>
+        , x <span class="op">=</span> <span class="st">"evaluation"</span>
+        , y <span class="op">=</span> <span class="st">"mean"</span>
+        , groups <span class="op">=</span> <span class="st">"nacl"</span>
+        , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">110</span><span class="op">)</span>
+        , brakes <span class="op">=</span> <span class="fl">10</span>
+        , ylab <span class="op">=</span> <span class="st">"Germination ('%')"</span>
+        , xlab <span class="op">=</span> <span class="st">"Day"</span>
+        , glab <span class="op">=</span> <span class="st">"NaCl (MPa)"</span>
+        , legend <span class="op">=</span> <span class="st">"top"</span>
+        , color <span class="op">=</span> <span class="cn">T</span>
+        , error <span class="op">=</span> <span class="st">"ste"</span>
+        <span class="op">)</span>
+<span class="va">nacl</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="coding_files/figure-html/unnamed-chunk-5-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Line graph from cumulative germination under different osmotic potentials." width="98%"><p class="caption">
 Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Line graph from cumulative germination under different osmotic potentials.
@@ -1296,18 +1288,17 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># data frame with percentage or relative germination in time by temperature</span>
 
-<span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"temp"</span>
-                  , SeedN = <span class="st">"seeds"</span>
-                  , evalName = <span class="st">"D"</span>
-                  , method = <span class="st">"percentage"</span>
-                  , data = <span class="kw">fb</span>) 
+<span class="va">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span><span class="op">(</span>Factor <span class="op">=</span> <span class="st">"temp"</span>
+                  , SeedN <span class="op">=</span> <span class="st">"seeds"</span>
+                  , evalName <span class="op">=</span> <span class="st">"D"</span>
+                  , method <span class="op">=</span> <span class="st">"percentage"</span>
+                  , data <span class="op">=</span> <span class="va">fb</span><span class="op">)</span> 
 
 <span class="co"># data result</span>
 
-<span class="kw">git</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fl">10</span>) <span class="op">%&gt;%</span> 
-   <span class="fu">kable</span>(caption = <span class="st">"Cumulative germination by temperature factor"</span>)
-</pre></div>
+<span class="va">git</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Cumulative germination by temperature factor"</span><span class="op">)</span></pre></div>
 <table class="table">
 <caption>Cumulative germination by temperature factor</caption>
 <thead><tr class="header">
@@ -1427,22 +1418,21 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 
 <span class="co"># graphic germination in time by temperature</span>
 
-<span class="kw">temp</span> <span class="op">&lt;-</span> <span class="kw">git</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-        , type = <span class="st">"line"</span>
-        , x = <span class="st">"evaluation"</span>
-        , y = <span class="st">"mean"</span>
-        , groups = <span class="st">"temp"</span>
-        , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">110</span>)
-        , brakes = <span class="fl">10</span>
-        , ylab = <span class="st">"Germination ('%')"</span>
-        , xlab = <span class="st">"Day"</span>
-        , glab = <span class="st">"Temperature ('°C')"</span>
-        , legend = <span class="st">"top"</span>
-        , color = <span class="kw">F</span>
-        ) 
-<span class="kw">temp</span>
-</pre></div>
+<span class="va">temp</span> <span class="op">&lt;-</span> <span class="va">git</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="../reference/fplot.html">fplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>
+        , type <span class="op">=</span> <span class="st">"line"</span>
+        , x <span class="op">=</span> <span class="st">"evaluation"</span>
+        , y <span class="op">=</span> <span class="st">"mean"</span>
+        , groups <span class="op">=</span> <span class="st">"temp"</span>
+        , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">110</span><span class="op">)</span>
+        , brakes <span class="op">=</span> <span class="fl">10</span>
+        , ylab <span class="op">=</span> <span class="st">"Germination ('%')"</span>
+        , xlab <span class="op">=</span> <span class="st">"Day"</span>
+        , glab <span class="op">=</span> <span class="st">"Temperature ('°C')"</span>
+        , legend <span class="op">=</span> <span class="st">"top"</span>
+        , color <span class="op">=</span> <span class="cn">F</span>
+        <span class="op">)</span> 
+<span class="va">temp</span></pre></div>
 <div class="figure" style="text-align: center">
 <img src="coding_files/figure-html/unnamed-chunk-6-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Line graph from cumulative germination under different temperatures." width="98%"><p class="caption">
 Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Line graph from cumulative germination under different temperatures.
@@ -1455,35 +1445,34 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <p>As the function <code><a href="../reference/fplot.html">fplot()</a></code> is build using <a href="https://ggplot2.tidyverse.org/">ggplot2</a> <span class="citation">(Wickham et al., <a href="#ref-R-ggplot2" role="doc-biblioref">2020</a>)</span>. You can add more arguments for modify the graphics using <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
-<span class="kw">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span>(Factor = <span class="st">"temp"</span>
-                  , SeedN = <span class="st">"seeds"</span>
-                  , evalName = <span class="st">"D"</span>
-                  , method = <span class="st">"percentage"</span>
-                  , data = <span class="kw">fb</span>
-                  ) 
+<span class="va">git</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ger_intime.html">ger_intime</a></span><span class="op">(</span>Factor <span class="op">=</span> <span class="st">"temp"</span>
+                  , SeedN <span class="op">=</span> <span class="st">"seeds"</span>
+                  , evalName <span class="op">=</span> <span class="st">"D"</span>
+                  , method <span class="op">=</span> <span class="st">"percentage"</span>
+                  , data <span class="op">=</span> <span class="va">fb</span>
+                  <span class="op">)</span> 
 
-<span class="kw">ggplot</span> <span class="op">&lt;-</span> <span class="kw">git</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="../reference/fplot.html">fplot</a></span>(data = <span class="kw">.</span>
-        , type = <span class="st">"line"</span>
-        , x = <span class="st">"evaluation"</span>
-        , y = <span class="st">"mean"</span>
-        , groups = <span class="st">"temp"</span>
-        , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">110</span>)
-        , brakes = <span class="fl">10</span>
-        , ylab = <span class="st">"Germination ('%')"</span>
-        , xlab = <span class="st">"Day"</span>
-        , glab = <span class="st">"Temperature ('°C')"</span>
-        , legend = <span class="st">"top"</span>
-        , color = <span class="kw">F</span>
-        ) <span class="op">+</span>
-   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(n.breaks = <span class="fl">10</span>
-                      , limits = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">11</span>)
-                      ) 
+<span class="va">ggplot</span> <span class="op">&lt;-</span> <span class="va">git</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="../reference/fplot.html">fplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>
+        , type <span class="op">=</span> <span class="st">"line"</span>
+        , x <span class="op">=</span> <span class="st">"evaluation"</span>
+        , y <span class="op">=</span> <span class="st">"mean"</span>
+        , groups <span class="op">=</span> <span class="st">"temp"</span>
+        , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">110</span><span class="op">)</span>
+        , brakes <span class="op">=</span> <span class="fl">10</span>
+        , ylab <span class="op">=</span> <span class="st">"Germination ('%')"</span>
+        , xlab <span class="op">=</span> <span class="st">"Day"</span>
+        , glab <span class="op">=</span> <span class="st">"Temperature ('°C')"</span>
+        , legend <span class="op">=</span> <span class="st">"top"</span>
+        , color <span class="op">=</span> <span class="cn">F</span>
+        <span class="op">)</span> <span class="op">+</span>
+   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">10</span>
+                      , limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">11</span><span class="op">)</span>
+                      <span class="op">)</span> 
 
-<span class="kw">ggplot</span>
-</pre></div>
+<span class="va">ggplot</span></pre></div>
 <p><img src="coding_files/figure-html/unnamed-chunk-7-1.png" width="98%" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -1513,7 +1502,7 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

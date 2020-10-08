@@ -10,3 +10,5 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^setup\.r$
+^setup\.R$
