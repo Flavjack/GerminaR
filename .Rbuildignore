@@ -12,3 +12,5 @@
 ^\.github$
 ^setup\.r$
 ^setup\.R$
+setup.r
+setup.R
