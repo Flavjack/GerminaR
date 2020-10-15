@@ -30,8 +30,9 @@ And the development version from
 [GitHub](https://github.com/flavjack/GerminaR) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("Flavjack/GerminaR")
+if (!require("remotes"))
+  install.packages("remotes")
+remotes::install_github("Flavjack/GerminaR")
 ```
 
 ## Citation
