@@ -1,8 +1,13 @@
+# -------------------------------------------------------------------------
 # GerminaR-----------------------------------------------------------------
 # -------------------------------------------------------------------------
+#> open https://flavjack.github.io/GerminaR/
+#> open https://flavjack.shinyapps.io/germinaquant/
+#> author .: Flavio Lozano-Isla (lozanoisla.com)
+#> date .: 2020-10-18
+# -------------------------------------------------------------------------
 
-# open https://flavjack.shinyapps.io/germinaquant/
-
+# -------------------------------------------------------------------------
 # packages ----------------------------------------------------------------
 # -------------------------------------------------------------------------
 
@@ -22,20 +27,25 @@ git <- c(
   "Flavjack/GerminaR"
   )
 
-installed <- c(cran, sub(".*/", "", git)) %in% rownames(installed.packages())
-
-if (any(installed == FALSE)) {
-  cran_missing <- cran %in% c(cran, sub(".*/", "", git))[!installed == TRUE]
-  cran_install <- c(cran, sub(".*/", "", git))[cran_missing == TRUE]
-  install.packages( cran_install )
+for (pkg in cran) { 
+  if( !require(pkg, character.only = TRUE) ) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  } 
 }
 
-invisible(lapply(sub(".*/", "", git), unloadNamespace))
-invisible(lapply(git, devtools::install_github, dependencies = TRUE))
-invisible(lapply(c(cran, sub(".*/", "", git)), library, character.only = TRUE))
-rm(cran, git, installed)
+for (pkg in git) { 
+  if( !require(sub(".*/", "", pkg), character.only = TRUE) ) {
+    devtools::install_github(pkg)
+    library(pkg, character.only = TRUE)
+  } 
+}
 
-# References .:
+rm(cran, git, pkg)
+
+# -------------------------------------------------------------------------
+# references --------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 # open https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
 
