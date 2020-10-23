@@ -39,8 +39,8 @@ for (pkg in git) {
     devtools::install_github(pkg)
     library(pkg, character.only = TRUE)
   } 
-}
-
+}  
+  
 rm(cran, git, pkg)
 
 # -------------------------------------------------------------------------

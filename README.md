@@ -12,9 +12,9 @@ Status](https://travis-ci.org/Flavjack/GerminaR.svg?branch=master)](https://trav
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 <!-- badges: end -->
 
-GerminaR is the first platform base in open source package to calculate
-and graphic the germination indices in R. GerminaR include a web
-application called “GerminQuant for R” for non programming user.
+GerminaR is a platform base in open source package to calculate and
+graphic the germination indices in R. GerminaR include a web application
+called “GerminQuant for R” for non programming user.
 
 ## Installation
 
@@ -34,6 +34,21 @@ if (!require("remotes"))
   install.packages("remotes")
 remotes::install_github("Flavjack/GerminaR")
 ```
+
+## GerminaQuant app
+
+``` r
+library(GerminaR)
+GerminaQuant()
+```
+
+If is the first time running the app you should install the app
+dependencies, including the following argument
+`GerminaQuant(dependencies = T)`
+
+After install the package and the app dependencies also you can access
+to the app through the Addins list in Rstudio or using the following
+link in the internet <https://flavjack.shinyapps.io/germinaquant/>
 
 ## Citation
 

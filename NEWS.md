@@ -1,7 +1,13 @@
 # GerminaR 2.0.1
 
+## Major changes
+
 - Build pkgdown for documentation.
 - Update vignettes.
+
+## Bug fixes
+
+- Install dependencies for the app
 
 # GerminaR 2.0.0
 
