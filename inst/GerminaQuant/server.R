@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-18
+#> date .: 2020-10-24
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -474,9 +474,10 @@ av <- reactive({
     factor <- input$stat_fact %>% paste0() %>%  paste(collapse= " * ")
 
     block <- input$stat_blk %>% paste0() %>% paste(collapse= " + ")
-
-    file <- file %>% dplyr::mutate_each_(funs(factor(.)), c(input$stat_fact, input$stat_blk))
-
+    
+    file <- file %>% 
+      dplyr::mutate(across(c(input$stat_fact, input$stat_blk), as.factor))
+    
     if ( block == "" ){
 
       formula <- as.formula(paste( variable , factor, sep = " ~ "))
@@ -830,6 +831,4 @@ output$ops <- reactive({
 
 # end germinaquant --------------------------------------------------------
 # -------------------------------------------------------------------------
-
-
 
