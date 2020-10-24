@@ -9,7 +9,7 @@
 status](https://ci.appveyor.com/api/projects/status/v3o938fhw0unvbs7?svg=true)](https://ci.appveyor.com/project/omarbenites/germinar)
 [![Build
 Status](https://travis-ci.org/Flavjack/GerminaR.svg?branch=master)](https://travis-ci.org/Flavjack/GerminaR)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 <!-- badges: end -->
 
 GerminaR is a platform base in open source package to calculate and
@@ -19,8 +19,7 @@ called “GerminQuant for R” for non programming user.
 ## Installation
 
 You can install the released version of GerminaR from
-[CRAN](https://cloud.r-project.org/web/packages/GerminaR/index.html)
-with:
+[CRAN](https://cran.r-project.org/package=GerminaR) with:
 
 ``` r
 install.packages("GerminaR")
