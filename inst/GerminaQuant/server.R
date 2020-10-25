@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-24
+#> date .: 2020-10-25
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -148,7 +148,9 @@ output$filter_01 <- renderUI({
   validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
 
   file <- data_fb()
-  fbn <- data_fb() %>% select(!starts_with(input$evalName)) %>% names()
+  fbn <- data_fb() %>% 
+    select(!starts_with(input$evalName)) %>% 
+    names()
 
   selectInput(
     inputId = "filter_nm01",
@@ -179,7 +181,9 @@ output$filter_02 <- renderUI({
   validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
 
   file <- data_fb()
-  fbn <- data_fb() %>% select(!starts_with(input$evalName)) %>% names()
+  fbn <- data_fb() %>% 
+    select(!starts_with(input$evalName)) %>% 
+    names()
 
   selectInput(
     inputId = "filter_nm02",
@@ -417,7 +421,9 @@ output$boxplot <- renderPlot({
 
 output$stat_response <- renderUI({
 
-  fbn <- varCal() %>% select(var_names()) %>% names() 
+  fbn <- varCal() %>% 
+    select(var_names()) %>% 
+    names() 
 
   selectInput(
     inputId = "stat_rsp",
@@ -430,7 +436,9 @@ output$stat_response <- renderUI({
 
 output$stat_factor <- renderUI({
 
-  fbn <- varCal() %>% select(!var_names()) %>% names() 
+  fbn <- varCal() %>% 
+    select(!var_names()) %>%
+    names() 
 
   selectInput(
     inputId = "stat_fact",
@@ -445,7 +453,9 @@ output$stat_factor <- renderUI({
 
 output$stat_block <- renderUI({
 
-  fbn <- varCal() %>% select(!var_names()) %>% names() 
+  fbn <- varCal() %>% 
+    select(!var_names()) %>%
+    names() 
   
   selectInput(
     inputId = "stat_blk",
@@ -471,9 +481,13 @@ av <- reactive({
 
     variable <- input$stat_rsp
 
-    factor <- input$stat_fact %>% paste0() %>%  paste(collapse= " * ")
+    factor <- input$stat_fact %>% 
+      paste0() %>%  
+      paste(collapse= " * ")
 
-    block <- input$stat_blk %>% paste0() %>% paste(collapse= " + ")
+    block <- input$stat_blk %>% 
+      paste0() %>% 
+      paste(collapse= " + ")
     
     file <- file %>% 
       dplyr::mutate(across(c(input$stat_fact, input$stat_blk), as.factor))
@@ -603,7 +617,7 @@ output$modelplots <- renderPlot({
   p3 <- comp()$diagplot$resid
   p4 <- comp()$diagplot$sresid
   
-  ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+  ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
   
 })
 

@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-18
+#> date .: 2020-10-25
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
