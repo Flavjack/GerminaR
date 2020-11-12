@@ -9,7 +9,7 @@ template:
       src: https://flavjack.github.io/GerminaR/reference/figures/logo.png
   params:
     bootswatch: cerulean
-    ganalytics: UA-113308628-8
+    ganalytics: G-GD6G24QSSE
     docsearch:
       api_key: edfb12544ba2e7ecece334d4de5921e2
       index_name: flavjack_germinar
