@@ -22,12 +22,15 @@ navbar:
     - text: ""
       icon: fa-home
       href: index.html
-    - text: "Get started"
+    - text: "Intro"
       icon: fa-seedling
+      href: articles/intro.html
+    - text: "GerminaR"
+      icon: fa-file-code
       href: articles/GerminaR.html
-    - text: "Articles"
-      icon: fa-book
-      href: articles/coding.html
+    - text: "GerminaQuant"
+      icon: fa-gamepad
+      href: articles/GerminaQuant.html
     - text: "Functions"
       icon: fa-file-code
       href: reference/index.html

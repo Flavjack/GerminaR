@@ -1,6 +1,6 @@
 # Version 2.0.2
 
-- Package
+- *Package*
   - Include app info when run `GerminaQuant()`
 
 # Version 2.0.1
