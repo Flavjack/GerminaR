@@ -1,4 +1,9 @@
-# GerminaR 2.0.1
+# Version 2.0.2
+
+- Package
+  - Include app info when run `GerminaQuant()`
+
+# Version 2.0.1
 
 ## Major changes
 
@@ -10,7 +15,7 @@
 - Install dependencies for the app
 - Update functions to tidyverse in app
 
-# GerminaR 2.0.0
+# Version 2.0.0
 
 ## Major changes
 
