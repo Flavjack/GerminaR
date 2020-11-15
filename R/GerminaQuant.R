@@ -24,7 +24,7 @@ GerminaQuant <- function(dependencies = FALSE) {
   > GerminaR::GerminaQuant(dependencies = T)
   - List of dependencies: 
   > https://github.com/Flavjack/GerminaR/blob/master/inst/GerminaQuant/setup.R
-  - More info: https://flavjack.github.io/GerminaR/articles/GerminaR
+  - More info: https://flavjack.github.io/GerminaR/articles/GerminaQuant
           ")
   
   if (dependencies == TRUE ) {

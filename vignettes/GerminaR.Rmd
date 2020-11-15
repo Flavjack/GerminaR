@@ -71,7 +71,8 @@ gsm <- ger_summary(SeedN = "seeds"
 # Prosopis data set processed
 
 gsm %>% 
-   head(10) %>% 
+  head(10) %>% 
+  mutate(across(where(is.numeric), ~round(., 2))) %>% 
    kable(caption = "Function ger_summary performe ten germination indices")
 
 ```

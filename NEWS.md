@@ -35,3 +35,7 @@
 - Fix filters and drop-list in GerminaQuant
 - Fix resolution in the graphics produces in GerminaQuant
 - Auto close local session of app when finish process
+
+# Version 1.0
+
+- Package release

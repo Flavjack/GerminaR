@@ -5,9 +5,9 @@ account: flavjack
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 136814
-bundleId: 3602026
+bundleId: 3862767
 url: https://flavjack.shinyapps.io/germinaquant/
-when: 1599478054.18632
+when: 1605439454.72414
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: setup.R

@@ -27,9 +27,9 @@ library(DT)
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-shinyUI(dashboardPage(skin = "green",
+shinyUI(dashboardPage(skin = "green", 
 
-    dashboardHeader(title = "GerminaQuant"),
+    dashboardHeader(title = "GerminaQuant • app"),
 
 # Sider -------------------------------------------------------------------
 
@@ -97,16 +97,11 @@ shinyUI(dashboardPage(skin = "green",
                   <br>
                   <br>
                   <div id=footer style="width:100%; margin:auto;">
-                  <div style="display:inline-block; width:49%">
-                  <p style="text-align:center">
-                  <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
-                  <span style="display:block;"><small>GerminaR</small></span>
-                  </p></div>
                   
-                  <div style="display:inline-block; width:49%">
+                  <div style="display:inline-block; width:100%">
                   <p style="text-align:center">
-                  <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/reference/figures/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
-                  <span style="display:block;"><small>GerminaQuant</small></span>
+                  <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
+                  <span style="display:block;"><small>GerminaR</small></span>
                   </p></div>
 
                   </div>
@@ -161,16 +156,22 @@ shinyUI(dashboardPage(skin = "green",
                        
                       <div id=footer style="width:100%; margin:auto;">
 
-                      <div style="display:inline-block; width:49%">
+                      <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
                       <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:70px" title="Github" alt="Github"></a>
                       <span style="display:block;"><small>Github</small></span>
                       </p></div>
                       
-                      <div style="display:inline-block; width:49%">
+                      <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
-                      <span style="display:block;"><small>Project</small></span>
+                      <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
+                      <span style="display:block;"><small>CRAN</small></span>
+                      </p></div>
+                  
+                      <div style="display:inline-block; width:32%">
+                      <p style="text-align:center">
+                      <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/reference/figures/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+                      <span style="display:block;"><small>GerminaQuant</small></span>
                       </p></div>
                       
                       </div>
