@@ -36,7 +36,7 @@ for (pkg in cran) {
 
 for (pkg in git) { 
   if( !require(sub(".*/", "", pkg), character.only = TRUE) ) {
-    devtools::install_github(pkg)
+    devtools::install_github(pkg, upgrade = TRUE)
     library(sub(".*/", "", pkg), character.only = TRUE)
   } 
 }  
