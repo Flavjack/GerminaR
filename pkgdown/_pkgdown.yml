@@ -3,6 +3,10 @@ home:
   description: Indices and Graphics for Assess Seed Germination Process
   url: https://flavjack.github.io/GerminaR/
   author: Flavio Lozano-Isla
+  links:
+  - text: More apps
+    href: https://inkaverse.com/
+    
 template:
   opengraph:
     image:
@@ -40,6 +44,6 @@ navbar:
   right:
     - icon: fab fa-github fa-lg
       href: https://github.com/flavjack/germinar/
-    - icon: fas fa-mug-hot fa-lg
-      href: https://patreon.com/inkaverse
+    - icon: far fa-heart fa-lg
+      href: https://github.com/sponsors/Flavjack
       
