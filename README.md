@@ -39,13 +39,15 @@ remotes::install_github("Flavjack/GerminaR")
 ## GerminaQuant app
 
 ``` r
-library(GerminaR)
-GerminaQuant()
+GerminaR::GerminaQuant()
 ```
 
 If is the first time running the app you should install the app
-dependencies, including the following argument
-`GerminaQuant(dependencies = T)`
+dependencies, including the following argument:
+
+``` r
+GerminaR::GerminaQuant(dependencies = TRUE)
+```
 
 After install the package and the app dependencies also you can access
 to the app through the Addins list in Rstudio or using the following
