@@ -12,6 +12,7 @@ Status](https://travis-ci.org/Flavjack/GerminaR.svg?branch=master)](https://trav
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/GerminaR?color=green)](https://r-pkg.org/pkg/GerminaR)
+[![DOI](https://zenodo.org/badge/49505163.svg)](https://zenodo.org/badge/latestdoi/49505163)
 <!-- badges: end -->
 
 GerminaR is a platform base in open source package to calculate and
