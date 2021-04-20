@@ -4,25 +4,16 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-25
+#> date .: 2021-04-20
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
 # packages ----------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-if (file.exists("setup.R")) { source("setup.R") }
+#> devtools::install_github("flavjack/GerminaR")
 
-library(GerminaR)
-library(shiny)
-library(metathis)
-library(tidyverse)
-library(shinydashboard)
-library(shinyWidgets)
-library(gsheet)
-library(readxl)
-library(ggpubr)
-library(DT)
+source("pkgs.R")
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -83,7 +74,7 @@ shinyUI(dashboardPage(skin = "green",
                   
                   HTML('
                   <p>
-                  <strong>GerminaQuant</strong> for R is web application based in R,
+                  <strong>GerminaQuant</strong> for R is a web application based in R,
                   you can use the app in your desktop installing the <em><strong>GerminaR</strong></em> package:
                   </p>
                   Install the package in the R console

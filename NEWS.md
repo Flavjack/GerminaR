@@ -2,6 +2,13 @@
 
 - *Package*
   - Include app info when run `GerminaQuant()`
+  - Include function `webTable`
+  
+- *GerminaQuant*
+  - Suppress error messages in console when run the app
+  - Change dependency: `ggpubr` --> `cowplot`
+  - Update tables
+  
 
 # Version 2.0.1
 

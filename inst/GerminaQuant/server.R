@@ -4,27 +4,16 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-25
+#> date .: 2021-04-20
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
 # packages ----------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-if (file.exists("setup.R")) { source("setup.R") }
-
-library(GerminaR)
-library(shiny)
-library(metathis)
-library(tidyverse)
-library(shinydashboard)
-library(shinyWidgets)
-library(gsheet)
-library(readxl)
-library(ggpubr)
-library(DT)
-
 #> devtools::install_github("flavjack/GerminaR")
+
+source("pkgs.R")
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -43,24 +32,6 @@ observe({
   
 })
   
-# import data -----------------------------------------------------------
-  
-  observe({
-    
-    cat("Import data --------------------------------------------------\n")
-    
-    cat("input$import_excel$name")
-    print(input$import_excel$name)
-    
-    cat("input$import_excel$datapath")
-    print(input$import_excel$datapath)
-    
-    cat("input$import_gsheet")
-    print(input$import_gsheet)
-    
-  })
-
-
 # -------------------------------------------------------------------------
   
   data_fb <-  eventReactive(input$reload, {
@@ -68,12 +39,13 @@ observe({
     if ( !is.null(input$import_excel) ) {
       
      dt <-  readxl::read_excel(path = input$import_excel$datapath
-                 , sheet = input$sheetdt
-                 ) %>% as.data.frame()
+                 , sheet = input$sheetdt) %>% 
+       as.data.frame()
      
     } else if ( input$import_gsheet != "" ){
       
-     dt <- gsheet::gsheet2tbl(url = input$import_gsheet) %>% as.data.frame()
+     dt <- gsheet::gsheet2tbl(url = input$import_gsheet) %>% 
+       as.data.frame()
       
     } else { return(NULL) }
     
@@ -84,37 +56,10 @@ observe({
 # -------------------------------------------------------------------------
   
 output$fb_excel <- DT::renderDataTable(server = FALSE, {
-    
-    DT::datatable(data = data_fb(),
-                filter = 'top',
-                extensions = c('Buttons', 'Scroller'),
-                rownames = FALSE,
-                
-                options = list(
-                  
-                  searchHighlight = TRUE,
-                  searching = TRUE,
-                  
-                  dom = 'Bfrtip',
-                  buttons = list(
-                    'copy',
-                    list(extend = 'csv', filename = input$stat_rsp),
-                    list(extend = 'excel', filename = input$stat_rsp)
-                  ),
-                  
-                  autoWidth = TRUE,
-                  columnDefs = list(list(className = 'dt-center', targets ="_all")),
-                  deferRender=TRUE,
-                  scrollY = 400,
-                  scrollX = TRUE,
-                  scroller = TRUE,
-                  
-                  initComplete = DT::JS(
-                    "function(settings, json) {",
-                    "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
-                    "}")
-                ))
-  })
+  
+  webTable(data = data_fb(), file_name = "FieldBook")
+  
+})
 
 # -------------------------------------------------------------------------
 
@@ -277,51 +222,19 @@ varCal <- reactive({
   
   validate( need( fb(), "Insert a Google spreadsheet URL or xlsx file") )
   
-  inFile <- fb()
-  if (is.null(inFile )) return(NULL)
   ger_summary(SeedN = input$SeedN
               , evalName = input$evalName
-              , data = inFile
+              , data = fb()
               )
 
   })
 
-output$summary = DT::renderDataTable({
+output$summary <- DT::renderDataTable(server = FALSE, {
   
-  file <- varCal()
+  validate( need( varCal(), "Insert a Google spreadsheet URL or xlsx file") )
   
-  file <- file %>% format(digits = 3, nsmall = 3)
-  
-  DT::datatable(file,
-                
-                filter = 'top',
-                extensions = c('Buttons', 'Scroller'),
-                rownames = FALSE,
-                
-                options = list(
-                  
-                  searchHighlight = TRUE,
-                  searching = TRUE,
-                  
-                  dom = 'Bfrtip',
-                  buttons = list(
-                    'copy',
-                    list(extend = 'csv', filename = input$stat_rsp),
-                    list(extend = 'excel', filename = input$stat_rsp)
-                  ),
-                  
-                  autoWidth = TRUE,
-                  columnDefs = list(list(className = 'dt-center', targets ="_all")),
-                  deferRender=TRUE,
-                  scrollY = 400,
-                  scrollX = TRUE,
-                  scroller = TRUE,
-                  
-                  initComplete = DT::JS(
-                    "function(settings, json) {",
-                    "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
-                    "}")
-                ))
+  webTable(data = varCal()
+           , file_name = "GerminaQuant-indices")
   
 })
 
@@ -329,7 +242,16 @@ output$summary = DT::renderDataTable({
 
 var_names <- reactive({
   
- vars <- c("grs", "grp", "mgt", "mgr", "gsp", "unc", "syn", "vgt", "sdg", "cvg")
+ vars <- c("grs"
+           , "grp"
+           , "mgt"
+           , "mgr"
+           , "gsp"
+           , "unc"
+           , "syn"
+           , "vgt"
+           , "sdg"
+           , "cvg")
   
 })
 
@@ -562,43 +484,11 @@ comp <- reactive({
 
 # Mean comparison table
 
-output$mnc = DT::renderDataTable({
+output$mnc <-  DT::renderDataTable(server = FALSE, {
   
   file <- comp()$table
   
-  file <- file %>% format(digits = 3, nsmall = 3)
-  
-  
-  DT::datatable(file,
-                
-                filter = 'top',
-                extensions = c('Buttons', 'Scroller'),
-                rownames = FALSE,
-                
-                options = list(
-                  
-                  searchHighlight = TRUE,
-                  searching = TRUE,
-                  
-                  dom = 'Bfrtip',
-                  buttons = list(
-                    'copy',
-                    list(extend = 'csv', filename = input$stat_rsp),
-                    list(extend = 'excel', filename = input$stat_rsp)
-                  ),
-                  
-                  autoWidth = TRUE,
-                  columnDefs = list(list(className = 'dt-center', targets ="_all")),
-                  deferRender=TRUE,
-                  scrollY = 400,
-                  scrollX = TRUE,
-                  scroller = TRUE,
-                  
-                  initComplete = DT::JS(
-                    "function(settings, json) {",
-                    "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
-                    "}")
-                ))
+  webTable(data = file, file_name = input$stat_rsp)
   
 })
 
@@ -614,44 +504,13 @@ output$stat_summary = renderTable({
 
 output$modelplots <- renderPlot({
   
-  p1 <- comp()$diagplot$freq
-  p2 <- comp()$diagplot$qqnorm
-  p3 <- comp()$diagplot$resid
-  p4 <- comp()$diagplot$sresid
-  
-  ggpubr::ggarrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+  diag <- comp()$diagplot 
+  plot_grid(plotlist = diag, ncol = 2)
   
 })
 
 # graphics ----------------------------------------------------------------
 # -------------------------------------------------------------------------
-
-observe({
-  
-  cat("Graphics --------------------------------------------------\n")
-  
-  cat("input$plot_limit1")
-  print(input$plot_limit1)
-  
-  cat("input$plot_limit2")
-  print(input$plot_limit2)
-  
-  cat("input$plot_ybrakes")
-  print(input$plot_ybrakes)
-  
-  cat("input$stat_fact[1]")
-  print(input$stat_fact[1])
-  
-  cat("input$stat_fact[2]")
-  print(input$stat_fact[2])
-  
-  cat("input$plot_ylab")
-  print(input$plot_ylab)
-  
-  cat("input$plot_xlab")
-  print(input$plot_xlab)
-  
-})
 
 stat_plot <- reactive({
 

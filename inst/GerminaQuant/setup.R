@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2020-10-30
+#> date .: 2021-04-20
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -19,36 +19,28 @@ cran <- c("devtools"
           , "shinyWidgets"
           , "gsheet"
           , "readxl"
-          , "DT"
-          , "ggpubr"
+          , "cowplot"
           )
 
-git <- c(
-  "Flavjack/GerminaR"
-  )
+git <- c("Flavjack/GerminaR")
 
-for (pkg in cran) { 
-  if( !require(pkg, character.only = TRUE) ) {
-    install.packages(pkg)
-    library(pkg, character.only = TRUE)
-  } 
-}
-
-for (pkg in git) { 
-  if( !require(sub(".*/", "", pkg), character.only = TRUE) ) {
-    devtools::install_github(pkg, upgrade = TRUE)
-    library(sub(".*/", "", pkg), character.only = TRUE)
-  } 
-}  
+suppressPackageStartupMessages({
   
+  for (pkg in cran) { 
+    if( !require(pkg, character.only = T) ) {
+      install.packages(pkg)
+      library(pkg, character.only = T)
+    } 
+  }
+  
+  for (pkg in git) { 
+    if( !require(sub(".*/", "", pkg), character.only = T) ) {
+      devtools::install_github(pkg, upgrade = T)
+      library(sub(".*/", "", pkg), character.only = T)
+    } 
+  }
+  
+})
+
 rm(cran, git, pkg)
 
-# -------------------------------------------------------------------------
-# references --------------------------------------------------------------
-# -------------------------------------------------------------------------
-
-# open https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
-
-# http://r-pkgs.had.co.nz/release.html
-
-# open https://realfavicongenerator.net/
