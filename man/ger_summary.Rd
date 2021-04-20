@@ -22,7 +22,7 @@ This function makes a data table with the result of germination indices for each
 \examples{
 
 library(GerminaR)
-data <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+fb <- prosopis
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = fb)
 smr
 }

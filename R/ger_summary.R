@@ -5,13 +5,13 @@
 #' @param evalName Prefix of the evaluation variable
 #' @param data The name of the data frame containing the data.
 #' @return Data frame with the summary values of germination variables.
-#' @importFrom dplyr mutate
+#' @import dplyr
 #' @export
 #' @examples 
 #' 
 #' library(GerminaR)
-#' data <- prosopis
-#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+#' fb <- prosopis
+#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = fb)
 #' smr
 
 ger_summary <- function(SeedN, evalName, data){

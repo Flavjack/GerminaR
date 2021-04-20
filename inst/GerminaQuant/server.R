@@ -38,14 +38,14 @@ observe({
     
     if ( !is.null(input$import_excel) ) {
       
-     dt <-  readxl::read_excel(path = input$import_excel$datapath
-                 , sheet = input$sheetdt) %>% 
-       as.data.frame()
-     
+      dt <-  readxl::read_excel(path = input$import_excel$datapath
+                                , sheet = input$sheetdt) %>% 
+        as.data.frame()
+      
     } else if ( input$import_gsheet != "" ){
       
-     dt <- gsheet::gsheet2tbl(url = input$import_gsheet) %>% 
-       as.data.frame()
+      dt <- gsheet::gsheet2tbl(url = input$import_gsheet) %>% 
+        as.data.frame()
       
     } else { return(NULL) }
     
@@ -57,7 +57,11 @@ observe({
   
 output$fb_excel <- DT::renderDataTable(server = FALSE, {
   
-  webTable(data = data_fb(), file_name = "FieldBook")
+  validate( need( is.data.frame(data_fb())
+                  , "Insert a Google spreadsheet URL or xlsx file") )
+  
+  webTable(data = data_fb()
+           , file_name = "FieldBook")
   
 })
 
@@ -88,150 +92,20 @@ output$data_viewer <- renderUI({
   
 })
 
-# filter ------------------------------------------------------------------
-
-output$filter_01 <- renderUI({
-  
-  validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
-
-  file <- data_fb()
-  fbn <- data_fb() %>% 
-    select(!starts_with(input$evalName)) %>% 
-    names()
-
-  selectInput(
-    inputId = "filter_nm01",
-    label = "Filter 1 (optional)",
-    choices = c("choose" = "", fbn)
-  )
-
-})
-
-output$filter_fact01 <- renderUI({
-
-  validate( need( input$filter_nm01, "Select your levels") )
-
-  file <- data_fb()
-  fl <- file[, input$filter_nm01]
-
-  selectInput(
-    inputId = "filter_ft01",
-    label = "Levels",
-    choices = c("choose" = "", fl),
-    multiple = TRUE
-  )
-
-})
-
-output$filter_02 <- renderUI({
-  
-  validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
-
-  file <- data_fb()
-  fbn <- data_fb() %>% 
-    select(!starts_with(input$evalName)) %>% 
-    names()
-
-  selectInput(
-    inputId = "filter_nm02",
-    label = "Filter 2 (optional)",
-    choices = c("choose" = "", fbn)
-  )
-
-})
-
-output$filter_fact02 <- renderUI({
-
-  validate(need( input$filter_nm02, "Select your levels"))
-
-  file <- data_fb()
-  fl <- file[, input$filter_nm02]
-
-  selectInput(
-    inputId = "filter_ft02",
-    label = "Levels",
-    choices = c("choose" = "", fl),
-    multiple = TRUE
-  )
-
-})
-
-# data filtered -----------------------------------------------------------
-
-fb <- reactive({
-  
-  validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
-
-  file <- data_fb()
-
-  fc1 <- input$filter_nm01
-  lv1 <- input$filter_ft01
-
-  fc2 <- input$filter_nm02
-  lv2 <- input$filter_ft02
-
-  if( fc1 == "" && fc2 == "" ){
-
-  dt <- file
-
-  } else if (fc1 != "" && fc2 != ""){
-
-    dt <- file %>%
-      subset( eval(parse(text = fc1)) %in% lv1 & eval(parse(text = fc2)) %in% lv2 )
-
-        if ( length(lv1) == 1){
-
-          dt[, fc1] <- NULL
-        }
-
-        if ( length(lv2) == 1){
-
-          dt[, fc2] <- NULL
-        }
-
-  } else if (fc1 != "" && fc2 == "" ){
-
-    dt <- file %>%
-      subset( eval(parse(text = fc1)) %in% lv1 )
-
-          if ( length(lv1) == 1){
-
-            dt[, fc1] <- NULL
-          }
-
-  } else if (fc1 == "" && fc2 != "" ){
-
-    dt <- file %>%
-      subset( eval(parse(text = fc2)) %in% lv2 )
-
-
-          if ( length(lv2) == 1){
-
-            dt[, fc2] <- NULL
-          }
-
-  }
-
-  dt
-
-})
-
 # index calculation --------------------------------------------------------
 
 varCal <- reactive({
   
-  validate( need( fb(), "Insert a Google spreadsheet URL or xlsx file") )
+  validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
   
-  ger_summary(SeedN = input$SeedN
+  data_fb() %>% 
+    ger_summary(SeedN = input$SeedN
               , evalName = input$evalName
-              , data = fb()
-              )
-
-  })
+              , data = . )
+  
+})
 
 output$summary <- DT::renderDataTable(server = FALSE, {
-  
-  validate( need( varCal(), "Insert a Google spreadsheet URL or xlsx file") )
   
   webTable(data = varCal()
            , file_name = "GerminaQuant-indices")
@@ -488,7 +362,8 @@ output$mnc <-  DT::renderDataTable(server = FALSE, {
   
   file <- comp()$table
   
-  webTable(data = file, file_name = input$stat_rsp)
+  webTable(data = file
+           , file_name = input$stat_rsp)
   
 })
 
@@ -590,7 +465,7 @@ output$plotgr <- renderImage({
 
 output$smvar <- renderUI({
   
-  inFile <- fb()
+  inFile <- data_fb()
 
   if (is.null(inFile)) return(NULL)
 
@@ -604,7 +479,7 @@ output$smvar <- renderUI({
 
 gnt <- reactive({
   
-  inFile <- fb()
+  inFile <- data_fb()
   
   if (is.null(inFile)) { return(NULL) }
   

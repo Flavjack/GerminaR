@@ -279,7 +279,7 @@ shinyUI(dashboardPage(skin = "green",
           
           box(width = 12,
               
-              dataTableOutput("summary")
+              DT::dataTableOutput("summary")
               
           )   
           

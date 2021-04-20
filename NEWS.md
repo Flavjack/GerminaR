@@ -7,8 +7,8 @@
 - *GerminaQuant*
   - Suppress error messages in console when run the app
   - Change dependency: `ggpubr` --> `cowplot`
+  - Exclude filter in the app
   - Update tables
-  
 
 # Version 2.0.1
 

@@ -20,6 +20,8 @@ webTable <- function(data
                      , file_name = NULL
                      ) {
   
+  if(!is.data.frame(data)) stop("Use a data frame or table")
+  
   where <- NULL
   
   ext <- c('Buttons', 'Scroller')
@@ -44,14 +46,14 @@ webTable <- function(data
                 , scrollX = TRUE
                 , scrollY = "60vh"
                 
-                , columnDefs = list(list(width = '200px', targets = "_all"))
+                , columnDefs = list(list(width = '200px'
+                                         , targets = "_all"))
                 
                 , initComplete = DT::JS(
                   "function(settings, json) {",
                   "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
                   "}")
-                
-              )
+                )
               , caption = caption)
 }
 
