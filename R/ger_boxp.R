@@ -4,90 +4,129 @@
 #' @param data raw data
 #' @param x Axis x variable
 #' @param y Axis y variable
-#' @param z Group variable
+#' @param group Group variable
 #' @param ylab Title for the axis y
 #' @param xlab Title for the axis x
-#' @param lgl Title for the legend
-#' @param lgd the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
-#' @param brk break of the y axis
-#' @param font letter size in plot
+#' @param glab Title for the legend
+#' @param legend the position of legends ("none", "left", "right", "bottom",
+#'   "top", or two-element numeric vector)
+#' @param ylimits Limitis and break of the y axis c(init, end, brakes)
+#' @param xrotation Rotation in x axis c(angle, h, v)
+#' @param xtext Text labels in x axis
+#' @param gtext Text labels in groups
+#' @param opt Add news layer to the plot
 #' @return boxplot
-#' @importFrom dplyr mutate
-#' @importFrom ggplot2 aes aes_string element_blank element_rect element_text geom_bar geom_boxplot geom_errorbar geom_line geom_point geom_text ggplot position_dodge position_jitterdodge scale_color_discrete scale_fill_hue scale_shape_discrete scale_x_discrete scale_y_continuous theme theme_bw unit scale_fill_discrete
-#' @importFrom gtools mixedsort
+#' @import dplyr
+#' @import ggplot2
 #' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(GerminaR)
+#'
+#' fb <- ger_summary(SeedN = "seeds", evalName = "D", data = prosopis)
+#'
+#' ger_boxp(data = fb
+#'          , x =  "nacl"
+#'          , y = "grp"
+#'          , group = "temp"
+#'          )
+#'
+#' }
+#' 
 
+ger_boxp <- function(data
+                     , x
+                     , y
+                     , group = NULL
+                     , xlab = NULL
+                     , ylab = NULL
+                     , glab = NULL
+                     , ylimits = NULL
+                     , xrotation = NULL
+                     , legend = "top"
+                     , xtext = NULL
+                     , gtext = NULL
+                     , opt = NULL
+                     ){
 
-ger_boxp <- function(data, x, y, z, ylab = NULL, xlab = NULL, lgl = NULL, lgd = "top", brk = NULL, font = 1){
-  
-  
-  data[,x] <- factor(data[,x], levels = gtools::mixedsort(levels(as.factor(data[, x]))))
-  data[,z] <- factor(data[,z], levels = gtools::mixedsort(levels(as.factor(data[, z]))))
-  
-  
-  if( !is.null(xlab) ){
+# test --------------------------------------------------------------------
+
+  if(FALSE) {
     
-    xl <- gsub(pattern = " ",replacement = "~", xlab)
-    xlab <- eval(expression(parse(text = xl)))
+    library(GerminaR)
+
+    fb <- prosopis %>% 
+      ger_summary(SeedN = "seeds"
+                  , evalName = "D") 
     
-  } else {
+    x <- "temp" 
+    group <- "nacl"
+    y <- "grp"
+    xlab <- NULL # "label x"
+    ylab <- NULL # "label y"
+    glab <- NULL # "legend"
+    ylimits <- NULL # c(0, 120, 10)
+    xrotation <- NULL #c(0, 0.5, 0.5)
+    legend <- "top"
+    gtext <- NULL
+    xtext <- NULL
     
-    xlab <- x
-    
-  }
-  
-  if( !is.null(ylab) ){
-    
-    yl <- gsub(pattern = " ",replacement = "~", ylab)
-    ylab <- eval(expression(parse(text = yl)))
-    
-    
-  } else {
-    
-    ylab <- y
+    data <- fb
     
   }
   
+# -------------------------------------------------------------------------
+
+  if(!c(x %in% colnames(data))) stop("colum no exist")
+  if(!c(y %in% colnames(data))) stop("colum no exist")
   
-  if( !is.null(lgl) ){
-    
-    ll <- gsub(pattern = " ",replacement = "~", lgl)
-    lgl  <- eval(expression(parse(text = ll)))
-    
-  } else {
-    
-    lgl <- z
-    
-  }
-  
-  
-  if(is.null(brk)){
-    
-    brks <- ggplot2::waiver() } else {
+  if(is.null(xrotation)) xrotation <- c(0, 0.5, 0.5) 
+  if(is.null(group)) group <- x else group <- group 
+
+  data %>% 
+    mutate(across(c({{x}}, {{group}}), as.factor)) %>% 
+    ggplot(., aes(x = .data[[x]]
+                  , y = .data[[y]]
+                  , fill = .data[[group]]
+           )) +
+    geom_boxplot(outlier.colour = "red", outlier.size = 2.5) +
+    geom_point(position = position_jitterdodge()) + {
       
-      brks <- (((round(mean(data[,y]), 0))*(-20)):((round(mean(data[,y]), 0))*(+20))) * brk
+      if(!is.null(ylimits)) {
+        scale_y_continuous(
+          limits = ylimits[1:2] 
+          , breaks = seq(ylimits[1], ylimits[2], by = ylimits[3])
+          , expand = c(0,0)
+        ) 
+      }
       
-      
-    }
-  
-  ggplot(data, aes_string( x = x , y = y, fill = z))+
-    geom_boxplot(outlier.colour = "red", outlier.size = 2.5)+
-    geom_point(position = position_jitterdodge())+
-    scale_x_discrete( xlab )+
-    scale_y_continuous( ylab, breaks = brks)+
-    scale_fill_discrete( lgl )+
-    theme_bw()+
+    } +
+    labs(
+      x = if(is.null(xlab)) x else xlab
+      , y = if(is.null(ylab)) y else ylab
+      , fill = if(is.null(glab)) group else glab
+    ) +
+    theme_minimal() +
     theme(
-      axis.title.x = element_text(size= 8*font),
-      axis.title.y = element_text(size= 8*font, angle=90),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      legend.position = lgd,
-      legend.title = element_text(size= 8*font),
-      legend.text = element_text(size= 8*font),
-      legend.key.size = unit(0.8*font, "lines"),
-      legend.key = element_blank(),
-      legend.background = element_rect(fill= "transparent"),
-      text = element_text(size = 8*font)
-    )
+      panel.background = element_rect(fill = "transparent")
+      , plot.background = element_rect(fill = "transparent")
+      , panel.grid.major = element_blank()
+      , panel.grid.minor = element_blank()
+      , legend.background = element_rect(fill = "transparent")
+      , legend.box.background = element_rect(fill = "transparent")
+      , legend.position = legend
+      , axis.text.x = element_text(angle = xrotation[1]
+                                   , hjust= xrotation[2]
+                                   , vjust = xrotation[3])
+      ) + {
+        if(!is.null(gtext)) scale_fill_discrete(labels = gtext)
+      } + {
+        if(!is.null(xtext)) scale_x_discrete(labels = xtext)
+      } + {
+        if(!is.null(opt)) eval(parse(text= opt))
+      }
+  
 }

@@ -1,14 +1,17 @@
-# Version 2.0.2
+# Version 2.1.1
 
 - *Package*
   - Include app info when run `GerminaQuant()`
   - Include function `webTable`
+  - Update `ger_boxp()`
   
 - *GerminaQuant*
   - Suppress error messages in console when run the app
   - Change dependency: `ggpubr` --> `cowplot`
   - Exclude filter in the app
-  - Update tables
+  - Update tables style
+  - Module: Outliers -> Exploratory
+  - Include more options at Exploratory module
 
 # Version 2.0.1
 

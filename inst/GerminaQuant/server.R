@@ -165,53 +165,56 @@ output$bpz <- renderUI({
   
 })
 
-output$boxplot <- renderPlot({
+# boxplot -----------------------------------------------------------------
+
+boxplot <- reactive({
   
   validate(
-    
-    need( input$ybp, "Select your response variable"),
-    need( input$xbp, "Select your X axis variable" ),
-    need( input$zbp, "Select your grouped variable")
-    
-  )
+    need( input$ybp, "Select your response variable")
+    , need( input$xbp, "Select your X axis variable" )
+    )
+  
+  ylimits <- input$bpbrk %>% 
+    strsplit(split = "[*]") %>% 
+    unlist() %>% 
+    as.numeric()
+  
+  xrot <- input$bprot %>% 
+    strsplit(split = "[*]") %>% 
+    unlist() %>% 
+    as.numeric()
 
-  file <- varCal()
-
-  variable <- input$ybp
-  fx <-  input$xbp
-  fz <-  input$zbp
-  gply <- input$bply
-  gplx <- input$bplx
-  gplz <- input$bplz
-  brk <- input$bpbrk
-  
-  # Title axis --------------------------------------------------------------
-  
-  if ( gply == ""){ gply <- NULL }
-  
-  if ( gplx == ""){ gplx <- NULL }
-  
-  if ( gplz == ""){ gplz <- NULL }
-  
-  if(is.na(brk)){
-    
-    brks <- NULL
-    
-  } else { brks <- brk}
-  
-  boxp <- ger_boxp(data = file
-                   , y = variable
-                   , x = fx
-                   , z = fz
-                   , xlab = gplx
-                   , ylab = gply
-                   , lgl =  gplz
-                   , lgd = "top"
-                   , font = input$bpsize
-                   , brk = brks)
-  boxp
+  varCal() %>% 
+    ger_boxp(y = input$ybp
+             , x = input$xbp
+             , group = if(input$zbp == "") NULL else input$zbp
+             , xlab = if(input$bplx == "") NULL else input$bplx
+             , ylab = if(input$bply == "") NULL else input$bply
+             , glab = if(input$bplz == "") NULL else input$bplz
+             , ylimits =  if(input$bpbrk == "") NULL else ylimits
+             , xrotation = if(input$bprot == "") NULL else xrot
+             , opt = if(input$bpopt == "") NULL else input$bpopt
+             , legend = input$bplg
+             )
 
 })
+
+output$boxplot <- renderImage({
+  
+  dpi <- input$bprs
+  ancho <- input$bpwd
+  alto <- input$bphg
+  
+  outfile <- tempfile(fileext = ".png")
+  
+  png(outfile, width = ancho, height = alto, units = "cm", res = dpi)
+  print(boxplot())
+  dev.off()
+  
+  list(src = outfile)
+  
+}, deleteFile = TRUE)
+
 
 # statistics --------------------------------------------------------------
 

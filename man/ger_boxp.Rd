@@ -8,13 +8,16 @@ ger_boxp(
   data,
   x,
   y,
-  z,
-  ylab = NULL,
+  group = NULL,
   xlab = NULL,
-  lgl = NULL,
-  lgd = "top",
-  brk = NULL,
-  font = 1
+  ylab = NULL,
+  glab = NULL,
+  ylimits = NULL,
+  xrotation = NULL,
+  legend = "top",
+  xtext = NULL,
+  gtext = NULL,
+  opt = NULL
 )
 }
 \arguments{
@@ -24,23 +27,47 @@ ger_boxp(
 
 \item{y}{Axis y variable}
 
-\item{z}{Group variable}
-
-\item{ylab}{Title for the axis y}
+\item{group}{Group variable}
 
 \item{xlab}{Title for the axis x}
 
-\item{lgl}{Title for the legend}
+\item{ylab}{Title for the axis y}
 
-\item{lgd}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+\item{glab}{Title for the legend}
 
-\item{brk}{break of the y axis}
+\item{ylimits}{Limitis and break of the y axis c(init, end, brakes)}
 
-\item{font}{letter size in plot}
+\item{xrotation}{Rotation in x axis c(angle, h, v)}
+
+\item{legend}{the position of legends ("none", "left", "right", "bottom",
+"top", or two-element numeric vector)}
+
+\item{xtext}{Text labels in x axis}
+
+\item{gtext}{Text labels in groups}
+
+\item{opt}{Add news layer to the plot}
 }
 \value{
 boxplot
 }
 \description{
 Function use the raw data for made a boxplot graphic
+}
+\examples{
+
+\dontrun{
+
+library(GerminaR)
+
+fb <- ger_summary(SeedN = "seeds", evalName = "D", data = prosopis)
+
+ger_boxp(data = fb
+         , x =  "nacl"
+         , y = "grp"
+         , group = "temp"
+         )
+
+}
+
 }

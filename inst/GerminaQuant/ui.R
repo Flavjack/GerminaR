@@ -30,7 +30,7 @@ shinyUI(dashboardPage(skin = "green",
         menuItem("Presentacion", tabName = "intro", icon = icon("home")),
         menuItem("Fieldbook", tabName = "fieldbook", icon = icon("file-alt")),
         menuItem("Germination", tabName = "germination", icon = icon("seedling")),
-        menuItem("Box plot", tabName = "outlier", icon = icon("search")),
+        menuItem("Exploratory", tabName = "outlier", icon = icon("search")),
         menuItem("Statistics", tabName = "stat", icon = icon("pie-chart")),
         menuItem("Graphics", tabName = "graph", icon = icon("tint")),
         menuItem("Intime", tabName = "germint", icon = icon("hourglass")),
@@ -291,7 +291,7 @@ shinyUI(dashboardPage(skin = "green",
 
         tabItem(tabName = "outlier",
 
-          box(width = 10, background = "black",
+          box(width = 6, background = "black",
 
                     column(width = 4,
 
@@ -336,35 +336,94 @@ shinyUI(dashboardPage(skin = "green",
 
           ),
 
-          box(width = 2, background = "black",
+          box(width = 3, background = "black",
 
 
-            column(width = 12,
+            column(width = 6,
 
-              numericInput(
-                inputId ="bpbrk",
-                label = "Axis brake",
-                value = NA)
+              textInput(
+                inputId ="bpbrk"
+                , label = "Y limits"
+                , value = NULL
+                , placeholder = "0*100*20"
+                )
 
+            ),
+            
+            column(width = 6,
+                   
+                   textInput(
+                     inputId ="bprot"
+                     , label = "X rotation"
+                     , value = "0*0.5*0.5"
+                     , placeholder = "angle*h*v"
+                   )
+                   
             ),
 
             column(width = 12,
-
-              numericInput(
-                inputId ="bpsize",
-                label = "Size",
-                value = 2,
-                min = 0,
-                step = 0.1)
+              
+              textInput(
+                inputId ="bpopt"
+                , label = "Opt"
+                , placeholder = "extra layer"
+                )
             )
 
             ),
-
+          
+          
+          box(width = 3, background = "black",
+              
+              
+              column(width = 6,
+                     
+                     numericInput(
+                       inputId ="bpwd"
+                       , label = "Width (cm)"
+                       , value = 20
+                       , step = 2
+                     )
+                     
+              ),
+              
+              column(width = 6,
+                     
+                     numericInput(
+                       inputId = "bphg"
+                       , label = "Height (cm)"
+                       , value = 10
+                       , step = 2
+                     )
+                     
+              ),
+              
+              column(width = 6,
+                     
+                     numericInput(
+                       inputId ="bprs"
+                       , label = "Resolution (dpi)"
+                       , value = 100
+                       , step = 50
+                     )
+                     
+              ),
+              
+              column(width = 6,
+                     
+                     selectInput(
+                       inputId = "bplg"
+                       , label = "Legend"
+                       , choices = c("top", "bottom", "left", "right", "none")
+                       )
+                     ),
+              ),
+          
           shiny::fluidRow(
           
           box(width = 12,
-
-          plotOutput("boxplot")
+              
+              div(imageOutput("boxplot"), align = "center")
 
           )
           
