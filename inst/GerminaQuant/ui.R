@@ -98,7 +98,7 @@ shinyUI(dashboardPage(skin = "green",
                   
                   <div style="display:inline-block; width:48%">
                   <p style="text-align:center">
-                  <a target="_blank" href="https://youtube.com/playlist?list=PLSQMdOu57lj9QUoA6JLuv0nBTYacuyrbg"><img src="https://github.com/Flavjack/inti/raw/master/man/figures/youtube.png" style="height:70px" title="Demo" alt="Demo"></a> 
+                  <a target="_blank" href="https://youtube.com/playlist?list=PLSQMdOu57lj9QUoA6JLuv0nBTYacuyrbg"><img src="https://lozanoisla.com/img/youtube.png" style="height:70px" title="Demo" alt="Demo"></a> 
                   <span style="display:block;"><small>Demo</small></span>
                   </p></div>
               

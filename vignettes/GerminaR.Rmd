@@ -16,6 +16,29 @@ vignette: >
 source("http://lozanoisla.com/lectures/setup.r")
 ```
 
+GerminaR is a platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called “GerminQuant for R” for non programming user.
+
+```{=html}
+<div id=footer style="width:100%; margin:auto;">
+
+<div style="display:inline-block; width:49%">
+<p style="text-align:center">
+<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:70px" title="R cran" alt="GerminaR"></a> 
+<span style="display:block;"><small>GerminaR</small></span>
+</p></div>
+
+<div style="display:inline-block; width:49%">
+<p style="text-align:center">
+<a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:70px" title="GerminaR" alt="GerminaR"></a> 
+<span style="display:block;"><small>Project</small></span>
+</p></div>
+
+</div>
+```
+
+
+
+
 Analysis for the germination experiment can follow a routine. The functions will de explain according to the data set included in the GerminaR package: "*prosopis*". 
 
 1. Install and load the GerminaR package. Load the "*prosopis*" dataset on your session. In case of using another dataset, you can load your own data and proceed according to the following script:
@@ -131,7 +154,7 @@ mgt <- mc_mgt$table %>%
        , x = "temp"
        , y = "mgt"
        , group = "nacl"
-       , ylimits = c(0,9, 1)
+       , ylimits = c(0,10, 1)
        , ylab = "Mean germination time (days)"
        , xlab = "Temperature (ºC)"
        , glab = "NaCl (MPa)"

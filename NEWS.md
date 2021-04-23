@@ -12,6 +12,7 @@ Changes incompatible with the old versions. Arguments changed in the syntax for 
     - Allow add new layer. e.g. `coord_flip()`
 
 - *GerminaQuant*
+  - Include demo videos for the app
   - Suppress error messages in console when run the app
   - Change dependency: `ggpubr` --> `cowplot`
   - Exclude filter in the app

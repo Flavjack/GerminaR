@@ -24,7 +24,7 @@ Imports:
     tidyr,
     tibble,
     purrr,
-    DT,
+    DT
 Suggests:
     knitr,
     rmarkdown,
