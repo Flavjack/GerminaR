@@ -13,26 +13,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-library(shiny)
-library(knitr)
-
-knitr::opts_chunk$set(
-    fig.align = "center" # Center images in the export file
-  , out.width = "98%" # Figure width in html
-  , echo = FALSE # Avoid print code in the export file
-  , message = FALSE # Avoid print messages in the export file
-  , warning = FALSE # Avoid print messages in the export file
-  , collapse = TRUE
-  , comment = "#>"
-  )
-
-options(
-    OutDec= "." # Use "." instead of "," in the decimal values
-  , scipen = 99 # Avoid use "6e-04"
-  , knitr.kable.NA = "" # NA values will appear as empty cell
-  , knitr.table.format = "pipe" # Format for export tables
-  , citr.use_betterbiblatex = FALSE # For zotero addin 
-  ) 
+source("http://lozanoisla.com/lectures/setup.r")
 ```
 
 Analysis for the germination experiment can follow a routine. The functions will de explain according to the data set included in the GerminaR package: "*prosopis*". 
@@ -43,7 +24,6 @@ Analysis for the germination experiment can follow a routine. The functions will
 # Install packages and dependencies
 
 library(GerminaR)
-library(dplyr)
 
 # load data
 
@@ -108,13 +88,11 @@ grp <- mc_grp$table %>%
        , type = "bar"
        , x = "temp"
        , y = "grp"
-       , groups = "nacl"
-       , limits = c(0,150)
-       , brakes = 30
+       , group = "nacl"
+       , ylimits = c(0,120, 30)
        , ylab = "Germination ('%')"
        , xlab = "Temperature (ºC)"
        , glab = "NaCl (MPa)"
-       , legend = "top"
        , error = "ste"
        , sig = "sig"
        , color = F
@@ -152,13 +130,11 @@ mgt <- mc_mgt$table %>%
        , type = "bar" 
        , x = "temp"
        , y = "mgt"
-       , groups = "nacl"
-       , limits = c(0,9)
-       , brakes = 1
+       , group = "nacl"
+       , ylimits = c(0,9, 1)
        , ylab = "Mean germination time (days)"
        , xlab = "Temperature (ºC)"
        , glab = "NaCl (MPa)"
-       , legend = "top"
        , sig = "sig"
        , error = "ste"
        , color = T
@@ -199,13 +175,11 @@ nacl <- git %>%
         , type = "line"
         , x = "evaluation"
         , y = "mean"
-        , groups = "nacl"
-        , limits = c(0, 110)
-        , brakes = 10
+        , group = "nacl"
+        , ylimits = c(0, 110, 10)
         , ylab = "Germination ('%')"
         , xlab = "Day"
         , glab = "NaCl (MPa)"
-        , legend = "top"
         , color = T
         , error = "ste"
         )
@@ -238,13 +212,11 @@ temp <- git %>%
         , type = "line"
         , x = "evaluation"
         , y = "mean"
-        , groups = "temp"
-        , limits = c(0, 110)
-        , brakes = 10
+        , group = "temp"
+        , ylimits = c(0, 110, 10)
         , ylab = "Germination ('%')"
         , xlab = "Day"
         , glab = "Temperature ('°C')"
-        , legend = "top"
         , color = F
         ) 
 temp
@@ -271,21 +243,16 @@ ggplot <- git %>%
         , type = "line"
         , x = "evaluation"
         , y = "mean"
-        , groups = "temp"
-        , limits = c(0, 110)
-        , brakes = 10
+        , group = "temp"
+        , ylimits = c(0, 110, 10)
         , ylab = "Germination ('%')"
         , xlab = "Day"
         , glab = "Temperature ('°C')"
-        , legend = "top"
-        , color = F
+        , color = T
         ) +
-   scale_x_continuous(n.breaks = 10
-                      , limits = c(0, 11)
-                      ) 
+  scale_x_continuous(n.breaks = 10, limits = c(0, 11)) 
 
 ggplot
-
 ```
 
 # References {-}

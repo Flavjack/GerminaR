@@ -201,6 +201,9 @@ boxplot <- reactive({
 
 output$boxplot <- renderImage({
   
+  validate(need(boxplot(), "Choose your variables"))
+  
+  
   dpi <- input$bprs
   ancho <- input$bpwd
   alto <- input$bphg
@@ -249,8 +252,6 @@ output$stat_factor <- renderUI({
   )
 
 })
-
-
 
 output$stat_block <- renderUI({
 
@@ -367,14 +368,15 @@ output$mnc <-  DT::renderDataTable(server = FALSE, {
   
   webTable(data = file
            , file_name = input$stat_rsp)
-  
-})
+  })
 
 # descriptive Statistics
 
-output$stat_summary = renderTable({
+output$stat_summary <-  DT::renderDataTable(server = FALSE, {
   
-  comp()$stats
+  webTable(data = comp()$stats
+           , scrolly = "12vh"
+           , buttons = "copy")
   
 })
 
@@ -391,8 +393,8 @@ output$modelplots <- renderPlot({
 # -------------------------------------------------------------------------
 
 stat_plot <- reactive({
-
-df <- comp()$table
+  
+  validate(need(input$stat_fact, "Choose your factors and response variable"))
 
 if ( length(input$stat_fact) == 1 ) {
   
@@ -406,47 +408,52 @@ if ( length(input$stat_fact) == 1 ) {
   
 }
 
-if ( !is.na(input$plot_limit1) & !is.na(input$plot_limit2) ) {
-  
-  limits <- c(input$plot_limit1, input$plot_limit2)
-  
-} else { limits <- NULL }
+ylimits <- input$plot_ylimits %>% 
+  strsplit(split = "[*]") %>% 
+  unlist() %>% 
+  as.numeric()
 
-if (is.na(input$plot_ybrakes)) { ybrakes <- NULL } else { ybrakes <- input$plot_ybrakes }
+plot_xrotation <- input$plot_xrotation %>% 
+  strsplit(split = "[*]") %>% 
+  unlist() %>% 
+  as.numeric()
 
-if ( input$plot_ylab == "" ) { ylab <- NULL } else { ylab <- input$plot_ylab }
-if ( input$plot_xlab == "" ) { xlab <- NULL } else { xlab <- input$plot_xlab }
-if ( input$plot_glab == "" ) { glab <- NULL } else { glab <- input$plot_glab }
+xtext <- input$plot_xbrakes %>% 
+  strsplit(split = ",") %>% 
+  unlist()
 
-if (input$plot_sig == "no") { sig <- NULL } else { sig <- input$plot_sig }
+gtext <- input$plot_gbrakes %>% 
+  strsplit(split = ",") %>% 
+  unlist() 
 
 # -------------------------------------------------------------------------
 
-   pt <- fplot(data = df
-               , type = input$plot_type
-               , x = xvar
-               , y = input$stat_rsp
-               , groups = gvar
-               , ylab = ylab
-               , xlab = xlab
-               , glab = glab
-               , legend = input$plot_legend
-               , sig = sig
-               , error = input$plot_error
-               , limits = limits
-               , brakes = ybrakes
-               , xbrks = NULL
-               , gbrks = NULL
-               , color = input$plot_color
-               )
-   
-   pt
+fplot(data = comp()$table
+      , type = input$plot_type
+     , x = xvar
+     , y = input$stat_rsp
+     , group = gvar
+     , ylab = if (input$plot_ylab == "") NULL else input$plot_ylab
+     , xlab = if (input$plot_xlab == "") NULL else input$plot_xlab
+     , glab = if (input$plot_glab == "") NULL else input$plot_glab
+     , legend = input$plot_legend
+     , sig = if(input$plot_sig == "no") NULL else input$plot_sig
+     , error = input$plot_error
+     , color = if(input$plot_color == "yes") TRUE else FALSE
+     , ylimits = if(input$plot_ylimits == "") NULL else ylimits
+     , xtext = if(input$plot_xbrakes == "") NULL else xtext
+     , gtext = if(input$plot_gbrakes == "") NULL else gtext
+     , xrotation = if(input$plot_xrotation == "") NULL else plot_xrotation
+     , opt = if(input$plot_opt == "") NULL else input$plot_opt
+     )
 
 })
 
 # plot output -------------------------------------------------------------
 
 output$plotgr <- renderImage({
+  
+  validate(need(stat_plot(), "Choose your model"))
   
   dpi <- input$plot_res
   ancho <- input$plot_width
@@ -482,6 +489,8 @@ output$smvar <- renderUI({
 
 gnt <- reactive({
   
+  validate(need(input$summary_by, "Choose your factor"))
+  
   inFile <- data_fb()
   
   if (is.null(inFile)) { return(NULL) }
@@ -489,59 +498,65 @@ gnt <- reactive({
   else if (input$summary_by ==''){ return(NULL) }
   
   else {
-
-    smt <- ger_intime(Factor = input$summary_by
-                      , SeedN = input$SeedN
-                      , evalName = input$evalName
-                      , method = input$intime_type
-                      , data = inFile
-                      )
+    
+    ts <- ger_intime(Factor = input$summary_by
+               , SeedN = input$SeedN
+               , evalName = input$evalName
+               , method = input$intime_type
+               , data = inFile
+               )
   }
 
 })
 
 intime_plot <- reactive({
   
-  validate(need( input$summary_by, "Select your response variable" ) )
+  validate(need( gnt(), "Select your response variable" ) )
   
-  if ( !is.na(input$intime_limit1) & !is.na(input$intime_limit2) ) {
-    
-    limits <- c(input$intime_limit1, input$intime_limit2)
-    
-  } else { limits <- NULL }
-  
-  if (is.na(input$intime_ybrakes)) { ybrakes <- NULL } else { ybrakes <- input$intime_ybrakes }
-  
-  if ( input$intime_ylab == "" ) { ylab <- NULL } else { ylab <- input$intime_ylab }
-  if ( input$intime_xlab == "" ) { xlab <- NULL } else { xlab <- input$intime_xlab }
-  if ( input$intime_glab == "" ) { glab <- NULL } else { glab <- input$intime_glab }
-  
+  ylimits <- input$intime_ylimits %>%
+    strsplit(split = "[*]") %>%
+    unlist() %>%
+    as.numeric()
+
+  plot_xrotation <- input$intime_xrotation %>%
+    strsplit(split = "[*]") %>%
+    unlist() %>%
+    as.numeric()
+
+  xtext <- input$intime_xbrakes %>%
+    strsplit(split = ",") %>%
+    unlist()
+
+  gtext <- input$intime_gbrakes %>%
+    strsplit(split = ",") %>%
+    unlist()
+
   # -------------------------------------------------------------------------
   
-  pt <- fplot(data =  gnt()
-              , type = "line"
-              , x = "evaluation"
-              , y = "mean"
-              , groups = input$summary_by
-              , ylab = ylab
-              , xlab = xlab
-              , glab = glab
-              , legend = input$intime_legend
-              , sig = NULL
-              , error = input$intime_error
-              , limits = limits
-              , brakes = ybrakes
-              , xbrks = NULL
-              , gbrks = NULL
-              , color = input$intime_color
-  )
-  
-  pt
+  fplot(data = gnt()
+        , type = "line"
+        , x = "evaluation" 
+        , y = "mean"
+        , group = input$summary_by
+        , ylab = if (input$intime_ylab == "") NULL else input$intime_ylab
+        , xlab = if (input$intime_xlab == "") NULL else input$intime_xlab
+        , glab = if (input$intime_glab == "") NULL else input$intime_glab
+        , legend = input$intime_legend
+        , color = if(input$intime_color == "yes") TRUE else FALSE
+        , ylimits = if(input$intime_ylimits == "") NULL else ylimits
+        , xrotation = if(input$intime_xrotation == "") NULL else plot_xrotation
+        , xtext = if(input$intime_xbrakes == "") NULL else xtext
+        , gtext = if(input$intime_gbrakes == "") NULL else gtext
+        , error = input$intime_error
+        , opt = if(input$intime_opt == "") NULL else input$intime_opt
+        )
   
 })
 
 
 output$intime_plot <- renderImage({
+  
+  validate(need(intime_plot(), "Select your factor"))
   
   dpi <- input$intime_res
   ancho <- input$intime_width
@@ -580,8 +595,4 @@ output$ops <- reactive({
 
 
 })
-
-
-# end germinaquant --------------------------------------------------------
-# -------------------------------------------------------------------------
 

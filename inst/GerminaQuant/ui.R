@@ -486,8 +486,7 @@ shinyUI(dashboardPage(skin = "green",
             
             column(width = 12,
                    
-                   tableOutput("stat_summary")
-                   
+                   DT::dataTableOutput("stat_summary")
             )
 
           ),
@@ -528,172 +527,198 @@ shinyUI(dashboardPage(skin = "green",
 
         tabItem(tabName = "graph",
                 
-                
           fluidRow(
                 
-          column( width = 10,
+          column( width = 12,
 
-            box(width = 5, title = NULL, background = "blue",
-
-                      column(width = 12,
-
-                        textInput(
+            box(width = 6, title = NULL, background = "blue",
+                
+                column(width = 4,
+                       
+                       textInput(
                           inputId ="plot_ylab",
                           label = "Y label")
 
                       ),
+                
+                column(width = 4,
 
-                      column(width = 4,
-
-                        numericInput(
-                          inputId ="plot_ybrakes",
-                          label = "Brakes",
-                          value = NA,
-                          min = 0
-                        )
+                        textInput(inputId ="plot_xlab", label = "X label")
 
                       ),
+                
+                column(width = 4,
+                       
+                       textInput(inputId ="plot_glab"
+                                 , label = "Group label")
+                       
+                ),
+                
+                
+                column(width = 4),
+                
+                
+                column(width = 4,
 
-                      column(width = 4,
-
-                        numericInput(
-                          inputId ="plot_limit1",
-                          label = "Limit (i)",
-                          value = NA
-                        )
+                        textInput(inputId ="plot_xbrakes"
+                                  , label = "X brake labels (,)")
 
                       ),
+                
+                column(width = 4,
 
-                      column(width = 4,
+                      textInput(inputId ="plot_gbrakes"
+                                , label = "Group brake labels (,)")
 
-
-                        numericInput(
-                          inputId ="plot_limit2",
-                          label = "Limit (f)",
-                          value = NA
-                        )
-
-                      )
-
+                    ),
+                
               ),
 
-            box(width = 4, title = NULL, background = "green",
 
-                  column(width = 12,
-
-                    textInput(inputId ="plot_xlab", label = "X label")
-
-                  ),
-
-                  column(width = 12,
-
-                    textInput(inputId ="plot_xbrakes", label = "Brake labels")
-
-                  )
-
+            
+            box(width = 3, background = "black",
+                
+                
+                column(width = 6,
+                       
+                       textInput(
+                         inputId ="plot_ylimits"
+                         , label = "Y limits"
+                         , value = NULL
+                         , placeholder = "0*100*20"
+                       )
+                       
+                ),
+                
+                column(width = 6,
+                       
+                       textInput(
+                         inputId ="plot_xrotation"
+                         , label = "X rotation"
+                         , value = "0*0.5*0.5"
+                         , placeholder = "angle*h*v"
+                       )
+                       
+                ),
+                
+                column(width = 12,
+                       
+                       textInput(
+                         inputId ="plot_opt"
+                         , label = "Opt"
+                         , placeholder = "extra layer"
+                       )
+                )
+                
             ),
-
-            box(width = 3, background = "red",
-
-                  column(width = 12,
-
-                    textInput(inputId ="plot_glab", label = "Groups label")
-
-                  ),
+            
+            box(width = 3, background = "black",
+                
+                column(width = 6,
+                       
+                       numericInput(
+                         inputId ="plot_width"
+                         , label = "Width (cm)"
+                         , value = 20
+                         , step = 2
+                       )
+                       
+                ),
+                
+                column(width = 6,
+                       
+                       numericInput(
+                         inputId = "plot_height"
+                         , label = "Height (cm)"
+                         , value = 10
+                         , step = 2
+                       )
+                       
+                ),
+                
+                column(width = 6,
+                       
+                       numericInput(
+                         inputId ="plot_res"
+                         , label = "Resolution (dpi)"
+                         , value = 100
+                         , step = 50
+                       )
+                       
+                ),
+                
+                column(width = 6,
+                       
+                       selectInput(
+                         inputId = "plot_legend"
+                         , label = "Legend"
+                         , choices = c("top"
+                                       , "bottom"
+                                       , "left"
+                                       , "right"
+                                       , "none")
+                       )
+                ),
+            ),
+            
+            shiny::fluidRow(
+              
+              box(width = 10,
+                  
+                  div(imageOutput("plotgr"), align = "center")
+                  
+              ), 
+              
+              column(width = 2,
 
                 column(width = 12,
 
-                  textInput(inputId ="plot_gbrakes", label = "Brake labels")
+                  radioButtons(
+                    inputId ="plot_type",
+                    label = "Type",
+                    choices = c("bar", "line"),
+                    inline = TRUE
+                    )
+                ),
 
+                column(width = 12,
+
+                  radioButtons(
+                    inputId ="plot_color",
+                    label = "Color",
+                    choices = c("yes"
+                                , "no"
+                                ),
+                    inline = TRUE)
+                ),
+
+                column(width = 12,
+
+                  radioButtons(
+                    inputId ="plot_sig",
+                    label = "Significance",
+                    choices = c("yes" = "sig"
+                                , "no" 
+                                ),
+                    inline = TRUE)
+                ),
+
+                column(width = 12,
+
+                  radioButtons(
+                    inputId ="plot_error",
+                    label = "Error",
+                    choices = c("ste"
+                                , "std"
+                                ),
+                    inline = TRUE)
                 )
 
-            ),
-
-              div(imageOutput("plotgr"), align = "center")
-            
-            ),
-
-          column(width = 2,
-
-            column(width = 12,
-
-              radioButtons(
-                inputId ="plot_type",
-                label = "Type",
-                choices = c("bar", "line"),
-                inline = TRUE
-                )
-            ),
-
-            column(width = 12,
-
-              radioButtons(
-                inputId ="plot_color",
-                label = "Color",
-                choices = c("yes" = TRUE
-                            , "no" = FALSE
-                            ),
-                inline = TRUE)
-            ),
-
-            column(width = 12,
-
-              radioButtons(
-                inputId ="plot_sig",
-                label = "Significance",
-                choices = c("yes" = "sig"
-                            , "no"
-                            ),
-                inline = TRUE)
-            ),
-
-            column(width = 12,
-
-              radioButtons(
-                inputId ="plot_error",
-                label = "Error",
-                choices = c("ste"
-                            , "std"
-                            ),
-                inline = TRUE)
-            ),
-
-            column(width = 12,
-
-              selectInput(
-                inputId ="plot_legend",
-                label = "Legend",
-                choices = c("top", "bottom", "left", "right", "none")
-                )
-            ),
-            
-            column(width = 12,
-                   
-                   numericInput('plot_width', 'Width (cm)',
-                                value = 20,
-                                min = 5,
-                                step = 5)
-                   
-            ),
-
-            column(width = 12,
-
-              numericInput('plot_height', 'Height (cm)',
-                value = 10,
-                min = 5,
-                step = 5)
-             ),
-
-            column(width = 12,
-                   
-                   numericInput('plot_res', 'Resolution (dpi)',
-                                value = 100,
-                                min = 50,
-                                step = 50)
-                   
+              )
+              
             )
-
-          )
+            
+            )
           
           )
 
@@ -704,179 +729,201 @@ shinyUI(dashboardPage(skin = "green",
 
 tabItem(tabName = "germint",
         
-        column( width = 10,
-             
-             
-             box(width = 5, title = NULL, background = "blue",
-                 
-                 
-                 column(width = 12,
-                        
-                        textInput(
-                          inputId ="intime_ylab",
-                          label = "Y label",
-                          value = "Germination ('%')")
-                        
-                        
-                 ),
-                 
-                 column(width = 4,
-                        
-                        
-                        numericInput(
-                          inputId ="intime_ybrakes",
-                          label = "Brakes",
-                          value = NA,
-                          min = 0
-                        )
-                        
-                 ),
-                 
-                 
-                 column(width = 4,
-                        
-                        
-                        numericInput(
-                          inputId ="intime_limit1",
-                          label = "Limit (i)",
-                          value = NA
-                        )
-                        
-                 ),
-                 
-                 
-                 column(width = 4,
-                        
-                        
-                        numericInput(
-                          inputId ="intime_limit2",
-                          label = "Limit (f)",
-                          value = NA
-                        )
-                        
-                 )
-                 
-             ),
-             
-             box(width = 4, title = NULL, background = "green",
-                 
-                 column(width = 12,
-                        
-                        textInput(inputId ="intime_xlab", label = "X label", value = "Time")
-                        
-                        
-                 ),
-                 
-                 column(width = 12,
-                        
-                        textInput(inputId ="intime_xbrake", label = "Brake labels", value = "")
-                        
-                        
-                 )
-             ),
-             
-             
-             box(width = 3, background = "red",
-                 
-                 column(width = 12,
-                        
-                        textInput(inputId ="intime_glab", label = "Legend", value = "")
-                        
-                        
-                 ),
-                 
-                 
-                 column(width = 12,
-                        
-                        textInput(inputId ="intime_gbrakes", label = "Brake Text", value = "")
-                        
-                        
-                 )
-                 
-             ),
-             
-               div(imageOutput("intime_plot"), align = "center")
-
-        ),
         
-          column(width = 2,
-              
-              
-              column(width = 12,
-                     
-                     
-                     uiOutput('smvar')
-                     
-              ),
-              
-              column(width = 12,
-                     
-                     
-                     radioButtons(
-                       inputId ="intime_type",
-                       label = "Type",
-                       choices = c("percentage", "relative"),
-                       selected = "percentage",
-                       inline = F)
-              ),
-              
-              column(width = 12,
-              
-              radioButtons(
-                inputId ="intime_color",
-                label = "Color",
-                choices = c("yes" = TRUE
-                            , "no" = FALSE
-                ),
-                inline = TRUE),
-              
-              ),
-
-              column(width = 12,
-               
-               radioButtons(
-                 inputId ="intime_error",
-                 label = "Error",
-                 choices = c("ste"
-                             , "std"
-                 ),
-                 inline = TRUE)
-        ),
-        
-        column(width = 12,
-               
-               selectInput(
-                 inputId ="intime_legend",
-                 label = "Legend",
-                 choices = c("top", "bottom", "left", "right", "none")
-               )
-        ),
-        
-        column(width = 12,
-               
-               numericInput('intime_width', 'Width (cm)',
-                            value = 20,
-                            min = 5,
-                            step = 5)
-        ),
-        
-        column(width = 12,
-               
-               numericInput('intime_height', 'Height (cm)',
-                            value = 10,
-                            min = 5,
-                            step = 5)
-        ),
-        
-        column(width = 12,
-               
-               numericInput('intime_res', 'Resolution (dpi)',
-                            value = 100,
-                            min = 50,
-                            step = 50)
-               )
-        )
+        fluidRow(
           
+          column( width = 12,
+                  
+                  box(width = 6, title = NULL, background = "blue",
+                      
+                      column(width = 4,
+                             
+                             textInput(
+                               inputId ="intime_ylab",
+                               label = "Y label"
+                               , value = "Germination ('%')")
+                             
+                      ),
+                      
+                      column(width = 4,
+                             
+                             textInput(inputId ="intime_xlab"
+                                       , label = "X label"
+                                       , value = "Time")
+                             
+                      ),
+                      
+                      column(width = 4,
+                             
+                             textInput(inputId ="intime_glab"
+                                       , label = "Group label")
+                             
+                      ),
+                      
+                      
+                      column(width = 4),
+                      
+                      
+                      column(width = 4,
+                             
+                             textInput(inputId ="intime_xbrakes"
+                                       , label = "X brake labels (,)")
+                             
+                      ),
+                      
+                      column(width = 4,
+                             
+                             textInput(inputId ="intime_gbrakes"
+                                       , label = "Group brake labels (,)")
+                             
+                      ),
+                      
+                  ),
+                  
+                  
+                  
+                  box(width = 3, background = "black",
+                      
+                      
+                      column(width = 6,
+                             
+                             textInput(
+                               inputId ="intime_ylimits"
+                               , label = "Y limits"
+                               , value = NULL
+                               , placeholder = "0*100*20"
+                             )
+                             
+                      ),
+                      
+                      column(width = 6,
+                             
+                             textInput(
+                               inputId ="intime_xrotation"
+                               , label = "X rotation"
+                               , value = "0*0.5*0.5"
+                               , placeholder = "angle*h*v"
+                             )
+                             
+                      ),
+                      
+                      column(width = 12,
+                             
+                             textInput(
+                               inputId ="intime_opt"
+                               , label = "Opt"
+                               , placeholder = "extra layer"
+                             )
+                      )
+                      
+                  ),
+                  
+                  box(width = 3, background = "black",
+                      
+                      column(width = 6,
+                             
+                             numericInput(
+                               inputId ="intime_width"
+                               , label = "Width (cm)"
+                               , value = 20
+                               , step = 2
+                             )
+                             
+                      ),
+                      
+                      column(width = 6,
+                             
+                             numericInput(
+                               inputId = "intime_height"
+                               , label = "Height (cm)"
+                               , value = 10
+                               , step = 2
+                             )
+                             
+                      ),
+                      
+                      column(width = 6,
+                             
+                             numericInput(
+                               inputId ="intime_res"
+                               , label = "Resolution (dpi)"
+                               , value = 100
+                               , step = 50
+                             )
+                             
+                      ),
+                      
+                      column(width = 6,
+                             
+                             selectInput(
+                               inputId = "intime_legend"
+                               , label = "Legend"
+                               , choices = c("top"
+                                             , "bottom"
+                                             , "left"
+                                             , "right"
+                                             , "none")
+                             )
+                      ),
+                  ),
+                  
+                  shiny::fluidRow(
+                    
+                    box(width = 10,
+                        
+                        div(imageOutput("intime_plot"), align = "center")
+                        
+                    ), 
+                    
+                    column(width = 2,
+                           
+                           column(width = 12,
+                                  
+                                  uiOutput('smvar')
+
+                                 ),
+                           
+                           column(width = 12,
+
+
+                                  radioButtons(
+                                    inputId ="intime_type",
+                                    label = "Type",
+                                    choices = c("percentage", "relative"),
+                                    selected = "percentage",
+                                    inline = F)
+                           ),
+                           
+                           column(width = 12,
+                                  
+                                  radioButtons(
+                                    inputId ="intime_color",
+                                    label = "Color",
+                                    choices = c("yes"
+                                                , "no"
+                                    ),
+                                    inline = TRUE)
+                           ),
+                           
+                           column(width = 12,
+                                  
+                                  radioButtons(
+                                    inputId ="intime_error",
+                                    label = "Error",
+                                    choices = c("ste"
+                                                , "std"
+                                    ),
+                                    inline = TRUE)
+                           )
+                           
+                    )
+                    
+                  )
+                  
+          )
+          
+        )
+        
 ),
 
 # tools -------------------------------------------------------------------

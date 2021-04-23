@@ -10,7 +10,8 @@ webTable(
   digits = 3,
   rnames = FALSE,
   buttons = NULL,
-  file_name = NULL
+  file_name = NULL,
+  scrolly = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ webTable(
 \item{buttons}{Buttons: "excel", "copy" or "none". Default c("excel", "copy")}
 
 \item{file_name}{Excel file name}
+
+\item{scrolly}{Windows height to show the table}
 }
 \description{
 Web table

@@ -1,17 +1,25 @@
 # Version 2.1.1
 
+Changes incompatible with the old versions. Arguments changed in the syntax for `fplot()`.
+
 - *Package*
   - Include app info when run `GerminaQuant()`
-  - Include function `webTable`
+  - Exclude `gtools` from depends
+  - Include function `webTable()`
   - Update `ger_boxp()`
-  
+  - Update `fplot()`
+    - Allow add new layer. e.g. `coord_flip()`
+
 - *GerminaQuant*
   - Suppress error messages in console when run the app
   - Change dependency: `ggpubr` --> `cowplot`
   - Exclude filter in the app
   - Update tables style
-  - Module: Outliers -> Exploratory
-  - Include more options at Exploratory module
+  - Module name change: Outliers -> Exploratory
+  - Update modules:
+    - Exploratory
+    - Graphics
+    - Intime
 
 # Version 2.0.1
 

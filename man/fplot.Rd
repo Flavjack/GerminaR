@@ -9,18 +9,19 @@ fplot(
   type = "bar",
   x,
   y,
-  groups,
+  group = NULL,
   xlab = NULL,
   ylab = NULL,
   glab = NULL,
+  ylimits = NULL,
+  xrotation = NULL,
+  xtext = NULL,
+  gtext = NULL,
   legend = "top",
   sig = NULL,
-  error = "ste",
-  limits = NULL,
-  brakes = NULL,
-  xbrks = NULL,
-  gbrks = NULL,
-  color = TRUE
+  error = NULL,
+  color = TRUE,
+  opt = NULL
 )
 }
 \arguments{
@@ -32,7 +33,7 @@ fplot(
 
 \item{y}{Axis y variable}
 
-\item{groups}{Group variable}
+\item{group}{Group variable}
 
 \item{xlab}{Title for the axis x}
 
@@ -40,21 +41,23 @@ fplot(
 
 \item{glab}{Title for the legend}
 
+\item{ylimits}{limits of the y axis}
+
+\item{xrotation}{Rotation in x axis c(angle, h, v)}
+
+\item{xtext}{Text labels in x axis}
+
+\item{gtext}{Text labels in groups}
+
 \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
 \item{sig}{Column with the significance}
 
 \item{error}{Show the error bar ("ste" or "std").}
 
-\item{limits}{limits of the y axis}
-
-\item{brakes}{break of the y axis}
-
-\item{xbrks}{axis brakes labels in string with double space}
-
-\item{gbrks}{legend label in string with double space}
-
 \item{color}{colored figure (TRUE), otherwise black & white (FALSE)}
+
+\item{opt}{Add news layer to the plot}
 }
 \value{
 Line o bar plot
@@ -68,27 +71,44 @@ Function use the dtsm function for plot the results
 \dontrun{
 
 library(GerminaR)
-library(dplyr)
-data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 
-aov <- aov(grp ~ nacl*temp, smr)
+smr <- ger_summary(SeedN = "seeds"
+                   , evalName = "D"
+                   , data = prosopis) \%>\%
+  mutate(across(rep:temp, as.factor))
+  
+av <- aov(grp ~ nacl*temp, smr)
+anova(av)
 
-mc <- ger_testcomp(aov = aov
-                   , comp = c("nacl", "temp")
-                   )
+mc <- ger_testcomp(aov = av
+                   , comp = c("nacl", "temp"))
                    
-data <- mc$table
+plotdt <- mc$table
                     
- fplot(data = data
+ fplot(data = plotdt
        , type = "line"
        , x = "temp"
        , y = "grp"
-       , groups = "nacl"
-       , limits = c(0,150)
-       , brakes = 20
-       , color = FALSE
+       , group = "nacl"
+       , sig = "sig"
+       , error = "ste"
+       , color = F
+       , ylimits = c(0, 120, 20)
+       , xtext = c(1:5)
+       , gtext = c(1:5)
+       )
+       
+ fplot(data = plotdt
+       , type = "li"
+       , x = "temp"
+       , y = "grp"
+       , group = "nacl"
+       , sig = "sig"
+       , error = "ste"
+       , color = F
+       , ylimits = c(0, 120, 20)
        )
                    
 } 
+
 }
