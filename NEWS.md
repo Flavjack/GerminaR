@@ -7,6 +7,7 @@ Changes incompatible with the old versions. Arguments changed in the syntax for 
   - Exclude `gtools` from depends
   - Include function `webTable()`
   - Update `ger_boxp()`
+  - New domain: germinar.inkaverse.com
   - Update `fplot()`
     - Allow add new layer. e.g. `coord_flip()`
 

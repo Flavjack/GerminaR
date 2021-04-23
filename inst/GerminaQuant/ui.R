@@ -87,20 +87,26 @@ shinyUI(dashboardPage(skin = "green",
                   <code>GerminaR::GerminaQuant()</code>
                   <br>
                   <br>
-                  <div id=footer style="width:100%; margin:auto;">
                   
-                  <div style="display:inline-block; width:100%">
+                  <div id=footer style="width:100%; margin:auto;">
+
+                  <div style="display:inline-block; width:48%">
                   <p style="text-align:center">
                   <a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:75px" title="GerminaR" alt="GerminaR"></a> 
                   <span style="display:block;"><small>GerminaR</small></span>
                   </p></div>
-
+                  
+                  <div style="display:inline-block; width:48%">
+                  <p style="text-align:center">
+                  <a target="_blank" href="https://youtube.com/playlist?list=PLSQMdOu57lj9QUoA6JLuv0nBTYacuyrbg"><img src="https://github.com/Flavjack/inti/raw/master/man/figures/youtube.png" style="height:70px" title="Demo" alt="Demo"></a> 
+                  <span style="display:block;"><small>Demo</small></span>
+                  </p></div>
+              
                   </div>
                     
                   ')
 
                 ),
-
 
                 box(width = 5, 
                     title = "Characteristics", 
