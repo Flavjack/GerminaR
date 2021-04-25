@@ -1,3 +1,12 @@
+# Version 2.1.2
+
+- *Package*
+  - `fplot()` absolute values to ybrakes
+  
+- *Pending*
+  - Include multiple layers []
+  - `ger_intime()` significance differences
+
 # Version 2.1.1
 
 Changes incompatible with the old versions. Arguments changed in the syntax for `fplot()`.

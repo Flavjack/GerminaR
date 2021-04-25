@@ -310,7 +310,7 @@ fplot <- function(data
       if(!is.null(ylimits))
         scale_y_continuous(
           limits = ylimits[1:2] 
-          , breaks = seq(ylimits[1], ylimits[2], by = ylimits[3])
+          , breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3]))
           , expand = c(0,0)
         )
     } + 
