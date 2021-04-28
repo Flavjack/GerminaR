@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-04-28
+#> date .: 2021-04-29
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -13,7 +13,6 @@
 
 #> devtools::install_github("flavjack/GerminaR")
 
-source("msgs.R")
 suppressPackageStartupMessages({source("pkgs.R")})
 
 # app ---------------------------------------------------------------------
