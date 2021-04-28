@@ -85,9 +85,11 @@ ger_boxp <- function(data
   
   if(is.null(xrotation)) xrotation <- c(0, 0.5, 0.5) 
   if(is.null(group)) group <- x else group <- group 
+  
+  plotdt <- data %>% 
+    mutate(across(c({{x}}, {{group}}), as.factor))
 
-  data %>% 
-    mutate(across(c({{x}}, {{group}}), as.factor)) %>% 
+  plot <- plotdt %>% 
     ggplot(., aes(x = .data[[x]]
                   , y = .data[[y]]
                   , fill = .data[[group]]
@@ -108,7 +110,12 @@ ger_boxp <- function(data
       x = if(is.null(xlab)) x else xlab
       , y = if(is.null(ylab)) y else ylab
       , fill = if(is.null(glab)) group else glab
-    ) +
+    ) + 
+  {if(!is.null(gtext)) scale_fill_discrete(labels = gtext)} + 
+  {if(!is.null(xtext)) scale_x_discrete(labels = xtext)} 
+  
+
+layers <- 'plot +
     theme_minimal() +
     theme(
       panel.background = element_rect(fill = "transparent")
@@ -121,12 +128,12 @@ ger_boxp <- function(data
       , axis.text.x = element_text(angle = xrotation[1]
                                    , hjust= xrotation[2]
                                    , vjust = xrotation[3])
-      ) + {
-        if(!is.null(gtext)) scale_fill_discrete(labels = gtext)
-      } + {
-        if(!is.null(xtext)) scale_x_discrete(labels = xtext)
-      } + {
-        if(!is.null(opt)) eval(parse(text= opt))
-      }
-  
+      )'
+
+if(is.null(opt)) {
+  eval(parse(text = layers)) 
+} else {
+  eval(parse(text = paste(layers, opt, sep = " + ")))
+}
+
 }

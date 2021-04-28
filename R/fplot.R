@@ -291,8 +291,19 @@ fplot <- function(data
   
 # layers ------------------------------------------------------------------
 
-  plot + 
-    { if(!is.null(xtext)) scale_x_discrete(labels = xtext) } +
+    
+graph <- plot + 
+      { if(!is.null(xtext)) scale_x_discrete(labels = xtext) } +
+      {
+        if(!is.null(ylimits))
+          scale_y_continuous(
+            limits = ylimits[1:2] 
+            , breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3]))
+            , expand = c(0,0)
+          )
+      } 
+    
+layers <- 'graph + 
     theme_minimal() +
     theme(
       panel.background = element_rect(fill = "transparent")
@@ -305,16 +316,13 @@ fplot <- function(data
       , axis.text.x = element_text(angle = xrotation[1]
                                    , hjust= xrotation[2]
                                    , vjust = xrotation[3])
-    ) + 
-    {
-      if(!is.null(ylimits))
-        scale_y_continuous(
-          limits = ylimits[1:2] 
-          , breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3]))
-          , expand = c(0,0)
-        )
-    } + 
-    { if(!is.null(opt)) eval(parse(text= opt)) } 
-  
+      )'
+
+if(is.null(opt)) {
+  eval(parse(text = layers)) 
+} else {
+  eval(parse(text = paste(layers, opt, sep = " + ")))
+}
+
 }
 

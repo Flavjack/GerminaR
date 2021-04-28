@@ -19,14 +19,6 @@
 
 GerminaQuant <- function(dependencies = FALSE) {
   
-  message("
-  - If is the first time running GerminaQuant consider install the app dependencies:
-  > GerminaR::GerminaQuant(dependencies = T)
-  - List of dependencies: 
-  > https://github.com/Flavjack/GerminaR/blob/master/inst/GerminaQuant/setup.R
-  - More info: https://flavjack.github.io/GerminaR/articles/GerminaQuant
-          ")
-  
   if (dependencies == TRUE ) {
     
     source("https://raw.githubusercontent.com/Flavjack/GerminaR/master/inst/GerminaQuant/setup.R")

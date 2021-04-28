@@ -2,10 +2,16 @@
 
 - *Package*
   - `fplot()` absolute values to ybrakes
+  - Added function `textcolor()`
   
-- *Pending*
-  - Include multiple layers []
-  - `ger_intime()` significance differences
+- *GerminaQuant*
+  - Styled messages
+  - Include multiple layers
+  - Exclude the error bar in the plots
+  
+  
+# - *Pending*
+#   - `ger_intime()` significance differences
 
 # Version 2.1.1
 

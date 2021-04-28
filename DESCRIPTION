@@ -28,6 +28,7 @@ Imports:
 Suggests:
     knitr,
     rmarkdown,
+    gsheet,
     inti
 VignetteBuilder: knitr
 License: GPL-3 | file LICENSE

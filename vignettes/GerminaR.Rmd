@@ -13,7 +13,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-source("http://lozanoisla.com/lectures/setup.r")
+source("http://inkaverse.com/docs.r")
 ```
 
 GerminaR is a platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called “GerminQuant for R” for non programming user.
@@ -35,9 +35,6 @@ GerminaR is a platform base in open source package to calculate and graphic the 
 
 </div>
 ```
-
-
-
 
 Analysis for the germination experiment can follow a routine. The functions will de explain according to the data set included in the GerminaR package: "*prosopis*". 
 

@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-04-20
+#> date .: 2021-04-28
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -13,7 +13,8 @@
 
 #> devtools::install_github("flavjack/GerminaR")
 
-source("pkgs.R")
+source("msgs.R")
+suppressPackageStartupMessages({source("pkgs.R")})
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -438,7 +439,7 @@ fplot(data = comp()$table
      , glab = if (input$plot_glab == "") NULL else input$plot_glab
      , legend = input$plot_legend
      , sig = if(input$plot_sig == "no") NULL else input$plot_sig
-     , error = input$plot_error
+     , error = if(input$plot_error == "no") NULL else input$plot_error
      , color = if(input$plot_color == "yes") TRUE else FALSE
      , ylimits = if(input$plot_ylimits == "") NULL else ylimits
      , xtext = if(input$plot_xbrakes == "") NULL else xtext
@@ -547,7 +548,7 @@ intime_plot <- reactive({
         , xrotation = if(input$intime_xrotation == "") NULL else plot_xrotation
         , xtext = if(input$intime_xbrakes == "") NULL else xtext
         , gtext = if(input$intime_gbrakes == "") NULL else gtext
-        , error = input$intime_error
+        , error = if(input$intime_error == "no") NULL else input$intime_error
         , opt = if(input$intime_opt == "") NULL else input$intime_opt
         )
   

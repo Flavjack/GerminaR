@@ -44,6 +44,6 @@ navbar:
   right:
     - icon: fab fa-github fa-lg
       href: https://github.com/flavjack/germinar/
-    - icon: far fa-heart fa-lg
+    - icon: fas fa-heart fa-lg
       href: https://github.com/sponsors/Flavjack
       

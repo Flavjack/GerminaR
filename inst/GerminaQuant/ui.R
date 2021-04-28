@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-04-20
+#> date .: 2021-04-28
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -13,7 +13,7 @@
 
 #> devtools::install_github("flavjack/GerminaR")
 
-source("pkgs.R")
+suppressPackageStartupMessages({source("pkgs.R")})
 
 # app ---------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -716,6 +716,7 @@ shinyUI(dashboardPage(skin = "green",
                     label = "Error",
                     choices = c("ste"
                                 , "std"
+                                , "no"
                                 ),
                     inline = TRUE)
                 )
@@ -918,7 +919,8 @@ tabItem(tabName = "germint",
                                     label = "Error",
                                     choices = c("ste"
                                                 , "std"
-                                    ),
+                                                , "no"
+                                                ),
                                     inline = TRUE)
                            )
                            
