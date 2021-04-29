@@ -11,4 +11,3 @@ vignettes/*.pdf
 .Rproj.user
 .httr-oauth
 inst/doc
-docs
