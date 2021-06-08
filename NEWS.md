@@ -9,10 +9,6 @@
   - Include multiple layers
   - Exclude the error bar in the plots
   
-  
-# - *Pending*
-#   - `ger_intime()` significance differences
-
 # Version 2.1.1
 
 Changes incompatible with the old versions. Arguments changed in the syntax for `fplot()`.
