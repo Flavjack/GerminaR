@@ -271,7 +271,7 @@
     </tr>
     <tr>
       <th>color</th>
-      <td><p>colored figure (TRUE), otherwise black &amp; white (FALSE)</p></td>
+      <td><p>colored figure c(TRUE, FALSE) or vector with the color.</p></td>
     </tr>
     <tr>
       <th>opt</th>
@@ -304,29 +304,16 @@
 <span class='va'>plotdt</span> <span class='op'>&lt;-</span> <span class='va'>mc</span><span class='op'>$</span><span class='va'>table</span>
                     
  <span class='fu'>fplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>plotdt</span>
-       , type <span class='op'>=</span> <span class='st'>"line"</span>
+       , type <span class='op'>=</span> <span class='st'>"bar"</span>
        , x <span class='op'>=</span> <span class='st'>"temp"</span>
        , y <span class='op'>=</span> <span class='st'>"grp"</span>
        , group <span class='op'>=</span> <span class='st'>"nacl"</span>
-       , sig <span class='op'>=</span> <span class='st'>"sig"</span>
+       , sig <span class='op'>=</span> <span class='st'>"grp"</span>
        , error <span class='op'>=</span> <span class='st'>"ste"</span>
-       , color <span class='op'>=</span> <span class='cn'>F</span>
+       , color <span class='op'>=</span> <span class='cn'>T</span>
        , ylimits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>120</span>, <span class='fl'>20</span><span class='op'>)</span>
-       , xtext <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-       , gtext <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
        <span class='op'>)</span>
        
- <span class='fu'>fplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>plotdt</span>
-       , type <span class='op'>=</span> <span class='st'>"li"</span>
-       , x <span class='op'>=</span> <span class='st'>"temp"</span>
-       , y <span class='op'>=</span> <span class='st'>"grp"</span>
-       , group <span class='op'>=</span> <span class='st'>"nacl"</span>
-       , sig <span class='op'>=</span> <span class='st'>"sig"</span>
-       , error <span class='op'>=</span> <span class='st'>"ste"</span>
-       , color <span class='op'>=</span> <span class='cn'>F</span>
-       , ylimits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>120</span>, <span class='fl'>20</span><span class='op'>)</span>
-       <span class='op'>)</span>
-                   
 <span class='op'>}</span> 
 
 </div></pre>

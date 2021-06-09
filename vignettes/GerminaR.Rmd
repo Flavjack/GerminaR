@@ -44,11 +44,12 @@ Analysis for the germination experiment can follow a routine. The functions will
 # Install packages and dependencies
 
 library(GerminaR)
+library(dplyr)
 
 # load data
 
 fb <- prosopis %>% 
-   dplyr::mutate(across(c(nacl, temp, rep), as.factor))
+   mutate(across(c(nacl, temp, rep), as.factor))
 
 # Prosopis data set
 
@@ -73,7 +74,7 @@ gsm <- ger_summary(SeedN = "seeds"
 gsm %>% 
   head(10) %>% 
   mutate(across(where(is.numeric), ~round(., 2))) %>% 
-   kable(caption = "Function ger_summary performe ten germination indices")
+  kable(caption = "Function ger_summary performe ten germination indices")
 
 ```
 
@@ -240,7 +241,6 @@ temp <- git %>%
         , color = F
         ) 
 temp
-
 ```
 
 # Using ggplot2

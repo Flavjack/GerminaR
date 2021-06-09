@@ -55,7 +55,7 @@ fplot(
 
 \item{error}{Show the error bar ("ste" or "std").}
 
-\item{color}{colored figure (TRUE), otherwise black & white (FALSE)}
+\item{color}{colored figure c(TRUE, FALSE) or vector with the color.}
 
 \item{opt}{Add news layer to the plot}
 }
@@ -86,29 +86,16 @@ mc <- ger_testcomp(aov = av
 plotdt <- mc$table
                     
  fplot(data = plotdt
-       , type = "line"
+       , type = "bar"
        , x = "temp"
        , y = "grp"
        , group = "nacl"
-       , sig = "sig"
+       , sig = "grp"
        , error = "ste"
-       , color = F
+       , color = T
        , ylimits = c(0, 120, 20)
-       , xtext = c(1:5)
-       , gtext = c(1:5)
        )
        
- fplot(data = plotdt
-       , type = "li"
-       , x = "temp"
-       , y = "grp"
-       , group = "nacl"
-       , sig = "sig"
-       , error = "ste"
-       , color = F
-       , ylimits = c(0, 120, 20)
-       )
-                   
 } 
 
 }

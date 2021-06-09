@@ -1,13 +1,16 @@
 # Version 2.1.2
 
 - *Package*
-  - `fplot()` absolute values to ybrakes
+  - `fplot()` 
+    - Absolute values to ybrakes
+    - Include color using vectors
   - Added function `textcolor()`
   
 - *GerminaQuant*
-  - Styled messages
-  - Include multiple layers
-  - Exclude the error bar in the plots
+  - Styled messages in the console
+  - Include multiple layers in the graphs
+  - Possibility to exclude the error bar in the plots
+  - Include demo videos for the app
   
 # Version 2.1.1
 
@@ -23,7 +26,6 @@ Changes incompatible with the old versions. Arguments changed in the syntax for 
     - Allow add new layer. e.g. `coord_flip()`
 
 - *GerminaQuant*
-  - Include demo videos for the app
   - Suppress error messages in console when run the app
   - Change dependency: `ggpubr` --> `cowplot`
   - Exclude filter in the app

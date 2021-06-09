@@ -16,7 +16,7 @@
 #' @param legend the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param sig Column with the significance
 #' @param error Show the error bar ("ste" or "std").
-#' @param color colored figure (TRUE), otherwise black & white (FALSE)
+#' @param color colored figure c(TRUE, FALSE) or vector with the color. 
 #' @param opt Add news layer to the plot
 #' @return Line o bar plot
 #' @import dplyr
@@ -46,29 +46,16 @@
 #' plotdt <- mc$table
 #'                     
 #'  fplot(data = plotdt
-#'        , type = "line"
+#'        , type = "bar"
 #'        , x = "temp"
 #'        , y = "grp"
 #'        , group = "nacl"
-#'        , sig = "sig"
+#'        , sig = "grp"
 #'        , error = "ste"
-#'        , color = F
+#'        , color = T
 #'        , ylimits = c(0, 120, 20)
-#'        , xtext = c(1:5)
-#'        , gtext = c(1:5)
 #'        )
 #'        
-#'  fplot(data = plotdt
-#'        , type = "li"
-#'        , x = "temp"
-#'        , y = "grp"
-#'        , group = "nacl"
-#'        , sig = "sig"
-#'        , error = "ste"
-#'        , color = F
-#'        , ylimits = c(0, 120, 20)
-#'        )
-#'                    
 #' } 
 #' 
 
@@ -91,42 +78,6 @@ fplot <- function(data
                   , opt = NULL
                   ){
   
-# test --------------------------------------------------------------------
-
-  if(FALSE) {
-    
-    library(GerminaR)
-    
-    fb <- prosopis %>% 
-      ger_summary(SeedN = "seeds"
-                  , evalName = "D") 
-    
-    av <- aov(grp ~ nacl*temp, fb)
-    anova(av)
-
-    mc <- ger_testcomp(aov = av
-                       , comp = c("nacl", "temp"))
-    
-    data <- mc$table
-    
-    x <- "temp" 
-    group <- "nacl"
-    y <- "grp"
-    xlab <- NULL # "label x"
-    ylab <- NULL # "label y"
-    glab <- NULL # "legend"
-    ylimits <- NULL # c(0, 120, 10)
-    xrotation <- NULL #c(0, 0.5, 0.5)
-    legend <- "top"
-    gtext <- c(1:5)
-    xtext <- c(1:5)
-    sig <- "sig"
-    error <-  NULL # "ste"
-    color <- FALSE
-    opt  <-  NULL
-    type <- "bar"
-  }
-  
 # arguments ---------------------------------------------------------------
   
   legend <- match.arg(legend, c("top", "left", "right", "bottom", "none"))
@@ -140,17 +91,27 @@ fplot <- function(data
 
 # graph-color -------------------------------------------------------------
 
-    color_gray <- gray.colors(n =  data[[group]] %>% unique() %>% length()
-                              , start = 0.8
-                              , end = 0.3) 
+  if (isTRUE(color)) {
     
-    color_full <- colorRampPalette(
+    color <- colorRampPalette(
       c("#86CD80"   # green
         , "#F4CB8C" # orange
-        , "#0198CD" # blue
         , "#F3BB00" # yellow
+        , "#0198CD" # blue
         , "#FE6673" # red
       ))(length(data[[group]] %>% unique()))
+    
+  } else if (isFALSE(color)) {
+    
+    color <- gray.colors(n =  data[[group]] %>% unique() %>% length()
+                         , start = 0.8
+                         , end = 0.3) 
+    
+  } else {
+    
+    color <- color
+    
+  }
 
 # sci-labels --------------------------------------------------------------
 
@@ -228,13 +189,11 @@ fplot <- function(data
           , hjust = 0.5
           , angle = 0) 
       } +
-      scale_fill_manual(values = if(isFALSE(color)) color_gray else color_full
+      scale_fill_manual(values = color
                         , labels = if(!is.null(gtext)) gtext else waiver()) 
     }
-  
 
 # line plot ---------------------------------------------------------------
-
 
   if (type == "linea") {
     
@@ -282,7 +241,7 @@ fplot <- function(data
       
       scale_color_manual(
         labels = if(!is.null(gtext)) gtext else waiver()
-        , values = if(isFALSE(color)) color_gray else color_full
+        , values = color
             ) + 
       scale_linetype_discrete(labels = if(!is.null(gtext)) gtext else waiver()) +
       scale_shape_discrete(labels = if(!is.null(gtext)) gtext else waiver())
