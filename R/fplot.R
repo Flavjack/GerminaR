@@ -15,6 +15,7 @@
 #' @param gtext Text labels in groups
 #' @param legend the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param sig Column with the significance
+#' @param sigsize Font size in significance letters
 #' @param error Show the error bar ("ste" or "std").
 #' @param color colored figure c(TRUE, FALSE) or vector with the color. 
 #' @param opt Add news layer to the plot
@@ -50,7 +51,7 @@
 #'        , x = "temp"
 #'        , y = "grp"
 #'        , group = "nacl"
-#'        , sig = "grp"
+#'        , sig = "sig"
 #'        , error = "ste"
 #'        , color = T
 #'        , ylimits = c(0, 120, 20)
@@ -73,6 +74,7 @@ fplot <- function(data
                   , gtext = NULL
                   , legend = "top"
                   , sig = NULL
+                  , sigsize = 3
                   , error = NULL
                   , color = TRUE
                   , opt = NULL
@@ -156,8 +158,8 @@ fplot <- function(data
       
       geom_col(
         position = position_dodge2()
-        , colour="black"
-        , size=.4
+        , colour = "black"
+        , size = 0.4
         , na.rm = T
       ) +
       labs(
@@ -187,7 +189,9 @@ fplot <- function(data
           , colour = "black"
           , vjust = -0.5
           , hjust = 0.5
-          , angle = 0) 
+          , angle = 0
+          , size = sigsize
+          ) 
       } +
       scale_fill_manual(values = color
                         , labels = if(!is.null(gtext)) gtext else waiver()) 
@@ -207,12 +211,16 @@ fplot <- function(data
       geom_point( aes(group =  .data[[group]]
                       , shape = .data[[group]]
                       , color = .data[[group]]
-      ), size = 2.5 ) +
+                      )
+                  , size = 2.5 
+      ) +
       
       geom_line( aes( group =  .data[[group]]
                       , color = .data[[group]]
                       , linetype = .data[[group]]
-      ) ,  size = 1 ) +
+                      ) 
+                 ,  size = 1 
+      ) +
       labs(x = if(is.null(xlab)) x else xlab
            , y = if(is.null(ylab)) y else ylab
            , shape = if(is.null(glab)) group else glab
@@ -264,18 +272,14 @@ graph <- plot +
     
 layers <- 'graph + 
     theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "transparent")
-      , plot.background = element_rect(fill = "transparent")
-      , panel.grid.major = element_blank()
-      , panel.grid.minor = element_blank()
-      , legend.background = element_rect(fill = "transparent")
-      , legend.box.background = element_rect(fill = "transparent")
-      , legend.position = legend
-      , axis.text.x = element_text(angle = xrotation[1]
-                                   , hjust= xrotation[2]
-                                   , vjust = xrotation[3])
-      )'
+    theme(legend.position = legend
+    , panel.border = element_rect(colour = "black", fill=NA)
+    , panel.background = element_rect(fill = "transparent")
+    , legend.background = element_rect(fill = "transparent")
+    , axis.text.x = element_text(angle = xrotation[1]
+                                 , hjust= xrotation[2]
+                                 , vjust = xrotation[3])
+    )'
 
 if(is.null(opt)) {
   eval(parse(text = layers)) 

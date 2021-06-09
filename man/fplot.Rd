@@ -19,6 +19,7 @@ fplot(
   gtext = NULL,
   legend = "top",
   sig = NULL,
+  sigsize = 3,
   error = NULL,
   color = TRUE,
   opt = NULL
@@ -52,6 +53,8 @@ fplot(
 \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
 \item{sig}{Column with the significance}
+
+\item{sigsize}{Font size in significance letters}
 
 \item{error}{Show the error bar ("ste" or "std").}
 
@@ -90,7 +93,7 @@ plotdt <- mc$table
        , x = "temp"
        , y = "grp"
        , group = "nacl"
-       , sig = "grp"
+       , sig = "sig"
        , error = "ste"
        , color = T
        , ylimits = c(0, 120, 20)

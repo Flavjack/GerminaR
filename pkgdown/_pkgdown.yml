@@ -30,7 +30,7 @@ navbar:
       href: index.html
     - text: "Intro"
       icon: fa-seedling fa-lg
-      href: articles/intro.html
+      href: articles/introduction.html
     - text: "GerminaR"
       icon: fa-file-code fa-lg
       href: articles/GerminaR.html

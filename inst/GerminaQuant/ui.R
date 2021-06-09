@@ -511,7 +511,7 @@ shinyUI(dashboardPage(skin = "green",
                   
                   ),
               
-              box(title = "Model plots", 
+              box(title = "Model diagnostic", 
                   solidHeader = T,
                   width = 12, 
                   collapsible = T,
