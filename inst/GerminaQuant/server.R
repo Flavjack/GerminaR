@@ -125,7 +125,8 @@ var_names <- reactive({
            , "syn"
            , "vgt"
            , "sdg"
-           , "cvg")
+           , "cvg"
+           )
   
 })
 

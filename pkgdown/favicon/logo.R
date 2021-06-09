@@ -1,13 +1,16 @@
+library(tidyverse)
 library(hexSticker)
 library(magick)
 library(showtext)
-library(dplyr)
+library(cowplot)
 
 # open https://fonts.google.com/
 # font Paytone one
 
 font_add_google(name = "Paytone One")
 font_add_google(name = "Lobster")
+
+showtext_auto()
 
 # -------------------------------------------------------------------------
 # GerminaR ----------------------------------------------------------------
@@ -56,25 +59,24 @@ logo <- list.files("pkgdown/favicon/img"
                    ) %>% 
   image_read()
 
-sticker(subplot = logo
-        , white_around_sticker = TRUE
-        , s_x = 1.0
-        , s_y = 0.81
-        , s_width = 1.0
-        , s_height = 1.0
-        , package = "GerminaQuant"
-        , p_family = "Lobster"
-        , p_color = "#a64d79"
-        , p_size = 21
-        , p_y = 1.45
-        , h_color = "#b0d744"
-        , h_fill = NA
-        , h_size = 1
-        , url = "inkaverse.com"
-        , u_color = "black"
-        , u_size = 8
-        , u_angle = 90
-        , u_x = 1.8
-        , u_y = 0.6
-        , filename = "pkgdown/favicon/img/GerminaQuant.png")
+img <- logo %>% 
+  image_scale("300") %>% 
+  grid::rasterGrob()
+
+plot <- ggdraw(img, ylim = c(0, 1.12)) + 
+  draw_label("GerminaQuant"
+             , colour = "#a64d79"
+             , size = 115
+             , fontfamily = "Lobster"
+             , y = 1.06
+             )
+
+plot %>% 
+  save_plot(filename = "pkgdown/favicon/img/GerminaQuant.png"
+            , plot = .
+            , base_asp = 0.9
+            )
+
+
+
 

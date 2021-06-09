@@ -142,6 +142,84 @@
 <a href="#seed-germination-process" class="anchor"></a>Seed germination process</h1>
 <p>The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions <span class="citation">(<a href="#ref-Marcos-Filho1998" role="doc-biblioref">Marcos-Filho, 1998</a>)</span>. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination <span class="citation">(<a href="#ref-Penfield2009" role="doc-biblioref">Penfield &amp; King, 2009</a>)</span>. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data <span class="citation">(<a href="#ref-Joosen2010" role="doc-biblioref">Joosen et al., 2009</a>)</span>. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed <span class="citation">(<a href="#ref-Ranal2006" role="doc-biblioref">Ranal &amp; Santana, 2006</a>)</span>.</p>
 </div>
+<div id="seed-indices" class="section level1">
+<h1 class="hasAnchor">
+<a href="#seed-indices" class="anchor"></a>Seed indices</h1>
+<table class="table">
+<caption>Germination variables evaluated in GerminaR package and limits according to Ranal and Santana (2006), where <span class="math inline">\(n_i\)</span> is the number of seeds germinated in <span class="math inline">\(i^{th}\)</span> time; and <span class="math inline">\(k\)</span> is the last day of the evaluation process for germination</caption>
+<thead><tr class="header">
+<th align="left">Variables</th>
+<th align="left">abbreviation</th>
+<th align="left">units</th>
+<th align="left">limits</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Germinated seeds</td>
+<td align="left">grs</td>
+<td align="left">count</td>
+<td align="left"><span class="math inline">\(0 \leq grs \leq n_{i}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Germinability</td>
+<td align="left">grp</td>
+<td align="left">%</td>
+<td align="left"><span class="math inline">\(0 \leq grp \leq 100\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Mean germination time</td>
+<td align="left">mgt</td>
+<td align="left">time</td>
+<td align="left"><span class="math inline">\(0 \leq mgt \leq k\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Mean germination rate</td>
+<td align="left">mgr</td>
+<td align="left"><span class="math inline">\(time^{-1}\)</span></td>
+<td align="left"><span class="math inline">\(0 &lt; mgr \leq 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Germination speed</td>
+<td align="left">gsp</td>
+<td align="left">%</td>
+<td align="left"><span class="math inline">\(0 &lt; gsp \leq 100\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Uncertainty Index</td>
+<td align="left">unc</td>
+<td align="left">bit</td>
+<td align="left"><span class="math inline">\(0 \leq unc \leq \log _{2} n_{i}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Synchronization Index</td>
+<td align="left">syn</td>
+<td align="left">-</td>
+<td align="left"><span class="math inline">\(0 \leq syn \leq 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Germination variance</td>
+<td align="left">vgt</td>
+<td align="left"><span class="math inline">\(time^2\)</span></td>
+<td align="left"><span class="math inline">\(0 &lt; vgt \leq \infty\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Germination standard deviation</td>
+<td align="left">sdg</td>
+<td align="left">time</td>
+<td align="left"><span class="math inline">\(0 &lt; sdg \leq \infty\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Coefficient of variation</td>
+<td align="left">cvg</td>
+<td align="left">%</td>
+<td align="left"><span class="math inline">\(0 &lt; cvg \leq \infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>More info: <a href="https://doi.org/10.1111/1440-1703.1275" class="uri">https://doi.org/10.1111/1440-1703.1275</a></p>
+</blockquote>
+</div>
 <div id="fieldbook-preparation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#fieldbook-preparation" class="anchor"></a>Fieldbook preparation</h1>

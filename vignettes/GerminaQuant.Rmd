@@ -29,7 +29,7 @@ source("http://inkaverse.com/docs.r")
 
 <div style="display:inline-block; width:48%">
 <p style="text-align:center">
-<a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/reference/figures/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+<a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="http://flavjack.github.io/GerminaR/img/germinaquant.png" style="height:70px" title="GerminaQuant" alt="GerminaQuant for R"></a>
 <span style="display:block;"><small>GerminaQuant</small></span>
 </p></div>
 
@@ -41,40 +41,12 @@ source("http://inkaverse.com/docs.r")
 The application is compound for different tabs that allow to make the analysis very easy.
 
 ```{r tabs}
-tab <- data.frame( 
-  
-"Tabs" = c(
-  
-  "Presentation",
-  "Fieldbook",
-  "Germination",
-  "Boxplot",
-  "Statistics",
-  "Graphics",
-  "InTime",
-  "Tools"
-  
-  ),
+table <- "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=573661810"
 
-"Description" = c(
-  
-  'Presentation of the package and application, principal characteristics and information'
-  , "Interface to upload the fieldbook and choose the parameter for the germination analysis. GerminaQuant allows to upload the data from google sheet or excel file"
-  , "Calculate automatically the germination variables and export the data file."
-  , "Interface to explore your data and their distribution"
-  , "Interface to choose the variables according the experimental design for analysis of variance and summarize the information according the principal mean comparison test"
-  , "Graphic the mean comparison test for the variables selected in the statistical analysis and plot the information in customized bar or line plot"
-  , "Selecting the factor from your experiment, allows plotting the germination process in time."
-  , "Tool for calculate the osmotic potential for any salt or PEG for germination experiments"
-  )
-  
-)
-
-knitr::kable(
-  tab, 
-  booktabs = TRUE,
-  caption = 'Name and description of each tab of GerminaQuant to evaluate and analyze the germination process.'
-  )
+table %>% 
+  gsheet2tbl() %>% 
+  knitr::kable(caption = 'Description of each module in GerminaQuant to evaluate and analyze the germination process.'
+               )
 ```
 
 # Data processing
@@ -97,7 +69,7 @@ If the parameter in the "Fieldbook" tab are correct, in "Germination" tab will b
 knitr::include_graphics('files/dtdown.png')
 ```
 
-## Statistical
+## Statistics
 
 The GerminaQuant application can perform analysis for experimental design in a Complete Randomize Design (CRD), Randomize Complete Block Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing calculate the analysis of variance (AOV) and the mean differences through Student Newman Keuls (SNK), Tukey or Duncan test.
 

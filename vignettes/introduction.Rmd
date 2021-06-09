@@ -20,6 +20,18 @@ source("http://inkaverse.com/docs.r")
 
 The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions [@Marcos-Filho1998]. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination [@Penfield2009]. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data [@Joosen2010]. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed [@Ranal2006].
 
+# Seed indices
+
+```{r}
+url <- "https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=783977038"
+
+url %>% 
+  gsheet2tbl() %>% 
+kable(caption = "Germination variables evaluated in GerminaR package and limits according to Ranal and Santana (2006), where $n_i$ is the number of seeds germinated in $i^{th}$ time; and $k$ is the last day of the evaluation process for germination")
+```
+
+> More info: https://doi.org/10.1111/1440-1703.1275
+
 # Fieldbook preparation
 
 For a correct analysis and fast data processing is important to take into account the data organization and the proper record of the germination process. In this section we will explain how you should collect and organize your data.

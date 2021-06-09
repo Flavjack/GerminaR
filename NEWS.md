@@ -15,6 +15,9 @@
   - Possibility to exclude the error bar in the plots
   - Include demo videos for the app
   - Change name: Model plot --> Model diagnostic
+  - Update vignettes
+    - introduction
+    - germinaquant
   
 # Version 2.1.1
 
