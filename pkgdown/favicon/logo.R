@@ -63,18 +63,18 @@ img <- logo %>%
   image_scale("300") %>% 
   grid::rasterGrob()
 
-plot <- ggdraw(img, ylim = c(0, 1.12)) + 
+plot <- ggdraw(img, ylim = c(0, 1.2)) + 
   draw_label("GerminaQuant"
              , colour = "#a64d79"
-             , size = 115
+             , size = 140
              , fontfamily = "Lobster"
-             , y = 1.06
+             , y = 1.1
              )
 
 plot %>% 
   save_plot(filename = "pkgdown/favicon/img/GerminaQuant.png"
             , plot = .
-            , base_asp = 0.9
+            , base_asp = 1
             )
 
 
