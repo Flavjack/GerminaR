@@ -29,7 +29,7 @@ GerminaR is a platform base in open source package to calculate and graphic the 
 
 <div style="display:inline-block; width:49%">
 <p style="text-align:center">
-<a target="_blank" href="https://flavjack.github.io/GerminaR/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:70px" title="GerminaR" alt="GerminaR"></a> 
+<a target="_blank" href="https://germinar.inkaverse.com/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:70px" title="GerminaR" alt="GerminaR"></a> 
 <span style="display:block;"><small>Project</small></span>
 </p></div>
 

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/GerminaR?color=green)](https://r-pkg.org/pkg/GerminaR)
 <!-- badges: end -->
 
-GerminaR is a platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called "GerminQuant for R" for non programming user.
+GerminaR is a platform base in open source R package to calculate and graphic the germination mean indices. GerminaR include a web application called "GerminQuant for R" for non programming users.
 
 ## Installation
 
@@ -50,7 +50,7 @@ If is the first time running the app you should install the app dependencies, in
 ```r
 GerminaR::GerminaQuant(dependencies = TRUE)
 ```
-After install the package and the app dependencies also you can access to the app through the Addins list in Rstudio or using the following link in the internet <https://flavjack.shinyapps.io/germinaquant/>
+After install the package and the app dependencies you can access to the app through the Addins list in Rstudio, or in the following link in the internet <https://flavjack.shinyapps.io/germinaquant/>
 
 ## Citation
 

@@ -16,8 +16,9 @@
   - Include demo videos for the app
   - Change name: Model plot --> Model diagnostic
   - Update vignettes
-    - introduction
-    - germinaquant
+    - introduction: add indices info
+    - germinaquant: upate module description
+  - Include information to `prosopis()`
   
 # Version 2.1.1
 

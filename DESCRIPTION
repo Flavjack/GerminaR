@@ -13,7 +13,7 @@ Authors@R: c(
     person(family = "Federal University of Pernambuco", role = "cph",comment = "Register of application"),
     person(family = "Federal Rural University of Pernambuco", role = "cph", comment = "Post Graduate Program")
     )
-URL: http://germinar.inkaverse.com/, https://github.com/flavjack/germinar
+URL: https://germinar.inkaverse.com/, https://github.com/flavjack/germinar
 BugReports: https://github.com/flavjack/germinar/issues
 Depends:
     shiny,
