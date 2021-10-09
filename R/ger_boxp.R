@@ -117,17 +117,14 @@ ger_boxp <- function(data
 
 layers <- 'plot +
     theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "transparent")
-      , plot.background = element_rect(fill = "transparent")
-      , panel.grid.major = element_blank()
-      , panel.grid.minor = element_blank()
-      , legend.background = element_rect(fill = "transparent")
-      , legend.box.background = element_rect(fill = "transparent")
-      , legend.position = legend
-      , axis.text.x = element_text(angle = xrotation[1]
-                                   , hjust= xrotation[2]
-                                   , vjust = xrotation[3])
+    theme_minimal() +
+    theme(legend.position = legend
+    , panel.border = element_rect(colour = "black", fill=NA)
+    , panel.background = element_rect(fill = "transparent")
+    , legend.background = element_rect(fill = "transparent")
+    , axis.text.x = element_text(angle = xrotation[1]
+                                 , hjust= xrotation[2]
+                                 , vjust = xrotation[3])
       )'
 
 if(is.null(opt)) {

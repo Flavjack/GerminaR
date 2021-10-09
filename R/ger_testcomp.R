@@ -22,14 +22,23 @@
 #' data <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
 #' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 #' 
-#' aov <- aov(grp ~ nacl*temp, smr)
+#' av <- aov(grp ~ rep + nacl*temp, smr)
 #' 
-#' mc <- ger_testcomp(aov = aov
+#' mc <- ger_testcomp(aov = av
 #'                    , comp <- c("nacl", "temp")
 #'                    )
 #' } 
 
-ger_testcomp <- function( aov, comp, type = "snk", sig = 0.05){
+ger_testcomp <- function(aov
+                         , comp
+                         , type = "snk"
+                         , sig = 0.05
+                         ){
+  
+  
+  model_formula <-  Reduce(paste, deparse(formula(aov$call))) %>% 
+    as.vector() %>% 
+    as.character()
   
   if (type == "snk"){
     
@@ -124,6 +133,7 @@ mean_comparison <- list(
     table = tb_mc
     , stats = smr_stat
     , diagplot = diagplot
+    , formula = model_formula
   )
     
 }

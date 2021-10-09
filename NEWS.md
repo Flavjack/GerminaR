@@ -1,3 +1,13 @@
+# Version 2.1.3
+
+- *Package*
+  - Transparent logos
+  - Box plot with transparent background
+  
+- *GerminaQuant*
+  - Include model factors manually for any experimental design
+  
+
 # Version 2.1.2
 
 - *Package*

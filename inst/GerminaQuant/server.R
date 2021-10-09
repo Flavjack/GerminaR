@@ -262,112 +262,59 @@ output$stat_block <- renderUI({
   
   selectInput(
     inputId = "stat_blk",
-    label = "Block",
+    label = "Block (optional)",
     choices = c("choose" = "", fbn),
+    multiple = FALSE
+  )
+
+})
+
+output$stat_comparison <- renderUI({
+  
+  selectInput(
+    inputId = "stat_comparison",
+    label = "Comparison",
+    choices = c("choose" = "", input$stat_fact),
     multiple = TRUE
   )
-
-})
-
-# ANOVA
-
-av <- reactive({
-
-  validate(
-
-    need( input$stat_rsp, "Select your response variable" ),
-    need( input$stat_fact, "Select your factors")
-
-  )
-
-    file <- varCal()
-
-    variable <- input$stat_rsp
-
-    factor <- input$stat_fact %>% 
-      paste0() %>%  
-      paste(collapse= " * ")
-
-    block <- input$stat_blk %>% 
-      paste0() %>% 
-      paste(collapse= " + ")
-    
-    file <- file %>% 
-      dplyr::mutate(across(c(input$stat_fact, input$stat_blk), as.factor))
-    
-    if ( block == "" ){
-
-      formula <- as.formula(paste( variable , factor, sep = " ~ "))
-
-
-    } else {
-
-      formula <- as.formula(paste( variable , paste(block, factor, sep = " + "), sep = " ~ "))
-
-    }
-
-    av <- aov(formula, data = file)
-
-})
-
-# summary stats -----------------------------------------------------------
-
-# ANOVA table
-
-output$tbav = renderPrint({
-  
-  file <- av()
-  
-  summary(file)
   
 })
 
-# comparison test
 
-comp <- reactive({
-  
-  file <- av()
-  test <- input$stmc
-  sig <- input$stsig
-  factor <- input$stat_fact
-  variable <- input$stat_rsp
-  
-  
-  if( length(factor) == 1 && !(variable == '') )
-    
-  {
-    
-    rs <- GerminaR::ger_testcomp(
-      aov = file,
-      comp = factor[1],
-      type = test,
-      sig = sig)
-    
-  }
-  
-  else if( length(factor) >= 2 && !(variable == '') )
-    
-  {
-    
-    rs <- GerminaR::ger_testcomp(
-      aov = file,
-      comp = c( factor[1], factor[2] ),
-      type = test,
-      sig = sig)
-    
-  }
-  
-  rs
-  
-})
+# germination indices -----------------------------------------------------
 
-# Mean comparison table
+analysis <- reactive({
+  
+  validate(need(input$stat_rsp, "Choose your response variable"))
+  validate(need(input$stat_comparison, "Choose your factors to compare")) 
+  
+  factors <- if(input$stat_model == "auto") {
+    input$stat_fact
+    } else if (input$stat_model == "manual") {input$stat_model_factors}
+  
+  validate(need(factors, "Choose your model factors")) 
+  
+  gquant_analysis(data = varCal()
+                  , response = input$stat_rsp
+                  , factors = factors
+                  , block = input$stat_blk
+                  , comparison = input$stat_comparison
+                  , type = input$stmc
+                  , sig = input$stsig
+                  )
+  })
+
+# anova -------------------------------------------------------------------
+
+output$tbav  <- renderPrint({ summary(analysis()$aov ) })
+
+output$model_formula <- renderPrint({ analysis()$param$formula })
+
+# comparison table --------------------------------------------------------
 
 output$mnc <-  DT::renderDataTable(server = FALSE, {
   
-  file <- comp()$table
-  
-  webTable(data = file
+  webTable(data = analysis()$data$table
            , file_name = input$stat_rsp)
   })
 
@@ -375,7 +322,7 @@ output$mnc <-  DT::renderDataTable(server = FALSE, {
 
 output$stat_summary <-  DT::renderDataTable(server = FALSE, {
   
-  webTable(data = comp()$stats
+  webTable(data = analysis()$data$stat
            , scrolly = "12vh"
            , buttons = "copy")
   
@@ -385,7 +332,7 @@ output$stat_summary <-  DT::renderDataTable(server = FALSE, {
 
 output$modelplots <- renderPlot({
   
-  diag <- comp()$diagplot 
+  diag <- analysis()$data$diagplot 
   plot_grid(plotlist = diag, ncol = 2)
   
 })
@@ -395,58 +342,38 @@ output$modelplots <- renderPlot({
 
 stat_plot <- reactive({
   
-  validate(need(input$stat_fact, "Choose your factors and response variable"))
+  validate(need(analysis(), "Choose your model parameters"))
 
-if ( length(input$stat_fact) == 1 ) {
+if ( length(input$stat_comparison) == 1 ) {
   
-  xvar <- input$stat_fact[1]
-  gvar <- input$stat_fact[1]
+  xvar <- input$stat_comparison[1]
+  gvar <- input$stat_comparison[1]
   
-} else if ( length(input$stat_fact) == 2 ) {
+} else if ( length(input$stat_comparison) == 2 ) {
   
-  xvar <- input$stat_fact[1]
-  gvar <- input$stat_fact[2]
+  xvar <- input$stat_comparison[1]
+  gvar <- input$stat_comparison[2]
   
 }
 
-ylimits <- input$plot_ylimits %>% 
-  strsplit(split = "[*]") %>% 
-  unlist() %>% 
-  as.numeric()
-
-plot_xrotation <- input$plot_xrotation %>% 
-  strsplit(split = "[*]") %>% 
-  unlist() %>% 
-  as.numeric()
-
-xtext <- input$plot_xbrakes %>% 
-  strsplit(split = ",") %>% 
-  unlist()
-
-gtext <- input$plot_gbrakes %>% 
-  strsplit(split = ",") %>% 
-  unlist() 
-
-# -------------------------------------------------------------------------
-
-fplot(data = comp()$table
+fplot(data = analysis()$data$table
       , type = input$plot_type
-     , x = xvar
-     , y = input$stat_rsp
-     , group = gvar
-     , ylab = if (input$plot_ylab == "") NULL else input$plot_ylab
-     , xlab = if (input$plot_xlab == "") NULL else input$plot_xlab
-     , glab = if (input$plot_glab == "") NULL else input$plot_glab
-     , legend = input$plot_legend
-     , sig = if(input$plot_sig == "no") NULL else input$plot_sig
-     , error = if(input$plot_error == "no") NULL else input$plot_error
-     , color = if(input$plot_color == "yes") TRUE else FALSE
-     , ylimits = if(input$plot_ylimits == "") NULL else ylimits
-     , xtext = if(input$plot_xbrakes == "") NULL else xtext
-     , gtext = if(input$plot_gbrakes == "") NULL else gtext
-     , xrotation = if(input$plot_xrotation == "") NULL else plot_xrotation
-     , opt = if(input$plot_opt == "") NULL else input$plot_opt
-     )
+      , y = input$stat_rsp
+      , x = xvar
+      , group = gvar
+      , ylab = input$plot_ylab
+      , xlab = input$plot_xlab
+      , glab = input$plot_glab
+      , legend = input$plot_legend
+      , sig = input$plot_sig 
+      , error = input$plot_error
+      , color = input$plot_color
+      , ylimits = input$plot_ylimits
+      , xtext = input$plot_xbrakes
+      , gtext = input$plot_gbrakes
+      , xrotation = input$plot_xrotation
+      , opt = input$plot_opt
+      )
 
 })
 

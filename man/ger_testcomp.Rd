@@ -31,9 +31,9 @@ library(dplyr)
 data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
 smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 
-aov <- aov(grp ~ nacl*temp, smr)
+av <- aov(grp ~ rep + nacl*temp, smr)
 
-mc <- ger_testcomp(aov = aov
+mc <- ger_testcomp(aov = av
                    , comp <- c("nacl", "temp")
                    )
 } 

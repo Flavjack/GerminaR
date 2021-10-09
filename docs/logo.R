@@ -45,6 +45,13 @@ sticker(subplot = logo
         , filename = "pkgdown/favicon/img/GerminaR.png"
         )
 
+logo <- list.files("pkgdown/favicon/img"
+                   , full.names = T
+                   , pattern = "GerminaR.png") %>%
+  image_read()  %>% 
+  image_transparent('white') %>% 
+  image_write("pkgdown/favicon/img/GerminaR.png")
+
 file.copy(from = "pkgdown/favicon/img/GerminaR.png"
           , to = "man/figures/logo.png"
           , overwrite = T)
@@ -55,7 +62,7 @@ file.copy(from = "pkgdown/favicon/img/GerminaR.png"
 
 logo <- list.files("pkgdown/favicon/img"
                    , full.names = T
-                   , pattern = "germinaquant.png"
+                   , pattern = "logo_germinaquant.png"
                    ) %>% 
   image_read()
 
@@ -76,7 +83,4 @@ plot %>%
             , plot = .
             , base_asp = 1
             )
-
-
-
 

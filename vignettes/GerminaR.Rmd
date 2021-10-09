@@ -13,7 +13,7 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-source("http://inkaverse.com/docs.r")
+source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
 GerminaR is a platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called “GerminQuant for R” for non programming user.

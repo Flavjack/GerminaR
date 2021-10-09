@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-04-29
+#> date .: 2021-10-08
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -178,7 +178,7 @@ shinyUI(dashboardPage(skin = "green",
 
                   hr(),
                   
-                  HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flavjack@gmail.com</a></p>')
+                  HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flozano@lamolina.edu.pe</a></p>')
 
                 )
                 
@@ -443,28 +443,73 @@ shinyUI(dashboardPage(skin = "green",
                 
           shiny::fluidRow(
 
-
           box(width = 5, background = "black",
               
+            column(width = 5,
+              
+              radioButtons(inputId = "stat_model"
+                           , label = "Model parameters"
+                           , choices = c("auto", "manual")
+                           , inline = TRUE
+                           )
+              
+            ),
+            
+            column(width = 7, 
+                   
+                   verbatimTextOutput("model_formula")
+                   
+            ),
+            
             column(width = 12,
                    
-                   uiOutput("stat_factor")
+                   uiOutput("stat_response")
                    
+                   ),
+            
+
+            
+            hr(),
+            
+            conditionalPanel(
+              
+              condition = "input.stat_model == 'auto'",
+              
+              column(width = 8,
+                     
+                     uiOutput("stat_factor")
+                     
+                     ),
+              
+              column(width = 4,
+                     
+                     uiOutput("stat_block")
+                     
+                     ),
+              
+              ),
+            
+            conditionalPanel(
+              
+              condition = "input.stat_model == 'manual'",
+              
+              column(width = 12,
+                     
+                     textInput(inputId = "stat_model_factors"
+                               , label = "Experiment model factors"
+                               , placeholder = "e.g. block + factor1*factor2"
+                     )
+              ),
+              
             ),
-
+            
             column(width = 6,
-
-              uiOutput("stat_response")
-
-            ),
-
-            column(width = 6,
-
-              uiOutput("stat_block")
-
-            ),
-
-            column(width = 6,
+                   
+                   uiOutput("stat_comparison")
+                   
+                   ),
+            
+            column(width = 3,
 
               numericInput("stsig",
                 label = "Significance",
@@ -472,10 +517,9 @@ shinyUI(dashboardPage(skin = "green",
                 min = 0,
                 max = 5,
                 step = 0.01)
+              ),
 
-            ),
-
-            column(width = 6,
+            column(width = 3,
 
               selectInput("stmc",
                 label = "Type",
