@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-04-29
+#> date .: 2021-10-10
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -262,7 +262,7 @@ output$stat_block <- renderUI({
   
   selectInput(
     inputId = "stat_blk",
-    label = "Block (optional)",
+    label = "Block (RCBD)",
     choices = c("choose" = "", fbn),
     multiple = FALSE
   )
@@ -271,10 +271,23 @@ output$stat_block <- renderUI({
 
 output$stat_comparison <- renderUI({
   
+  factors <- if(input$stat_model == "auto") { 
+    
+    input$stat_fact
+    
+  } else if (input$stat_model == "manual") {
+    
+    input$stat_model_factors %>% 
+      strsplit(.,'[[:punct:]]+') %>% 
+      pluck(1) %>% 
+      base::trimws()
+    
+  }
+  
   selectInput(
     inputId = "stat_comparison",
     label = "Comparison",
-    choices = c("choose" = "", input$stat_fact),
+    choices = c("choose" = "", factors),
     multiple = TRUE
   )
   
@@ -286,18 +299,30 @@ output$stat_comparison <- renderUI({
 analysis <- reactive({
   
   validate(need(input$stat_rsp, "Choose your response variable"))
-  validate(need(input$stat_comparison, "Choose your factors to compare")) 
+  validate(need(input$stat_comparison, "Choose your factors to compare"))
   
-  factors <- if(input$stat_model == "auto") {
+  factors <- if(input$stat_model == "auto") { 
+    
     input$stat_fact
-    } else if (input$stat_model == "manual") {input$stat_model_factors}
+    
+    } else if (input$stat_model == "manual") {
+      
+    input$stat_model_factors
+    
+    }
   
-  validate(need(factors, "Choose your model factors")) 
+  bloque <- if(input$stat_model == "auto") { 
+    
+    input$stat_blk
+    
+  } else if (input$stat_model == "manual") { NA }
+  
+  validate(need(factors, "Choose your model factors"))
   
   gquant_analysis(data = varCal()
                   , response = input$stat_rsp
                   , factors = factors
-                  , block = input$stat_blk
+                  , block = bloque
                   , comparison = input$stat_comparison
                   , type = input$stmc
                   , sig = input$stsig
@@ -309,6 +334,8 @@ analysis <- reactive({
 output$tbav  <- renderPrint({ summary(analysis()$aov ) })
 
 output$model_formula <- renderPrint({ analysis()$param$formula })
+
+output$graph_formula <- renderPrint({ analysis()$param$formula })
 
 # comparison table --------------------------------------------------------
 
@@ -441,46 +468,25 @@ intime_plot <- reactive({
   
   validate(need( gnt(), "Select your response variable" ) )
   
-  ylimits <- input$intime_ylimits %>%
-    strsplit(split = "[*]") %>%
-    unlist() %>%
-    as.numeric()
-
-  plot_xrotation <- input$intime_xrotation %>%
-    strsplit(split = "[*]") %>%
-    unlist() %>%
-    as.numeric()
-
-  xtext <- input$intime_xbrakes %>%
-    strsplit(split = ",") %>%
-    unlist()
-
-  gtext <- input$intime_gbrakes %>%
-    strsplit(split = ",") %>%
-    unlist()
-
-  # -------------------------------------------------------------------------
-  
   fplot(data = gnt()
         , type = "line"
         , x = "evaluation" 
         , y = "mean"
         , group = input$summary_by
-        , ylab = if (input$intime_ylab == "") NULL else input$intime_ylab
-        , xlab = if (input$intime_xlab == "") NULL else input$intime_xlab
-        , glab = if (input$intime_glab == "") NULL else input$intime_glab
+        , ylab = input$intime_ylab
+        , xlab = input$intime_xlab
+        , glab = input$intime_glab
         , legend = input$intime_legend
-        , color = if(input$intime_color == "yes") TRUE else FALSE
-        , ylimits = if(input$intime_ylimits == "") NULL else ylimits
-        , xrotation = if(input$intime_xrotation == "") NULL else plot_xrotation
-        , xtext = if(input$intime_xbrakes == "") NULL else xtext
-        , gtext = if(input$intime_gbrakes == "") NULL else gtext
-        , error = if(input$intime_error == "no") NULL else input$intime_error
-        , opt = if(input$intime_opt == "") NULL else input$intime_opt
+        , color = input$intime_color
+        , ylimits = input$intime_ylimits
+        , xrotation = input$intime_xrotation
+        # , xtext = input$intime_xbrakes
+        , gtext = input$intime_gbrakes
+        , error = input$intime_error
+        , opt =  input$intime_opt
         )
   
 })
-
 
 output$intime_plot <- renderImage({
   

@@ -6,6 +6,7 @@
 #' @param data data from ger_summary() function
 #' @param response germination indices to analyse
 #' @param factors factor as vector or factor model as string
+#' @param block block factor for RCBD 
 #' @param comparison treatments will be compared.
 #' @param type method for made comparison analysis: c("snk", "tukey", "duncan").
 #' @param sig significance level. Default 0.05
@@ -17,9 +18,8 @@
 #' \dontrun{
 #' 
 #' library(GerminaR)
-#' library(dplyr)
-#' data <- prosopis %>% mutate(across(c(nacl, temp, rep), as.factor))
-#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+#' 
+#' smr <- ger_summary(SeedN = "seeds", evalName = "D", data = prosopis)
 #' 
 #' mc <- gquant_analysis(data = smr
 #'                       , response = "grp"
@@ -28,10 +28,10 @@
 #'                       , comparison = c("nacl", "temp")
 #'                       )
 #'                       
-#' mc$param$formula
-#'                       
+#' mc
 #' 
 #' } 
+#' 
 
 gquant_analysis <- function(data
                             , response
@@ -45,13 +45,13 @@ gquant_analysis <- function(data
   if(FALSE) {
     
     data <- smr
-    block  <- NA
-    response <- "grp"
-    factors <- "block + temp * nacl"
-    factors <- c("nacl", "temp")
-    comparison <- c("temp", "nacl")
     type = "snk"
     sig = 0.05
+    
+    response = "grp"
+    factors = c("nacl", "temp")
+    block = "rep"
+    comparison = c("nacl", "temp")
     
   }
   
@@ -62,31 +62,43 @@ gquant_analysis <- function(data
   
 # data --------------------------------------------------------------------
   
-  mfactors <- if(length(factors) == 1) factors %>% 
-    strsplit(.,'[[:punct:]]+') %>% 
-    pluck(1) %>% 
-    base::trimws()
+  mfactors <- if(length(factors) == 1) {
+    
+    factors %>% 
+      strsplit(.,'[[:punct:]]+') %>% 
+      pluck(1) %>% 
+      base::trimws()
+    
+  } else { factors }
 
-  data <- data %>% 
-    {if(length(factors) == 1) mutate(.data = ., across(mfactors, as.factor)) else .} %>% 
-    {if(!is.na(block)) mutate(.data = ., across(block, as.factor)) else .} %>% 
+  gdata <- data %>% 
+    {if(length({{factors}}) >= 1) mutate(.data = ., across(mfactors, as.factor)) else .} %>% 
+    {if(!is.na({{block}})) mutate(.data = ., across({{block}}, as.factor)) else .} %>% 
     mutate(across({{comparison}}, as.factor))
   
 # model -------------------------------------------------------------------
   
   model_formula <- if(length(factors) == 1) {
     
-    as.formula(paste(response , factors, sep = " ~ "))
+    if ( is.na(block) ){
+      
+      paste(response , factors, sep = " ~ ")
+      
+    } else if (!is.na(block)) {
+      
+      paste(response, paste(block, factors, sep = " + "), sep = " ~ ")
+      
+    }
     
   } else if (length(factors) >= 2) {
     
     if ( is.na(block) ){
       
-      as.formula(paste(response, paste(factors, collapse = "*"), sep = " ~ "))
+      paste(response, paste(factors, collapse = "*"), sep = " ~ ")
       
     } else if (!is.na(block)) {
       
-      as.formula(paste(response, paste(block, paste(factors, collapse = "*"), sep = " + "), sep = " ~ "))
+      paste(response, paste(block, paste(factors, collapse = "*"), sep = " + "), sep = " ~ ")
       
     }
     
@@ -94,7 +106,7 @@ gquant_analysis <- function(data
   
 # anova -------------------------------------------------------------------
   
-  av <- aov(formula = model_formula, data = data)
+  av <- aov(formula(model_formula), data = gdata)
 
 # mean comparison ---------------------------------------------------------
   

@@ -28,13 +28,16 @@ Function analysis of variance for summary data.
 
 library(GerminaR)
 library(dplyr)
-data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
+
+gdata <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
+
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = gdata)
 
 av <- aov(grp ~ rep + nacl*temp, smr)
 
 mc <- ger_testcomp(aov = av
-                   , comp <- c("nacl", "temp")
+                   , comp = c("nacl", "temp")
                    )
+                   
 } 
 }

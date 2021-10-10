@@ -9,20 +9,20 @@ fplot(
   type = "bar",
   x,
   y,
-  group = NULL,
-  xlab = NULL,
-  ylab = NULL,
-  glab = NULL,
-  ylimits = NULL,
-  xrotation = NULL,
-  xtext = NULL,
-  gtext = NULL,
+  group = NA,
+  xlab = NA,
+  ylab = NA,
+  glab = NA,
+  ylimits = NA,
+  xrotation = NA,
+  xtext = NA,
+  gtext = NA,
   legend = "top",
-  sig = NULL,
+  sig = NA,
   sigsize = 3,
-  error = NULL,
+  error = NA,
   color = TRUE,
-  opt = NULL
+  opt = NA
 )
 }
 \arguments{
@@ -74,6 +74,7 @@ Function use the dtsm function for plot the results
 \dontrun{
 
 library(GerminaR)
+library(dplyr)
 
 smr <- ger_summary(SeedN = "seeds"
                    , evalName = "D"
@@ -81,6 +82,7 @@ smr <- ger_summary(SeedN = "seeds"
   mutate(across(rep:temp, as.factor))
   
 av <- aov(grp ~ nacl*temp, smr)
+
 anova(av)
 
 mc <- ger_testcomp(aov = av
@@ -88,16 +90,18 @@ mc <- ger_testcomp(aov = av
                    
 plotdt <- mc$table
                     
- fplot(data = plotdt
+plot <- fplot(data = plotdt
        , type = "bar"
        , x = "temp"
        , y = "grp"
        , group = "nacl"
        , sig = "sig"
-       , error = "ste"
+       #, error = "ste"
        , color = T
        , ylimits = c(0, 120, 20)
        )
+       
+plot
        
 } 
 

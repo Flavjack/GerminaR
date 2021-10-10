@@ -3,11 +3,14 @@
 - *Package*
   - Transparent logos
   - Box plot with transparent background
+  - New function: `gquant_analysis()`
   
 - *GerminaQuant*
-  - Include model factors manually for any experimental design
+  - Include model factors manually for any type of experimental design
+  - Include the factor comparison selection
+  - Include model in the module analysis and plot
+  - Include logos
   
-
 # Version 2.1.2
 
 - *Package*

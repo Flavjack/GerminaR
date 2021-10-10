@@ -21,6 +21,8 @@ gquant_analysis(
 
 \item{factors}{factor as vector or factor model as string}
 
+\item{block}{block factor for RCBD}
+
 \item{comparison}{treatments will be compared.}
 
 \item{type}{method for made comparison analysis: c("snk", "tukey", "duncan").}
@@ -42,12 +44,18 @@ Function for the analysis module in the app
 \dontrun{
 
 library(GerminaR)
-library(dplyr)
-data <- prosopis \%>\% mutate(across(c(nacl, temp, rep), as.factor))
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = data)
 
+smr <- ger_summary(SeedN = "seeds", evalName = "D", data = prosopis)
 
-# mc <- gquant_analysis(data = smr)
+mc <- gquant_analysis(data = smr
+                      , response = "grp"
+                      , factors = c("nacl", "temp")
+                      , block = "rep"
+                      , comparison = c("nacl", "temp")
+                      )
+                      
+mc
 
 } 
+
 }

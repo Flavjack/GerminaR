@@ -96,7 +96,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GerminaR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.4</span>
       </span>
     </div>
 
@@ -191,20 +191,20 @@
   type <span class='op'>=</span> <span class='st'>"bar"</span>,
   <span class='va'>x</span>,
   <span class='va'>y</span>,
-  group <span class='op'>=</span> <span class='cn'>NULL</span>,
-  xlab <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ylab <span class='op'>=</span> <span class='cn'>NULL</span>,
-  glab <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ylimits <span class='op'>=</span> <span class='cn'>NULL</span>,
-  xrotation <span class='op'>=</span> <span class='cn'>NULL</span>,
-  xtext <span class='op'>=</span> <span class='cn'>NULL</span>,
-  gtext <span class='op'>=</span> <span class='cn'>NULL</span>,
+  group <span class='op'>=</span> <span class='cn'>NA</span>,
+  xlab <span class='op'>=</span> <span class='cn'>NA</span>,
+  ylab <span class='op'>=</span> <span class='cn'>NA</span>,
+  glab <span class='op'>=</span> <span class='cn'>NA</span>,
+  ylimits <span class='op'>=</span> <span class='cn'>NA</span>,
+  xrotation <span class='op'>=</span> <span class='cn'>NA</span>,
+  xtext <span class='op'>=</span> <span class='cn'>NA</span>,
+  gtext <span class='op'>=</span> <span class='cn'>NA</span>,
   legend <span class='op'>=</span> <span class='st'>"top"</span>,
-  sig <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sig <span class='op'>=</span> <span class='cn'>NA</span>,
   sigsize <span class='op'>=</span> <span class='fl'>3</span>,
-  error <span class='op'>=</span> <span class='cn'>NULL</span>,
+  error <span class='op'>=</span> <span class='cn'>NA</span>,
   color <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  opt <span class='op'>=</span> <span class='cn'>NULL</span>
+  opt <span class='op'>=</span> <span class='cn'>NA</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -294,13 +294,15 @@
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://germinar.inkaverse.com/'>GerminaR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='va'>smr</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ger_summary.html'>ger_summary</a></span><span class='op'>(</span>SeedN <span class='op'>=</span> <span class='st'>"seeds"</span>
                    , evalName <span class='op'>=</span> <span class='st'>"D"</span>
                    , data <span class='op'>=</span> <span class='va'>prosopis</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='va'>rep</span><span class='op'>:</span><span class='va'>temp</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='va'>rep</span><span class='op'>:</span><span class='va'>temp</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span>
   
 <span class='va'>av</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>grp</span> <span class='op'>~</span> <span class='va'>nacl</span><span class='op'>*</span><span class='va'>temp</span>, <span class='va'>smr</span><span class='op'>)</span>
+
 <span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>av</span><span class='op'>)</span>
 
 <span class='va'>mc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ger_testcomp.html'>ger_testcomp</a></span><span class='op'>(</span>aov <span class='op'>=</span> <span class='va'>av</span>
@@ -308,16 +310,18 @@
                    
 <span class='va'>plotdt</span> <span class='op'>&lt;-</span> <span class='va'>mc</span><span class='op'>$</span><span class='va'>table</span>
                     
- <span class='fu'>fplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>plotdt</span>
+<span class='va'>plot</span> <span class='op'>&lt;-</span> <span class='fu'>fplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>plotdt</span>
        , type <span class='op'>=</span> <span class='st'>"bar"</span>
        , x <span class='op'>=</span> <span class='st'>"temp"</span>
        , y <span class='op'>=</span> <span class='st'>"grp"</span>
        , group <span class='op'>=</span> <span class='st'>"nacl"</span>
        , sig <span class='op'>=</span> <span class='st'>"sig"</span>
-       , error <span class='op'>=</span> <span class='st'>"ste"</span>
+       <span class='co'>#, error = "ste"</span>
        , color <span class='op'>=</span> <span class='cn'>T</span>
        , ylimits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>120</span>, <span class='fl'>20</span><span class='op'>)</span>
        <span class='op'>)</span>
+       
+<span class='va'>plot</span>
        
 <span class='op'>}</span> 
 
