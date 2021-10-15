@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR)
 [![DOI](https://zenodo.org/badge/49505163.svg)](https://zenodo.org/badge/latestdoi/49505163)
 [![R-CMD-check](https://github.com/Flavjack/GerminaR/workflows/R-CMD-check/badge.svg)](https://github.com/Flavjack/GerminaR/actions)
 [![CRAN RStudio mirror
