@@ -161,7 +161,7 @@ shinyUI(dashboardPage(skin = "green",
 
                       <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" style="height:70px" title="Github" alt="Github"></a>
+                      <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" style="height:80px" title="Github" alt="Github"></a>
                       <span style="display:block;"><small>Github</small></span>
                       </p></div>
                       
