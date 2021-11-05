@@ -79,7 +79,7 @@ plot <- ggdraw(img, ylim = c(0, 1.2)) +
              )
 
 plot %>% 
-  save_plot(filename = "pkgdown/favicon/img/GerminaQuant.png"
+  save_plot(filename = "pkgdown/favicon/img/germinaquant.png"
             , plot = .
             , base_asp = 1
             )
