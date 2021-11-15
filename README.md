@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# GerminaR <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# GerminaR <img src="man/figures/logo.png" align="right" alt="" width="200" />
 
 <!-- badges: start -->
 

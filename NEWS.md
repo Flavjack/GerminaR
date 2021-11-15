@@ -1,3 +1,9 @@
+# Version 2.1.4
+
+- *Package*
+  - Update logos
+  
+
 # Version 2.1.3
 
 - *Package*

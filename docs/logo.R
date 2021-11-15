@@ -1,87 +1,100 @@
-library(tidyverse)
-library(hexSticker)
-library(magick)
-library(showtext)
-library(cowplot)
-
-# open https://fonts.google.com/
-# font Paytone one
-
-font_add_google(name = "Paytone One")
-font_add_google(name = "Lobster")
-
-showtext_auto()
-
 # -------------------------------------------------------------------------
 # GerminaR ----------------------------------------------------------------
 # -------------------------------------------------------------------------
 
+library(huito)
+
+#> https://github.com/terinjokes/StickersStandard
+
+huito_fonts(c("Paytone One", "Lobster"))
+
+label <- label_layout(size = c(5.08, 5.08)
+                      , border_color = NA
+                      , border_width = 0
+                      , background = "#b1d842"
+                      ) %>% 
+  include_image(value = "pkgdown/favicon/img/logo_germination.png"
+                , size = c(5, 5)
+                , position = c(2.55, 2.52)
+                ) %>%
+  include_shape(size = 4.2
+                , border_width = 3
+                , border_color = NA
+                , margin = -0.8
+                , position = c(2.54, 2.54)
+                , panel_color = "#458dcb"
+                , panel_size = 5.08
+                ) %>%
+  include_text(value = "GerminaR"
+               , font = "Paytone One"
+               , size = 23
+               , position = c(2.54, 3.56)
+               , color = "#a64d79"
+               ) %>% 
+  include_text(value = "inkaverse.com"
+               , size = 6
+               , position = c(3.9, 0.96)
+               , angle = 30
+               , color = "white"
+               ) %>%
+  label_print(filename = "pkgdown/favicon/img/GerminaR"
+              , margin = 0
+              , paper = c(5.5, 5.5)
+              , viewer = T
+              , smpres = 250
+              , mode = "s"
+              )
+
+# transparent -------------------------------------------------------------
+# -------------------------------------------------------------------------
+
 logo <- list.files("pkgdown/favicon/img"
                    , full.names = T
-                   , pattern = "logo_germination.png"
-                   ) %>% 
-  image_read()
-
-sticker(subplot = logo
-        , white_around_sticker = TRUE
-        , s_x = 1.0
-        , s_y = 1.0
-        , s_width = 2.1
-        , s_height = 2.1
-        , package = "GerminaR"
-        , p_family = "Paytone One"
-        , p_color = "#a64d79"
-        , p_size = 25
-        , p_y = 1.42
-        , h_color = "transparent"
-        , h_fill = "#b0d744"
-        , h_size = 1
-        , url = "inkaverse.com"
-        , u_color = "white"
-        , u_size = 8
-        , u_angle = 30
-        , u_x = 1.25
-        , u_y = 0.21
-        , filename = "pkgdown/favicon/img/GerminaR.png"
-        )
-
-logo <- list.files("pkgdown/favicon/img"
-                   , full.names = T
-                   , pattern = "GerminaR.png") %>%
-  image_read()  %>% 
-  image_transparent('white') %>% 
-  image_write("pkgdown/favicon/img/GerminaR.png")
-
-file.copy(from = "pkgdown/favicon/img/GerminaR.png"
-          , to = "man/figures/logo.png"
-          , overwrite = T)
+                   , pattern = "GerminaR.pdf") %>%
+  image_read_pdf()  %>% 
+  image_crop(geometry = "600x600+40") %>% 
+  image_crop(geometry = "560x600-40") %>% 
+  image_transparent('#458dcb') %>% 
+  image_write("man/figures/logo.png")
 
 # -------------------------------------------------------------------------
 # GerminaQuant ------------------------------------------------------------
 # -------------------------------------------------------------------------
 
+library(huito)
+
+huito_fonts(c("Paytone One", "Lobster"))
+
+label <- label_layout(size = c(5.08, 5.08)
+                      , border_color = NA
+                      , border_width = 0.5
+                      , background = "white"
+) %>% 
+  include_image(value = "pkgdown/favicon/img/logo_germinaquant.png"
+                , size = c(4.3, 4.3)
+                , position = c(2.55, 2.18)
+  ) %>%
+  include_text(value = "GerminaQuant"
+               , font = "Lobster"
+               , size = 24
+               , position = c(2.53, 4.69)
+               , color = "#a64d79"
+  ) %>% 
+  label_print(filename = "pkgdown/favicon/img/GerminaQuant"
+              , margin = 0
+              , paper = c(5.5, 5.5)
+              , viewer = T
+              , smpres = 250
+              , mode = "s"
+              )
+
+# transparent -------------------------------------------------------------
+# -------------------------------------------------------------------------
+
 logo <- list.files("pkgdown/favicon/img"
                    , full.names = T
-                   , pattern = "logo_germinaquant.png"
-                   ) %>% 
-  image_read()
-
-img <- logo %>% 
-  image_scale("300") %>% 
-  grid::rasterGrob()
-
-plot <- ggdraw(img, ylim = c(0, 1.2)) + 
-  draw_label("GerminaQuant"
-             , colour = "#a64d79"
-             , size = 140
-             , fontfamily = "Lobster"
-             , y = 1.1
-             )
-
-plot %>% 
-  save_plot(filename = "pkgdown/favicon/img/germinaquant.png"
-            , plot = .
-            , base_asp = 1
-            )
+                   , pattern = "GerminaQuant.pdf") %>%
+  image_read_pdf()  %>% 
+  image_write("pkgdown/favicon/img/GerminaQuant.png")
 
 
