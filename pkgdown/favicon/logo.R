@@ -4,8 +4,6 @@
 
 library(huito)
 
-#> https://github.com/terinjokes/StickersStandard
-
 huito_fonts(c("Paytone One", "Lobster"))
 
 label <- label_layout(size = c(5.08, 5.08)
@@ -22,7 +20,7 @@ label <- label_layout(size = c(5.08, 5.08)
                 , border_color = NA
                 , margin = -0.8
                 , position = c(2.54, 2.54)
-                , panel_color = "#458dcb"
+                , panel_color = "white"
                 , panel_size = 5.08
                 ) %>%
   include_text(value = "GerminaR"
@@ -30,7 +28,7 @@ label <- label_layout(size = c(5.08, 5.08)
                , size = 23
                , position = c(2.54, 3.56)
                , color = "#a64d79"
-               ) %>% 
+               ) %>%
   include_text(value = "inkaverse.com"
                , size = 6
                , position = c(3.9, 0.96)
@@ -42,7 +40,7 @@ label <- label_layout(size = c(5.08, 5.08)
               , paper = c(5.5, 5.5)
               , viewer = T
               , smpres = 250
-              , mode = "s"
+              , mode = "c"
               )
 
 # transparent -------------------------------------------------------------
@@ -54,7 +52,7 @@ logo <- list.files("pkgdown/favicon/img"
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>% 
   image_crop(geometry = "560x600-40") %>% 
-  image_transparent('#458dcb') %>% 
+  image_transparent('white') %>% 
   image_write("man/figures/logo.png")
 
 # -------------------------------------------------------------------------
