@@ -1,28 +1,29 @@
 url: http://germinar.inkaverse.com/
 
+development:
+  mode: auto
+  
+authors:
+  Flavio Lozano-Isla:
+    href: https://lozanoisla.com/
+    
+template:
+  bootstrap: 5
+  bootswatch: sandstone
+  params:
+    ganalytics: G-GD6G24QSSE
+  opengraph:
+    image:
+      src: https://flavjack.github.io/GerminaR/reference/figures/logo.png
+
 home:
   title: GerminaR
   description: Indices and Graphics for Assess Seed Germination Process
   url: https://flavjack.github.io/GerminaR/
-  author: Flavio Lozano-Isla
   links:
   - text: More apps
     href: https://inkaverse.com/
     
-template:
-  opengraph:
-    image:
-      src: https://flavjack.github.io/GerminaR/reference/figures/logo.png
-  params:
-    bootswatch: cerulean
-    ganalytics: G-GD6G24QSSE
-    docsearch:
-      api_key: edfb12544ba2e7ecece334d4de5921e2
-      index_name: flavjack_germinar
-    
-development:
-  mode: auto
-
 navbar:
   left:
     - text: ""
