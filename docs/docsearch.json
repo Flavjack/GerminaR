@@ -2,21 +2,21 @@
   "index_name": "flavjack_germinar",
   "start_urls": [
     {
-      "url": "http://germinar.inkaverse.com//index.html",
+      "url": "http://germinar.inkaverse.com/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "http://germinar.inkaverse.com//reference",
+      "url": "http://germinar.inkaverse.com/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "http://germinar.inkaverse.com//articles",
+      "url": "http://germinar.inkaverse.com/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "http://germinar.inkaverse.com//sitemap.xml"
+    "http://germinar.inkaverse.com/sitemap.xml"
   ],
   "selectors": {
     "homepage": {

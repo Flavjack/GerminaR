@@ -34,6 +34,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -97,13 +99,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/flavjack/germinar/">
+  <a href="https://github.com/flavjack/germinar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/sponsors/Flavjack">
+  <a href="https://github.com/sponsors/Flavjack" class="external-link">
     <span class="fas fa-heart fa-lg"></span>
      
   </a>
@@ -126,102 +128,104 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="germinar-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#germinar-" class="anchor"></a>GerminaR <img src="reference/figures/logo.png" align="right" alt="" width="200">
+<div class="section level1">
+<div class="page-header"><h1 id="germinar-">GerminaR <img src="reference/figures/logo.png" align="right" alt="" width="200"><a class="anchor" aria-label="anchor" href="#germinar-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>GerminaR is a platform base in open source R package to calculate and graphic the germination mean indices. GerminaR include a web application called “GerminQuant for R” for non programming users.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of GerminaR from <a href="https://cran.r-project.org/package=GerminaR">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of GerminaR from <a href="https://cran.r-project.org/package=GerminaR" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"GerminaR"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/flavjack/GerminaR">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"GerminaR"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/flavjack/GerminaR" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org">"remotes"</a></span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Flavjack/GerminaR"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Flavjack/GerminaR"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="germinaquant-app" class="section level2">
-<h2 class="hasAnchor">
-<a href="#germinaquant-app" class="anchor"></a>GerminaQuant app</h2>
+<div class="section level2">
+<h2 id="germinaquant-app">GerminaQuant app<a class="anchor" aria-label="anchor" href="#germinaquant-app"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">GerminaR</span><span class="fu">::</span><span class="fu"><a href="reference/GerminaQuant.html">GerminaQuant</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>If is the first time running the app you should install the app dependencies, including the following argument:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">GerminaR</span><span class="fu">::</span><span class="fu"><a href="reference/GerminaQuant.html">GerminaQuant</a></span><span class="op">(</span>dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>After install the package and the app dependencies you can access to the app through the Addins list in Rstudio, or in the following link in the internet <a href="https://flavjack.shinyapps.io/germinaquant/" class="uri">https://flavjack.shinyapps.io/germinaquant/</a></p>
+<p>After install the package and the app dependencies you can access to the app through the Addins list in Rstudio, or in the following link in the internet <a href="https://flavjack.shinyapps.io/germinaquant/" class="external-link uri">https://flavjack.shinyapps.io/germinaquant/</a></p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
-<p>Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. <a href="https://doi.org/10.1111/1440-1703.1275" class="uri">https://doi.org/10.1111/1440-1703.1275</a></p>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>Lozano-Isla, Flavio; Benites-Alfaro, Omar Eduardo; Pompelli, Marcelo Francisco (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. <a href="https://doi.org/10.1111/1440-1703.1275" class="external-link uri">https://doi.org/10.1111/1440-1703.1275</a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=GerminaR">https://​cloud.r-project.org/​package=GerminaR</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/flavjack/germinar/">https://​github.com/​flavjack/​germinar/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/flavjack/germinar/issues">https://​github.com/​flavjack/​germinar/​issues</a>
-</li>
-<li>More apps at <br><a href="https://inkaverse.com/">https://​inkaverse.com/​</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing GerminaR</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Flavio Lozano-Isla <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0714-669X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Omar Benites Alfaro <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6852-9598" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Denise Garcia de Santana <br><small class="roles"> Author </small>  </li>
-<li>Marli A. Ranal <br><small class="roles"> Author </small>  </li>
-<li>Marcelo F. Pompelli <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0002-4408-6374" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=GerminaR" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/flavjack/germinar/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/flavjack/germinar/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://inkaverse.com/" class="external-link">More apps</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=GerminaR"><img src="https://www.r-pkg.org/badges/version/GerminaR" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/49505163"><img src="https://zenodo.org/badge/49505163.svg" alt="DOI"></a></li>
-<li><a href="https://github.com/Flavjack/GerminaR/actions"><img src="https://github.com/Flavjack/GerminaR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://r-pkg.org/pkg/GerminaR"><img src="https://cranlogs.r-pkg.org/badges/grand-total/GerminaR?color=green" alt="CRAN RStudio mirror downloads"></a></li>
+<li>
+<a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a> | file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing GerminaR</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Flavio Lozano-Isla <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0714-669X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Omar Benites Alfaro <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6852-9598" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Denise Garcia de Santana <br><small class="roles"> Author </small>  </li>
+<li>Marli A. Ranal <br><small class="roles"> Author </small>  </li>
+<li>Marcelo F. Pompelli <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0002-4408-6374" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=GerminaR" class="external-link"><img src="https://www.r-pkg.org/badges/version/GerminaR" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/49505163" class="external-link"><img src="https://zenodo.org/badge/49505163.svg" alt="DOI"></a></li>
+<li><a href="https://github.com/Flavjack/GerminaR/actions" class="external-link"><img src="https://github.com/Flavjack/GerminaR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://r-pkg.org/pkg/GerminaR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/GerminaR?color=green" alt="CRAN RStudio mirror downloads"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Flavio Lozano-Isla, Omar Benites Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo F. Pompelli.</p>
+  <p></p>
+<p>Developed by Flavio Lozano-Isla, Omar Benites Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo F. Pompelli.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
       </footer>

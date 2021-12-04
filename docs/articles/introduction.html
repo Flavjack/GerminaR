@@ -34,6 +34,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -97,13 +99,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/flavjack/germinar/">
+  <a href="https://github.com/flavjack/germinar/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/sponsors/Flavjack">
+  <a href="https://github.com/sponsors/Flavjack" class="external-link">
     <span class="fas fa-heart fa-lg"></span>
      
   </a>
@@ -124,27 +126,27 @@
 
       
 
-      </header><script src="introduction_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/flavjack/germinar/blob/master/vignettes/introduction.Rmd"><code>vignettes/introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/flavjack/germinar/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
 
     </div>
 
     
     
-<div id="seed-germination-process" class="section level1">
-<h1 class="hasAnchor">
-<a href="#seed-germination-process" class="anchor"></a>Seed germination process</h1>
+<div class="section level1">
+<h1 id="seed-germination-process">Seed germination process<a class="anchor" aria-label="anchor" href="#seed-germination-process"></a>
+</h1>
 <p>The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions <span class="citation">(<a href="#ref-Marcos-Filho1998" role="doc-biblioref">Marcos-Filho, 1998</a>)</span>. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination <span class="citation">(<a href="#ref-Penfield2009" role="doc-biblioref">Penfield &amp; King, 2009</a>)</span>. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data <span class="citation">(<a href="#ref-Joosen2010" role="doc-biblioref">Joosen et al., 2009</a>)</span>. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed <span class="citation">(<a href="#ref-Ranal2006" role="doc-biblioref">Ranal &amp; Santana, 2006</a>)</span>.</p>
 </div>
-<div id="seed-germination-indices" class="section level1">
-<h1 class="hasAnchor">
-<a href="#seed-germination-indices" class="anchor"></a>Seed germination indices</h1>
+<div class="section level1">
+<h1 id="seed-germination-indices">Seed germination indices<a class="anchor" aria-label="anchor" href="#seed-germination-indices"></a>
+</h1>
 <table class="table">
 <caption>Germination variables evaluated in GerminaR package and limits according to Ranal and Santana (2006), where <span class="math inline">\(n_i\)</span> is the number of seeds germinated in <span class="math inline">\(i^{th}\)</span> time; and <span class="math inline">\(k\)</span> is the last day of the evaluation process for germination</caption>
 <thead><tr class="header">
@@ -217,17 +219,17 @@
 </tbody>
 </table>
 <blockquote>
-<p>More info: <a href="https://doi.org/10.1111/1440-1703.1275" class="uri">https://doi.org/10.1111/1440-1703.1275</a></p>
+<p>More info: <a href="https://doi.org/10.1111/1440-1703.1275" class="external-link uri">https://doi.org/10.1111/1440-1703.1275</a></p>
 </blockquote>
 </div>
-<div id="fieldbook-preparation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#fieldbook-preparation" class="anchor"></a>Fieldbook preparation</h1>
+<div class="section level1">
+<h1 id="fieldbook-preparation">Fieldbook preparation<a class="anchor" aria-label="anchor" href="#fieldbook-preparation"></a>
+</h1>
 <p>For a correct analysis and fast data processing is important to take into account the data organization and the proper record of the germination process. In this section we will explain how you should collect and organize your data.</p>
-<div id="data-organization" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-organization" class="anchor"></a>Data organization</h2>
-<p>For using GerminaR and GerminaQuant is necessary that you have a dataset with germination values. You can use a following data as an example <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537"><em>“prosopis”</em></a>. If you have a Google account you can made a copy of the document and edit it online or download in Excel format for your own analysis.</p>
+<div class="section level2">
+<h2 id="data-organization">Data organization<a class="anchor" aria-label="anchor" href="#data-organization"></a>
+</h2>
+<p>For using GerminaR and GerminaQuant is necessary that you have a dataset with germination values. You can use a following data as an example <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit#gid=667855537" class="external-link"><em>“prosopis”</em></a>. If you have a Google account you can made a copy of the document and edit it online or download in Excel format for your own analysis.</p>
 <p>The fieldbook should have three essential parts.(1) The factor columns (red), according to the experimental design;(2) the seed number column, indicate the number of seeds sown in each experimental unit (green) and (3) the evaluation columns with the germination values (blue). You can design your own field book with different names in the column according your experimental design.</p>
 <div class="figure" style="text-align: center">
 <img src="files/dtorg.png" alt="Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination." width="100%"><p class="caption">
@@ -235,32 +237,32 @@ Layout for germination evaluation process. The factor column (red) are according
 </p>
 </div>
 </div>
-<div id="data-collection" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-collection" class="anchor"></a>Data collection</h2>
+<div class="section level2">
+<h2 id="data-collection">Data collection<a class="anchor" aria-label="anchor" href="#data-collection"></a>
+</h2>
 <p>The evaluation of the germination process is obtained of the count of the germination in each experimental unit and It can be evaluated in any time lapse (hours, days, months, etc) in continuous interval of the same length always beginning with the time zero (ei. Ti00), until the end of the germination process or according to the researcher criteria.</p>
 </div>
 </div>
-<div id="germination-analysis" class="section level1">
-<h1 class="hasAnchor">
-<a href="#germination-analysis" class="anchor"></a>Germination analysis</h1>
-<p>After the data collection, the information can be processed using GerminaR by the <a href="https://germinar.inkaverse.com/articles/GerminaR">R console</a> or using the <a href="https://germinar.inkaverse.com/articles/GerminaQuant">GerminaQuant App</a>.</p>
+<div class="section level1">
+<h1 id="germination-analysis">Germination analysis<a class="anchor" aria-label="anchor" href="#germination-analysis"></a>
+</h1>
+<p>After the data collection, the information can be processed using GerminaR by the <a href="https://germinar.inkaverse.com/articles/GerminaR" class="external-link">R console</a> or using the <a href="https://germinar.inkaverse.com/articles/GerminaQuant" class="external-link">GerminaQuant App</a>.</p>
 </div>
-<div id="references" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<div class="section level1 unnumbered">
+<h1 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-Joosen2010" class="csl-entry">
-Joosen, R. V. L., Kodde, J., Willems, L. A. J., Ligterink, W., Plas, L. H. W. van der, &amp; Hilhorst, H. W. M. (2009). Germinator: A software package for high-throughput scoring and curve fitting of <em>arabidopsis</em> seed germination. <em>The Plant Journal</em>, <em>62</em>(1), 148–159. <a href="https://doi.org/10.1111/j.1365-313x.2009.04116.x">https://doi.org/10.1111/j.1365-313x.2009.04116.x</a>
+Joosen, R. V. L., Kodde, J., Willems, L. A. J., Ligterink, W., Plas, L. H. W. van der, &amp; Hilhorst, H. W. M. (2009). Germinator: A software package for high-throughput scoring and curve fitting of <em>arabidopsis</em> seed germination. <em>The Plant Journal</em>, <em>62</em>(1), 148–159. <a href="https://doi.org/10.1111/j.1365-313x.2009.04116.x" class="external-link">https://doi.org/10.1111/j.1365-313x.2009.04116.x</a>
 </div>
 <div id="ref-Marcos-Filho1998" class="csl-entry">
-Marcos-Filho, J. (1998). <span class="nocase">New approaches to seed vigor testing</span>. <em>Scientia Agricola</em>, <em>55</em>, 27–33. <a href="https://doi.org/10.1590/S0103-90161998000500005">https://doi.org/10.1590/S0103-90161998000500005</a>
+Marcos-Filho, J. (1998). <span class="nocase">New approaches to seed vigor testing</span>. <em>Scientia Agricola</em>, <em>55</em>, 27–33. <a href="https://doi.org/10.1590/S0103-90161998000500005" class="external-link">https://doi.org/10.1590/S0103-90161998000500005</a>
 </div>
 <div id="ref-Penfield2009" class="csl-entry">
-Penfield, S., &amp; King, J. (2009). Towards a systems biology approach to understanding seed dormancy and germination. <em>Proceedings of the Royal Society B: Biological Sciences</em>, <em>276</em>(1673), 3561–3569. <a href="https://doi.org/10.1098/rspb.2009.0592">https://doi.org/10.1098/rspb.2009.0592</a>
+Penfield, S., &amp; King, J. (2009). Towards a systems biology approach to understanding seed dormancy and germination. <em>Proceedings of the Royal Society B: Biological Sciences</em>, <em>276</em>(1673), 3561–3569. <a href="https://doi.org/10.1098/rspb.2009.0592" class="external-link">https://doi.org/10.1098/rspb.2009.0592</a>
 </div>
 <div id="ref-Ranal2006" class="csl-entry">
-Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure the germination process? <em>Revista Brasileira de Bot<span>â</span>nica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10.1590/s0100-84042006000100002">https://doi.org/10.1590/s0100-84042006000100002</a>
+Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure the germination process? <em>Revista Brasileira de Bot<span>â</span>nica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10.1590/s0100-84042006000100002" class="external-link">https://doi.org/10.1590/s0100-84042006000100002</a>
 </div>
 </div>
 </div>
@@ -277,11 +279,13 @@ Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure the germin
 
 
       <footer><div class="copyright">
-  <p>Developed by Flavio Lozano-Isla, Omar Benites Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo F. Pompelli.</p>
+  <p></p>
+<p>Developed by Flavio Lozano-Isla, Omar Benites Alfaro, Denise Garcia de Santana, Marli A. Ranal, Marcelo F. Pompelli.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
       </footer>
