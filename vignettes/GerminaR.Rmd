@@ -17,20 +17,20 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-GerminaR is a platform base in open source package to calculate and graphic the germination indices in R. GerminaR include a web application called “GerminQuant for R” for non programming user.
+GerminaR is a platform base in open source package to calculate and graphic the main germination indices in R. GerminaR include a web application called “GerminQuant for R” for interactive analysis.
 
 ```{=html}
 <div id=footer style="width:100%; margin:auto;">
 
 <div style="display:inline-block; width:49%">
 <p style="text-align:center">
-<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:70px" title="R cran" alt="GerminaR"></a> 
+<a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
 <span style="display:block;"><small>GerminaR</small></span>
 </p></div>
 
 <div style="display:inline-block; width:49%">
 <p style="text-align:center">
-<a target="_blank" href="https://germinar.inkaverse.com/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:70px" title="GerminaR" alt="GerminaR"></a> 
+<a target="_blank" href="https://germinar.inkaverse.com/"><img src="https://pkgdown.r-lib.org/reference/figures/logo.png" style="height:80px" title="GerminaR" alt="GerminaR"></a> 
 <span style="display:block;"><small>Project</small></span>
 </p></div>
 

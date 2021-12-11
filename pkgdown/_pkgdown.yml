@@ -2,11 +2,22 @@ url: http://germinar.inkaverse.com/
 
 development:
   mode: auto
-  
+
 authors:
   Flavio Lozano-Isla:
     href: https://lozanoisla.com/
-    
+  QuipoLab:
+    href: https://www.quipolab.com/
+    html: "<img src='https://inkaverse.com/img/quipolab.png' align='middle' width=70>"
+  Inkaverse:
+    href: https://inkaverse.com/
+    html: "<img src='https://inkaverse.com/img/inkaverse.png' align='middle' width=70>"
+  footer:
+    roles: [cre]
+    text: "Desarrollado por"
+  sidebar:
+    roles: [aut, ctb, cph]
+
 template:
   bootstrap: 5
   bootswatch: sandstone
@@ -14,7 +25,7 @@ template:
     ganalytics: G-GD6G24QSSE
   opengraph:
     image:
-      src: https://flavjack.github.io/GerminaR/reference/figures/logo.png
+      src: man/figures/logo.png
 
 home:
   title: GerminaR
@@ -23,30 +34,40 @@ home:
   links:
   - text: More apps
     href: https://inkaverse.com/
-    
+
 navbar:
-  left:
-    - text: ""
+  structure:
+    left: [home, intro, germinar, germinaquant, reference, news]
+    right: [search, github, sponsor]
+  components:
+    home:
       icon: fa-home fa-lg
       href: index.html
-    - text: "Intro"
+    intro:
+      text: "Intro"
       icon: fa-seedling fa-lg
       href: articles/introduction.html
-    - text: "GerminaR"
-      icon: fa-file-code fa-lg
-      href: articles/GerminaR.html
-    - text: "GerminaQuant"
-      icon: fa-gamepad fa-lg
-      href: articles/GerminaQuant.html
-    - text: "Functions"
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/flavjack/germinar/
+    sponsor:
+      icon: fas fa-heart fa-lg
+      href: https://github.com/sponsors/Flavjack
+    reference:
+      text: "Functions"
       icon: fa-file-code fa-lg
       href: reference/index.html
-    - text: "News"
+    news:
+      text: "News"
       icon: fa-file-alt fa-lg
       href: news/index.html
-  right:
-    - icon: fab fa-github fa-lg
-      href: https://github.com/flavjack/germinar/
-    - icon: fas fa-heart fa-lg
-      href: https://github.com/sponsors/Flavjack
-      
+    germinar:
+      text: "GerminaR"
+      icon: fa-file-alt fa-lg
+      href: articles/GerminaR.html
+    germinaquant:
+      text: "GerminaQuant"
+      icon: fa-gamepad fa-lg
+      href: articles/GerminaQuant.html
+
+

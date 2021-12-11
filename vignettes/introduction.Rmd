@@ -53,7 +53,7 @@ The evaluation of the germination process is obtained of the count of the germin
 
 # Germination analysis
 
-After the data collection, the information can be processed using GerminaR by the [R console](https://germinar.inkaverse.com/articles/GerminaR) or using the [GerminaQuant App](https://germinar.inkaverse.com/articles/GerminaQuant). 
+After the data collection, the information can be processed using GerminaR by the [R console](https://germinar.inkaverse.com/articles/GerminaR) or using the [GerminaQuant](https://germinar.inkaverse.com/articles/GerminaQuant) app. 
 
 # References {-}
 

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# GerminaR <img src="man/figures/logo.png" align="right" alt="" width="200" />
+# GerminaR <img src="man/figures/logo.png" align="right" width="200" />
 
 <!-- badges: start -->
 
@@ -13,8 +13,8 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/GerminaR?color=green)](
 <!-- badges: end -->
 
 GerminaR is a platform base in open source R package to calculate and
-graphic the germination mean indices. GerminaR include a web application
-called “GerminQuant for R” for non programming users.
+graphic the main germination indices. GerminaR include a web application
+called “GerminQuant for R” for interactive analysis.
 
 ## Installation
 

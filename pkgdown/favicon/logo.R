@@ -11,9 +11,10 @@ label <- label_layout(size = c(5.08, 5.08)
                       , border_width = 0
                       , background = "#b1d842"
                       ) %>% 
-  include_image(value = "pkgdown/favicon/img/logo_germination.png"
-                , size = c(5, 5)
-                , position = c(2.55, 2.52)
+  include_image(value = "https://germinar.inkaverse.com/img/seed_germination.png"
+                , size = c(5.5, 5.5)
+                , position = c(2.55, 1.3)
+                , opts = 'image_transparent("white")*image_modulate(brightness = 0)'
                 ) %>%
   include_shape(size = 4.2
                 , border_width = 3
