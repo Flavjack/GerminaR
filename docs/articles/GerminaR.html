@@ -46,7 +46,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../index.html">
@@ -114,6 +114,9 @@
   </div>
 </nav><div class="container template-article">
 
+
+
+
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>GerminaR</h1>
@@ -125,7 +128,9 @@
 
     
     
-<p>GerminaR is a platform base in open source package to calculate and graphic the main germination indices in R. GerminaR include a web application called “GerminQuant for R” for interactive analysis.</p>
+<p>GerminaR is a platform base in open source package to calculate and
+graphic the main germination indices in R. GerminaR include a web
+application called “GerminQuant for R” for interactive analysis.</p>
 <div id="footer" style="width:100%; margin:auto;">
 
 <div style="display:inline-block; width:49%">
@@ -143,9 +148,13 @@
 </div>
 
 </div>
-<p>Analysis for the germination experiment can follow a routine. The functions will de explain according to the data set included in the GerminaR package: “<em>prosopis</em>”.</p>
+<p>Analysis for the germination experiment can follow a routine. The
+functions will de explain according to the data set included in the
+GerminaR package: “<em>prosopis</em>”.</p>
 <ol style="list-style-type: decimal">
-<li>Install and load the GerminaR package. Load the “<em>prosopis</em>” dataset on your session. In case of using another dataset, you can load your own data and proceed according to the following script:</li>
+<li>Install and load the GerminaR package. Load the “<em>prosopis</em>”
+dataset on your session. In case of using another dataset, you can load
+your own data and proceed according to the following script:</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Install packages and dependencies</span>
@@ -356,7 +365,9 @@
 </tbody>
 </table>
 <ol start="2" style="list-style-type: decimal">
-<li>Calculate the germination indices and perform the ANOVA and the mean comparison tests. The user can generate the graphs, expressing their results, which can be either of bars or lines graphics.</li>
+<li>Calculate the germination indices and perform the ANOVA and the mean
+comparison tests. The user can generate the graphs, expressing their
+results, which can be either of bars or lines graphics.</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -375,6 +386,22 @@
   <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Function ger_summary performe ten germination indices"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Function ger_summary performe ten germination indices</caption>
+<colgroup>
+<col width="5%">
+<col width="7%">
+<col width="7%">
+<col width="8%">
+<col width="5%">
+<col width="5%">
+<col width="7%">
+<col width="7%">
+<col width="9%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="7%">
+<col width="8%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">rep</th>
 <th align="left">nacl</th>
@@ -554,12 +581,12 @@
 </tr>
 </tbody>
 </table>
-<div class="section level1">
-<h1 id="punctual-analysis-of-germination">Punctual analysis of germination<a class="anchor" aria-label="anchor" href="#punctual-analysis-of-germination"></a>
-</h1>
 <div class="section level2">
-<h2 id="germination-percentage">Germination percentage<a class="anchor" aria-label="anchor" href="#germination-percentage"></a>
+<h2 id="punctual-analysis-of-germination">Punctual analysis of germination<a class="anchor" aria-label="anchor" href="#punctual-analysis-of-germination"></a>
 </h2>
+<div class="section level3">
+<h3 id="germination-percentage">Germination percentage<a class="anchor" aria-label="anchor" href="#germination-percentage"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">## Germination Percentage (GRP)</span>
@@ -837,13 +864,15 @@
 <span class="va">grp</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="GerminaR_files/figure-html/unnamed-chunk-3-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Bar graph with germination percentage in a factorial analisys" width="98%"><p class="caption">
-Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Bar graph with germination percentage in a factorial analisys
+Germination experiment with <em>Prosopis juliflor</em> under different
+osmotic potentials and temperatures. Bar graph with germination
+percentage in a factorial analisys
 </p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="mean-germination-time">Mean germination time<a class="anchor" aria-label="anchor" href="#mean-germination-time"></a>
-</h2>
+<div class="section level3">
+<h3 id="mean-germination-time">Mean germination time<a class="anchor" aria-label="anchor" href="#mean-germination-time"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">## Mean Germination Time (MGT)</span>
@@ -864,6 +893,17 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
    <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Mean germination time comparison"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Mean germination time comparison</caption>
+<colgroup>
+<col width="7%">
+<col width="7%">
+<col width="14%">
+<col width="15%">
+<col width="4%">
+<col width="15%">
+<col width="14%">
+<col width="14%">
+<col width="6%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">temp</th>
 <th align="left">nacl</th>
@@ -1109,21 +1149,28 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <span class="va">mgt</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="GerminaR_files/figure-html/unnamed-chunk-4-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Bar graph for mean germination time in a factorial analisys." width="98%"><p class="caption">
-Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Bar graph for mean germination time in a factorial analisys.
+Germination experiment with <em>Prosopis juliflor</em> under different
+osmotic potentials and temperatures. Bar graph for mean germination time
+in a factorial analisys.
 </p>
 </div>
 <blockquote>
-<p>You can add at each plot different arguments as the standard error, significance of the mean test, color, labels and limits. The resulted graphics are performed for publications and allows to insert math expression in the titles.</p>
+<p>You can add at each plot different arguments as the standard error,
+significance of the mean test, color, labels and limits. The resulted
+graphics are performed for publications and allows to insert math
+expression in the titles.</p>
 </blockquote>
 </div>
 </div>
-<div class="section level1">
-<h1 id="cumulative-analysis-of-germination">Cumulative analysis of germination<a class="anchor" aria-label="anchor" href="#cumulative-analysis-of-germination"></a>
-</h1>
-<p>The cumulative analysis of the germination allows to observe the evolution of the germination process, being able to be expressed as the percentage of germination or with the relative germination.</p>
 <div class="section level2">
-<h2 id="in-time-analysis-for-nacl">In time analysis for NaCl<a class="anchor" aria-label="anchor" href="#in-time-analysis-for-nacl"></a>
+<h2 id="cumulative-analysis-of-germination">Cumulative analysis of germination<a class="anchor" aria-label="anchor" href="#cumulative-analysis-of-germination"></a>
 </h2>
+<p>The cumulative analysis of the germination allows to observe the
+evolution of the germination process, being able to be expressed as the
+percentage of germination or with the relative germination.</p>
+<div class="section level3">
+<h3 id="in-time-analysis-for-nacl">In time analysis for NaCl<a class="anchor" aria-label="anchor" href="#in-time-analysis-for-nacl"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># data frame with percentage or relative germination in time by NaCl</span>
@@ -1275,13 +1322,15 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <span class="va">nacl</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="GerminaR_files/figure-html/unnamed-chunk-5-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Line graph from cumulative germination under different osmotic potentials." width="98%"><p class="caption">
-Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Line graph from cumulative germination under different osmotic potentials.
+Germination experiment with <em>Prosopis juliflor</em> under different
+osmotic potentials and temperatures. Line graph from cumulative
+germination under different osmotic potentials.
 </p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="in-time-analysis-for-temperature">In time analysis for temperature<a class="anchor" aria-label="anchor" href="#in-time-analysis-for-temperature"></a>
-</h2>
+<div class="section level3">
+<h3 id="in-time-analysis-for-temperature">In time analysis for temperature<a class="anchor" aria-label="anchor" href="#in-time-analysis-for-temperature"></a>
+</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># data frame with percentage or relative germination in time by temperature</span>
@@ -1431,15 +1480,19 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <span class="va">temp</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="GerminaR_files/figure-html/unnamed-chunk-6-1.png" alt="Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. Line graph from cumulative germination under different temperatures." width="98%"><p class="caption">
-Germination experiment with <em>Prosopis juliflor</em> under different osmotic potentials and temperatures. Line graph from cumulative germination under different temperatures.
+Germination experiment with <em>Prosopis juliflor</em> under different
+osmotic potentials and temperatures. Line graph from cumulative
+germination under different temperatures.
 </p>
 </div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="using-ggplot2">Using ggplot2<a class="anchor" aria-label="anchor" href="#using-ggplot2"></a>
-</h1>
-<p>As the function <code><a href="../reference/fplot.html">fplot()</a></code> is build using <a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a> <span class="citation">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham et al., 2020</a>)</span>. You can add more arguments for modify the graphics adding <code>+</code>.</p>
+<div class="section level2">
+<h2 id="using-ggplot2">Using ggplot2<a class="anchor" aria-label="anchor" href="#using-ggplot2"></a>
+</h2>
+<p>As the function <code><a href="../reference/fplot.html">fplot()</a></code> is build using <a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a> <span class="citation">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham
+et al., 2020</a>)</span>. You can add more arguments for modify the
+graphics adding <code>+</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
@@ -1468,12 +1521,15 @@ Germination experiment with <em>Prosopis juliflor</em> under different osmotic p
 <span class="va">ggplot</span></code></pre></div>
 <p><img src="GerminaR_files/figure-html/unnamed-chunk-7-1.png" width="98%" style="display: block; margin: auto;"></p>
 </div>
-<div class="section level1 unnumbered">
-<h1 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h1>
+<div class="section level2">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-R-ggplot2" class="csl-entry">
-Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H., &amp; Dunnington, D. (2020). <em>ggplot2: Create elegant data visualisations using the grammar of graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link">https://CRAN.R-project.org/package=ggplot2</a>
+Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K.,
+Wilke, C., Woo, K., Yutani, H., &amp; Dunnington, D. (2020).
+<em>ggplot2: Create elegant data visualisations using the grammar of
+graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link">https://CRAN.R-project.org/package=ggplot2</a>
 </div>
 </div>
 </div>
@@ -1485,12 +1541,14 @@ Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Wo
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a>.</p>
+<p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio
+Lozano-Isla</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
     </footer>

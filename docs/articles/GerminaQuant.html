@@ -46,7 +46,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../index.html">
@@ -114,6 +114,9 @@
   </div>
 </nav><div class="container template-article">
 
+
+
+
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>GerminaQuant</h1>
@@ -125,7 +128,15 @@
 
     
     
-<p><strong>GerminaQuant for R</strong> allows make the calculations for germination indices incredibly easy in an interactive web applications build in R <span class="citation">(<a href="#ref-R-base" role="doc-biblioref">R Core Team, 2020</a>)</span>, based in <code>GerminaR</code> <span class="citation">(<a href="#ref-R-GerminaR" role="doc-biblioref">Lozano Isla et al., 2020</a>)</span> and <code>Shiny</code> R package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al., 2020</a>)</span>. GerminaQuant app is reactive!. Outputs change instantly as users modify inputs. The principal features of the application allows to calculate the main germination indices, statistical analysis and easy way to plot the results.</p>
+<p><strong>GerminaQuant for R</strong> allows make the calculations for
+germination indices incredibly easy in an interactive web applications
+build in R <span class="citation">(<a href="#ref-R-base" role="doc-biblioref">R Core Team, 2020</a>)</span>, based in
+<code>GerminaR</code> <span class="citation">(<a href="#ref-R-GerminaR" role="doc-biblioref">Lozano Isla et al., 2020</a>)</span> and
+<code>Shiny</code> R package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al., 2020</a>)</span>.
+GerminaQuant app is reactive!. Outputs change instantly as users modify
+inputs. The principal features of the application allows to calculate
+the main germination indices, statistical analysis and easy way to plot
+the results.</p>
 <div id="footer" style="width:100%; margin:auto;">
 
 <div style="display:inline-block; width:48%">
@@ -143,12 +154,14 @@
 </div>
 
 </div>
-<div class="section level1">
-<h1 id="app-modules">App modules<a class="anchor" aria-label="anchor" href="#app-modules"></a>
-</h1>
-<p>The application is compound for different tabs that allow to make the analysis very easy.</p>
+<div class="section level2">
+<h2 id="app-modules">App modules<a class="anchor" aria-label="anchor" href="#app-modules"></a>
+</h2>
+<p>The application is compound for different tabs that allow to make the
+analysis very easy.</p>
 <table class="table">
-<caption>Description of each module in GerminaQuant to evaluate and analyze the germination process.</caption>
+<caption>Description of each module in GerminaQuant to evaluate and
+analyze the germination process.</caption>
 <colgroup>
 <col width="6%">
 <col width="93%">
@@ -160,107 +173,144 @@
 <tbody>
 <tr class="odd">
 <td align="left">Presentation</td>
-<td align="left">Presentation of the package and the application with their principal characteristics and information</td>
+<td align="left">Presentation of the package and the application with
+their principal characteristics and information</td>
 </tr>
 <tr class="even">
 <td align="left">Fieldbook</td>
-<td align="left">Interface to upload the data from germination data and choose the parameter for the analysis. Allows to upload the data from google sheet or excel file</td>
+<td align="left">Interface to upload the data from germination data and
+choose the parameter for the analysis. Allows to upload the data from
+google sheet or excel file</td>
 </tr>
 <tr class="odd">
 <td align="left">Germination</td>
-<td align="left">Table with the indices calculated from the germination data</td>
+<td align="left">Table with the indices calculated from the germination
+data</td>
 </tr>
 <tr class="even">
 <td align="left">Exploratory</td>
-<td align="left">Interface to explore your data and their distribution using boxplot graphics</td>
+<td align="left">Interface to explore your data and their distribution
+using boxplot graphics</td>
 </tr>
 <tr class="odd">
 <td align="left">Statistics</td>
-<td align="left">Interface to perform the statistical análisis according the experimental design. Allows to calculate the analysis of variance, summary statistics, mean comparison table and model diagnostic</td>
+<td align="left">Interface to perform the statistical análisis according
+the experimental design. Allows to calculate the analysis of variance,
+summary statistics, mean comparison table and model diagnostic</td>
 </tr>
 <tr class="even">
 <td align="left">Graphics</td>
-<td align="left">Plot the mean comparison table from the <code>Statistics</code> module. Allows to customized the results using bar or line plot</td>
+<td align="left">Plot the mean comparison table from the
+<code>Statistics</code> module. Allows to customized the results using
+bar or line plot</td>
 </tr>
 <tr class="odd">
 <td align="left">InTime</td>
-<td align="left">Plot the germination process in time selecting one of the factor from your experiment. Allows to customized the results using line plot</td>
+<td align="left">Plot the germination process in time selecting one of
+the factor from your experiment. Allows to customized the results using
+line plot</td>
 </tr>
 <tr class="even">
 <td align="left">Tools</td>
-<td align="left">Tool for calculate the osmotic potential for any salt or PEG solution</td>
+<td align="left">Tool for calculate the osmotic potential for any salt
+or PEG solution</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section level1">
-<h1 id="data-processing">Data processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
-</h1>
 <div class="section level2">
-<h2 id="fieldbook">Fieldbook<a class="anchor" aria-label="anchor" href="#fieldbook"></a>
+<h2 id="data-processing">Data processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
 </h2>
-<p>When you have your fieldbook, you can access to the app <a href="https://flavjack.shinyapps.io/germinaquant/" class="external-link">GerminaQuant for R</a> and go “Fieldbook” tab.</p>
+<div class="section level3">
+<h3 id="fieldbook">Fieldbook<a class="anchor" aria-label="anchor" href="#fieldbook"></a>
+</h3>
+<p>When you have your fieldbook, you can access to the app <a href="https://flavjack.shinyapps.io/germinaquant/" class="external-link">GerminaQuant for
+R</a> and go “Fieldbook” tab.</p>
 <div class="figure" style="text-align: center">
 <img src="files/impdt.png" alt="Fieldbook interface for import your data" width="100%"><p class="caption">
 Fieldbook interface for import your data
 </p>
 </div>
-<p>You can paste a Google spread sheet URL or upload a local file in xlsx format. In “Seeds (col name)” you have to write the name of the column containing the information of the number of seed sown in each experimental unit, for “Evaluations (prefix)” you have to put the prefix of the names for the evaluated days from the germination time lapse.</p>
+<p>You can paste a Google spread sheet URL or upload a local file in
+xlsx format. In “Seeds (col name)” you have to write the name of the
+column containing the information of the number of seed sown in each
+experimental unit, for “Evaluations (prefix)” you have to put the prefix
+of the names for the evaluated days from the germination time lapse.</p>
 </div>
-<div class="section level2">
-<h2 id="germination">Germination<a class="anchor" aria-label="anchor" href="#germination"></a>
-</h2>
-<p>If the parameter in the “Fieldbook” tab are correct, in “Germination” tab will be performed and the values of the germination indices will be shown maintaining the experimental design. GerminaQuant allows to copy or downloading the information in “csv” or “xlsx” format.</p>
+<div class="section level3">
+<h3 id="germination">Germination<a class="anchor" aria-label="anchor" href="#germination"></a>
+</h3>
+<p>If the parameter in the “Fieldbook” tab are correct, in “Germination”
+tab will be performed and the values of the germination indices will be
+shown maintaining the experimental design. GerminaQuant allows to copy
+or downloading the information in “csv” or “xlsx” format.</p>
 <div class="figure" style="text-align: center">
 <img src="files/dtdown.png" alt="Dowload option for the calculated variables" width="100%"><p class="caption">
 Dowload option for the calculated variables
 </p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="statistics">Statistics<a class="anchor" aria-label="anchor" href="#statistics"></a>
-</h2>
-<p>The GerminaQuant application can perform analysis for experimental design in a Complete Randomize Design (CRD), Randomize Complete Block Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing calculate the analysis of variance (AOV) and the mean differences through Student Newman Keuls (SNK), Tukey or Duncan test.</p>
+<div class="section level3">
+<h3 id="statistics">Statistics<a class="anchor" aria-label="anchor" href="#statistics"></a>
+</h3>
+<p>The GerminaQuant application can perform analysis for experimental
+design in a Complete Randomize Design (CRD), Randomize Complete Block
+Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing
+calculate the analysis of variance (AOV) and the mean differences
+through Student Newman Keuls (SNK), Tukey or Duncan test.</p>
 <div class="figure" style="text-align: center">
 <img src="files/stat.png" alt="Statitical analysis with ANOVA and mean comparison test" width="100%"><p class="caption">
 Statitical analysis with ANOVA and mean comparison test
 </p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="graphics">Graphics<a class="anchor" aria-label="anchor" href="#graphics"></a>
-</h2>
-<p>Automatically after performed the statistical analysis the application will generate the graphs for the variable chosen with the mean comparison test. The app interface allows customized the graphics in a bar or line plot and export in “tiff” format for publication quality.</p>
+<div class="section level3">
+<h3 id="graphics">Graphics<a class="anchor" aria-label="anchor" href="#graphics"></a>
+</h3>
+<p>Automatically after performed the statistical analysis the
+application will generate the graphs for the variable chosen with the
+mean comparison test. The app interface allows customized the graphics
+in a bar or line plot and export in “tiff” format for publication
+quality.</p>
 <div class="figure" style="text-align: center">
 <img src="files/plot.png" alt="Customized interface for bar or line plot" width="100%"><p class="caption">
 Customized interface for bar or line plot
 </p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="intime">InTime<a class="anchor" aria-label="anchor" href="#intime"></a>
-</h2>
-<p>This Tab allows to visualize the germination process according one of the experimental factors. The app interface allows customized the graphic.</p>
+<div class="section level3">
+<h3 id="intime">InTime<a class="anchor" aria-label="anchor" href="#intime"></a>
+</h3>
+<p>This Tab allows to visualize the germination process according one of
+the experimental factors. The app interface allows customized the
+graphic.</p>
 <div class="figure" style="text-align: center">
 <img src="files/gtime.png" alt="Germination in time plot" width="100%"><p class="caption">
 Germination in time plot
 </p>
 </div>
-<p>The application allows to plot two type of graphics, the first is the germination percentage in time lapse, and the second the relative germination that calculates the germination according the total number of germinated seeds.</p>
+<p>The application allows to plot two type of graphics, the first is the
+germination percentage in time lapse, and the second the relative
+germination that calculates the germination according the total number
+of germinated seeds.</p>
 </div>
 </div>
-<div class="section level1 unnumbered">
-<h1 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h1>
+<div class="section level2">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-R-shiny" class="csl-entry">
-Chang, W., Cheng, J., Allaire, J., Xie, Y., &amp; McPherson, J. (2020). <em>Shiny: Web application framework for r</em>. <a href="https://shiny.rstudio.com" class="external-link">https://shiny.rstudio.com</a>
+Chang, W., Cheng, J., Allaire, J., Xie, Y., &amp; McPherson, J. (2020).
+<em>Shiny: Web application framework for r</em>. <a href="https://shiny.rstudio.com" class="external-link">https://shiny.rstudio.com</a>
 </div>
 <div id="ref-R-GerminaR" class="csl-entry">
-Lozano Isla, F., Benites Alfaro, O., &amp; Pompelli, M. F. (2020). <em>GerminaR: Indices and graphics for assess seed germination process</em>. <a href="https://CRAN.R-project.org/package=GerminaR" class="external-link">https://CRAN.R-project.org/package=GerminaR</a>
+Lozano Isla, F., Benites Alfaro, O., &amp; Pompelli, M. F. (2020).
+<em>GerminaR: Indices and graphics for assess seed germination
+process</em>. <a href="https://CRAN.R-project.org/package=GerminaR" class="external-link">https://CRAN.R-project.org/package=GerminaR</a>
 </div>
 <div id="ref-R-base" class="csl-entry">
-R Core Team. (2020). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>
+R Core Team. (2020). <em>R: A language and environment for statistical
+computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>
 </div>
 </div>
 </div>
@@ -272,12 +322,14 @@ R Core Team. (2020). <em>R: A language and environment for statistical computing
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a>.</p>
+<p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio
+Lozano-Isla</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
     </footer>
