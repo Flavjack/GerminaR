@@ -36,7 +36,7 @@ observe({
   
   data_fb <-  eventReactive(input$reload, {
     
-    if ( !is.null(input$import_excel) ) {
+    fb <- if ( !is.null(input$import_excel) ) {
       
       dt <-  readxl::read_excel(path = input$import_excel$datapath
                                 , sheet = input$sheetdt) %>% 
@@ -48,6 +48,9 @@ observe({
         as.data.frame()
       
     } else { return(NULL) }
+    
+    fb %>% 
+      select(!starts_with("[") | !ends_with("]")) 
     
   }, ignoreNULL = FALSE)
 
