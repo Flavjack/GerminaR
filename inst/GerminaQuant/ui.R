@@ -173,7 +173,7 @@ shinyUI(dashboardPage(skin = "green",
                   
                       <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/img/germinaquant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+                      <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/img/GerminaQuant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
                       <span style="display:block;"><small>GerminaQuant</small></span>
                       </p></div>
                       
