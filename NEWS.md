@@ -1,3 +1,14 @@
+# Version 2.1.5 (In progress)
+
+- *Package*
+  - Update app info
+  - Full installation from Addins
+  
+  
+  [] Include commulative germination
+  [] Improve timeline selection factor
+
+
 # Version 2.1.4
 
 - *Package*
