@@ -12,33 +12,31 @@ label <- label_layout(size = c(5.08, 5.08)
                       , border_color = NA
                       , border_width = 0
                       , background = "#b1d842"
-                      ) %>% 
+) %>% 
   include_image(value = "https://germinar.inkaverse.com/img/seed_germination.png"
                 , size = c(5.5, 5.5)
-                , position = c(2.55, 1.3)
+                , position = c(2.55, 1.26)
                 , opts = 'image_transparent("white")*image_modulate(brightness = 0)'
-                ) %>%
-  include_shape(size = 4.2
-                , border_width = 3
+  ) %>%
+  include_shape(size = 5.08
+                , border_width = 0
                 , border_color = NA
-                , margin = -0.8
                 , position = c(2.54, 2.54)
                 , panel_color = "blue"
-                , panel_size = 5.08
-                ) %>%
+  ) %>%
   include_text(value = "GerminaR"
                , font[1]
                , size = 23
-               , position = c(2.54, 3.56)
+               , position = c(2.54, 3.55)
                , color = "#a64d79"
-               ) %>%
+  ) %>%
   include_text(value = "inkaverse.com"
                , font[2]
                , size = 6
                , position = c(3.9, 0.96)
                , angle = 30
                , color = "white"
-               )
+  )
 
 label %>% label_print()
 
