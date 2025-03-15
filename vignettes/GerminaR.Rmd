@@ -1,12 +1,21 @@
 ---
-title: "GerminaR"
-output: rmarkdown::html_vignette
+title: "GerminaR: germination analysis"
+author: "Flavio Lozano-Isla"
+output:
+  bookdown::pdf_book:
+    keep_tex: true
+  bookdown::html_document2:
+    base_format: rmarkdown::html_vignette
+    toc: true
+    number_sections: false
+pkgdown:
+  as_is: true
 link-citations: true
 colorlinks: yes
 bibliography: [files/book.bib, files/pkgs.bib]
 csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{GerminaR}
+  %\VignetteIndexEntry{GerminaR: germination analysis}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

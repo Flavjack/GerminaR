@@ -36,6 +36,8 @@ home:
     href: https://inkaverse.com/
 
 navbar:
+  bg: dark
+  type: light
   structure:
     left: [home, intro, germinar, germinaquant, reference, news]
     right: [search, github, sponsor]
