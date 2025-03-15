@@ -15,3 +15,10 @@ utils::globalVariables(c("."))
 rep_row <- function(Rseq,Nrow){
   matrix(rep(Rseq,each=Nrow),nrow=Nrow)
 }
+
+
+GerminaQuant_full <- function() {
+  
+  GerminaR::GerminaQuant(dependencies = TRUE)
+  
+}

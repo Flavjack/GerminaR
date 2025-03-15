@@ -1,4 +1,4 @@
 Name: GerminaQuant
-Description: Germination indices.
-Binding: GerminaQuant
+Description: Interactive germination data analysis.
+Binding: GerminaQuant_full
 Interactive: true

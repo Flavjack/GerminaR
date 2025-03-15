@@ -4,7 +4,7 @@
 #> open https://flavjack.github.io/GerminaR/
 #> open https://flavjack.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
-#> date .: 2021-10-10
+#> date .: 2024-10-18
 # -------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------
@@ -119,25 +119,22 @@ shinyUI(dashboardPage(skin = "green",
                     status = "danger",
                     solidHeader = T,
                     
+                    HTML('
+
+<p><strong>GerminaQuant for R</strong> builds upon the foundation of the GerminaR R package, an interactive data analysis platform specifically designed for germination analysis. Developed for the Plant Physiology Laboratory at UFPE, GerminaQuant reflects a continuous effort to enhance data collection, improve data quality, streamline analysis processes, and promote open access publication. This latest iteration incorporates the best practices derived from extensive experience in germination data management.</p>
+
+<p>One of the key innovations of this platform is its web-based interface, which offers a highly interactive environment for users. The software can be used both online and offline, and is compatible with desktop computers, tablets, and laptops. Its primary aim is to support the broader research community engaged in all aspects of germination studies.</p>
+
+<p><strong>Features:</strong></p>
+<ul>
+  - Calculation of key germination indices.
+  <br>
+  - Statistical analysis tailored for germination data.
+  <br>
+  - User-friendly tools for generating visual representations of results.
+</ul>
                     
-                    p("GerminaQuant for R is based in GerminaR R package, a highly interactive data analysis platform for germination analysis,
-                      tool develpment for the Plant Physiology Laboratory (UFPE).
-                      It is result of a continuous effort to improve data collection, quality, analysis and open access publication.
-                      The recent iteration simultaneously also represents efforts to unify best practices from experiences in germination data management.
-                      One of the main new characteristics of the current software development platform established is the web-based interface
-                      which provides also a highly interactive environment. It could be used both online and offline and on desktop as well as tablets and laptops.
-                      The aime is support the broader research community working on all aspects with germination studies."),
-                    
-                    HTML("
-                    <h5><b>Features</b></h5>
-                    <p>
-                    <ol>
-                    <li> Allow calculate the principal germination indices.</li>
-                    <li> Statistical analysis for germination.</li>
-                    <li> Easy way to plot the results.</li>
-                    </ol>
-                    </p>
-                         ")
+                  ')
                     
                 ),
                     
@@ -149,9 +146,11 @@ shinyUI(dashboardPage(skin = "green",
 
                   p(strong("Publication")),
                   
-                  HTML('<p><strong>Flavio Lozano-Isla</strong>; <strong>Omar E. Benites-Alfaro</strong>, and<strong> Marcelo F. Pompelli</strong>. <strong>2019</strong>.
-                       GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” 
-                       Ecological Research 34(2): 339–346. doi: <a href="http://doi.org/10.1111/1440-1703.1275">doi.org/10.1111/1440-1703.1275</a>.</p>'),
+                  HTML('
+                  
+<p>Lozano‐Isla, F., Benites‐Alfaro, O. E., & Pompelli, M. F. (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R”. <em>Ecological Research</em>, <strong>34</strong>(2), 339-346. <a href="https://doi.org/10.1111/1440-1703.1275">https://doi.org/10.1111/1440-1703.1275</a></p>
+                       
+                       '),
                   
                   br(),
                   
@@ -161,13 +160,13 @@ shinyUI(dashboardPage(skin = "green",
 
                       <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" style="height:80px" title="Github" alt="Github"></a>
+                      <a target="_blank" href="https://github.com/Flavjack/GerminaR"><img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" style="height:95px" title="Github" alt="Github"></a>
                       <span style="display:block;"><small>Github</small></span>
                       </p></div>
                       
                       <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://CRAN.R-project.org/package=GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
+                      <a target="_blank" href="https://doi.org/10.32614/CRAN.package.GerminaR"><img src="https://flavjack.github.io/GerminaR/reference/figures/logo.png" style="height:80px" title="R cran" alt="GerminaR"></a> 
                       <span style="display:block;"><small>CRAN</small></span>
                       </p></div>
                   
@@ -183,7 +182,7 @@ shinyUI(dashboardPage(skin = "green",
 
                   hr(),
                   
-                  HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flavjack@gmail.com">flozano@lamolina.edu.pe</a></p>')
+                  HTML('<p>If you have any question, comment or suggestion you can write at <a href="mailto:flozanoisla@gmail.com">flozanoisla@gmail.com</a></p>')
 
                 )
                 

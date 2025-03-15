@@ -101,6 +101,6 @@ The application allows to plot two type of graphics, the first is the germinatio
 <div id="refs"></div>
 
 ```{r references}
-if(!file.exists("files/pkgs.bib")){write_bib(c(.packages()),'files/pkgs.bib')}
+if(!file.exists("files/pkgs.bib")){knitr::write_bib(c(.packages()),'files/pkgs.bib')}
 ```
 

@@ -1,105 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://germinar.inkaverse.com/404.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/articles/GerminaQuant.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/articles/GerminaR.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/articles/introduction.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/index.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/news/index.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/fplot.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/GerminaQuant.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_ASG.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_boxp.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_CVG.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_GRP.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_GRS.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_GSP.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_intime.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_MGR.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_MGT.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_SDG.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_summary.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_SYN.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_testcomp.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_UNC.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/ger_VGT.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/gquant_analysis.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/osmp.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/prosopis.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/rep_row.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/textcolor.html</loc>
-  </url>
-  <url>
-    <loc>http://germinar.inkaverse.com/reference/webTable.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://germinar.inkaverse.com/404.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/articles/GerminaQuant.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/articles/GerminaR.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/articles/index.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/articles/introduction.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/authors.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/index.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/LICENSE-text.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/news/index.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/fplot.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/GerminaQuant.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_ASG.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_boxp.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_CVG.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_GRP.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_GRS.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_GSP.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_intime.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_MGR.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_MGT.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_SDG.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_summary.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_SYN.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_testcomp.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_UNC.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/ger_VGT.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/gquant_analysis.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/index.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/osmp.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/prosopis.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/reexports.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/rep_row.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/textcolor.html</loc></url>
+<url><loc>http://germinar.inkaverse.com/reference/webTable.html</loc></url>
 </urlset>
+

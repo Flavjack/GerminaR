@@ -1,21 +1,26 @@
 citHeader("To cite GerminaR in publications use:")
 
-citEntry(entry = "Article",
-  title        = "{GerminaR}: An {R} package for germination analysis with the interactive web application “GerminaQuant for R”",
-  author       = personList(as.person("Flavio Lozano-Isla"),
-                   as.person("Omar Benites-Alfaro"),
-                   as.person("Marcelo F. Pompelli")
-                   ),
-  journal      = "Ecological Research",
-  year         = "2019",
-  volume       = "34",
-  number       = "2",
-  pages        = "339--346",
-  url          = "https://doi.org/10.1111/1440-1703.1275",
-
-  textVersion  =
-  paste("Lozano‐Isla, F, Benites‐Alfaro, OE, Pompelli, MF. (2019).",
-        "GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.”",
-        "Ecological Research, 34(2), 339-346.",
-        "URL https://doi.org/10.1111/1440-1703.1275.")
+citation <- bibentry(
+  bibtype = "Article",
+  title = "{GerminaR}: An {R} package for germination analysis with the interactive web application “GerminaQuant for R”",
+  author = c(
+    person("Flavio", "Lozano-Isla"),
+    person("Omar", "Benites-Alfaro"),
+    person("Marcelo F.", "Pompelli")
+  ),
+  journal = "Ecological Research",
+  year = "2019",
+  volume = "34",
+  number = "2",
+  pages = "339--346",
+  url = "https://doi.org/10.1111/1440-1703.1275"
 )
+
+textVersion <- paste(
+  "Lozano‐Isla, F, Benites‐Alfaro, OE, Pompelli, MF. (2019).",
+  "GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.”",
+  "Ecological Research, 34(2), 339-346.",
+  "URL: https://doi.org/10.1111/1440-1703.1275."
+)
+
+citFooter("See also citation(\"GerminaR\") for citing R itself.")
