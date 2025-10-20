@@ -8,7 +8,7 @@ colorlinks: true
 bibliography: [files/book.bib, files/pkgs.bib]
 csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{GerminaR}
+  %\VignetteIndexEntry{Apps}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 knitr:

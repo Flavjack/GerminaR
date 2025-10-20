@@ -32,6 +32,7 @@ Suggests:
     cowplot,
     knitr,
     rmarkdown,
+    bookdown,
     quarto,
     inti
 VignetteBuilder:

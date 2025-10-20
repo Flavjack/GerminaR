@@ -5,17 +5,23 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Introduction • GerminaR</title>
+<title>Seed germination process • GerminaR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- mathjax math --><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script><script>
+  window.MathJax = {
+    chtml: {
+      fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
+    }
+  };
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Seed germination process">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-GD6G24QSSE"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -28,7 +34,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">GerminaR</a>
 
@@ -62,11 +68,10 @@
 </nav><div class="container template-article">
 
 
-
-
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Introduction</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Seed germination process</h1>
+                        <h4 data-toc-skip class="author">Flavio Lozano-Isla</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/flavjack/germinar/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
@@ -78,34 +83,14 @@
 <div class="section level2">
 <h2 id="seed-germination-process">Seed germination process<a class="anchor" aria-label="anchor" href="#seed-germination-process"></a>
 </h2>
-<p>The physiology and seed technology have provided valuable tools for
-the production of high quality seed and treatments and storage
-conditions <span class="citation">(<a href="#ref-Marcos-Filho1998">Marcos-Filho, 1998</a>)</span>. In basic
-research, the seeds are studied exhaustively, and the approach of its
-biology is performed to fully exploit the dormancy and germination <span class="citation">(<a href="#ref-Penfield2009">Penfield &amp; King,
-2009</a>)</span>. An important tool for indicate the performance of a
-seed lot is the precise quantification of germination through accurate
-analysis of the cumulative germination data <span class="citation">(<a href="#ref-Joosen2010">Joosen et al., 2009</a>)</span>. Time, velocity,
-homogeneity, uncertainty and synchrony are measurements that inform the
-dynamics of the germination process. It is interesting not only for
-physiologists and seed technologists, but also for environmentalists,
-since it is possible to predict the degree of success of the species,
-based on the seed crop ability to redistribute germination over time,
-allowing the recruitment of part of the seedlings formed <span class="citation">(<a href="#ref-Ranal2006">Ranal &amp; Santana,
-2006</a>)</span>.</p>
+<p>The physiology and seed technology have provided valuable tools for the production of high quality seed and treatments and storage conditions <span class="citation">(<a href="#ref-Marcos-Filho1998">Marcos-Filho, 1998</a>)</span>. In basic research, the seeds are studied exhaustively, and the approach of its biology is performed to fully exploit the dormancy and germination <span class="citation">(<a href="#ref-Penfield2009">Penfield &amp; King, 2009</a>)</span>. An important tool for indicate the performance of a seed lot is the precise quantification of germination through accurate analysis of the cumulative germination data <span class="citation">(<a href="#ref-Joosen2010">Joosen et al., 2009</a>)</span>. Time, velocity, homogeneity, uncertainty and synchrony are measurements that inform the dynamics of the germination process. It is interesting not only for physiologists and seed technologists, but also for environmentalists, since it is possible to predict the degree of success of the species, based on the seed crop ability to redistribute germination over time, allowing the recruitment of part of the seedlings formed <span class="citation">(<a href="#ref-Ranal2006">Ranal &amp; Santana, 2006</a>)</span>.</p>
 </div>
 <div class="section level2">
 <h2 id="seed-germination-indices">Seed germination indices<a class="anchor" aria-label="anchor" href="#seed-germination-indices"></a>
 </h2>
 <table class="table">
-<caption>Germination variables evaluated in GerminaR package and limits
-according to Ranal and Santana (2006), where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>n</mi><mi>i</mi></msub><annotation encoding="application/x-tex">n_i</annotation></semantics></math>
-is the number of seeds germinated in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math>
-time; and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-is the last day of the evaluation process for germination</caption>
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1: </span>Germination variables evaluated in GerminaR package and limits according to Ranal and Santana (2006), where <span class="math inline">\(n_i\)</span> is the number of seeds germinated in <span class="math inline">\(i^{th}\)</span> time; and <span class="math inline">\(k\)</span> is the last day of the evaluation process for germination</caption>
 <colgroup>
 <col width="34%">
 <col width="14%">
@@ -123,61 +108,61 @@ is the last day of the evaluation process for germination</caption>
 <td align="left">Germinated seeds</td>
 <td align="left">grs</td>
 <td align="left">count</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>g</mi><mi>r</mi><mi>s</mi><mo>≤</mo><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">0 \leq grs \leq n_{i}</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 \leq grs \leq n_{i}\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">Germinability</td>
 <td align="left">grp</td>
 <td align="left">%</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>g</mi><mi>r</mi><mi>p</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">0 \leq grp \leq 100</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 \leq grp \leq 100\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">Mean germination time</td>
 <td align="left">mgt</td>
 <td align="left">time</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>m</mi><mi>g</mi><mi>t</mi><mo>≤</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">0 \leq mgt \leq k</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 \leq mgt \leq k\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">Mean germination rate</td>
 <td align="left">mgr</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>m</mi><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">time^{-1}</annotation></semantics></math></td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>m</mi><mi>g</mi><mi>r</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; mgr \leq 1</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(time^{-1}\)</span></td>
+<td align="left"><span class="math inline">\(0 &lt; mgr \leq 1\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">Germination speed</td>
 <td align="left">gsp</td>
 <td align="left">%</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>g</mi><mi>s</mi><mi>p</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">0 &lt; gsp \leq 100</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 &lt; gsp \leq 100\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">Uncertainty Index</td>
 <td align="left">unc</td>
 <td align="left">bit</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>u</mi><mi>n</mi><mi>c</mi><mo>≤</mo><msub><mo>log</mo><mn>2</mn></msub><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">0 \leq unc \leq \log _{2} n_{i}</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 \leq unc \leq \log _{2} n_{i}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">Synchronization Index</td>
 <td align="left">syn</td>
 <td align="left">-</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>s</mi><mi>y</mi><mi>n</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq syn \leq 1</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 \leq syn \leq 1\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">Germination variance</td>
 <td align="left">vgt</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>i</mi><mi>m</mi><msup><mi>e</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">time^2</annotation></semantics></math></td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>v</mi><mi>g</mi><mi>t</mi><mo>≤</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">0 &lt; vgt \leq \infty</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(time^2\)</span></td>
+<td align="left"><span class="math inline">\(0 &lt; vgt \leq \infty\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">Germination standard deviation</td>
 <td align="left">sdg</td>
 <td align="left">time</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>s</mi><mi>d</mi><mi>g</mi><mo>≤</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">0 &lt; sdg \leq \infty</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 &lt; sdg \leq \infty\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">Coefficient of variation</td>
 <td align="left">cvg</td>
 <td align="left">%</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>c</mi><mi>v</mi><mi>g</mi><mo>≤</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">0 &lt; cvg \leq \infty</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(0 &lt; cvg \leq \infty\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -188,76 +173,45 @@ is the last day of the evaluation process for germination</caption>
 <div class="section level2">
 <h2 id="fieldbook-preparation">Fieldbook preparation<a class="anchor" aria-label="anchor" href="#fieldbook-preparation"></a>
 </h2>
-<p>For a correct analysis and fast data processing is important to take
-into account the data organization and the proper record of the
-germination process. In this section we will explain how you should
-collect and organize your data.</p>
+<p>For a correct analysis and fast data processing is important to take into account the data organization and the proper record of the germination process. In this section we will explain how you should collect and organize your data.</p>
 <div class="section level3">
 <h3 id="data-organization">Data organization<a class="anchor" aria-label="anchor" href="#data-organization"></a>
 </h3>
-<p>For using GerminaR and GerminaQuant is necessary that you have a
-dataset with germination values. You can use a following data as an
-example <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing" class="external-link"><em>“GerminaR”</em></a>.
-If you have a Google account you can made a copy of the document and
-edit it online or download in Excel format for your own analysis.</p>
-<p>The fieldbook should have three essential parts.(1) The factor
-columns (red), according to the experimental design;(2) the seed number
-column, indicate the number of seeds sown in each experimental unit
-(green) and (3) the evaluation columns with the germination values
-(blue). You can design your own field book with different names in the
-column according your experimental design.</p>
+<p>For using GerminaR and GerminaQuant is necessary that you have a dataset with germination values. You can use a following data as an example <a href="https://docs.google.com/spreadsheets/d/1QziIXGOwb8cl3GaARJq6Ez6aU7vND_UHKJnFcAKx0VI/edit?usp=sharing" class="external-link"><em>“GerminaR”</em></a>. If you have a Google account you can made a copy of the document and edit it online or download in Excel format for your own analysis.</p>
+<p>The fieldbook should have three essential parts.(1) The factor columns (red), according to the experimental design;(2) the seed number column, indicate the number of seeds sown in each experimental unit (green) and (3) the evaluation columns with the germination values (blue). You can design your own field book with different names in the column according your experimental design.</p>
 <div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dtorg"></span>
 <img src="files/dtorg.png" alt="Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination." width="100%"><p class="caption">
-Layout for germination evaluation process. The factor column (red) are
-according the experimental design. The seed number column (green) for
-the number of seed sown and the evaluation columns (blue) for accounting
-the germination.
+Figure 1: Layout for germination evaluation process. The factor column (red) are according the experimental design. The seed number column (green) for the number of seed sown and the evaluation columns (blue) for accounting the germination.
 </p>
 </div>
 </div>
 <div class="section level3">
 <h3 id="data-collection">Data collection<a class="anchor" aria-label="anchor" href="#data-collection"></a>
 </h3>
-<p>The evaluation of the germination process is obtained of the count of
-the germination in each experimental unit and It can be evaluated in any
-time lapse (hours, days, months, etc) in continuous interval of the same
-length always beginning with the time zero (ei. Ti00), until the end of
-the germination process or according to the researcher criteria.</p>
+<p>The evaluation of the germination process is obtained of the count of the germination in each experimental unit and It can be evaluated in any time lapse (hours, days, months, etc) in continuous interval of the same length always beginning with the time zero (ei. Ti00), until the end of the germination process or according to the researcher criteria.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="germination-analysis">Germination analysis<a class="anchor" aria-label="anchor" href="#germination-analysis"></a>
 </h2>
-<p>After the data collection, the information can be processed using
-GerminaR by the <a href="https://germinar.inkaverse.com/articles/GerminaR" class="external-link">R console</a> or
-using the <a href="https://germinar.inkaverse.com/articles/GerminaQuant" class="external-link">GerminaQuant</a>
-app.</p>
+<p>After the data collection, the information can be processed using GerminaR by the <a href="https://germinar.inkaverse.com/articles/GerminaR" class="external-link">R console</a> or using the <a href="https://germinar.inkaverse.com/articles/GerminaQuant" class="external-link">GerminaQuant</a> app.</p>
 </div>
 <div class="section level2">
-<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
 <div id="ref-Joosen2010" class="csl-entry">
-Joosen, R. V. L., Kodde, J., Willems, L. A. J., Ligterink, W., Plas, L.
-H. W. van der, &amp; Hilhorst, H. W. M. (2009). Germinator: A software
-package for high-throughput scoring and curve fitting of
-<em>arabidopsis</em> seed germination. <em>The Plant Journal</em>,
-<em>62</em>(1), 148–159. <a href="https://doi.org/10.1111/j.1365-313x.2009.04116.x" class="external-link">https://doi.org/10.1111/j.1365-313x.2009.04116.x</a>
+Joosen, R. V. L., Kodde, J., Willems, L. A. J., Ligterink, W., Plas, L. H. W. van der, &amp; Hilhorst, H. W. M. (2009). Germinator: A software package for high-throughput scoring and curve fitting of <em>arabidopsis</em> seed germination. <em>The Plant Journal</em>, <em>62</em>(1), 148–159. <a href="https://doi.org/10.1111/j.1365-313x.2009.04116.x" class="external-link">https://doi.org/10.1111/j.1365-313x.2009.04116.x</a>
 </div>
 <div id="ref-Marcos-Filho1998" class="csl-entry">
-Marcos-Filho, J. (1998). <span class="nocase">New approaches to seed
-vigor testing</span>. <em>Scientia Agricola</em>, <em>55</em>, 27–33. <a href="https://doi.org/10.1590/S0103-90161998000500005" class="external-link">https://doi.org/10.1590/S0103-90161998000500005</a>
+Marcos-Filho, J. (1998). <span class="nocase">New approaches to seed vigor testing</span>. <em>Scientia Agricola</em>, <em>55</em>, 27–33. <a href="https://doi.org/10.1590/S0103-90161998000500005" class="external-link">https://doi.org/10.1590/S0103-90161998000500005</a>
 </div>
 <div id="ref-Penfield2009" class="csl-entry">
-Penfield, S., &amp; King, J. (2009). Towards a systems biology approach
-to understanding seed dormancy and germination. <em>Proceedings of the
-Royal Society B: Biological Sciences</em>, <em>276</em>(1673),
-3561–3569. <a href="https://doi.org/10.1098/rspb.2009.0592" class="external-link">https://doi.org/10.1098/rspb.2009.0592</a>
+Penfield, S., &amp; King, J. (2009). Towards a systems biology approach to understanding seed dormancy and germination. <em>Proceedings of the Royal Society B: Biological Sciences</em>, <em>276</em>(1673), 3561–3569. <a href="https://doi.org/10.1098/rspb.2009.0592" class="external-link">https://doi.org/10.1098/rspb.2009.0592</a>
 </div>
 <div id="ref-Ranal2006" class="csl-entry">
-Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure
-the germination process? <em>Revista Brasileira de
-Bot<span>â</span>nica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10.1590/s0100-84042006000100002" class="external-link">https://doi.org/10.1590/s0100-84042006000100002</a>
+Ranal, M. A., &amp; Santana, D. G. de. (2006). How and why to measure the germination process? <em>Revista Brasileira de Bot<span>â</span>nica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10.1590/s0100-84042006000100002" class="external-link">https://doi.org/10.1590/s0100-84042006000100002</a>
 </div>
 </div>
 </div>
@@ -268,7 +222,7 @@ Bot<span>â</span>nica</em>, <em>29</em>(1), 1–11. <a href="https://doi.org/10
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a>.</p>
+  <p>Desarrollado por <a href="https://www.linkedin.com/in/flozanoisla/" class="external-link">Flavio Lozano-Isla</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
