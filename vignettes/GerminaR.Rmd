@@ -1,20 +1,16 @@
 ---
-title: GerminaR
-description: > 
-  Pipeline analysis using GerminaR
-author: "Flavio Lozano-Isla"
+title: "GerminaR"
+output: rmarkdown::html_vignette
 link-citations: true
-colorlinks: true
+colorlinks: yes
 bibliography: [files/book.bib, files/pkgs.bib]
 csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{Apps}
-  %\VignetteEngine{quarto::html}
+  %\VignetteIndexEntry{GerminaR}
   %\VignetteEncoding{UTF-8}
-knitr:
-  opts_chunk: 
-    collapse: true
-    comment: '#>'
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
