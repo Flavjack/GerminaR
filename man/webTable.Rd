@@ -23,11 +23,11 @@ webTable(
 
 \item{rnames}{Row names.}
 
-\item{buttons}{Buttons: "excel", "copy" or "none". Default c("excel", "copy")}
+\item{buttons}{Buttons: "excel", "copy" or "none". Default c("excel", "copy").}
 
-\item{file_name}{Excel file name}
+\item{file_name}{Excel file name.}
 
-\item{scrolly}{Windows height to show the table}
+\item{scrolly}{Windows height to show the table.}
 }
 \description{
 Web table
