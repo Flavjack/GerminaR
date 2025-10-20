@@ -97,14 +97,38 @@ output$data_viewer <- renderUI({
 
 # index calculation --------------------------------------------------------
 
+
+output$ger_factors <- renderUI({
+  
+  # validate(need(input$mvr_last_factor, "Insert variables"))
+  
+  factors <- data_fb() %>%
+    names()
+  
+  selectInput(inputId = "ger_factors"
+              , label = "Factors"
+              , multiple = TRUE
+              , choices = c("", factors)
+  )
+})
+
+# -------------------------------------------------------------------------
+
 varCal <- reactive({
   
   validate( need( data_fb(), "Insert a Google spreadsheet URL or xlsx file") )
   
+  col_type <- switch(input$ger_counttype
+                     , no = FALSE
+                     , yes = TRUE
+                     )
+  
   data_fb() %>% 
     ger_summary(SeedN = input$SeedN
               , evalName = input$evalName
-              , data = . )
+              , factors = input$ger_factors
+              , cumulative = col_type
+              , data = .)
   
 })
 
@@ -115,61 +139,68 @@ output$summary <- DT::renderDataTable(server = FALSE, {
   
 })
 
+
+# variables/factors -------------------------------------------------------
+
+variables_names <- reactive({
+  
+  indices <- c("grs"
+               , "grp"
+               , "mgt"
+               , "mgr"
+               , "gsp"
+               , "unc"
+               , "syn"
+               , "vgt"
+               , "sdg"
+               , "cvg")
+  
+  cuanti <- varCal() %>% 
+    dplyr::select(!c(input$ger_factors)) %>% names() 
+  
+  cuali <- varCal() %>% 
+    dplyr::select(!c(starts_with(input$evalName), indices)) %>% 
+                    names() 
+    
+  list(cualitative = cuali, cuantitative = cuanti)
+    
+}) 
+
+
+
 # boxplot -----------------------------------------------------------------
 
-var_names <- reactive({
-  
- vars <- c("grs"
-           , "grp"
-           , "mgt"
-           , "mgr"
-           , "gsp"
-           , "unc"
-           , "syn"
-           , "vgt"
-           , "sdg"
-           , "cvg"
-           )
-  
-})
+
 
 output$bpx <- renderUI({
 
-  fbn <- varCal() %>% select(!var_names()) %>% names() 
-  
   selectInput(
     inputId = "xbp",
     label = "Axis X",
-    choices = c("choose" = "", fbn)
-  )
-  
-})
-
-output$bpy <- renderUI({
-  
-  fbn <- varCal() %>% select(var_names()) %>% names() 
-  
-  selectInput(
-    inputId = "ybp",
-    label = "Response",
-    choices = c("choose" = "", fbn)
+    choices = c("choose" = "", variables_names()$cualitative)
   )
   
 })
 
 output$bpz <- renderUI({
   
-  fbn <- varCal() %>% select(!var_names()) %>% names() 
-  
   selectInput(
     inputId = "zbp",
     label = "Grouped",
-    choices = c("choose" = "", fbn)
+    choices = c("choose" = "", variables_names()$cualitative)
   )
   
 })
 
-# boxplot -----------------------------------------------------------------
+output$bpy <- renderUI({
+  
+  selectInput(
+    inputId = "ybp",
+    label = "Response",
+    choices = c("choose" = "", variables_names()$cuantitative)
+  )
+  
+})
 
 boxplot <- reactive({
   
@@ -229,29 +260,21 @@ output$boxplot <- renderImage({
 
 output$stat_response <- renderUI({
 
-  fbn <- varCal() %>% 
-    select(var_names()) %>% 
-    names() 
-
   selectInput(
     inputId = "stat_rsp",
     label = "Response",
-    choices = c("choose" = "", fbn)
+    choices = c("choose" = "", variables_names()$cuantitative)
+    , multiple = FALSE
   )
 
 })
 
-
 output$stat_factor <- renderUI({
-
-  fbn <- varCal() %>% 
-    select(!var_names()) %>%
-    names() 
 
   selectInput(
     inputId = "stat_fact",
     label = "Factors",
-    choices = c("choose" = "", fbn),
+    choices = c("choose" = "", variables_names()$cualitative),
     multiple = TRUE
   )
 
@@ -259,14 +282,10 @@ output$stat_factor <- renderUI({
 
 output$stat_block <- renderUI({
 
-  fbn <- varCal() %>% 
-    select(!var_names()) %>%
-    names() 
-  
   selectInput(
     inputId = "stat_blk",
     label = "Block (RCBD)",
-    choices = c("choose" = "", fbn),
+    choices = c("choose" = "", variables_names()$cualitative),
     multiple = FALSE
   )
 

@@ -1,9 +1,8 @@
 Type: Package
 Package: GerminaR
 Title: Indices and Graphics for Assess Seed Germination Process
-Version: 2.1.5
+Version: 2.1.6
 Description: A collection of different indices and visualization techniques for evaluate the seed germination process in ecophysiological studies (Lozano-Isla et al. 2019) <doi:10.1111/1440-1703.1275>.
-Date: 2025-03-04
 Authors@R: c(
     person("Flavio", "Lozano-Isla", email = "flozanoisla@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X")),
     person("Omar", "Benites Alfaro", email = "obacc07@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-6852-9598")),
@@ -16,24 +15,30 @@ Authors@R: c(
     )
 URL: https://germinar.inkaverse.com/, https://github.com/flavjack/germinar
 BugReports: https://github.com/flavjack/germinar/issues
+License: GPL-3 | file LICENSE
 Depends:
     shiny,
     agricolae,
     ggplot2,
     dplyr,
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 Imports:
     tidyr,
     tibble,
     purrr,
     DT
 Suggests:
+    gsheet,
+    cowplot,
     knitr,
     rmarkdown,
-    gsheet,
+    quarto,
     inti
-VignetteBuilder: knitr
-License: GPL-3 | file LICENSE
+VignetteBuilder:
+    knitr,
+    quarto
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)
+SystemRequirements: pandoc
+RoxygenNote: 7.3.3

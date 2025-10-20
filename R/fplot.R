@@ -211,9 +211,9 @@ fplot <- function(data
       ) +
       
       geom_col(
-        position = position_dodge2()
+        position = position_dodge2(preserve = "single")
         , colour = "black"
-        , size = 0.4
+        # , size = 0.4
         , na.rm = T
       ) +
       labs(
@@ -313,13 +313,54 @@ fplot <- function(data
   graph <- plot + 
     { if(!is.null(xtext)) scale_x_discrete(labels = xtext) } +
     {
-      if(!is.null(ylimits))
-        scale_y_continuous(
-          limits = ylimits[1:2] 
-          , breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3]))
-          , expand = c(0,0)
-        )
-    }
+      
+      if (!is.null(type)) {
+        
+        if (type == "linea") {
+          
+          if (!is.null(ylimits)) {
+            
+            scale_y_continuous(
+              limits = ylimits[1:2], 
+              breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3])),
+              expand = c(0, 0))
+            
+          } else { 
+            
+            scale_y_continuous(expand = expansion(mult = c(0.4, 0.4)))
+            
+          }
+          
+        } else if (type == "barra") {
+          
+          if (!is.null(ylimits)) {
+            # Configurar el eje Y para gráficos de barra cuando hay límites definidos
+            scale_y_continuous(
+              limits = ylimits[1:2], 
+              breaks = seq(ylimits[1], ylimits[2], by = abs(ylimits[3])),
+              expand = c(0, 0)
+            )
+          } else {
+            # Definir expansión para gráficos de barra cuando 'ylimits' es NULL
+            ymin <- min(plotdt[[y]], na.rm = TRUE)
+            ymax <- max(plotdt[[y]], na.rm = TRUE)
+            
+            if (ymin < 0 & ymax > 0) {
+              # Si hay valores positivos y negativos, expandir 0.3 a ambos lados
+              scale_y_continuous(expand = expansion(mult = c(0.4, 0.4)))
+              
+            } else if (ymin >= 0) {
+              # Si solo hay valores positivos, expandir solo en la parte superior
+              scale_y_continuous(expand = expansion(mult = c(0, 0.4)))
+              
+            } else {
+              # Si solo hay valores negativos, expandir solo en la parte inferior
+              scale_y_continuous(expand = expansion(mult = c(0.4, 0)))
+            }
+          }
+        }
+      }
+    }   
   
   layers <- 'graph +
   theme_minimal() +

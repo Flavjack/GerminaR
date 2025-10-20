@@ -1,11 +1,11 @@
-pandoc: '3.2'
-pkgdown: 2.1.1
+pandoc: 3.6.3
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   GerminaQuant: GerminaQuant.html
   GerminaR: GerminaR.html
   introduction: introduction.html
-last_built: 2025-03-04T20:25Z
+last_built: 2025-10-20T03:34Z
 urls:
   reference: http://germinar.inkaverse.com/reference
   article: http://germinar.inkaverse.com/articles

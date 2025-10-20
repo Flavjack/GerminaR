@@ -1,7 +1,8 @@
-# Version 2.1.6 (In progress)
+# Version 2.1.6
   
-  [] Include commulative germination
-  [] Improve timeline selection factor
+- Include commutative germination count
+- Improve timeline selection factor
+- Updater GerminaQuant app
 
 # Version 2.1.5
 

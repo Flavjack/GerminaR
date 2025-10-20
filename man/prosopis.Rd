@@ -16,11 +16,11 @@ prosopis
 \description{
 Dataset containing information from germination experiment with Prosopis juliflor under different osmotic potentials and temperatures.
 \itemize{
- \item  \code{rep} a numeric vector, repetitions or replications.
- \item  \code{nacl} a numeric vector, NaCl osmotic potentials levels in Mpa to be evaluated. 
- \item \code{temp} a numeric vector, temperature levels in centigrades to be evelauted.
- \item \code{seeds} a numeric vector, number of seed used for experimental unit.
- \item \code{D0-D10} numeric vectors, ten evaluations days performed in the germination experiment.
+\item  \code{rep} a numeric vector, repetitions or replications.
+\item  \code{nacl} a numeric vector, NaCl osmotic potentials levels in Mpa to be evaluated.
+\item \code{temp} a numeric vector, temperature levels in centigrades to be evelauted.
+\item \code{seeds} a numeric vector, number of seed used for experimental unit.
+\item \code{D0-D10} numeric vectors, ten evaluations days performed in the germination experiment.
 }
 }
 \references{

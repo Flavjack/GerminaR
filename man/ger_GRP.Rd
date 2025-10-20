@@ -20,8 +20,8 @@ It returns an vector with the percentage of seed germinated.
 This function calculates the germination percentage related at total seed sown for experimental unit.
 }
 \details{
-According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of 
-seeds in which the seed germination process comes to an end, in experimental conditions by 
+According GOUVEA LABOURIAU (1983), the germinability of a sample of is the percentage of
+seeds in which the seed germination process comes to an end, in experimental conditions by
 the seminal intrauterine growth resulting protrusion (or emergence) of a living embryo.
 }
 \examples{

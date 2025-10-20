@@ -18,9 +18,9 @@ It returns an vector with the values of Germination Uncertainty.
 This function calculates the germination uncertainty in the germination process.
 }
 \details{
-The uncertainty index \code{u} is an adaptation of Shannon index measures the degree of uncertainty in predicting the informational 
-entropy or uncertainty associated with the distribution of the relative frequency of germination (GOUVEA LABOURIAU 1983; LABOURIAU; VALADARES, 1983). 
-Low values of \code{u} indicate frequencies with short peaks, i.e. the more concentrated the germination in time. 
+The uncertainty index \code{u} is an adaptation of Shannon index measures the degree of uncertainty in predicting the informational
+entropy or uncertainty associated with the distribution of the relative frequency of germination (GOUVEA LABOURIAU 1983; LABOURIAU; VALADARES, 1983).
+Low values of \code{u} indicate frequencies with short peaks, i.e. the more concentrated the germination in time.
 Just a germinated seed changes the value of \code{u}. This means that \code{u} measures the degree of germination scattering.
 }
 \examples{

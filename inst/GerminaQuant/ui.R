@@ -263,10 +263,19 @@ shinyUI(dashboardPage(skin = "green",
           solidHeader = T,
           width = 2,
           title = 'Parameters',
+          
+          uiOutput("ger_factors"),
 
           textInput("SeedN", label = strong("Seeds (column name)"), value = "seeds"),
           
-          textInput("evalName", label = strong("Evaluations (prefix)"), value = "D")
+          textInput("evalName", label = strong("Evaluations (prefix)"), value = "D"),
+          
+          selectInput(
+            inputId ="ger_counttype"
+            , label = "Cumulative"
+            , choices = c("no", "yes")
+            , selected = "no"
+          )
           
           )
           

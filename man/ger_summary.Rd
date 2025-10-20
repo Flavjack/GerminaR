@@ -4,12 +4,16 @@
 \alias{ger_summary}
 \title{Summary of Germination indices}
 \usage{
-ger_summary(SeedN, evalName, data)
+ger_summary(factors, SeedN, evalName, cumulative = FALSE, data)
 }
 \arguments{
-\item{SeedN}{Name of the column with the seed numbers}
+\item{factors}{Factor included for the analysis.}
 
-\item{evalName}{Prefix of the evaluation variable}
+\item{SeedN}{Name of the column with the seed numbers.}
+
+\item{evalName}{Prefix of the evaluation variable.}
+
+\item{cumulative}{Type of data collection \verb{[logic: FALSE or TRUE]}}
 
 \item{data}{The name of the data frame containing the data.}
 }
@@ -23,6 +27,11 @@ This function makes a data table with the result of germination indices for each
 
 library(GerminaR)
 fb <- prosopis
-smr <- ger_summary(SeedN = "seeds", evalName = "D", data = fb)
+smr <- ger_summary(factors = c("nacl", "temp", "rep")
+                   , SeedN = "seeds"
+                   , evalName = "D"
+                   , cumulative = FALSE
+                   , data = fb)
 smr
+
 }
