@@ -15,7 +15,7 @@ webTable(
 )
 }
 \arguments{
-\item{data}{Dataset.}
+\item{data}{Data set.}
 
 \item{caption}{Title for the table.}
 
@@ -23,12 +23,12 @@ webTable(
 
 \item{rnames}{Row names.}
 
-\item{buttons}{Buttons: "excel", "copy" or "none". Default c("excel", "copy").}
+\item{buttons}{Buttons \verb{[character: excel, copy, none]}.}
 
 \item{file_name}{Excel file name.}
 
 \item{scrolly}{Windows height to show the table.}
 }
 \description{
-Web table
+Web table in HTML format
 }

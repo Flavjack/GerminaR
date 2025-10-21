@@ -1,16 +1,16 @@
 #' Web table
 #'
-#' @param data Dataset.
+#' @description Web table in HTML format
+#' @param data Data set.
 #' @param digits Digits number in the table exported.
 #' @param caption Title for the table.
 #' @param rnames Row names.
-#' @param buttons Buttons: "excel", "copy" or "none". Default c("excel", "copy").
+#' @param buttons Buttons `[character: excel, copy, none]`.
 #' @param file_name Excel file name.
 #' @param scrolly Windows height to show the table.
 #' @import DT
 #' @importFrom dplyr mutate across
 #' @export
-#' 
 
 webTable <- function(data
                      , caption = NULL
