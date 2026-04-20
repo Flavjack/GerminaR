@@ -2,7 +2,7 @@
 # GerminaR-----------------------------------------------------------------
 # -------------------------------------------------------------------------
 #> open https://flavjack.github.io/GerminaR/
-#> open https://flavjack.shinyapps.io/germinaquant/
+#> open https://inkaverse.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
 #> date .: 2024-10-18
 # -------------------------------------------------------------------------
@@ -58,7 +58,7 @@ shinyUI(dashboardPage(skin = "green",
         meta_social(
           title = "GerminaR",
           description = "Indices and Graphics for Assess Seed Germination Process",
-          url = "https://flavjack.shinyapps.io/germinaquant/",
+          url = "https://inkaverse.shinyapps.io/germinaquant/",
           image = "https://flavjack.github.io/GerminaR/reference/figures/logo.png",
           image_alt = "GerminaR"
         ), 
@@ -172,7 +172,7 @@ shinyUI(dashboardPage(skin = "green",
                   
                       <div style="display:inline-block; width:32%">
                       <p style="text-align:center">
-                      <a target="_blank" href="https://flavjack.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/img/GerminaQuant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
+                      <a target="_blank" href="https://inkaverse.shinyapps.io/germinaquant/"><img src="https://flavjack.github.io/GerminaR/img/GerminaQuant.png" style="height:80px" title="GerminaQuant" alt="GerminaQuant for R"></a>
                       <span style="display:block;"><small>GerminaQuant</small></span>
                       </p></div>
                       

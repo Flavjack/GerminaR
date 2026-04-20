@@ -1,0 +1,49 @@
+# ArcSin of Germination Percentage
+
+This function calculates the arcsin of germination percentage for
+normalization.
+
+## Usage
+
+``` r
+ger_ASG(SeedN, evalName, data)
+```
+
+## Arguments
+
+- SeedN:
+
+  Name of the column with the number of seeds sown.
+
+- evalName:
+
+  Prefix of the names of the periods of evaluation.
+
+- data:
+
+  The name of the data frame containing the data.
+
+## Value
+
+It returns an vector with the ArcSin of Germination values
+
+## Examples
+
+``` r
+library(GerminaR)
+dfr <- prosopis
+gas <- ger_ASG(SeedN = "seeds", evalName = "D", data = dfr)
+gas
+#>  [1] 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963
+#>  [8] 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963
+#> [15] 1.5707963 1.5707963 1.3694384 1.3694384 1.3233293 1.4288993 1.4288993
+#> [22] 1.5707963 1.3694384 1.5707963 1.3233293 1.3694384 1.3694384 1.4288993
+#> [29] 1.5707963 1.5707963 1.5707963 1.3233293 1.3233293 1.3233293 1.2840398
+#> [36] 1.4288993 1.2840398 1.3694384 1.3233293 1.3233293 1.5707963 1.5707963
+#> [43] 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963 1.5707963
+#> [50] 1.3694384 1.5707963 1.3694384 1.3694384 1.4288993 1.3694384 1.3233293
+#> [57] 1.4288993 1.3694384 1.2840398 1.4288993 1.5707963 1.3694384 1.4288993
+#> [64] 1.5707963 1.5707963 1.3694384 1.5707963 1.4288993 0.3537416 0.3537416
+#> [71] 0.2867566 0.3217506 0.4636476 0.4636476 0.4381490 0.4882053 0.0000000
+#> [78] 0.0000000 0.0000000 0.0000000
+```

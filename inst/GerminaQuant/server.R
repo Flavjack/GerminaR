@@ -2,7 +2,7 @@
 # GerminaR-----------------------------------------------------------------
 # -------------------------------------------------------------------------
 #> open https://flavjack.github.io/GerminaR/
-#> open https://flavjack.shinyapps.io/germinaquant/
+#> open https://inkaverse.shinyapps.io/germinaquant/
 #> author .: Flavio Lozano-Isla (lozanoisla.com)
 #> date .: 2021-10-10
 # -------------------------------------------------------------------------
