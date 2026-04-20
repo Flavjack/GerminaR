@@ -5,7 +5,7 @@ account: flavjack
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 136814
-bundleId: 11070630
-url: https://flavjack.shinyapps.io/germinaquant/
+bundleId: 11878634
+url: https://inkaverse.shinyapps.io/germinaquant/
 asMultiple: FALSE
 asStatic: FALSE
