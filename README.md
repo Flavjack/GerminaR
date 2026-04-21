@@ -49,7 +49,7 @@ GerminaR::GerminaQuant(dependencies = TRUE)
 
 After install the package and the app dependencies you can access to the
 app through the Addins list in Rstudio, or in the following link in the
-internet <https://flavjack.shinyapps.io/germinaquant/>
+internet <https://inkaverse.shinyapps.io/germinaquant/>
 
 ## Citation
 

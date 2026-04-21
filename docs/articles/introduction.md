@@ -86,7 +86,8 @@ the germination process or according to the researcher criteria.
 After the data collection, the information can be processed using
 GerminaR by the [R
 console](https://germinar.inkaverse.com/articles/GerminaR) or using the
-[GerminaQuant](https://germinar.inkaverse.com/articles/GerminaR) app.
+[GerminaQuant](https://germinar.inkaverse.com/articles/GerminaQuant)
+app.
 
 ## References
 
