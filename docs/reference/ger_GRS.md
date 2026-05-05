@@ -25,6 +25,7 @@ Number of seed germinated
 ## Examples
 
 ``` r
+
 library(GerminaR)
 dt <- prosopis
 grs <- ger_GRS(evalName = "D", data = dt)

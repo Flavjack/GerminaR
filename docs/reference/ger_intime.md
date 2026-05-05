@@ -42,6 +42,7 @@ Need a summary by factor before use it with function SummaryBy.
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 library(GerminaR)

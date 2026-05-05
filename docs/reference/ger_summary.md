@@ -38,6 +38,7 @@ Data frame with the summary values of germination variables.
 ## Examples
 
 ``` r
+
 library(GerminaR)
 fb <- prosopis
 smr <- ger_summary(factors = c("nacl", "temp", "rep")

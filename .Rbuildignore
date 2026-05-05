@@ -16,3 +16,5 @@ setup.r
 setup.R
 ^CRAN-SUBMISSION$
 .quarto
+^\.positai$
+^\.claude$

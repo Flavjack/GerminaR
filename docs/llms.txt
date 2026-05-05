@@ -10,6 +10,7 @@ You can install the released version of GerminaR from
 [CRAN](https://cran.r-project.org/package=GerminaR) with:
 
 ``` r
+
 install.packages("GerminaR")
 ```
 
@@ -17,6 +18,7 @@ And the development version from
 [GitHub](https://github.com/flavjack/GerminaR) with:
 
 ``` r
+
 if (!require("remotes"))
   install.packages("remotes")
 remotes::install_github("Flavjack/GerminaR")
@@ -25,6 +27,7 @@ remotes::install_github("Flavjack/GerminaR")
 ## GerminaQuant app
 
 ``` r
+
 GerminaR::GerminaQuant()
 ```
 
@@ -32,6 +35,7 @@ If is the first time running the app you should install the app
 dependencies, including the following argument:
 
 ``` r
+
 GerminaR::GerminaQuant(dependencies = TRUE)
 ```
 

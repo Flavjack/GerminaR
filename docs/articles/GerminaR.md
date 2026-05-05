@@ -19,6 +19,7 @@ GerminaR package: “*prosopis*”.
     own data and proceed according to the following script:
 
 ``` r
+
 # Install packages and dependencies
 
 library(GerminaR)
@@ -47,13 +48,14 @@ fb %>%
 |   1 |  0.5 |   25 |    50 |   0 |  10 |  37 |   1 |   2 |   0 |   0 |   0 |   0 |   0 |   0 |
 |   2 |  0.5 |   25 |    50 |   0 |  18 |  30 |   1 |   1 |   0 |   0 |   0 |   0 |   0 |   0 |
 
-Prosopis dataset
+Prosopis dataset {.table}
 
 2.  Calculate the germination indices and perform the ANOVA and the mean
     comparison tests. The user can generate the graphs, expressing their
     results, which can be either of bars or lines graphics.
 
 ``` r
+
 
 # germination analysis (ten variables)
 
@@ -85,13 +87,14 @@ gsm %>%
 | 1   | 0.5  | 25   |    50 |  50 | 100 | 1.90 | 0.53 |  52.63 | 1.08 | 0.58 | 0.38 | 0.61 | 32.34 |
 | 2   | 0.5  | 25   |    50 |  50 | 100 | 1.70 | 0.59 |  58.82 | 1.20 | 0.48 | 0.38 | 0.61 | 36.14 |
 
-Function ger_summary performe ten germination indices
+Function ger_summary performe ten germination indices {.table}
 
 ## Punctual analysis of germination
 
 ### Germination percentage
 
 ``` r
+
 
 ## Germination Percentage (GRP)
 
@@ -135,9 +138,10 @@ mc_grp$table %>%
 | 40   | 1.5  |  10.5 | 1.914854 |   4 | 0.9574271 | 0.8413648 |   8 |  12 | e   |
 | 40   | 2    |   0.0 | 0.000000 |   4 | 0.0000000 | 0.8413648 |   0 |   0 | f   |
 
-Germination percentage mean comparision
+Germination percentage mean comparision {.table}
 
 ``` r
+
 
 # bar graphics for germination percentage
 
@@ -171,6 +175,7 @@ factorial analisys
 ### Mean germination time
 
 ``` r
+
 
 ## Mean Germination Time (MGT)
 
@@ -212,9 +217,10 @@ mc_mgt$table %>%
 | 40   | 1    | 2.728780 | 0.1714562 |   4 | 0.0857281 | 0.073785 | 2.520833 | 2.940000 | g   |
 | 40   | 1.5  | 3.287500 | 0.1012651 |   4 | 0.0506326 | 0.073785 | 3.166667 | 3.400000 | e   |
 
-Mean germination time comparison
+Mean germination time comparison {.table}
 
 ``` r
+
 
 # bar graphics for mean germination time
 
@@ -260,6 +266,7 @@ percentage of germination or with the relative germination.
 
 ``` r
 
+
 # data frame with percentage or relative germination in time by NaCl
 
 git <- ger_intime(Factor = "nacl"
@@ -289,9 +296,10 @@ git %>%
 | 1.5  |          1 |  0.375 |  16 |  0.8062258 |   0 |   2 | 0.2015564 |
 | 2    |          1 |  0.000 |  16 |  0.0000000 |   0 |   0 | 0.0000000 |
 
-Cumulative germination by nacl factor
+Cumulative germination by nacl factor {.table}
 
 ``` r
+
 
 # graphic germination in time by NaCl
 
@@ -324,6 +332,7 @@ under different osmotic potentials.
 
 ``` r
 
+
 # data frame with percentage or relative germination in time by temperature
 
 git <- ger_intime(Factor = "temp"
@@ -352,9 +361,10 @@ git %>%
 | 25   |          2 | 48.6 |  20 | 45.07818 |   0 | 100 | 10.079787 |
 | 30   |          2 | 62.4 |  20 | 45.70662 |   0 | 100 | 10.220310 |
 
-Cumulative germination by temperature factor
+Cumulative germination by temperature factor {.table}
 
 ``` r
+
 
 # graphic germination in time by temperature
 
@@ -391,6 +401,7 @@ using [ggplot2](https://ggplot2.tidyverse.org/) ([Wickham et al.,
 graphics adding `+`.
 
 ``` r
+
 
 library(ggplot2)
 

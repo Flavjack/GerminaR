@@ -42,6 +42,7 @@ Washington, DC, 1983.
 ## Examples
 
 ``` r
+
 library(GerminaR)
 dt <- prosopis
 grp <- ger_GRP(SeedN = "seeds",evalName = "D", data = dt)

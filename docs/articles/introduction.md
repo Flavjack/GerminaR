@@ -37,7 +37,7 @@ of part of the seedlings formed ([Ranal & Santana,
 Table 1: Germination variables evaluated in GerminaR package and limits
 according to Ranal and Santana (2006), where \\n_i\\ is the number of
 seeds germinated in \\i^{th}\\ time; and \\k\\ is the last day of the
-evaluation process for germination
+evaluation process for germination {.table}
 
 > More info: <https://doi.org/10.1111/1440-1703.1275>
 

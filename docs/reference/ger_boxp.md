@@ -84,6 +84,7 @@ boxplot
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 library(GerminaR)

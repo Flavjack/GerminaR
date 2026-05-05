@@ -40,6 +40,7 @@ completeness of pine seed germination. Forest Science, v. 8, n. 4, p.
 ## Examples
 
 ``` r
+
 library(GerminaR)
 dfr <- prosopis
 mgt <- ger_MGT(evalName = "D", data = dfr)

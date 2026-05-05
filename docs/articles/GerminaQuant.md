@@ -33,7 +33,7 @@ analysis very easy.
 | Tools | Tool for calculate the osmotic potential for any salt or PEG solution |
 
 Description of each module in GerminaQuant to evaluate and analyze the
-germination process.
+germination process. {.table}
 
 ## Data processing
 
