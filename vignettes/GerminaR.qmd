@@ -1,14 +1,26 @@
 ---
-title: "GerminaR"
-output: rmarkdown::html_vignette
-link-citations: true
-colorlinks: yes
-bibliography: [files/book.bib, files/pkgs.bib]
-csl: https://www.zotero.org/styles/apa
+title: GerminaR
+description: > 
+  GerminaR: germination analysis.
+author: "Flavio Lozano-Isla"
 vignette: >
   %\VignetteIndexEntry{GerminaR}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
+bibliography:
+  - files/book.bib
+  - files/pkgs.bib
+csl: "https://www.zotero.org/styles/apa"
+
+link-citations: true
+colorlinks: true
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: '#>'
+    echo: false
+    warning: false
+    message: false
 editor_options: 
   chunk_output_type: console
 ---

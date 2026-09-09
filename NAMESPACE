@@ -27,25 +27,35 @@ import(DT)
 import(dplyr)
 import(ggplot2)
 import(tidyr)
-importFrom(agricolae,HSD.test)
-importFrom(agricolae,SNK.test)
-importFrom(agricolae,duncan.test)
-importFrom(dplyr,"%>%")
-importFrom(dplyr,across)
-importFrom(dplyr,mutate)
-importFrom(dplyr,select)
-importFrom(dplyr,starts_with)
-importFrom(grDevices,colorRampPalette)
-importFrom(grDevices,colors)
-importFrom(grDevices,gray.colors)
+importFrom(agricolae,
+  HSD.test,
+  SNK.test,
+  duncan.test
+)
+importFrom(dplyr,
+  "%>%",
+  across,
+  mutate,
+  select,
+  starts_with
+)
+importFrom(grDevices,
+  colorRampPalette,
+  colors,
+  gray.colors
+)
 importFrom(purrr,pluck)
 importFrom(shiny,runApp)
-importFrom(stats,aov)
-importFrom(stats,as.formula)
-importFrom(stats,fitted)
-importFrom(stats,formula)
-importFrom(stats,resid)
-importFrom(stats,rstandard)
-importFrom(stats,sd)
-importFrom(tibble,deframe)
-importFrom(tibble,rownames_to_column)
+importFrom(stats,
+  aov,
+  as.formula,
+  fitted,
+  formula,
+  resid,
+  rstandard,
+  sd
+)
+importFrom(tibble,
+  deframe,
+  rownames_to_column
+)

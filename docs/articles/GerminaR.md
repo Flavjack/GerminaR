@@ -18,22 +18,20 @@ GerminaR package: “*prosopis*”.
     on your session. In case of using another dataset, you can load your
     own data and proceed according to the following script:
 
-``` r
-
-# Install packages and dependencies
-
-library(GerminaR)
-
-# load data
-
-fb <- prosopis
-
-# Prosopis data set
-
-fb %>% 
-   head(10) %>% 
-   kable(caption = "Prosopis dataset")
-```
+\
+`# Install packages and dependencies`\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`GerminaR`](https://germinar.inkaverse.com/)`)`\
+\
+`# load data`\
+\
+`fb`` ``<-`` ``prosopis`\
+\
+`# Prosopis data set`\
+\
+`fb`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`head`](https://rdrr.io/r/utils/head.html)`(``10``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   ``kable``(``caption ``=`` ``"Prosopis dataset"``)`
 
 | rep | nacl | temp | seeds |  D0 |  D1 |  D2 |  D3 |  D4 |  D5 |  D6 |  D7 |  D8 |  D9 | D10 |
 |----:|-----:|-----:|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
@@ -48,31 +46,29 @@ fb %>%
 |   1 |  0.5 |   25 |    50 |   0 |  10 |  37 |   1 |   2 |   0 |   0 |   0 |   0 |   0 |   0 |
 |   2 |  0.5 |   25 |    50 |   0 |  18 |  30 |   1 |   1 |   0 |   0 |   0 |   0 |   0 |   0 |
 
-Prosopis dataset {.table}
+Prosopis dataset {.table .caption-top}
 
 2.  Calculate the germination indices and perform the ANOVA and the mean
     comparison tests. The user can generate the graphs, expressing their
     results, which can be either of bars or lines graphics.
 
-``` r
-
-
-# germination analysis (ten variables)
-
-gsm <- ger_summary(factors = c("rep", "nacl", "temp")
-                   , SeedN = "seeds"
-                   , evalName = "D"
-                   , cumulative = FALSE
-                   , data = fb
-                   )
-
-# Prosopis data set processed
-
-gsm %>% 
-  head(10) %>% 
-  mutate(across(where(is.numeric), ~round(., 2))) %>% 
-  kable(caption = "Function ger_summary performe ten germination indices")
-```
+\
+\
+`# germination analysis (ten variables)`\
+\
+`gsm`` ``<-`` `[`ger_summary`](http://germinar.inkaverse.com/reference/ger_summary.md)`(``factors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rep"``, ``"nacl"``, ``"temp"``)`\
+`                   , SeedN ``=`` ``"seeds"`\
+`                   , evalName ``=`` ``"D"`\
+`                   , cumulative ``=`` ``FALSE`\
+`                   , data ``=`` ``fb`\
+`                   ``)`\
+\
+`# Prosopis data set processed`\
+\
+`gsm`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`  `[`head`](https://rdrr.io/r/utils/head.html)`(``10``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`[`across`](https://dplyr.tidyverse.org/reference/across.html)`(`[`where`](https://tidyselect.r-lib.org/reference/where.html)`(``is.numeric``)``, ``~`[`round`](https://rdrr.io/r/base/Round.html)`(``.``, ``2``)``)``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`  ``kable``(``caption ``=`` ``"Function ger_summary performe ten germination indices"``)`
 
 | rep | nacl | temp | seeds | grs | grp |  mgt |  mgr |    gsp |  unc |  syn |  vgt |  sdg |   cvg |
 |:----|:-----|:-----|------:|----:|----:|-----:|-----:|-------:|-----:|-----:|-----:|-----:|------:|
@@ -87,33 +83,32 @@ gsm %>%
 | 1   | 0.5  | 25   |    50 |  50 | 100 | 1.90 | 0.53 |  52.63 | 1.08 | 0.58 | 0.38 | 0.61 | 32.34 |
 | 2   | 0.5  | 25   |    50 |  50 | 100 | 1.70 | 0.59 |  58.82 | 1.20 | 0.48 | 0.38 | 0.61 | 36.14 |
 
-Function ger_summary performe ten germination indices {.table}
+Function ger_summary performe ten germination indices {.table
+.caption-top}
 
 ## Punctual analysis of germination
 
 ### Germination percentage
 
-``` r
-
-
-## Germination Percentage (GRP)
-
-# analysis of variance
-
-av <- aov(grp ~ nacl*temp + rep, data = gsm)
-
-# mean comparison test
-
-mc_grp <- ger_testcomp(aov = av
-                       , comp = c("temp", "nacl")
-                       , type = "snk"
-                       )
-
-# data result
-
-mc_grp$table %>% 
-   kable(caption = "Germination percentage mean comparision")
-```
+\
+\
+`## Germination Percentage (GRP)`\
+\
+`# analysis of variance`\
+\
+`av`` ``<-`` `[`aov`](https://rdrr.io/r/stats/aov.html)`(``grp`` ``~`` ``nacl``*``temp`` ``+`` ``rep``, data ``=`` ``gsm``)`\
+\
+`# mean comparison test`\
+\
+`mc_grp`` ``<-`` `[`ger_testcomp`](http://germinar.inkaverse.com/reference/ger_testcomp.md)`(``aov ``=`` ``av`\
+`                       , comp ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"temp"``, ``"nacl"``)`\
+`                       , type ``=`` ``"snk"`\
+`                       ``)`\
+\
+`# data result`\
+\
+`mc_grp``$``table`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   ``kable``(``caption ``=`` ``"Germination percentage mean comparision"``)`
 
 | temp | nacl |   grp |      std |   r |       ste |        se | min | max | sig |
 |:-----|:-----|------:|---------:|----:|----------:|----------:|----:|----:|:----|
@@ -138,35 +133,34 @@ mc_grp$table %>%
 | 40   | 1.5  |  10.5 | 1.914854 |   4 | 0.9574271 | 0.8413648 |   8 |  12 | e   |
 | 40   | 2    |   0.0 | 0.000000 |   4 | 0.0000000 | 0.8413648 |   0 |   0 | f   |
 
-Germination percentage mean comparision {.table}
+Germination percentage mean comparision {.table .caption-top}
 
-``` r
+Germination experiment with *Prosopis juliflor* under different osmotic
+potentials and temperatures. Bar graph with germination percentage in a
+factorial analisys
 
+\
+\
+`# bar graphics for germination percentage`\
+\
+`grp`` ``<-`` ``mc_grp``$``table`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`fplot`](http://germinar.inkaverse.com/reference/fplot.md)`(``data ``=`` ``.`\
+`       , type ``=`` ``"bar"`\
+`       , x ``=`` ``"temp"`\
+`       , y ``=`` ``"grp"`\
+`       , group ``=`` ``"nacl"`\
+`       , ylimits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``140``, ``30``)`\
+`       , ylab ``=`` ``"Germination ('%')"`\
+`       , xlab ``=`` ``"Temperature"`\
+`       , glab ``=`` ``"NaCl (MPa)"`\
+`       , error ``=`` ``"ste"`\
+`       , sig ``=`` ``"sig"`\
+`       , color ``=`` ``F`\
+`       ``)`\
+\
+`grp`
 
-# bar graphics for germination percentage
-
-grp <- mc_grp$table %>% 
-   fplot(data = .
-       , type = "bar"
-       , x = "temp"
-       , y = "grp"
-       , group = "nacl"
-       , ylimits = c(0, 140, 30)
-       , ylab = "Germination ('%')"
-       , xlab = "Temperature"
-       , glab = "NaCl (MPa)"
-       , error = "ste"
-       , sig = "sig"
-       , color = F
-       )
-
-grp
-```
-
-![Germination experiment with \*Prosopis juliflor\* under different
-osmotic potentials and temperatures. Bar graph with germination
-percentage in a factorial
-analisys](GerminaR_files/figure-html/unnamed-chunk-3-1.png)
+![](GerminaR_files/figure-html/unnamed-chunk-3-1.png)
 
 Germination experiment with *Prosopis juliflor* under different osmotic
 potentials and temperatures. Bar graph with germination percentage in a
@@ -174,26 +168,24 @@ factorial analisys
 
 ### Mean germination time
 
-``` r
-
-
-## Mean Germination Time (MGT)
-
-# analysis of variance
-
-av <- aov(mgt ~ nacl*temp + rep, data = gsm)
-
-# mean comparison test
-
-mc_mgt <- ger_testcomp(aov = av
-                       , comp = c("temp", "nacl")
-                       , type = "snk")
-
-# data result
-
-mc_mgt$table %>% 
-   kable(caption = "Mean germination time comparison")
-```
+\
+\
+`## Mean Germination Time (MGT)`\
+\
+`# analysis of variance`\
+\
+`av`` ``<-`` `[`aov`](https://rdrr.io/r/stats/aov.html)`(``mgt`` ``~`` ``nacl``*``temp`` ``+`` ``rep``, data ``=`` ``gsm``)`\
+\
+`# mean comparison test`\
+\
+`mc_mgt`` ``<-`` `[`ger_testcomp`](http://germinar.inkaverse.com/reference/ger_testcomp.md)`(``aov ``=`` ``av`\
+`                       , comp ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"temp"``, ``"nacl"``)`\
+`                       , type ``=`` ``"snk"``)`\
+\
+`# data result`\
+\
+`mc_mgt``$``table`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   ``kable``(``caption ``=`` ``"Mean germination time comparison"``)`
 
 | temp | nacl |      mgt |       std |   r |       ste |       se |      min |      max | sig |
 |:-----|:-----|---------:|----------:|----:|----------:|---------:|---------:|---------:|:----|
@@ -217,35 +209,34 @@ mc_mgt$table %>%
 | 40   | 1    | 2.728780 | 0.1714562 |   4 | 0.0857281 | 0.073785 | 2.520833 | 2.940000 | g   |
 | 40   | 1.5  | 3.287500 | 0.1012651 |   4 | 0.0506326 | 0.073785 | 3.166667 | 3.400000 | e   |
 
-Mean germination time comparison {.table}
+Mean germination time comparison {.table .caption-top}
 
-``` r
+Germination experiment with *Prosopis juliflor* under different osmotic
+potentials and temperatures. Bar graph for mean germination time in a
+factorial analisys.
 
+\
+\
+`# bar graphics for mean germination time`\
+\
+`mgt`` ``<-`` ``mc_mgt``$``table`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`fplot`](http://germinar.inkaverse.com/reference/fplot.md)`(``data ``=`` ``.`\
+`       , type ``=`` ``"bar"`` `\
+`       , x ``=`` ``"temp"`\
+`       , y ``=`` ``"mgt"`\
+`       , group ``=`` ``"nacl"`\
+`       , ylimits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``,``10``, ``1``)`\
+`       , ylab ``=`` ``"Mean germination time (days)"`\
+`       , xlab ``=`` ``"Temperature"`\
+`       , glab ``=`` ``"NaCl (MPa)"`\
+`       , sig ``=`` ``"sig"`\
+`       , error ``=`` ``"ste"`\
+`       , color ``=`` ``T`\
+`       ``)`\
+\
+`mgt`
 
-# bar graphics for mean germination time
-
-mgt <- mc_mgt$table %>% 
-   fplot(data = .
-       , type = "bar" 
-       , x = "temp"
-       , y = "mgt"
-       , group = "nacl"
-       , ylimits = c(0,10, 1)
-       , ylab = "Mean germination time (days)"
-       , xlab = "Temperature"
-       , glab = "NaCl (MPa)"
-       , sig = "sig"
-       , error = "ste"
-       , color = T
-       )
-
-mgt
-```
-
-![Germination experiment with \*Prosopis juliflor\* under different
-osmotic potentials and temperatures. Bar graph for mean germination time
-in a factorial
-analisys.](GerminaR_files/figure-html/unnamed-chunk-4-1.png)
+![](GerminaR_files/figure-html/unnamed-chunk-4-1.png)
 
 Germination experiment with *Prosopis juliflor* under different osmotic
 potentials and temperatures. Bar graph for mean germination time in a
@@ -264,24 +255,22 @@ percentage of germination or with the relative germination.
 
 ### In time analysis for NaCl
 
-``` r
-
-
-# data frame with percentage or relative germination in time by NaCl
-
-git <- ger_intime(Factor = "nacl"
-                  , SeedN = "seeds"
-                  , evalName = "D"
-                  , method = "percentage"
-                  , data = fb
-                  )
-
-# data result
-
-git %>% 
-   head(10) %>% 
-   kable(caption = "Cumulative germination by nacl factor")
-```
+\
+\
+`# data frame with percentage or relative germination in time by NaCl`\
+\
+`git`` ``<-`` `[`ger_intime`](http://germinar.inkaverse.com/reference/ger_intime.md)`(``Factor ``=`` ``"nacl"`\
+`                  , SeedN ``=`` ``"seeds"`\
+`                  , evalName ``=`` ``"D"`\
+`                  , method ``=`` ``"percentage"`\
+`                  , data ``=`` ``fb`\
+`                  ``)`\
+\
+`# data result`\
+\
+`git`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`head`](https://rdrr.io/r/utils/head.html)`(``10``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   ``kable``(``caption ``=`` ``"Cumulative germination by nacl factor"``)`
 
 | nacl | evaluation |   mean |   r |        std | min | max |       ste |
 |:-----|-----------:|-------:|----:|-----------:|----:|----:|----------:|
@@ -296,33 +285,32 @@ git %>%
 | 1.5  |          1 |  0.375 |  16 |  0.8062258 |   0 |   2 | 0.2015564 |
 | 2    |          1 |  0.000 |  16 |  0.0000000 |   0 |   0 | 0.0000000 |
 
-Cumulative germination by nacl factor {.table}
+Cumulative germination by nacl factor {.table .caption-top}
 
-``` r
+Germination experiment with *Prosopis juliflor* under different osmotic
+potentials and temperatures. Line graph from cumulative germination
+under different osmotic potentials.
 
+\
+\
+`# graphic germination in time by NaCl`\
+\
+`nacl`` ``<-`` ``git`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`fplot`](http://germinar.inkaverse.com/reference/fplot.md)`(``data ``=`` ``.`\
+`        , type ``=`` ``"line"`\
+`        , x ``=`` ``"evaluation"`\
+`        , y ``=`` ``"mean"`\
+`        , group ``=`` ``"nacl"`\
+`        , ylimits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``110``, ``10``)`\
+`        , ylab ``=`` ``"Germination ('%')"`\
+`        , xlab ``=`` ``"Day"`\
+`        , glab ``=`` ``"NaCl (MPa)"`\
+`        , color ``=`` ``T`\
+`        , error ``=`` ``"ste"`\
+`        ``)`\
+`nacl`
 
-# graphic germination in time by NaCl
-
-nacl <- git %>% 
-   fplot(data = .
-        , type = "line"
-        , x = "evaluation"
-        , y = "mean"
-        , group = "nacl"
-        , ylimits = c(0, 110, 10)
-        , ylab = "Germination ('%')"
-        , xlab = "Day"
-        , glab = "NaCl (MPa)"
-        , color = T
-        , error = "ste"
-        )
-nacl
-```
-
-![Germination experiment with \*Prosopis juliflor\* under different
-osmotic potentials and temperatures. Line graph from cumulative
-germination under different osmotic
-potentials.](GerminaR_files/figure-html/unnamed-chunk-5-1.png)
+![](GerminaR_files/figure-html/unnamed-chunk-5-1.png)
 
 Germination experiment with *Prosopis juliflor* under different osmotic
 potentials and temperatures. Line graph from cumulative germination
@@ -330,23 +318,21 @@ under different osmotic potentials.
 
 ### In time analysis for temperature
 
-``` r
-
-
-# data frame with percentage or relative germination in time by temperature
-
-git <- ger_intime(Factor = "temp"
-                  , SeedN = "seeds"
-                  , evalName = "D"
-                  , method = "percentage"
-                  , data = fb) 
-
-# data result
-
-git %>% 
-   head(10) %>% 
-   kable(caption = "Cumulative germination by temperature factor")
-```
+\
+\
+`# data frame with percentage or relative germination in time by temperature`\
+\
+`git`` ``<-`` `[`ger_intime`](http://germinar.inkaverse.com/reference/ger_intime.md)`(``Factor ``=`` ``"temp"`\
+`                  , SeedN ``=`` ``"seeds"`\
+`                  , evalName ``=`` ``"D"`\
+`                  , method ``=`` ``"percentage"`\
+`                  , data ``=`` ``fb``)`` `\
+\
+`# data result`\
+\
+`git`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`head`](https://rdrr.io/r/utils/head.html)`(``10``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   ``kable``(``caption ``=`` ``"Cumulative germination by temperature factor"``)`
 
 | temp | evaluation | mean |   r |      std | min | max |       ste |
 |:-----|-----------:|-----:|----:|---------:|----:|----:|----------:|
@@ -361,32 +347,31 @@ git %>%
 | 25   |          2 | 48.6 |  20 | 45.07818 |   0 | 100 | 10.079787 |
 | 30   |          2 | 62.4 |  20 | 45.70662 |   0 | 100 | 10.220310 |
 
-Cumulative germination by temperature factor {.table}
+Cumulative germination by temperature factor {.table .caption-top}
 
-``` r
+Germination experiment with *Prosopis juliflor* under different osmotic
+potentials and temperatures. Line graph from cumulative germination
+under different temperatures.
 
+\
+\
+`# graphic germination in time by temperature`\
+\
+`temp`` ``<-`` ``git`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`fplot`](http://germinar.inkaverse.com/reference/fplot.md)`(``data ``=`` ``.`\
+`        , type ``=`` ``"line"`\
+`        , x ``=`` ``"evaluation"`\
+`        , y ``=`` ``"mean"`\
+`        , group ``=`` ``"temp"`\
+`        , ylimits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``110``, ``10``)`\
+`        , ylab ``=`` ``"Germination ('%')"`\
+`        , xlab ``=`` ``"Day"`\
+`        , glab ``=`` ``"Temperature"`\
+`        , color ``=`` ``F`\
+`        ``)`` `\
+`temp`
 
-# graphic germination in time by temperature
-
-temp <- git %>% 
-   fplot(data = .
-        , type = "line"
-        , x = "evaluation"
-        , y = "mean"
-        , group = "temp"
-        , ylimits = c(0, 110, 10)
-        , ylab = "Germination ('%')"
-        , xlab = "Day"
-        , glab = "Temperature"
-        , color = F
-        ) 
-temp
-```
-
-![Germination experiment with \*Prosopis juliflor\* under different
-osmotic potentials and temperatures. Line graph from cumulative
-germination under different
-temperatures.](GerminaR_files/figure-html/unnamed-chunk-6-1.png)
+![](GerminaR_files/figure-html/unnamed-chunk-6-1.png)
 
 Germination experiment with *Prosopis juliflor* under different osmotic
 potentials and temperatures. Line graph from cumulative germination
@@ -400,34 +385,32 @@ using [ggplot2](https://ggplot2.tidyverse.org/) ([Wickham et al.,
 2024](#ref-R-ggplot2)). You can add more arguments for modify the
 graphics adding `+`.
 
-``` r
-
-
-library(ggplot2)
-
-git <- ger_intime(Factor = "temp"
-                  , SeedN = "seeds"
-                  , evalName = "D"
-                  , method = "percentage"
-                  , data = fb
-                  ) 
-
-ggplot <- git %>% 
-   fplot(data = .
-        , type = "line"
-        , x = "evaluation"
-        , y = "mean"
-        , group = "temp"
-        , ylimits = c(0, 110, 10)
-        , ylab = "Germination ('%')"
-        , xlab = "Day"
-        , glab = "Temperature"
-        , color = T
-        ) +
-  scale_x_continuous(n.breaks = 10, limits = c(0, 11)) 
-
-ggplot
-```
+\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+\
+`git`` ``<-`` `[`ger_intime`](http://germinar.inkaverse.com/reference/ger_intime.md)`(``Factor ``=`` ``"temp"`\
+`                  , SeedN ``=`` ``"seeds"`\
+`                  , evalName ``=`` ``"D"`\
+`                  , method ``=`` ``"percentage"`\
+`                  , data ``=`` ``fb`\
+`                  ``)`` `\
+\
+`ggplot`` ``<-`` ``git`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
+`   `[`fplot`](http://germinar.inkaverse.com/reference/fplot.md)`(``data ``=`` ``.`\
+`        , type ``=`` ``"line"`\
+`        , x ``=`` ``"evaluation"`\
+`        , y ``=`` ``"mean"`\
+`        , group ``=`` ``"temp"`\
+`        , ylimits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``110``, ``10``)`\
+`        , ylab ``=`` ``"Germination ('%')"`\
+`        , xlab ``=`` ``"Day"`\
+`        , glab ``=`` ``"Temperature"`\
+`        , color ``=`` ``T`\
+`        ``)`` ``+`\
+`  `[`scale_x_continuous`](https://ggplot2.tidyverse.org/reference/scale_continuous.html)`(``n.breaks ``=`` ``10``, limits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``11``)``)`` `\
+\
+`ggplot`
 
 ![](GerminaR_files/figure-html/unnamed-chunk-7-1.png)
 

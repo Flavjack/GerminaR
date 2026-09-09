@@ -66,9 +66,19 @@ if (FALSE) {
   
   if (any(ger_eval < 0, na.rm = TRUE)) {
     
-    print(ger_eval)
+    idx <- which(as.matrix(ger_eval) < 0, arr.ind = TRUE)
     
-    stop("Negative values in the germination count")
+    cat("\nNegative germination counts detected:\n\n")
+    
+    print(
+      cbind(
+        dtx[idx[,1], !names(dtx) %in% names(ger_eval), drop = FALSE],
+        Evaluation = colnames(ger_eval)[idx[,2]],
+        Value = as.matrix(ger_eval)[idx]
+      )
+    )
+    
+    stop("Negative values in the germination count.")
   }
   
   info <- dtx %>% 
@@ -91,7 +101,7 @@ if (FALSE) {
   
   if (any(gsm$grp > 100, na.rm = TRUE)) {
     
-    stop("Germination more than 100%. Please check your data")
+    warning("Germination more than 100%. Please check your data")
   }
   
 # result ------------------------------------------------------------------

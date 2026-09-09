@@ -34,12 +34,12 @@ of part of the seedlings formed ([Ranal & Santana,
 | Germination standard deviation | sdg | time | \\0 \< sdg \leq \infty\\ |
 | Coefficient of variation | cvg | % | \\0 \< cvg \leq \infty\\ |
 
-Table 1: Germination variables evaluated in GerminaR package and limits
-according to Ranal and Santana (2006), where \\n_i\\ is the number of
-seeds germinated in \\i^{th}\\ time; and \\k\\ is the last day of the
-evaluation process for germination {.table}
+Germination variables evaluated in GerminaR package and limits according
+to Ranal and Santana (2006), where \\n_i\\ is the number of seeds
+germinated in \\i^{th}\\ time; and \\k\\ is the last day of the
+evaluation process for germination {.table .caption-top}
 
-> More info: <https://doi.org/10.1111/1440-1703.1275>
+> More info: https://doi.org/10.1111/1440-1703.1275
 
 ## Fieldbook preparation
 
@@ -63,15 +63,12 @@ indicate the number of seeds sown in each experimental unit (green) and
 design your own field book with different names in the column according
 your experimental design.
 
-![Layout for germination evaluation process. The factor column (red) are
+![](files/dtorg.png)
+
+Layout for germination evaluation process. The factor column (red) are
 according the experimental design. The seed number column (green) for
 the number of seed sown and the evaluation columns (blue) for accounting
-the germination.](files/dtorg.png)
-
-Figure 1: Layout for germination evaluation process. The factor column
-(red) are according the experimental design. The seed number column
-(green) for the number of seed sown and the evaluation columns (blue)
-for accounting the germination.
+the germination.
 
 ### Data collection
 

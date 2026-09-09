@@ -33,7 +33,7 @@ analysis very easy.
 | Tools | Tool for calculate the osmotic potential for any salt or PEG solution |
 
 Description of each module in GerminaQuant to evaluate and analyze the
-germination process. {.table}
+germination process. {.table .caption-top}
 
 ## Data processing
 
@@ -43,7 +43,7 @@ When you have your fieldbook, you can access to the app [GerminaQuant
 for R](https://flavjack.shinyapps.io/germinaquant/) and go “Fieldbook”
 tab.
 
-![Fieldbook interface for import your data](files/impdt.png)
+![](files/impdt.png)
 
 Fieldbook interface for import your data
 
@@ -60,7 +60,7 @@ tab will be performed and the values of the germination indices will be
 shown maintaining the experimental design. GerminaQuant allows to copy
 or downloading the information in “csv” or “xlsx” format.
 
-![Dowload option for the calculated variables](files/dtdown.png)
+![](files/dtdown.png)
 
 Dowload option for the calculated variables
 
@@ -72,8 +72,7 @@ Design (RCBD), Latin Square Design (LSD) or factorial designs, allowing
 calculate the analysis of variance (AOV) and the mean differences
 through Student Newman Keuls (SNK), Tukey or Duncan test.
 
-![Statitical analysis with ANOVA and mean comparison
-test](files/stat.png)
+![](files/stat.png)
 
 Statitical analysis with ANOVA and mean comparison test
 
@@ -84,7 +83,7 @@ will generate the graphs for the variable chosen with the mean
 comparison test. The app interface allows customized the graphics in a
 bar or line plot and export in “tiff” format for publication quality.
 
-![Customized interface for bar or line plot](files/plot.png)
+![](files/plot.png)
 
 Customized interface for bar or line plot
 
@@ -94,7 +93,7 @@ This Tab allows to visualize the germination process according one of
 the experimental factors. The app interface allows customized the
 graphic.
 
-![Germination in time plot](files/gtime.png)
+![](files/gtime.png)
 
 Germination in time plot
 

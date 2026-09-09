@@ -1,23 +1,26 @@
 ---
 title: "Seed germination process"
+description: > 
+  Theory of seed germination process
 author: "Flavio Lozano-Isla"
-output:
-  # bookdown::pdf_book:
-  #   keep_tex: true
-  bookdown::html_document2:
-    base_format: rmarkdown::html_vignette
-    toc: true
-    number_sections: false
-pkgdown:
-  as_is: true
-link-citations: true
-colorlinks: yes
-bibliography: [files/book.bib, files/pkgs.bib]
-csl: https://www.zotero.org/styles/apa
 vignette: >
-  %\VignetteIndexEntry{Seed germination process}
+  %\VignetteIndexEntry{germination}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
+bibliography:
+  - files/book.bib
+  - files/pkgs.bib
+csl: "https://www.zotero.org/styles/apa"
+
+link-citations: true
+colorlinks: true
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: '#>'
+    echo: false
+    warning: false
+    message: false
 editor_options: 
   chunk_output_type: console
 ---

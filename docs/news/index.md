@@ -3,6 +3,8 @@
 ## Version 2.1.7
 
 - Link updates
+- Improve germination negative values identification
+- Update to quarto vignettes
 
 ## Version 2.1.6
 
