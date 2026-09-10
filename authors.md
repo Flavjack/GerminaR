@@ -35,7 +35,7 @@ package for germination analysis with the interactive web application
 <https://doi.org/10.1111/1440-1703.1275>.
 
     @Article{,
-      title = {{GerminaR}: An {R} package for germination analysis with the interactive web application “GerminaQuant for R”},
+      title = {GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R”},
       author = {Flavio Lozano-Isla and Omar Benites-Alfaro and Marcelo F. Pompelli},
       journal = {Ecological Research},
       year = {2019},
