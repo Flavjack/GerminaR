@@ -12,3 +12,4 @@ vignettes/*.pdf
 .httr-oauth
 inst/doc
 .positai
+docs

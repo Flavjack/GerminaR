@@ -13,7 +13,7 @@ Authors@R: c(
     person("Federal Rural University of Pernambuco", role = "cph", comment = "Post Graduate Program"),
     person("Inkaverse", role = c("ctb"))
     )
-URL: https://germinar.inkaverse.com/, https://github.com/flavjack/germinar
+URL: https://germinar.inkaverse.com/, https://github.com/flavjack/germinar, http://germinar.inkaverse.com/
 BugReports: https://github.com/flavjack/germinar/issues
 License: GPL-3 | file LICENSE
 Depends:
