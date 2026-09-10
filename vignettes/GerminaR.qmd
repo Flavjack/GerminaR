@@ -1,7 +1,7 @@
 ---
-title: GerminaR
+title: "GerminaR"
 description: > 
-  GerminaR: germination analysis.
+  "GerminaR: germination analysis."
 author: "Flavio Lozano-Isla"
 vignette: >
   %\VignetteIndexEntry{GerminaR}
@@ -11,7 +11,6 @@ bibliography:
   - files/book.bib
   - files/pkgs.bib
 csl: "https://www.zotero.org/styles/apa"
-
 link-citations: true
 colorlinks: true
 knitr:

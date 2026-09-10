@@ -99,13 +99,13 @@ Research, 34(2), 339–346. <https://doi.org/10.1111/1440-1703.1275>
 
 - [GerminaQuant](http://germinar.inkaverse.com/articles/GerminaQuant.md):
 
-  GerminaQuant: interactive apps for germination analysis.
+  “GerminaQuant: interactive apps for germination analysis.”
 
 - [GerminaR](http://germinar.inkaverse.com/articles/GerminaR.md):
 
-  GerminaR: germination analysis.
+  “GerminaR: germination analysis.”
 
 - [Seed germination
   process](http://germinar.inkaverse.com/articles/introduction.md):
 
-  Theory of seed germination process
+  “Theory of seed germination process”
