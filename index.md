@@ -9,35 +9,27 @@ called “GerminQuant for R” for interactive analysis.
 You can install the released version of GerminaR from
 [CRAN](https://cran.r-project.org/package=GerminaR) with:
 
-``` r
-
-install.packages("GerminaR")
-```
+\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"GerminaR"``)`
 
 And the development version from
 [GitHub](https://github.com/flavjack/GerminaR) with:
 
-``` r
-
-if (!require("remotes"))
-  install.packages("remotes")
-remotes::install_github("Flavjack/GerminaR")
-```
+\
+`if`` ``(``!`[`require`](https://rdrr.io/r/base/library.html)`(`[`"remotes"`](https://remotes.r-lib.org)`)``)`\
+`  `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"remotes"``)`\
+`remotes``::``install_github``(``"Flavjack/GerminaR"``)`
 
 ## GerminaQuant app
 
-``` r
-
-GerminaR::GerminaQuant()
-```
+\
+`GerminaR``::`[`GerminaQuant`](http://germinar.inkaverse.com/reference/GerminaQuant.md)`(``)`
 
 If is the first time running the app you should install the app
 dependencies, including the following argument:
 
-``` r
-
-GerminaR::GerminaQuant(dependencies = TRUE)
-```
+\
+`GerminaR``::`[`GerminaQuant`](http://germinar.inkaverse.com/reference/GerminaQuant.md)`(``dependencies ``=`` ``TRUE``)`
 
 After install the package and the app dependencies you can access to the
 app through the Addins list in Rstudio, or in the following link in the

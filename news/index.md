@@ -2,11 +2,7 @@
 
 ## GerminaR 2.1.7
 
-CRAN release: 2026-09-10
-
 ## Version 2.1.7
-
-CRAN release: 2026-09-10
 
 - Link updates
 - Improve germination negative values identification

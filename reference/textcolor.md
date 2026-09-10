@@ -38,7 +38,7 @@ testthat package
 ``` r
 
 print(textcolor("Red", "red"))
-#> [1] "Red"
+#> [1] "\033[0;31mRed\033[0m"
 cat(textcolor("Red", "red"), "\n")
 #> Red 
 cat(textcolor("White on red", "white", "red"), "\n")
