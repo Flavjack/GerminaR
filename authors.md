@@ -27,7 +27,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/flavjack/germinar/blob/master/inst/CITATION)
+[`inst/CITATION`](https://github.com/flavjack/germinar/blob/v2.1.7/inst/CITATION)
 
 Lozano-Isla F, Benites-Alfaro O, Pompelli M (2019). “GerminaR: An R
 package for germination analysis with the interactive web application
