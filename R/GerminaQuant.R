@@ -11,7 +11,7 @@
 #'
 #' @source Lozano-Isla, F., Benites Alfaro, O., & Pompelli, M. F. (2016).
 #'   GerminaQuant for R (Patent No. BR 51 2016 001327-3).
-#'   https://flavjack.shinyapps.io/germinaquant/
+#'   https://inkaverse.shinyapps.io/germinaquant/
 #'
 #' @family GerminaR
 #' @importFrom shiny runApp

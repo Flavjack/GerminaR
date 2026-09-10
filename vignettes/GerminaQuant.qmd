@@ -65,7 +65,7 @@ table %>%
 
 ## Fieldbook
 
-When you have your fieldbook, you can access to the app [GerminaQuant for R](https://flavjack.shinyapps.io/germinaquant/) and go "Fieldbook" tab.
+When you have your fieldbook, you can access to the app [GerminaQuant for R](https://inkaverse.shinyapps.io/germinaquant/) and go "Fieldbook" tab.
 
 ```{r impdt, out.width='100%', fig.cap= "Fieldbook interface for import your data", fig.align='center'}
 knitr::include_graphics('files/impdt.png')

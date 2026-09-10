@@ -40,7 +40,7 @@ germination process. {.table .caption-top}
 ### Fieldbook
 
 When you have your fieldbook, you can access to the app [GerminaQuant
-for R](https://flavjack.shinyapps.io/germinaquant/) and go “Fieldbook”
+for R](https://inkaverse.shinyapps.io/germinaquant/) and go “Fieldbook”
 tab.
 
 ![](files/impdt.png)
